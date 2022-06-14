@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "projects", "techs", "packages", "components", "designPatterns", "texts", "screenshots", "PROJ_TECH", "PROJ_PACK", "PROJ_COMP", "PROJ_DESPATT";
+DROP TABLE IF EXISTS "projects", "techs", "Tags", "texts", "screenshots", "PROJ_TECH", "PROJ_TAGS";
 
 CREATE TABLE "projects"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE "texts"(
 CREATE TABLE "screenshots"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
-    "adress" TEXT NOT NULL DEFAULT '',
+    "url" TEXT NOT NULL DEFAULT '',
     "position" INTEGER NOT NULL
 );
 
@@ -36,19 +36,11 @@ CREATE TABLE "techs"(
     "logo" TEXT NOT NULL DEFAULT ''
 );
 
-CREATE TABLE "packages"(
+CREATE TABLE "tags"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" TEXT NOT NULL DEFAULT ''
-);
-
-CREATE TABLE "components"(
-    "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" TEXT NOT NULL DEFAULT ''
-);
-
-CREATE TABLE "designPatterns"(
-    "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" TEXT NOT NULL DEFAULT ''
+    "name" TEXT NOT NULL DEFAULT '',
+    "type" TEXT NOT NULL DEFAULT '',
+    "category" TEXT DEFAULT NULL
 );
 
 CREATE TABLE "PROJ_TECH"(
@@ -56,19 +48,9 @@ CREATE TABLE "PROJ_TECH"(
     "tech_id" INTEGER NOT NULL REFERENCES "techs"("id")
 );
 
-CREATE TABLE "PROJ_PACK"(
+CREATE TABLE "PROJ_TAGS"(
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
-    "package_id" INTEGER NOT NULL REFERENCES "packages"("id")
-);
-
-CREATE TABLE "PROJ_COMP"(
-    "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
-    "component_id" INTEGER NOT NULL REFERENCES "components"("id")
-);
-
-CREATE TABLE "PROJ_DESPATT"(
-    "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
-    "desPatt_id" INTEGER NOT NULL REFERENCES "designPatterns"("id")
+    "tag_id" INTEGER NOT NULL REFERENCES "tags"("id")
 );
 
 INSERT INTO "projects" ("title", "githubLink", "projectSize", "desc", "cover")
@@ -76,41 +58,51 @@ VALUES  ('Portfolio', 'https://github.com/KhadimRenahyMar/Portfolio', 'M', 'Site
         ('Arch-IQ', 'https://github.com/KhadimRenahyMar/Arch-iQ', 'S', 'Site vitrine de l''entreprise fictive Arch-IQ.', 'archIQ'),
         ('oFood', 'https://github.com/KhadimRenahyMar/oFood', 'M', 'Application de rééquillibrage alimentaire déveloptttttpée en équipe.', 'ofood');
 
-INSERT INTO "techs" ("fullname", "shortname", "logo")
-VALUES  ('JavaScript', 'JS', 'javascript'),
-        ('HyperText Markup Language', 'HTML', 'html'),
-        ('Cascading Style Sheets', 'CSS', 'css'),
-        ('SASS/SCSS', 'SASS/SCSS', 'sass'),
-        ('NodeJS', 'NJS', 'nodejs'),
-        ('SQL', 'SQL', 'sql'),
-        ('ReactJS', 'React', 'react'),
-        ('TypeScript', 'TS', 'typescript');
-
-INSERT INTO "packages" ("name") 
-VALUES  ('slideJS'),
-        ('Express');
-
-INSERT INTO "components" ("name")
-VALUES  ('Navigation'),
-        ('Chart'),
-        ('Drag&Drop'),
-        ('Parallax');
-
-INSERT INTO "designPatterns" ("name")
-VALUES  ('SSR'),
-        ('CSR'),
-        ('Factory'), 
-        ('POO');
 
 INSERT INTO "texts" ("project_id", "title", "text", "position")
 VALUES  (1, 'Introduction', 'portfolio/texts/introduction', 1),
         (2, 'Introduction', 'archIQ/texts/introduction', 1),
         (3, 'Introduction', 'ofood/texts/introduction', 1);
 
-INSERT INTO "screenshots" ("project_id", "adress", "position")
+INSERT INTO "screenshots" ("project_id", "url", "position")
 VALUES  (1 ,'portfolio/screenshots/1', 1),
         (2 ,'archIQ/screenshots/1', 1),
         (3 ,'ofood/screenshots/1', 1);
+
+INSERT INTO "techs" ("fullname", "shortname", "logo")
+VALUES  ('HyperText Markup Language', 'HTML', 'html'), --1
+        ('Cascading Style Sheets', 'CSS', 'css'), --2
+        ('JavaScript', 'JS', 'javascript'),--3
+        ('SASS/SCSS', 'SASS/SCSS', 'sass'),--4
+        ('NodeJS', 'NJS', 'nodejs'),--5
+        ('SQL', 'SQL', 'sql'),--6
+        ('PostgreSQL', 'PG', 'pgsql'),--7
+        ('ReactJS', 'React', 'react'),--8
+        ('TypeScript', 'TS', 'typescript');--9
+
+INSERT INTO "tags" ("name", "type", "category") 
+VALUES  ('slideJS', 'package', 'Frontend'),--1
+        ('Express', 'package', 'Backend'),--2
+        ('ESlint', 'package', 'Fullstack'),--3
+        ('node-dev', 'package', 'Backend'),--4
+
+        ('Navigation', 'component', 'UI'),--5
+        ('Chart', 'component', 'UI'),--6
+        ('Drag&Drop', 'component', 'UI'),--7
+        ('Formulaires', 'component', 'UI'),--8
+        ('github API', 'component', 'APIs'),--9
+
+        ('SSR', 'design pattern', 'Rendu'),--10
+        ('CSR', 'design pattern', 'Rendu'),--11
+        ('MVC', 'design pattern', 'Architecture'), --12
+        ('POO', 'design pattern', 'Code'),--13
+
+        ('Insomnia', 'tool', 'Backend design'),--14
+        ('AdobeXD', 'tool', 'Graphisme'),--15
+        ('DrawIO', 'tool', 'Backend design'),--16
+        ('Kanban', 'tool', 'Workflow'),--17
+        ('Scrum', 'tool', 'Workflow');--18
+
 
 INSERT INTO "PROJ_TECH" ("project_id", "tech_id")
 VALUES  (1, 1),
@@ -121,6 +113,7 @@ VALUES  (1, 1),
         (1, 6),
         (1, 7),
         (1, 8),
+        (1, 9),
         (2, 1),
         (2, 2),
         (2, 3),
@@ -131,25 +124,34 @@ VALUES  (1, 1),
         (3, 4),
         (3, 5),
         (3, 6),
-        (3, 7);
+        (3, 7),
+        (3, 8);
 
-INSERT INTO "PROJ_PACK" ("project_id", "package_id")
+INSERT INTO "PROJ_TAGS" ("project_id", "tag_id")
 VALUES  (1, 1),
         (1, 2),
-        (2, 1),
-        (3, 2);
-
-INSERT INTO "PROJ_COMP" ("project_id", "component_id")
-VALUES  (1, 1),
-        (1, 2),
-        (2, 1),
-        (3, 1);
-
-INSERT INTO "PROJ_DESPATT" ("project_id", "desPatt_id")
-VALUES  (1, 2),
         (1, 4),
-        (2, 2),
+        (1, 5),
+        (1, 6),
+        (1, 8),
+        (1, 9),
+        (1, 11),
+        (1, 13),
+        (1, 15),
+        (1, 16),
+        (1, 17),
+        (2, 1),
+        (2, 5),
         (3, 2),
-        (3, 4);
+        (3, 3),
+        (3, 5),
+        (3, 8),
+        (3, 11),
+        (3, 12),
+        (3, 13),
+        (3, 14),
+        (3, 15),
+        (3, 17),
+        (3, 18);
 
 COMMIT;
