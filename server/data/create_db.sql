@@ -1,12 +1,12 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "projects", "techs", "Tags", "texts", "screenshots", "PROJ_TECH", "PROJ_TAGS";
+DROP TABLE IF EXISTS "projects", "techs", "tags", "texts", "screenshots", "PROJ_TECH", "PROJ_TAGS";
 
-CREATE TABLE "projects"(
+CREATE TABLE IF NOT EXISTS "projects"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" TEXT NOT NULL DEFAULT '',
-    "githubLink" TEXT NOT NULL,
-    "siteLink" TEXT DEFAULT '',
+    "repoURL" TEXT NOT NULL,
+    "url" TEXT DEFAULT '',
     "projectSize" TEXT NOT NULL,
     "desc" TEXT NOT NULL DEFAULT '',
     "cover" TEXT NOT NULL DEFAULT '',
@@ -14,7 +14,7 @@ CREATE TABLE "projects"(
     "updated_at" TIMESTAMP
 );
 
-CREATE TABLE "texts"(
+CREATE TABLE IF NOT EXISTS "texts"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
     "title" TEXT NOT NULL DEFAULT '',
@@ -22,38 +22,38 @@ CREATE TABLE "texts"(
     "position" INTEGER NOT NULL
 );
 
-CREATE TABLE "screenshots"(
+CREATE TABLE IF NOT EXISTS "screenshots"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
     "url" TEXT NOT NULL DEFAULT '',
     "position" INTEGER NOT NULL
 );
 
-CREATE TABLE "techs"(
+CREATE TABLE IF NOT EXISTS "techs"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "fullname" TEXT NOT NULL DEFAULT '',
     "shortname" TEXT DEFAULT '',
-    "logo" TEXT NOT NULL DEFAULT ''
+    "logoURL" TEXT NOT NULL DEFAULT ''
 );
 
-CREATE TABLE "tags"(
+CREATE TABLE IF NOT EXISTS "tags"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" TEXT NOT NULL DEFAULT '',
     "type" TEXT NOT NULL DEFAULT '',
     "category" TEXT DEFAULT NULL
 );
 
-CREATE TABLE "PROJ_TECH"(
+CREATE TABLE IF NOT EXISTS "PROJ_TECH"(
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
     "tech_id" INTEGER NOT NULL REFERENCES "techs"("id")
 );
 
-CREATE TABLE "PROJ_TAGS"(
+CREATE TABLE IF NOT EXISTS "PROJ_TAGS"(
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
     "tag_id" INTEGER NOT NULL REFERENCES "tags"("id")
 );
 
-INSERT INTO "projects" ("title", "githubLink", "projectSize", "desc", "cover")
+INSERT INTO "projects" ("title", "repoURL", "projectSize", "desc", "cover")
 VALUES  ('Portfolio', 'https://github.com/KhadimRenahyMar/Portfolio', 'M', 'Site portfolio visant à présenter mes projets web.', 'portfolio'),
         ('Arch-IQ', 'https://github.com/KhadimRenahyMar/Arch-iQ', 'S', 'Site vitrine de l''entreprise fictive Arch-IQ.', 'archIQ'),
         ('oFood', 'https://github.com/KhadimRenahyMar/oFood', 'M', 'Application de rééquillibrage alimentaire déveloptttttpée en équipe.', 'ofood');
@@ -69,7 +69,7 @@ VALUES  (1 ,'portfolio/screenshots/1', 1),
         (2 ,'archIQ/screenshots/1', 1),
         (3 ,'ofood/screenshots/1', 1);
 
-INSERT INTO "techs" ("fullname", "shortname", "logo")
+INSERT INTO "techs" ("fullname", "shortname", "logoURL")
 VALUES  ('HyperText Markup Language', 'HTML', 'html'), --1
         ('Cascading Style Sheets', 'CSS', 'css'), --2
         ('JavaScript', 'JS', 'javascript'),--3

@@ -1,8 +1,5 @@
-// const { Model, Datatypes } = require('sequelize');
-// const sequelize = require('../database');
-
+const sequelize = require('../database');
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database";
 
 class Tech extends Model {};
 
@@ -19,7 +16,7 @@ Tech.init(
             type: DataTypes.TEXT,
             allowNull: true,
         },
-        logo: {
+        logoURL: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
@@ -32,5 +29,12 @@ Tech.init(
         tableName: 'techs',
     }
 );
+
+interface Tech {
+    id: number,
+    fullname: string,
+    shortname: string,
+    logoURL: string,
+};
 
 export default Tech;

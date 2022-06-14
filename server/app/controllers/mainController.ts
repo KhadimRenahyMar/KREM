@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { Project, Tech } from '../models';
+
 const mainController = {
-    homepage: (req: Request, res: Response) => {
-        
-        res.json('All good');
+    homepage: async (req: Request, res: Response) => {
+        const projects = await Project.findAll();
+        res.json(projects);
     },
 };
-
 
 export default mainController;

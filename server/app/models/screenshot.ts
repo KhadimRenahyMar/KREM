@@ -1,8 +1,5 @@
-// const { Model, Datatypes } = require('sequelize');
-// const sequelize = require('../database');
-
+const sequelize = require('../database');
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database";
 
 class Screenshot extends Model {};
 
@@ -28,5 +25,12 @@ Screenshot.init(
         tableName: 'tags',
     }
 );
+
+interface Screenshot {
+    id: number,
+    project_id: number,
+    url: string,
+    position: number,
+};
 
 export default Screenshot;

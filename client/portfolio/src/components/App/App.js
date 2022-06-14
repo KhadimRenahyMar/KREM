@@ -4,20 +4,23 @@ import axios from 'axios';
 
 function App() {
 
-  const [message, setMessage] = useState(null);
+  const [projects, setProjects] = useState([]);
   useEffect(()=>{
-    const fetchBack = async ()=>{
+    const fetchBack = async () => {
       const data = await axios.get('http://localhost:5050/');
-      console.log(data);
-      setMessage(data.data);
+      setProjects(data.data);
     };
     fetchBack();
-  });
+  }, []);
 
 
   return (
     <div className="App">
-    <h1>{message}</h1>
+    {
+      projects.map((project)=> (
+        <li>{project.title}</li>
+      ))
+    }
     </div>
   );
 }

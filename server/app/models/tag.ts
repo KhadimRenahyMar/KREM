@@ -1,8 +1,5 @@
-// const { Model, Datatypes } = require('sequelize');
-// const sequelize = require('../database');
-
+const sequelize = require('../database');
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database";
 
 class Tag extends Model {};
 
@@ -32,5 +29,12 @@ Tag.init(
         tableName: 'tags',
     }
 );
+
+interface Tag {
+    id: number,
+    name: string,
+    type: string,
+    category: string,
+};
 
 export default Tag;

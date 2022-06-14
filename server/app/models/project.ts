@@ -1,8 +1,5 @@
-// const { Model, Datatypes } = require('sequelize');
-// const sequelize = require('../database');
-
+const sequelize = require('../database');
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database";
 
 class Project extends Model {};
 
@@ -15,14 +12,14 @@ Project.init(
                 notEmpty: true,
             },
         },
-        githubLink: {
+        repoURL: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 notEmpty: true,
             },
         },
-        siteLink: {
+        url: {
             type: DataTypes.TEXT,
             allowNull: true,
         },
@@ -55,5 +52,17 @@ Project.init(
         updatedAt: 'updatedAt',
     }
 );
+
+interface Project {
+    id: number,
+    title: string,
+    repoURL: string,
+    url: string,
+    projectSize: string,
+    desc: string,
+    cover: string,
+    createdAt: Date,
+    updatedAt: Date,
+};
 
 export default Project;

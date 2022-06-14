@@ -1,8 +1,5 @@
-// const { Model, Datatypes } = require('sequelize');
-// const sequelize = require('../database');
-
+const sequelize = require('../database');
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../database";
 
 class Text extends Model {};
 
@@ -35,5 +32,13 @@ Text.init(
         tableName: 'texts',
     }
 );
+
+interface Text {
+    id: number,
+    project_id: number,
+    title: string,
+    text: string,
+    position: number,
+};
 
 export default Text;

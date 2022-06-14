@@ -1,15 +1,11 @@
-require('dotenv').config();
+const { Sequelize } = require('sequelize');
 
-import { Sequelize } from 'sequelize';
-
-console.log(process.env.PG_URL);
-const client = new Sequelize(String(process.env.PG_URL), {
+const client = new Sequelize(process.env.PG_URL, {
     define: {
         timestamps: false,
-        createdAt: "createdAt",
-        updatedAt: "updatedAt",
+        createdAt: "created_at",
+        updatedAt: "updated_at",
     }
 });
 
-
-export default client;
+module.exports = client;
