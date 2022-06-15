@@ -7,12 +7,13 @@ function App() {
   const [projects, setProjects] = useState([]);
   useEffect(()=>{
     const fetchBack = async () => {
-      const data = await axios.get('http://localhost:5050/');
+      const data = await axios.get('/projects');
+      console.log(data.data);
       setProjects(data.data);
     };
     fetchBack();
-    console.log(projects);
   }, []);
+  console.log(projects);
 
   return (
     <div className="App">

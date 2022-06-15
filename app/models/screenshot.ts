@@ -1,4 +1,4 @@
-const sequelize = require('../database');
+const sequelize = require('../../database');
 import { Model, DataTypes } from "sequelize";
 
 class Screenshot extends Model {};
