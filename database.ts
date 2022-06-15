@@ -1,12 +1,5 @@
 const { Sequelize } = require('sequelize');
-
-// const client = new Sequelize(process.env.PG_URL, {
-//     define: {
-//         timestamps: false,
-//         createdAt: "created_at",
-//         updatedAt: "updated_at",
-//     }
-// });
+require('dotenv').config();
 
 const devConfig = process.env.PG_URL;
 const prodConfig = process.env.DATABASE_URL;
