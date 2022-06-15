@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const devConfig = process.env.PG_URL;
 const prodConfig = process.env.DATABASE_URL;
+console.log(process.env.NODE_ENV);
 
 if(process.env.NODE_ENV === "production"){
     const client = new Sequelize(prodConfig, {
