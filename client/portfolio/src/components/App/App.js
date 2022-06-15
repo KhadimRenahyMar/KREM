@@ -11,8 +11,8 @@ function App() {
       setProjects(data.data);
     };
     fetchBack();
+    console.log(projects);
   }, []);
-
 
   return (
     <div className="App">

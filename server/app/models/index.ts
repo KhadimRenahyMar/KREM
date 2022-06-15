@@ -10,10 +10,9 @@ Project.hasMany(Screenshot, {
 });
 
 Screenshot.belongsTo(Project, {
-    as: 'screenshots',
     foreignKey: 'project_id',
+    as: 'screenshots',
 });
-
 
 Project.hasMany(Text, {
     foreignKey: 'project_id',
@@ -21,8 +20,8 @@ Project.hasMany(Text, {
 });
 
 Text.belongsTo(Project, {
-    as: 'screenshots',
-    foreignKey: 'texts',
+    foreignKey: 'text',
+    as: 'texts',
 });
 
 Project.belongsToMany(Tech, {
@@ -41,14 +40,14 @@ Tech.belongsToMany(Project, {
 
 Project.belongsToMany(Tag, {
     as: 'tags',
-    through: 'PROJ_TECH',
+    through: 'PROJ_TAGS',
     foreignKey: 'project_id',
     otherKey: 'tag_id',
 });
 
 Tag.belongsToMany(Project, {
     as: 'projects',
-    through: 'PROJ_TECH',
+    through: 'PROJ_TAGS',
     foreignKey: 'tag_id',
     otherKey: 'project_id',
 });

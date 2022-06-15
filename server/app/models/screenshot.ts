@@ -19,10 +19,17 @@ Screenshot.init(
                 notEmpty: true,
             },
         },
+        project_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            },
+        },
     },
     {
         sequelize,
-        tableName: 'tags',
+        tableName: 'screenshots',
     }
 );
 
