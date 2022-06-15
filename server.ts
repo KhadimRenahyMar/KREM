@@ -5,7 +5,6 @@ import router from './app/routes/router';
 
 const server = express();
 const PORT = process.env.PORT || 3000;
-console.log(path.join(__dirname, 'client/build'));
 
 if(process.env.NODE_ENV === "production") {
     server.use(express.static(path.join(__dirname, 'client/build')));
