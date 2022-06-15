@@ -19,8 +19,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --no-notify ./server.ts",
-    "dev": "ts-node-dev --no-notify ./server.ts",
+    "dev": "NODE_ENV=development ts-node-dev --no-notify ./server.ts",
+    "start": "NODE_ENV=production ts-node-dev --no-notify ./server.ts",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
