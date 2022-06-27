@@ -45,9 +45,9 @@ body {
 }
 
 .landing {
-    margin: 1rem;
-    &__name, &__hive{
+    &__name, &__subtitle{
         font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-weight: getDeepMapValue(vars.$var, font-weight, normal) !important;
     };
 
     &__name {
@@ -61,5 +61,7 @@ body {
     &__textBx{
         font-family: getDeepMapValue(vars.$var, fonts, subtitle );
         color: getDeepMapValue(vars.$var, colors, secondary, lighter);
+        backdrop-filter: getDeepMapValue(vars.$var, effects, glass, bd-filter);
+        background-color: rgba(255, 255, 255, 0.5); 
     }
 }

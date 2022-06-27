@@ -42,11 +42,11 @@ function App() {
             HADIM
             <span className='utils--orange'> RE</span>
             NAHY-
-            <span className='utils-orange'>M</span>
+            <span className='utils--orange'>M</span>
             AR
           </h2>
             <div className='landing__textBx'>
-              <p className='landing__text'>Je suis développeur Web Fullstack, bienvenue sur mon portfolio !</p>
+              <p className='landing__text'>Je suis développeur Web Fullstack, j'ai 26 ans, <br/>Bienvenue sur mon portfolio !</p>
             </div>
             <div className='landing__hive'>
               <h2 className='landing__subtitle'>
@@ -57,7 +57,7 @@ function App() {
             </h2>
           </div>
           <div className='landing__icon'>
-
+          
           </div>
         </div>
         </main>

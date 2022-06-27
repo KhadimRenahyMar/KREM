@@ -19,6 +19,12 @@ $var: (
         text: $roboto
     ),
 
+    font-weight : (
+        normal: 400,
+        mid: 500,
+        bold: 700,
+    ),
+    
     font-sizes: (),
 
     colors : (
@@ -50,5 +56,9 @@ $var: (
     ),
 
     shadows: (),
-
+    effects: (
+        glass:(
+            bd-filter: blur(5rem) brightness(15)
+        )
+    ),
 );

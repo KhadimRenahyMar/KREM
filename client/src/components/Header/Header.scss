@@ -11,4 +11,5 @@
     // background-color: var(--primary);
     background-color: getDeepMapValue(vars.$var, colors, primary, primary);
     font-family: getDeepMapValue(vars.$var, fonts, title);
+    
 }
