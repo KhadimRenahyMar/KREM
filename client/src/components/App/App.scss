@@ -13,10 +13,13 @@ body {
 };
 
 .main {
+    position: absolute;
+    top: 4.9rem;
 }
 
 .mobile {
     min-height: 100vh;
+    width: 100%;
     background-image: getDeepMapValue(vars.$var, bg, mobile);
     background-repeat: no-repeat;
     &--landing{
@@ -26,6 +29,7 @@ body {
 
 .desktop {
     min-height: 100vh;
+    width: 100%;
     background-image: getDeepMapValue(vars.$var, bg, desktop);
     background-repeat: no-repeat;
 
@@ -41,7 +45,11 @@ body {
 
     &--white{
         color: white
-    }  
+    }
+
+    &--hidden{
+        display: none !important;
+    }
 }
 
 .landing {

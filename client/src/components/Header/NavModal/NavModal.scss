@@ -1,0 +1,30 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys { $map: map-get($map, $key); }
+    @return $map;
+}
+
+.modal{
+    &__linkBx{
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    &__link{
+        width: 100%;
+        min-height: 22.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        font-family: getDeepMapValue(vars.$var, fonts, title );
+        font-weight: getDeepMapValue(vars.$var, font-weight, normal);
+        &:hover{
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        }
+    }
+
+}
