@@ -1,0 +1,14 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys { $map: map-get($map, $key); }
+    @return $map;
+}
+
+.header {
+    display: flex;
+    // background-color: var(--primary);
+    background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+    font-family: getDeepMapValue(vars.$var, fonts, title);
+}

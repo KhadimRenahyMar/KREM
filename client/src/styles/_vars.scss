@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap');
+
+$oswald: 'Oswald', sans-serif;
+$inconsolata : 'Inconsolata', monospace;
+$roboto: 'Roboto Slab', serif;
+$mobile: url('../../../public/bg\ mobile.svg');
+$desktop: url('../../../public/BG\ desktop.svg');
+
+$var: (
+    bg: (
+        mobile: $mobile,
+        desktop: $desktop, 
+    ),
+    fonts : (
+        title: $oswald,
+        subtitle: $inconsolata,
+        text: $roboto
+    ),
+
+    font-sizes: (),
+
+    colors : (
+        primary : (
+            primary: #202020,
+            lighter: #3D3D3D,
+            mid: #525252,
+            shade: #666,
+            very-light: #8F8F8F
+        ),
+
+        secondary : (
+            primary: #04192E,
+            lighter: #08335E,
+            mid: #0B4783,
+            mid-light: #0F5CA9,
+            shade: #1270CE,
+            shade-light: #1E85EB,
+            very-light: #4399EF
+        ),
+
+        tertiary : (
+            primary: #FFAA00,
+            lighter: #FFBB33,
+            mid: #FFC95C,
+            shade: #FFD685,
+            very-light: #FFE4AD
+        )
+    ),
+
+    shadows: (),
+
+);
