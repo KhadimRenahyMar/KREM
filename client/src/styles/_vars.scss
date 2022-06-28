@@ -55,7 +55,13 @@ $var: (
         )
     ),
 
-    shadows: (),
+    // shadows: (
+    //     very-close: ,
+    //     close:,
+    //     normal:,
+    //     far:,
+    //     very-far: ,
+    // ),
     effects: (
         glass:(
             bd-filter: blur(5rem) brightness(15)

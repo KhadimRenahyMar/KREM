@@ -7,6 +7,8 @@ import Landing from '../Landing/Landing';
 import Projects from '../Projects/Projects';
 import Skills from '../Skills/Skills';
 import Project from '../Project/Project';
+import Contact from '../Contact/Contact';
+import NotFound from '../404/404';
 
 function App() {
 
@@ -82,10 +84,15 @@ function App() {
       key='/contact'
       element={(
         <main className={isMobile() ? ('main mobile'):('main desktop')}>
-
+          <Contact isMobile={isMobile} />
         </main>
       )}
       />
+      <Route
+      path='*'
+      element={<NotFound />}
+      />
+
     </Routes>
     </div>
   );
