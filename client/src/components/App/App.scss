@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys { $map: map-get($map, $key); }
+    @return $map;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
+};
+
+.main {
+    position: absolute;
+    top: 4.9rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mobile {
+    min-height: 100vh;
+    width: 100%;
+    background-image: getDeepMapValue(vars.$var, bg, mobile);
+    background-repeat: no-repeat;
+    &--landing{
+        background-position-y: 30rem;
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.desktop {
+    min-height: 100vh;
+    width: 100%;
+    background-image: getDeepMapValue(vars.$var, bg, desktop);
+    background-repeat: no-repeat;
+
+    &--landing{
+        background-position-y: 40rem;
+    }
 }
 
-.App-link {
-  color: #61dafb;
+.utils{
+    &--orange{
+        color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+    };
+
+    &--white{
+        color: white
+    }
+
+    &--hidden{
+        display: none !important;
+    }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landing {
+    &__name, &__subtitle{
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-weight: getDeepMapValue(vars.$var, font-weight, normal) !important;
+    };
+
+    &__name {
+        color: white;
+    };
+
+    &__hive {
+        color: getDeepMapValue(vars.$var, colors, primary, shade );
+    };
+
+    &__textBx{
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle );
+        color: getDeepMapValue(vars.$var, colors, secondary, lighter);
+        backdrop-filter: getDeepMapValue(vars.$var, effects, glass, bd-filter);
+        background-color: rgba(255, 255, 255, 0.5); 
+    }
 }

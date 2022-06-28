@@ -1,8 +1,10 @@
 import { Router } from "express";
 import mainController from "../controllers/mainController";
+import projectController from "../controllers/projectController";
 
 const router = Router();
 router.get('/', mainController.homepage);
-router.get('/projects', mainController.projects);
+router.get('/projects', projectController.projects);
+router.get('/projects/:projectId', projectController.project);
 // router.get('/404', mainController[404]);
 export default router;
