@@ -23,6 +23,14 @@
     background-color: getDeepMapValue(vars.$var, colors, primary, primary);
     box-shadow: 0rem 0rem 1rem rgba(0,0,0,0.5);
     
+    &__nav{
+        width: 50%;
+        margin: 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     &__navIcon{
 
     }
@@ -35,6 +43,35 @@
 
         &:hover{
             fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        }
+    }
+
+    &__logo{
+        position: relative;
+        cursor: pointer;
+        &-icon{
+            width: 3.5rem;
+            height: 3.5rem;
+            &--path{
+                stroke-width: 1rem;
+                box-shadow: 0px 0px 2px red;
+            }
+        }
+        
+        &-text{
+            position: absolute;
+            top: 1.2rem;
+            left: 0.7rem;
+            color: white;
+        }
+        
+        &:hover {
+            .header__logo-text{
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+            .header__logo-icon--path{
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
         }
     }
 }

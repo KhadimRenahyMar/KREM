@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys { $map: map-get($map, $key); }
+    @return $map;
+}
+
+.nav{
+    &__link{
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        margin: 0 1rem;
+        padding: 1rem;
+        &:hover{
+            background-color: getDeepMapValue(vars.$var,colors, tertiary, primary);
+        }
+    }
+}
