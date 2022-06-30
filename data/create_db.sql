@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS "PROJ_TAGS"(
 INSERT INTO "projects" ("title", "repoURL", "projectSize", "desc", "cover")
 VALUES  ('Portfolio', 'https://github.com/KhadimRenahyMar/Portfolio', 'M', 'Site portfolio visant à présenter mes projets web.', 'portfolio'),
         ('Arch-IQ', 'https://github.com/KhadimRenahyMar/Arch-iQ', 'S', 'Site vitrine de l''entreprise fictive Arch-IQ.', 'archIQ'),
-        ('oFood', 'https://github.com/KhadimRenahyMar/oFood', 'M', 'Application de rééquillibrage alimentaire déveloptttttpée en équipe.', 'ofood');
+        ('oFood', 'https://github.com/KhadimRenahyMar/oFood', 'M', 'Application de rééquillibrage alimentaire développée en équipe.', 'ofood');
 
 
 INSERT INTO "texts" ("project_id", "title", "text", "position")

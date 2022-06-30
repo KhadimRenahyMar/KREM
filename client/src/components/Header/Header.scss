@@ -2,52 +2,82 @@
 @use 'sass:color';
 
 @function getDeepMapValue($map, $keys...) {
-    @each $key in $keys { $map: map-get($map, $key); }
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
     @return $map;
 }
 
-.head{
+.head {
     top: 0;
 }
+
 
 .header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 11;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    height: 10vh;
     font-family: getDeepMapValue(vars.$var, fonts, title);
-    background-color: getDeepMapValue(vars.$var, colors, primary, primary);
-    box-shadow: 0rem 0rem 1rem rgba(0,0,0,0.5);
-    
-    &__navIcon{
 
+    &__navBx {
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+        box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.5);
     }
 
-    &__icon{
+    &__nav {
+        width: 50%;
+        height: 100%;
+        margin: 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__icon {
         width: 1.3rem;
         padding: 1rem;
         margin: 0.5rem;
         fill: white;
+        filter: drop-shadow(0 0 0.2rem black);
 
-        &:hover{
-            fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        &:hover {
+            fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
     }
-}
 
-.nav{
-    &__modal{
+    &__logo {
+        position: relative;
+        height: 100%;
         display: flex;
-        position: absolute;
-        top: 4.8rem;
-        z-index: 10;
-        width: 100%;
-        min-height: 100vh;
-        flex-direction: column;
-        background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        align-items: center;
+        margin: 0 0.8rem;
+        filter: drop-shadow(0 0 0.1rem black);
+        cursor: pointer;
+
+        &-icon{
+            width: 3.5rem;
+            height: 3.5rem;
+            &--text{
+                fill: white;
+            }
+        }
+
+        &:hover{
+            .header__logo-icon--text{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+
+            path{
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
     }
 }
