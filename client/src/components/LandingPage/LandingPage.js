@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
-import './Landing.scss';
-import "../App/App.scss";
+import './LandingPage.scss';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import fakeCover from '../../ressources/landing-page-exemple-1.png';
 
 export default function Landing({ projects }) {
     return (
-        <div className='page page__landing landing'>
+        <div className='page page__landingPage landingPage'>
 
-            <section className="landing__intro">
-                <div className="landing__contentBx">
-                    <div className='landing__textBx'>
-                        <h2 className='landing__name'>
+            <section className="landingPage__intro">
+                <div className="landingPage__contentBx">
+                    <div className='landingPage__textBx'>
+                        <h2 className='landingPage__name'>
                             <span className='utils--orange'>K</span>
                             HADIM
                             <span className='utils--orange'> RE</span>
@@ -19,12 +18,12 @@ export default function Landing({ projects }) {
                             <span className='utils--orange'>M</span>
                             AR
                         </h2>
-                        <p className='landing__text'>Je suis développeur Web Fullstack, j'ai 26 ans, <br />Bienvenue sur mon portfolio !</p>
+                        <p className='landingPage__text'>Je suis développeur Web Fullstack, j'ai 26 ans, <br />Bienvenue sur mon portfolio !</p>
                     </div>
-                    <a href="#splide" className='landing__icon'>
-                        <svg className='landing__icon--svg' xmlns="http://www.w3.org/2000/svg" width="53.62" height="61.739" viewBox="0 0 53.62 61.739">
+                    <a href="#splide" className='landingPage__icon'>
+                        <svg className='landingPage__icon--svg' xmlns="http://www.w3.org/2000/svg" width="53.62" height="61.739" viewBox="0 0 53.62 61.739">
                             <g id="Groupe_785" data-name="Groupe 785" transform="translate(-923.999 -914.481)">
-                                <path className='landing__icon--path' id="Tracé_421" data-name="Tracé 421" d="M51.577,15.693l.041,29.139L26.351,59.437,1.043,44.9,1,15.766,26.267,1.16Z" transform="translate(924.5 915.053)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="3" />
+                                <path className='landingPage__icon--path' id="Tracé_421" data-name="Tracé 421" d="M51.577,15.693l.041,29.139L26.351,59.437,1.043,44.9,1,15.766,26.267,1.16Z" transform="translate(924.5 915.053)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="3" />
                                 <g id="Groupe_721" data-name="Groupe 721" transform="translate(939.164 936.316)">
                                     <g id="Groupe_719" data-name="Groupe 719" transform="translate(0 9.494)">
                                         <line id="Ligne_38" data-name="Ligne 38" x2="11.393" y2="11.393" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth="3" />
@@ -39,8 +38,8 @@ export default function Landing({ projects }) {
                         </svg>
                     </a>
                 </div>
-                <div className='landing__hive'>
-                    <strong className='landing__subtitle'>
+                <div className='landingPage__hive'>
+                    <strong className='landingPage__subtitle'>
                         LA
                         <span className='utils--white'> LOGIQUE </span><br />
                         AU SERVICE DE <br />

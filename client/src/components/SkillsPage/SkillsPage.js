@@ -17,7 +17,7 @@ export default function Skills() {
     };
 
     return (
-        <div className="page page__skills">
+        <div className="page page__skillsPage skillsPage">
             <section className="intro">
                 <h2 className="intro__title">Khadim, 26 ans</h2>
                 <div className="intro__textBx">

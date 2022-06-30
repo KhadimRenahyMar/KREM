@@ -1,7 +1,4 @@
 @use 'src/styles/vars';
-// @use 'sass:color';
-
-// @import '@splidejs/react-splide/css';
 
 @function getDeepMapValue($map, $keys...) {
     @each $key in $keys {
@@ -11,22 +8,21 @@
     @return $map;
 }
 
-.projects {
+.projectsPage {
     // position: relative;
 
     &__slides {
         position: relative;
-
-        &__titleBx {
-            top: 0;
-            width: 100%;
-            z-index: 10;
-            position: absolute;
-            padding: 1rem;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
+        width: 100%;
+        
         &__title {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background-color: rgba(0, 0, 0, 0.8);
             font-family: getDeepMapValue(vars.$var, fonts, subtitle);
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             color: white;
@@ -93,7 +89,6 @@
         }
 
         &__descBx {
-            z-index: 1;
             font-family: getDeepMapValue(vars.$var, fonts, text);
             background-color: rgba(0, 0, 0, 0.8);
             width: 100%;

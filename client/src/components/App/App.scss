@@ -39,10 +39,10 @@ body {
 
 .page{
     width: 100%;
-    &__landing{
+    &__landingPage{
         margin-top: 17rem;
     }
-    &__projects, &__project, &__skills, &__contact, &__404{
+    &__projectsPage, &__projectPage, &__skillsPage, &__contactPage, &__NotFoundPage{
         margin-top: 10vh;
     }
 }

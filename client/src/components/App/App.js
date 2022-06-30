@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
-import Landing from '../Landing/Landing';
-import Projects from '../Projects/Projects';
-import Skills from '../Skills/Skills';
-import Project from '../Project/Project';
-import Contact from '../Contact/Contact';
-import NotFound from '../404/404';
+import Landing from '../LandingPage/LandingPage';
+import Projects from '../ProjectsPage/ProjectsPage';
+import Skills from '../SkillsPage/SkillsPage';
+import Project from '../Project/ProjectPage';
+import Contact from '../ContactPage/ContactPage';
+import NotFound from '../NotFoundPage/NotFoundPage';
 
 function App({isMobile}) {
 

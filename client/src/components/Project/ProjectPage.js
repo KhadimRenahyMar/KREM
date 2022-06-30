@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import './ProjectPage.scss';
 
 export default function Project() {
     const [project, setProject] = useState(null);
@@ -50,7 +51,7 @@ export default function Project() {
     }, [project]);
 
     return (
-        <div className="page page__project project">
+        <div className="page page__projectPage projectPage">
             <section className="project__intro">
                 <div className="slider__titleBx">
                     <h2 className="project__title">{project && project.title}</h2>

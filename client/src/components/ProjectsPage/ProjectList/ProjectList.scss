@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.projectList{
+    margin-top: 1rem;
+    
+    &__title{
+        padding: 1rem;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary );
+        
+        color: white;
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+    }
+
+}
