@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Contact({ isMobile }) {
     // gestion affichage mobile/desktop
     return (
-        <div className="page page__contact">
+        <div className="page page__contact contact">
             <div className={isMobile() ? ("contact__imgBx") : ("contact__imgBx--desktop")}>
                 <img src="" alt="" className="contact__img" />
             </div>

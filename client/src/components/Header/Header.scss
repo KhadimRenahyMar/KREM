@@ -2,90 +2,82 @@
 @use 'sass:color';
 
 @function getDeepMapValue($map, $keys...) {
-    @each $key in $keys { $map: map-get($map, $key); }
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
     @return $map;
 }
 
-.head{
+.head {
     top: 0;
 }
+
 
 .header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 11;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    height: 10vh;
     font-family: getDeepMapValue(vars.$var, fonts, title);
-    background-color: getDeepMapValue(vars.$var, colors, primary, primary);
-    box-shadow: 0rem 0rem 1rem rgba(0,0,0,0.5);
-    
-    &__nav{
+
+    &__navBx {
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+        box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.5);
+    }
+
+    &__nav {
         width: 50%;
+        height: 100%;
         margin: 0 auto;
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
     }
-    
-    &__navIcon{
 
-    }
-
-    &__icon{
+    &__icon {
         width: 1.3rem;
         padding: 1rem;
         margin: 0.5rem;
         fill: white;
-        
-        &:hover{
-            fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        filter: drop-shadow(0 0 0.2rem black);
+
+        &:hover {
+            fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
     }
-    
-    &__logo{
+
+    &__logo {
         position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 0.8rem;
+        filter: drop-shadow(0 0 0.1rem black);
         cursor: pointer;
+
         &-icon{
             width: 3.5rem;
             height: 3.5rem;
-            &--path{
-                stroke-width: 0.3rem;
-                // box-shadow: 0px 0px 2px red;
-                filter: drop-shadow(0 0 0.2rem black);
+            &--text{
+                fill: white;
             }
         }
-        
-        &-text{
-            position: absolute;
-            top: 1.2rem;
-            left: 0.7rem;
-            color: white;
-        }
-        
-        &:hover {
-            .header__logo-text{
-                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
-            }
-            .header__logo-icon--path{
-                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary );
-            }
-        }
-    }
-}
 
-.nav{
-    &__modal{
-        display: flex;
-        position: absolute;
-        top: 4.8rem;
-        z-index: 10;
-        width: 100%;
-        min-height: 100vh;
-        flex-direction: column;
-        background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        &:hover{
+            .header__logo-icon--text{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+
+            path{
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
     }
 }

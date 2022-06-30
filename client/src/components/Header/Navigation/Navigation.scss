@@ -6,10 +6,15 @@
 }
 
 .nav{
+    min-height: 10vh;
+    display: flex;
     &__link{
+        display: flex;
+        align-items: center;
         text-decoration: none;
         color: white;
         text-transform: uppercase;
+        min-height: 100%;
         margin: 0 1rem;
         padding: 1rem;
         &:hover{

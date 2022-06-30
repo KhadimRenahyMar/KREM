@@ -1,5 +1,8 @@
 @use 'src/styles/vars';
 
+
+@import '@splidejs/react-splide/css';
+
 @function getDeepMapValue($map, $keys...) {
     @each $key in $keys { $map: map-get($map, $key); }
     @return $map;
@@ -38,6 +41,9 @@ body {
     width: 100%;
     &__landing{
         margin-top: 17rem;
+    }
+    &__projects, &__project, &__skills, &__contact, &__404{
+        margin-top: 10vh;
     }
 }
 

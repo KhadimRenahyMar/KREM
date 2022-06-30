@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import './Landing.scss';
+import "../App/App.scss";
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import fakeCover from '../../ressources/landing-page-exemple-1.png';
 
 export default function Landing({ projects }) {
     return (
-        <div className='page page__landing'>
+        <div className='page page__landing landing'>
 
             <section className="landing__intro">
                 <div className="landing__contentBx">
@@ -49,7 +50,6 @@ export default function Landing({ projects }) {
             </section>
 
             <section className="slides">
-                {/* TODO slideJS */}
                 <div className="slides__titleBx">
                     <h2 className="slides__title" id="splide">Mes derniers projets</h2>
                 </div>
@@ -73,7 +73,7 @@ export default function Landing({ projects }) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                 <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
                                     <path className="splide__arrow--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                    <text id="_" data-name="&lt;" transform="translate(449 616)" fontSize="32" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300"><tspan x="0" y="0">&lt;</tspan></text>
+                                    <text className="splide__arrow--text" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300"><tspan x="2" y="-2">&lt;</tspan></text>
                                 </g>
                             </svg>
                         </button>
@@ -81,7 +81,7 @@ export default function Landing({ projects }) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                 <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
                                     <path className="splide__arrow--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                    <text id="_" data-name="&lt;" transform="translate(449 616)" fontSize="32" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300"><tspan x="0" y="0">&lt;</tspan></text>
+                                    <text className="splide__arrow--text" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300"><tspan x="2" y="-2">&lt;</tspan></text>
                                 </g>
                             </svg>
                         </button>
@@ -94,7 +94,15 @@ export default function Landing({ projects }) {
                                         <img src={fakeCover} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         {/* src={`./img/${project.cover}`} */}
                                         <div className="slide__macaron">
-                                            <p className="slide__size">{project.projectSize}</p>
+                                            {/* <p >{project.projectSize}</p> */}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
+                                                <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
+                                                    <path className="slide__macaron--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
+                                                    <text className="slide__macaron--size" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
+                                                        <tspan x="6" y="-3">{project.projectSize}</tspan>
+                                                    </text>
+                                                </g>
+                                            </svg>
                                         </div>
                                         <div className="slide__descBx">
                                             <h2 className="slide__title">{project.title}</h2>
