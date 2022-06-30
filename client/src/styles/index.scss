@@ -4,9 +4,13 @@
 body{
   margin: 0;
   box-sizing: border-box;
+  // z-index: -10;
 }
 
-.App, .root{
+.App {
+  z-index: -1;
+  position: absolute;
+  top: 0;
   display: flex;
-  min-height: 100vh;
+  width: 100%;
 }

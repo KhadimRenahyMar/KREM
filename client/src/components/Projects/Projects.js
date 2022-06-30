@@ -16,7 +16,7 @@ export default function Projects() {
     }, []);
 
     return (
-        <div className="projects">
+        <div className="page page__projects">
             <section className="slider">
                 {/* SlideJS  */}
             </section>

@@ -50,7 +50,7 @@ export default function Project() {
     }, [project]);
 
     return (
-        <div className="project">
+        <div className="page page__project">
             <section className="project__intro">
                 <div className="slider__titleBx">
                     <h2 className="project__title">{project && project.title}</h2>

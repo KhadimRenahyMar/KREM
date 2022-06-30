@@ -10,7 +10,7 @@ import Project from '../Project/Project';
 import Contact from '../Contact/Contact';
 import NotFound from '../404/404';
 
-function App() {
+function App({isMobile}) {
 
   const [projects, setProjects] = useState([]);
 

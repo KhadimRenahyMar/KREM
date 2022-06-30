@@ -40,7 +40,7 @@ export default function Header() {
                         </filter>
                     </defs>
                     <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_417)">
-                        <path className='header__logo-icon--color' id="Tracé_417-2" data-name="Tracé 417" d="M69.48,20.837l.056,39.453L35.325,80.065,1.058,60.388,1,20.936,35.211,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5" />
+                        <path className='header__logo-icon--path' id="Tracé_417-2" data-name="Tracé 417" d="M69.48,20.837l.056,39.453L35.325,80.065,1.058,60.388,1,20.936,35.211,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5" />
                     </g>
                 </svg>
                 <strong className="header__logo-text">KREM</strong>
@@ -65,7 +65,7 @@ export default function Header() {
                             </filter>
                         </defs>
                         <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_178)">
-                            <path className='header__logo-icon--path' id="Tracé_178-2" data-name="Tracé 178" d="M233.383,68.074l.19,134.162L117.48,269.485,1.2,202.571,1,68.408,117.093,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5" />
+                            <path className='header__logo-icon--path' id="Tracé_178-2" data-name="Tracé 178" d="M233.383,68.074l.19,134.162L117.48,269.485,1.2,202.571,1,68.408,117.093,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="5" />
                         </g>
                     </svg>
                     <strong className="header__logo-text">KREM</strong>
