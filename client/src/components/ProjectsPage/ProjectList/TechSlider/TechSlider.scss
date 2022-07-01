@@ -10,32 +10,53 @@
 
 .techSlider{
     width: 100%;
-    // height: 5rem;d
-    
     .splide{
         background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
         padding: 0.5rem 0;
-
+        
         box-shadow: 0px 0px 0.2rem black;
         &__track{
-
-            box-shadow: 0px 0px 0.2rem black;
+            height: 10vh;
+            // box-shadow: 0px 0px 0.2rem black;
+            box-shadow:inset 0px 0px 0.5rem black;
             background-color: white;
         }
     }
 
     .slide{
-        display: flex;
+        box-shadow: none; 
+        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
         background-color: rgba(255,255,255,0.5);
-        &__logo{
-            margin: 1rem;
+        
+        &__hiveLogo{
             width: 100%;
-            width: 3rem;
-            background-color: rgba(0,0,0,0.5);
-            padding: 0.5rem;
+            height: 100%;
+            padding: 0.7rem; 
+            filter: drop-shadow(0 0 0.5rem black);
+        
+            &--path{
+                stroke: white;
+                filter: drop-shadow(0 0 0.5rem black);
+                stroke-width: 0.8rem;
+                fill: rgba(0,0,0,0.5);
+            }
+        }
+        
+        &__techLogo{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2rem;
             border: 0;
-            border-radius: 0.5rem;
+            border-radius: 0.2rem;
             box-shadow: 0px 0px 0.2rem black;
+        }
+        
+        &:hover{
+            .slide__hiveLogo--path{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
         }
     }
 }

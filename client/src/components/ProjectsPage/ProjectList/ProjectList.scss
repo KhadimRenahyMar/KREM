@@ -8,16 +8,119 @@
     @return $map;
 }
 
-.projectList{
+.projectList {
     margin-top: 1rem;
-    
-    &__title{
+
+    &__title {
         padding: 1rem;
-        background-color: getDeepMapValue(vars.$var, colors, primary, primary );
-        
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+
         color: white;
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
     }
 
+    &__contentBx {
+        margin: 0 auto;
+    }
+
+    &__legend {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem;
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        font-size: getDeepMapValue(vars.$var, font-sizes,tiny );
+        color: getDeepMapValue(vars.$var, colors, secondary, primary );
+        list-style: none;
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    &__sizes{
+        margin: 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255,0.5);
+        box-shadow: 0px 0px 0.1rem black;
+        border-radius: 0.5rem;
+        text-align: center;
+    }
+
+    &__list{
+        position: relative;
+        padding: 1rem;
+    }
+
+    &__layer{
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+        background-color: rgba(255,255,255,0.5);
+        // filter: blur(1rem);
+        backdrop-filter: blur(0.1rem);
+    }
+    
+    &__project{
+        position: relative;
+        margin: 1rem 0;
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 1rem;
+        box-shadow: 0px 0px 0.2rem black;
+
+        &-link{
+            width: 100%;
+        }
+
+        &-imgBx{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        &-cover{
+            width: 100%;
+            height: 100%;
+        }
+
+        &-sizeStampBx{
+            z-index: 10;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+
+            &--path {
+                fill: rgba(0, 0, 0, 0.5);
+            }
+
+            &--size {
+                font-family: getDeepMapValue(vars.$var,fonts, subtitle);
+                fill: white;
+                padding: 1rem;
+            }
+        }
+        
+        &-textBx{
+            padding: 1rem;
+            text-decoration: none;
+            font-family: getDeepMapValue(vars.$var,fonts, subtitle);
+            color: white;
+        }
+        
+        &:hover{
+            .projectList__project-sizeStampBx--size{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+            .projectList__project-sizeStampBx--path {
+                stroke:  getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+            .projectList__project-textBx{
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+        }
+    }
 }

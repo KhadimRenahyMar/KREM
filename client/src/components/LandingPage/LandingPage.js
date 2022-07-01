@@ -93,7 +93,6 @@ export default function Landing({ projects }) {
                                         <img src={fakeCover} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         {/* src={`./img/${project.cover}`} */}
                                         <div className="slide__macaron">
-                                            {/* <p >{project.projectSize}</p> */}
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                                 <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
                                                     <path className="slide__macaron--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
