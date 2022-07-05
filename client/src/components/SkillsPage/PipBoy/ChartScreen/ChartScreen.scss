@@ -1,0 +1,11 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.chartScreen {}

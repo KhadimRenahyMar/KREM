@@ -12,17 +12,22 @@ body {
     // min-height: 100vh;
     box-sizing: border-box;
     margin: 0;
+    scroll-behavior: smooth;
     background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
 };
 
 .main {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .mobile {
     z-index: -1;
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
     background-image: getDeepMapValue(vars.$var, bg, mobile);
     background-repeat: repeat-y;
     background-position: center;

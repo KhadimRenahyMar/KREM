@@ -5,7 +5,6 @@ import NavModal from './NavModal/navModal';
 import hive from '../../ressources/lil hive symbol.svg';
 
 export default function Header() {
-
     const isMobile = () => {
         window.mobileCheck = function () {
             let check = false;

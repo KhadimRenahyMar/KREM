@@ -11,3 +11,86 @@
 .skillsPage {
 
 }
+
+.intro{
+    color: white;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 0.2rem black;
+    
+    &__title{
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+    }
+
+    &__desc{
+        display: flex;
+        margin: 1rem 0 0;
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        flex-direction: column;
+        color: rgba(255,255,255,0.5);
+    }
+
+    &__picture{
+        width: 4.5rem;
+        min-height: 100%;
+        border-radius: 50%;
+        background-image: url('../../ressources//photos/22052022-9-2.jpg');
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0px 0px 0.2rem black;
+    }
+}
+
+.stats{
+    background-color: rgba(255,255,255,0.5);
+    &__list{
+        width: 100%;
+        color: rgba(0,0,0,0.5);
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    &__card{
+        margin: 0.5rem;
+        padding: 1rem;
+        background-color: rgba(255,255,255,0.5);
+        border-radius: 1rem;
+        box-shadow: 0px 0px 0.2rem black;
+
+        &--one{
+            grid-column: 1/2;
+            grid-row: 1;
+        } 
+        &--two{
+            grid-column: 2/2;
+            grid-row: 1;
+        }
+
+        &--three{
+            grid-column: 1/2;
+            grid-row: 2;
+        }
+
+        &--four{
+            grid-column: 2/2;
+            grid-row: 2;
+        }
+
+        &--five{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row: 3;
+        }
+    }
+
+    &__data{
+        color: white;
+    }
+}
