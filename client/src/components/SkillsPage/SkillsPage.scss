@@ -46,51 +46,61 @@
 
 .stats{
     background-color: rgba(255,255,255,0.5);
+    display: flex;
+    
     &__list{
         width: 100%;
         color: rgba(0,0,0,0.5);
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        // display: grid; // Desktop Media Queries
+        // grid-template-columns: 1fr 1fr; // Desktop Media Queries
         justify-content: space-between;
-        max-width: 100%;
         text-align: center;
+        margin: 0.5rem 0;
     }
     
     &__card{
-        margin: 0.5rem;
+        margin: 0.5rem 1rem;
         padding: 1rem;
         background-color: rgba(255,255,255,0.5);
         border-radius: 1rem;
         box-shadow: 0px 0px 0.2rem black;
+        
+        // DESKTOP MEDIA QUERIES
+        // &--one{
+        //     grid-column: 1/2;
+        //     grid-row: 1;
+        // } 
+        // &--two{
+        //     grid-column: 2/2;
+        //     grid-row: 1;
+        // }
 
-        &--one{
-            grid-column: 1/2;
-            grid-row: 1;
-        } 
-        &--two{
-            grid-column: 2/2;
-            grid-row: 1;
-        }
+        // &--three{
+        //     grid-column: 1/2;
+        //     grid-row: 2;
+        // }
 
-        &--three{
-            grid-column: 1/2;
-            grid-row: 2;
-        }
+        // &--four{
+        //     grid-column: 2/2;
+        //     grid-row: 2;
+        // }
 
-        &--four{
-            grid-column: 2/2;
-            grid-row: 2;
-        }
+        // &--five{
+        //     grid-column-start: 1;
+        //     grid-column-end: 3;
+        //     grid-row: 3;
+        // }
+    }
 
-        &--five{
-            grid-column-start: 1;
-            grid-column-end: 3;
-            grid-row: 3;
-        }
+    &__titles{
+        margin: 0 0 0.5rem;
     }
 
     &__data{
         color: white;
+        color: getDeepMapValue(vars.$var, colors, secondary, primary );
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+        text-shadow: 1px black;
     }
 }

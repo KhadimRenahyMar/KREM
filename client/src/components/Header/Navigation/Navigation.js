@@ -6,7 +6,7 @@ export default function Navigation(){
         <nav className='nav'>
             <NavLink
             to='/' className='nav__link'>
-                Acceuil
+                Accueil
             </NavLink>
             <NavLink
             to='/projects' className='nav__link'>

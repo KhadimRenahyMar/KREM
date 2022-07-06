@@ -1,0 +1,1 @@
+Projet de fin de formation Développeur Web et Web Mobile, oFood est ma première expérience sur un projet développé en équipe. Le but de cette application est de permettre à l'utilisateur d'opérer un rééquillibrage alimentaire en suivant les recettes qui nous lui proposons.

@@ -62,6 +62,9 @@ export default function SkillScreen() {
                         </div>
                     </div>
                     <div className="skillScreen__skill-contentBx hidden">
+                        <div className="skillScreen__skill-intro">
+                            <p className="skillScreen__skill-text">Langues : Anglais (lu, écrit, parlé) - quite fluent</p>
+                        </div>
                         <h6 className="table-subtitle">Développer la partie front-end d’une application web ou web mobile en intégrant les recommandations de sécurité</h6>
                         <table className="table">
                             <thead className="table-head">

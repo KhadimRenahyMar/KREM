@@ -2,7 +2,6 @@ import './PipBoy.scss';
 import SkillScreen from './SkillScreen/SkillScreen';
 import ExpScreen from './ExpScreen/ExpScreen';
 import ChartScreen from './ChartScreen/ChartScreen';
-import FormationScreen from './FormationScreen/FormationScreen';
 import AboutMeScreen from './AboutMeScreen/AboutMeScreen';
 
 export default function PipBoy() {
@@ -32,8 +31,7 @@ export default function PipBoy() {
         <div className="pipBoy">
             <div className="pipboy__btns pipboy__btns--up">
                 <button className="pipboy__button active" id="skills" onClick={showScreen}>Compétences</button>
-                <button className="pipboy__button" id="experience" onClick={showScreen}>Expérience</button>
-                <button className="pipboy__button" id="formation" onClick={showScreen}>Formation</button>
+                <button className="pipboy__button" id="experience" onClick={showScreen}>Parcours</button>
             </div>
             <div className="pipboy__screens">
                 <div className="pipboy__screen visible" id="skills">
@@ -42,10 +40,6 @@ export default function PipBoy() {
                 
                 <div className="pipboy__screen" id="experience">
                     <ExpScreen />
-                </div>
-
-                <div className="pipboy__screen" id="formation">
-                    <FormationScreen />
                 </div>
 
                 <div className="pipboy__screen" id="chart">

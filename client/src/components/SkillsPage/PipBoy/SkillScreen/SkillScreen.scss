@@ -10,8 +10,9 @@
 
 .skillScreen {
     width: 100%;
-    // &__skillList{
-    // }
+    margin: 1rem 0;
+    &__skillsList{
+    }
 
     &__skill{
         font-family: getDeepMapValue(vars.$var, fonts, subtitle );

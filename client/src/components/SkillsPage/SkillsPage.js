@@ -20,23 +20,24 @@ export default function Skills() {
                 <ul className="stats__list">
                     <li className="stats__card stats__card--one">
                         <h4 className="stats__titles">Projets terminés</h4>
-                        <strong className="stats__data"></strong>
+                        {/* github API */}
+                        <strong className="stats__data">16</strong>
                     </li>
                     <li className="stats__card stats__card--two">
                         <h4 className="stats__titles">Dernier commit</h4>
-                        <strong className="stats__data"></strong>
+                        <strong className="stats__data">06/07/2022</strong>
                     </li>
                     <li className="stats__card stats__card--three">
                         <h4 className="stats__titles">Fonctionnalités/mois</h4>
-                        <strong className="stats__data"></strong>
+                        <strong className="stats__data">7</strong>
                     </li>
                     <li className="stats__card stats__card--four">
                         <h4 className="stats__titles">Commit/semaine</h4>
-                        <strong className="stats__data"></strong>
+                        <strong className="stats__data">13</strong>
                     </li>
                     <li className="stats__card stats__card--five">
                         <h4 className="stats__titles">Dernier Projet</h4>
-                        <strong className="stats__data"></strong>
+                        <strong className="stats__data">Mon Super Projet</strong>
                     </li>
                 </ul>
             </section>
