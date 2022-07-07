@@ -6,24 +6,11 @@ import Header from '../Header/Header';
 import Landing from '../LandingPage/LandingPage';
 import Projects from '../ProjectsPage/ProjectsPage';
 import Skills from '../SkillsPage/SkillsPage';
-import Project from '../Project/ProjectPage';
+import Project from '../ProjectPage/ProjectPage';
 import Contact from '../ContactPage/ContactPage';
 import NotFound from '../NotFoundPage/NotFoundPage';
 
-function App({isMobile}) {
-
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchBack = async () => {
-      const data = await axios.get('/projects');
-      console.log(data.data);
-      localStorage.setItem('projects', data.data);
-      setProjects(data.data);
-    };
-    fetchBack();
-  }, []);
-
+function App({ isMobile }) {
   function isMobile() {
     window.mobileCheck = function () {
       let check = false;
@@ -35,6 +22,82 @@ function App({isMobile}) {
     return mobile;
   };
 
+  const [projects, setProjects] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchBack = async () => {
+  //     const data = await axios.get('/projects');
+  //     // console.log(data.data);
+  //     // localStorage.setItem('projects', data.data);
+  //     setProjects(data.data);
+  //   };
+  //   fetchBack();
+  // }, []);
+
+  useEffect(() => {
+    const localProjects = JSON.parse(localStorage.getItem('projects'));
+    console.log('localProjects =', localProjects);
+
+    if (localProjects === null) {
+      const fetchedProjects = [];
+      const fetchprojectsFromAPI = async () => {
+        console.log("coucou le fetch");
+        const data = await axios.get('https://api.github.com/users/KhadimRenahyMar/repos');
+        console.log(data.data);
+        fetchedProjects.push(...data.data);
+        // fetchedProjects.forEach((project) => {
+        //   getProjectsInfo(project);
+        // });
+        setProjects(...fetchedProjects);
+        localStorage.setItem('projects', JSON.stringify(...fetchedProjects));
+      }
+      fetchprojectsFromAPI();
+    }
+    else {
+      console.log("coucou le storage");
+      setProjects(localProjects);
+    }
+  }, []);
+
+  const getProjectsInfo = async (project) => {
+    const projectConfig = await axios({
+      method: 'GET',
+      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio`,
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3.raw',
+      }
+    });
+    const text = await axios({
+      method: 'GET',
+      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/text.md`,
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3.raw',
+      }
+    });
+    const screenshots = await axios({
+      method:'GET',
+      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/screenshots`,
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3.raw',
+      }
+    })
+    const finalProject = {
+      name: project.name,
+      techs: projectConfig.data.techs,
+      desc: projectConfig.data.desc,
+      text: text.data,
+      screenshots: screenshots,
+    }
+
+    console.log(text);
+    console.log(screenshots);
+    console.log(finalProject);
+  }
+
+  console.log(projects);
   return (
     <div className="App">
       <Header />

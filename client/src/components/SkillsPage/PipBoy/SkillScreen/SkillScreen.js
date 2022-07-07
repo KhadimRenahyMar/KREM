@@ -165,6 +165,10 @@ export default function SkillScreen() {
                                     <td className="table-data">Mise en place d'un ORM</td>
                                     <td className="table-data table-data--number">4.5/5</td>
                                 </tr>
+                                <tr className="table-row">
+                                    <td className="table-data">CRUD</td>
+                                    <td className="table-data table-data--number">4.5/5</td>
+                                </tr>
 
                                 <tr className="table-row">
                                     <td className="table-subhead" colSpan={2}>Développer la partie back-end d’une application web ou web mobile</td>

@@ -103,7 +103,7 @@ export default function Landing({ projects }) {
                                             </svg>
                                         </div>
                                         <div className="slide__descBx">
-                                            <h2 className="slide__title">{project.title}</h2>
+                                            <h2 className="slide__title">{project.name}</h2>
                                             <p className="slide__text">{project.desc}</p>
                                         </div>
                                         <div className="slide__layer"></div>
