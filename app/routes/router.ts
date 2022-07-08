@@ -5,7 +5,8 @@ import techController from "../controllers/techController";
 
 const router = Router();
 router.get('/', mainController.homepage);
-router.get('/projects', projectController.projects);
-router.get('/projects/:projectId', projectController.project);
+router.get('/projects/all', projectController.getAllProjects);
+router.get('/projects/lasts', projectController.getLastProjects);
+router.get('/projects/:projectId', projectController.getProject);
 router.get('/techs', techController.getAllTechs);
 export default router;

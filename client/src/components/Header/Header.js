@@ -17,7 +17,7 @@ export default function Header() {
 
     const toggle = (e) => {
         const modal = e.currentTarget.parentElement.parentElement.childNodes[1];
-        console.log(e.currentTarget.parentElement.parentElement.childNodes);
+        // console.log(e.currentTarget.parentElement.parentElement.childNodes);
         if (modal.classList.contains('utils--hidden')) {
             modal.classList.remove('utils--hidden');
             document.body.style.overflowY = 'hidden';

@@ -8,15 +8,53 @@ import ProjectList from "./ProjectList/ProjectList";
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
+    const [lastProjects, setLastProjects] = useState([]);
+
     useEffect(() => {
-        const fetchProjects = async () => {
-            const data = await axios.get('/projects');
-            // console.log(data.data);
-            setProjects(data.data);
-        };
-        fetchProjects();
+        const localProjects = JSON.parse(localStorage.getItem('projects'));
+        // console.log('localProjects =', localProjects);
+
+        if (localProjects === null) {
+            console.log("fetch");
+            const fetchedProjects = [];
+            const fetchprojectsFromAPI = async () => {
+                const data = await axios.get('/projects/all');
+                // console.log(data.data);
+                fetchedProjects.push(...data.data);
+                setProjects(fetchedProjects);
+                localStorage.setItem('projects', JSON.stringify(fetchedProjects));
+            }
+            fetchprojectsFromAPI();
+        }
+        else {
+            console.log("storage");
+            setProjects(localProjects);
+        }
     }, []);
-    
+
+    useEffect(() => {
+        const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
+
+        if (localProjects === null || localProjects.length === 0) {
+            // console.log(localProjects);
+            const fetchedLastProjects = [];
+
+            const fetchLastProjectsFromAPI = async () => {
+                console.log('lasts');
+                const data = await axios.get('/projects/lasts');
+                // console.log(data.data);
+                fetchedLastProjects.push(...data.data);
+                setLastProjects(fetchedLastProjects);
+                localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
+            }
+            fetchLastProjectsFromAPI();
+        }
+        else {
+            console.log("storage");
+            setLastProjects(localProjects);
+        }
+    }, [projects]);
+
     return (
         <div className="page page__projectsPage projectsPage">
 
@@ -57,23 +95,23 @@ export default function Projects() {
                     </div>
                     <SplideTrack>
                         {
-                            projects.map((project) => (
+                            lastProjects.map((project) => (
                                 <SplideSlide key={project.id} className="slide">
                                     <Link to={`/projects/${project.id}`} className="slide__link">
-                                        <img src={fakeCover} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
+                                        <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         {/* src={`./img/${project.cover}`} */}
                                         <div className="slide__macaron">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                                 <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
                                                     <path className="slide__macaron--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                                     <text className="slide__macaron--size" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
-                                                        <tspan x="5" y="-5">{project.projectSize}</tspan>
+                                                        <tspan x="5" y="-5">{project.size}</tspan>
                                                     </text>
                                                 </g>
                                             </svg>
                                         </div>
                                         <div className="slide__descBx">
-                                            <h2 className="slide__title">{project.title}</h2>
+                                            <h2 className="slide__title">{project.name}</h2>
                                         </div>
                                         <div className="slide__layer"></div>
                                     </Link>

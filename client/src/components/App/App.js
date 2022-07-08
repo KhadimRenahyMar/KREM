@@ -22,82 +22,56 @@ function App({ isMobile }) {
     return mobile;
   };
 
-  const [projects, setProjects] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchBack = async () => {
-  //     const data = await axios.get('/projects');
-  //     // console.log(data.data);
-  //     // localStorage.setItem('projects', data.data);
-  //     setProjects(data.data);
-  //   };
-  //   fetchBack();
-  // }, []);
+  const [lastProjects, setLastProjects] = useState([]);
 
   useEffect(() => {
-    const localProjects = JSON.parse(localStorage.getItem('projects'));
-    console.log('localProjects =', localProjects);
+    const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
+    // console.log(localProjects);
 
-    if (localProjects === null) {
-      const fetchedProjects = [];
-      const fetchprojectsFromAPI = async () => {
-        console.log("coucou le fetch");
-        const data = await axios.get('https://api.github.com/users/KhadimRenahyMar/repos');
-        console.log(data.data);
-        fetchedProjects.push(...data.data);
-        // fetchedProjects.forEach((project) => {
-        //   getProjectsInfo(project);
-        // });
-        setProjects(...fetchedProjects);
-        localStorage.setItem('projects', JSON.stringify(...fetchedProjects));
+    if (localProjects === null || localProjects.length === 0) {
+      const fetchedLastProjects = [];
+
+      const fetchLastProjectsFromAPI = async () => {
+        console.log('lasts');
+        const getProjects = await axios.get('/projects/all');
+        const data = await axios.get('/projects/lasts');
+        // console.log(data.data);
+        fetchedLastProjects.push(...data.data);
+        setLastProjects(fetchedLastProjects);
+        localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
       }
-      fetchprojectsFromAPI();
+      fetchLastProjectsFromAPI();
     }
     else {
-      console.log("coucou le storage");
-      setProjects(localProjects);
+      console.log("storage");
+      setLastProjects(localProjects);
     }
+    // console.log(lastProjects);
   }, []);
 
   const getProjectsInfo = async (project) => {
-    const projectConfig = await axios({
-      method: 'GET',
-      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio`,
-      headers: {
-        Authorization: `Bearer ${githubToken}`,
-        'Accept': 'application/vnd.github.v3.raw',
-      }
-    });
-    const text = await axios({
-      method: 'GET',
-      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/text.md`,
-      headers: {
-        Authorization: `Bearer ${githubToken}`,
-        'Accept': 'application/vnd.github.v3.raw',
-      }
-    });
-    const screenshots = await axios({
-      method:'GET',
-      url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/screenshots`,
-      headers: {
-        Authorization: `Bearer ${githubToken}`,
-        'Accept': 'application/vnd.github.v3.raw',
-      }
-    })
-    const finalProject = {
-      name: project.name,
-      techs: projectConfig.data.techs,
-      desc: projectConfig.data.desc,
-      text: text.data,
-      screenshots: screenshots,
-    }
+    // const text = await axios({
+    //   method: 'GET',
+    //   url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/text.md`,
+    //   headers: {
+    //     Authorization: `Bearer ${githubToken}`,
+    //     'Accept': 'application/vnd.github.v3.raw',
+    //   }
+    // });
+    // const screenshots = await axios({
+    //   method:'GET',
+    //   url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/screenshots`,
+    //   headers: {
+    //     Authorization: `Bearer ${githubToken}`,
+    //     'Accept': 'application/vnd.github.v3.raw',
+    //   }
+    // })
 
-    console.log(text);
-    console.log(screenshots);
-    console.log(finalProject);
+    // console.log(text);
+    // console.log(screenshots);
   }
-
-  console.log(projects);
+  // console.log('projects' ,projects);
+  console.log('lastProjects', lastProjects);
   return (
     <div className="App">
       <Header />
@@ -107,13 +81,14 @@ function App({ isMobile }) {
             path="/"
             key='/'
             element={(
-              <Landing projects={projects} />
+              <Landing lastProjects={lastProjects} />
             )}
           />
 
           <Route
             path="/projects"
-            projects={projects}
+            lastProjects={lastProjects}
+            // projects={projects}
             element={(
               <Projects />
             )}
