@@ -1,6 +1,15 @@
 import { Request, Response } from "express";
 import { Project, Screenshot, Tech, Text } from '../models';
 import dataMapper from "../dataMapper";
+// import session from 'express-session';
+
+declare module "express-session" {
+    interface Session {
+        test: string,
+        projects: project[],
+        lastProjects: project[],
+    }
+}
 
 type project = {
     name: string,
@@ -18,65 +27,122 @@ type project = {
     [key: string]: any;
 }
 
-const projects: project[] = [];
-const lastProjects: project[] = [];
+// const lastProjects: project[] = [];
+let fetchCount = 0;
 
-async function formatProject(fetchedProjects: project[]) {
+async function getAllProjects() {
+    const fetchedProjects: project[] = await dataMapper.getRepos();
     const formattedProjects: project[] = [];
-
-    for (const fetchedProject of fetchedProjects) {
-        const data = await dataMapper.getProjectConfig(fetchedProject);
-        const project: project = {
-            name: fetchedProject.name,
-            desc: fetchedProject.description,
-            url: data.url,
-            repoURL: fetchedProject.html_url,
-            coverURL: data.coverURL,
-            size: data.size,
-            techs: data.techs,
-            screenshots: [],
-            packages: data.packages,
-            text: '',
-            createdAt: new Date(fetchedProject.created_at),
-            pushedAt: new Date(fetchedProject.pushed_at)
-        };
+    for(let project of fetchedProjects){
+        project = await formatProject(project);
         formattedProjects.push(project);
-    };
-    projects.push(...formattedProjects);
-    // console.log(formattedProjects);
+    }
+    // console.log('formatted projects', formattedProjects)
+    return formattedProjects;
 };
+
+async function formatProject(fetchedProject: project) {
+    const data = await dataMapper.getProjectConfig(fetchedProject);
+    const project: project = {
+        name: fetchedProject.name,
+        desc: fetchedProject.description,
+        url: data.url,
+        repoURL: fetchedProject.html_url,
+        coverURL: data.coverURL,
+        size: data.size,
+        techs: data.techs,
+        screenshots: [],
+        packages: data.packages,
+        text: '',
+        createdAt: new Date(fetchedProject.created_at),
+        pushedAt: new Date(fetchedProject.pushed_at)
+    }; 
+    return project;
+};
+
+async function getProjectScreenshots(projectName: string) {
+    const data = await dataMapper.getScreenshots(projectName);
+    // console.log(data);
+    return data;
+}
+
+async function getProjectText(projectName: string) {
+    const data = await dataMapper.getText(projectName);
+    // console.log(data);
+    return data;
+}
+// function scrapTechs(){
+//     const techs = [];
+//     for (const project of projects) {
+//         console.log(project.techs);
+//         for(const tech of project.techs){
+//             // console.log(tech);
+//         }
+//     }
+//     projects.forEach((project) => {
+//     }); 
+// };
 
 const projectController = {
     getAllProjects: async (req: Request, res: Response) => {
-        if (projects.length === 0) {
-            const fetchedProjects: project[] = await dataMapper.getRepos();
-            // console.log(fetchedProjects);
-            await formatProject(fetchedProjects);
-            // console.log('projects', projects);
+        req.session.projects = [];
+        console.log("START");
+
+        if (fetchCount === 0) {
+            fetchCount += 1;
+            const projects: project[] = await getAllProjects();
+            req.session.projects.push(...projects);
+            fetchCount = 0;
         }
-        res.json(projects);
+
+        // console.log('projects', projects.length);
+        res.json(req.session.projects);
     },
 
     getProject: async (req: Request, res: Response) => {
-        const projectId = req.params.projectId;
-        // console.log(projectId);
-        // const project = await Project.findAll({
-        //     where: {
-        //         id: projectId,
-        //     },
-        //     include: ['screenshots', 'texts', 'techs', 'tags'],
-        // });
-        // res.json(project);
+        const projectName: string = req.params.projectId;
+        const project: project = req.body.body;
+        // console.log(project);
+        const screenshots = await getProjectScreenshots(project.name);
+        project.screenshots.push(...screenshots);
+        const text = await getProjectText(project.name);
+        if(text){
+            project.text = text;
+        }
+
+        // console.log(project);
+        res.json(project);
     },
 
+    // getProjectText: async (project: project) => {
+    //     // console.log('projectID', projectName);
+    //     const text = await dataMapper.getText(project.name);
+    //     // console.log(text);
+    //     // const project = await Project.findAll({
+    //     //     where: {
+    //     //         id: projectId,
+    //     //     },
+    //     //     include: ['screenshots', 'texts', 'techs', 'tags'],
+    //     // });
+    //     return text;
+    // },
+
     getLastProjects: async (req: Request, res: Response) => {
-        if(lastProjects.length === 0){
-            console.log('taille projects', projects.length);
-            const sortedProjects = projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0,5);
-            lastProjects.push(...sortedProjects);
+        // console.log(req.session.projects);
+        req.session.lastProjects = [];
+        if (req.session.lastProjects.length === 0) {
+            if (!req.session.projects) {
+                req.session.projects = await getAllProjects();
+                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
+                req.session.lastProjects.push(...sortedProjects);
+            }
+            else{  
+                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
+                req.session.lastProjects.push(...sortedProjects);
+            }
         }
-        // console.log(lastProjects);
-        res.json(lastProjects);
+        // console.log(req.session.lastProjects);
+        res.json(req.session.lastProjects);
     },
 };
 

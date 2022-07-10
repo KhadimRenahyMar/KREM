@@ -9,22 +9,27 @@ import ProjectList from "./ProjectList/ProjectList";
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
+    let fetchCount = 0;
 
     useEffect(() => {
         const localProjects = JSON.parse(localStorage.getItem('projects'));
-        // console.log('localProjects =', localProjects);
+        console.log('localProjects =', localProjects);
 
         if (localProjects === null) {
-            console.log("fetch");
-            const fetchedProjects = [];
             const fetchprojectsFromAPI = async () => {
+                console.log("fetch");
+                fetchCount = 1;
                 const data = await axios.get('/projects/all');
-                // console.log(data.data);
+                console.log(data.data);
                 fetchedProjects.push(...data.data);
                 setProjects(fetchedProjects);
                 localStorage.setItem('projects', JSON.stringify(fetchedProjects));
+                fetchCount = 0;
             }
-            fetchprojectsFromAPI();
+            const fetchedProjects = [];
+            if(fetchCount === 0){
+                fetchprojectsFromAPI();
+            }
         }
         else {
             console.log("storage");
@@ -33,21 +38,23 @@ export default function Projects() {
     }, []);
 
     useEffect(() => {
-        const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
-
-        if (localProjects === null || localProjects.length === 0) {
-            // console.log(localProjects);
+        const localProjects = JSON.parse(localStorage.getItem('projects'));
+        if (localProjects === null) {
             const fetchedLastProjects = [];
-
             const fetchLastProjectsFromAPI = async () => {
                 console.log('lasts');
+                fetchCount = 1;
                 const data = await axios.get('/projects/lasts');
                 // console.log(data.data);
                 fetchedLastProjects.push(...data.data);
                 setLastProjects(fetchedLastProjects);
+                fetchCount = 1;
                 localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
             }
-            fetchLastProjectsFromAPI();
+
+            if(fetchCount === 0){
+                fetchLastProjectsFromAPI();
+            }
         }
         else {
             console.log("storage");

@@ -47,7 +47,7 @@ export default function ProjectsList({ projects }) {
                             <li className="projectList__project" key={project.id}>
                                 <Link
                                     className="projectList__project-link"
-                                    to={`/projects/${project.id}`}
+                                    to={`/projects/${project.name}`}
                                     state={{ project }}
                                 >
                                     <div className="projectList__project-contentBx">

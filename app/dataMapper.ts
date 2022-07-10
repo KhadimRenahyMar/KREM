@@ -9,10 +9,19 @@ type project = {
 
 const dataMapper = {
     async getRepos() {
-        const data = await fetch(api_url);
-        const result = await data.json();
-        // console.log(result);
-        return result;
+        try {
+            const data = await fetch(api_url, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    'Accept': 'application/vnd.github.v3.raw',
+                }
+            });
+            const result = await data.json();
+            return result;
+        } catch (error) {
+            console.log(error);
+        }
     },
 
     async getProjectConfig(project: project) {
@@ -26,18 +35,17 @@ const dataMapper = {
                     'Accept': 'application/vnd.github.v3.raw',
                 }
             });
-
             const result = await data.json();
-            // console.log(`result ${project.name}`, result);
+            // console.log(`result ${project.name}`, result.length);
             return result;
         } catch (error) {
             console.log(error);
         }
     },
 
-    async getScreenshots(project: project) {
+    async getScreenshots(project:string) {
         try {
-            const url = `${api_content_url}/${project.name}/contents/portfolio/screenshots`;
+            const url = `${api_content_url}/${project}/contents/portfolio/screenshots`;
             // console.log(url);
             const data = await fetch(url, {
                 method: 'GET',
@@ -47,16 +55,16 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
-            console.log(`result ${project.name}`, result);
+            console.log(`screenshots ${project}`, result);
             return result;
         } catch (error) {
-            // console.log(error);
+            console.log(error);
         }
     },
 
-    async getText(project: project) {
+    async getText(name: string) {
         try {
-            const url = `${api_content_url}/${project.name}/contents/portfolio/text.md`;
+            const url:string = `${api_content_url}/${name}/contents/portfolio/text.md`;
             // console.log(url);
             const data = await fetch(url, {
                 method: 'GET',
@@ -65,8 +73,8 @@ const dataMapper = {
                     'Accept': 'application/vnd.github.v3.raw',
                 }
             });
-            const result = await data.json();
-            console.log(`result ${project.name}`, result);
+            const result = await data.text();
+            console.log(`text ${name}`, result);
             return result;
         } catch (error) {
             console.log(error);

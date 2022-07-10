@@ -33,9 +33,8 @@ function App({ isMobile }) {
 
       const fetchLastProjectsFromAPI = async () => {
         console.log('lasts');
-        const getProjects = await axios.get('/projects/all');
         const data = await axios.get('/projects/lasts');
-        // console.log(data.data);
+        console.log(data.data);
         fetchedLastProjects.push(...data.data);
         setLastProjects(fetchedLastProjects);
         localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
@@ -52,9 +51,9 @@ function App({ isMobile }) {
   const getProjectsInfo = async (project) => {
     // const text = await axios({
     //   method: 'GET',
-    //   url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/text.md`,
+    //   url: `https://api.github.com/repos/KhadimRenahyMar/Arch-iQ/contents/portfolio/text.md`,
     //   headers: {
-    //     Authorization: `Bearer ${githubToken}`,
+    //     // Authorization: `Bearer ${githubToken}`,
     //     'Accept': 'application/vnd.github.v3.raw',
     //   }
     // });
@@ -70,8 +69,10 @@ function App({ isMobile }) {
     // console.log(text);
     // console.log(screenshots);
   }
+  
   // console.log('projects' ,projects);
-  console.log('lastProjects', lastProjects);
+  // console.log('lastProjects', lastProjects);
+
   return (
     <div className="App">
       <Header />
