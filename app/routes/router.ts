@@ -10,5 +10,5 @@ router.get('/projects/all', projectController.getAllProjects);
 router.get('/projects/lasts', projectController.getLastProjects);
 router.post('/projects/:projectId', projectController.getProject);
 // router.get('/projects/:projectId/text', projectController.getProjectText);
-router.get('/techs', techController.getAllTechs);
+router.post('/techs', techController.getAllTechs);
 export default router;

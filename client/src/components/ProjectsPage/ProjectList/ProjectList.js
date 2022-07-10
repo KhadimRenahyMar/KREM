@@ -11,12 +11,16 @@ export default function ProjectsList({ projects }) {
 
     useEffect(() => {
         const fetchTechs = async () => {
-            const data = await axios.get('/techs');
-            // console.log(data.data);
-            setTechs(data.data);
+            if(projects){
+                const data = await axios.post('/techs', {
+                    data: projects,
+                });
+                console.log(data.data);
+                setTechs(data.data);
+            }
         };
         fetchTechs();
-    }, []);
+    }, [projects]);
 
 
     const sortProjects = (e) => {

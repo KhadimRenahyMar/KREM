@@ -20,7 +20,6 @@ export default function Projects() {
                 console.log("fetch");
                 fetchCount = 1;
                 const data = await axios.get('/projects/all');
-                console.log(data.data);
                 fetchedProjects.push(...data.data);
                 setProjects(fetchedProjects);
                 localStorage.setItem('projects', JSON.stringify(fetchedProjects));
@@ -104,7 +103,7 @@ export default function Projects() {
                         {
                             lastProjects.map((project) => (
                                 <SplideSlide key={project.id} className="slide">
-                                    <Link to={`/projects/${project.id}`} className="slide__link">
+                                    <Link to={`/projects/${project.name}`} className="slide__link">
                                         <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         {/* src={`./img/${project.cover}`} */}
                                         <div className="slide__macaron">

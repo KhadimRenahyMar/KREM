@@ -55,8 +55,17 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
-            console.log(`screenshots ${project}`, result);
-            return result;
+
+            // console.log(`screenshots ${project}`, result);
+            if(result.message){
+                console.log('result message', result.message)
+                console.log('Pas de dossier screenshots dans ce repo !')
+                const response: [] = [];
+                return response;
+            }
+            else{
+                return result;
+            }
         } catch (error) {
             console.log(error);
         }
@@ -74,7 +83,7 @@ const dataMapper = {
                 }
             });
             const result = await data.text();
-            console.log(`text ${name}`, result);
+            // console.log(`text ${name}`, result);
             return result;
         } catch (error) {
             console.log(error);

@@ -21,6 +21,7 @@ declare module "express-session" {
         test: string,
         projects: project[],
         lastProjects: project[],
+        techs: [],
     }
 }
 

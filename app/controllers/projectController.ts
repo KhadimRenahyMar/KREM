@@ -8,6 +8,8 @@ declare module "express-session" {
         test: string,
         projects: project[],
         lastProjects: project[],
+        project: project,
+        techs: String[]
     }
 }
 
@@ -91,16 +93,16 @@ const projectController = {
         if (fetchCount === 0) {
             fetchCount += 1;
             const projects: project[] = await getAllProjects();
+            // console.log('projects', projects.length);
             req.session.projects.push(...projects);
             fetchCount = 0;
         }
 
-        // console.log('projects', projects.length);
+        // console.log('projects', req.session.projects.length);
         res.json(req.session.projects);
     },
 
     getProject: async (req: Request, res: Response) => {
-        const projectName: string = req.params.projectId;
         const project: project = req.body.body;
         // console.log(project);
         const screenshots = await getProjectScreenshots(project.name);

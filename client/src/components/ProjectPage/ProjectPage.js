@@ -16,9 +16,13 @@ export default function Project() {
     useEffect(() => {
         async function setUpProject() {
             const projects = JSON.parse(localStorage.getItem('projects'));
+            console.log(projects);
+            if (projects === null) {
+                const fetchProjects = await axios.get('/projects/all');
+                localStorage.setItem('projects', JSON.stringify(fetchProjects.data));
+                console.log(projects);
+            }
             const wantedProject = projects.find(project => project.name.toLowerCase() === projectName.toLowerCase());
-            const projectsEnveloppe = { projects }
-            console.log('here', projectsEnveloppe);
             const currentProject = await axios.post(`/projects/${wantedProject.name}`, {
                 body: wantedProject,
             });
@@ -27,46 +31,6 @@ export default function Project() {
         };
         setUpProject();
     }, []);
-
-    useEffect(() => {
-        // const text = [];
-        // const fetchProjectText = async () => {
-        //     const data = await axios.get(`/projects/${projectName}/text`);
-        //     // console.log(data.data);
-        //     text.push(data.data);
-        // };
-        // fetchProjectText();
-        // console.log(text);
-        // // project.text = text;
-        // // console.log(project);
-
-        // const components = [];
-        // const designPatterns = [];
-        // const packages = [];
-
-        // const sortProjectTags = async () => {
-        //     project.tags.map((tag) => {
-        //         switch (tag.type) {
-        //             case 'component':
-        //                 components.push(tag);
-        //                 break;
-        //             case 'design pattern':
-        //                 designPatterns.push(tag);
-        //                 break;
-        //             case 'package':
-        //                 packages.push(tag);
-        //                 break;
-        //             default:
-        //                 break;
-        //         }
-        //         return null;
-        //     })
-        // }
-        // sortProjectTags();
-        // setComponents(components);
-        // setPackages(packages);
-        // setDesignPatterns(designPatterns);
-    }, [project]);
 
     // console.log(project);
     return (
@@ -80,8 +44,7 @@ export default function Project() {
                 </div>
                 <ProjectSlider project={project} />
                 <div className="project__descBx">
-                    <p className="project__desc"></p>
-                    {/* icon */}
+                    <p className="project__desc">{project && project.desc}</p>
                 </div>
             </section>
             <section className="project__techDesc">

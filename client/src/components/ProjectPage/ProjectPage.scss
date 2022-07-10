@@ -15,7 +15,9 @@
 .project{
 
     &__intro{
-
+        color: white;
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary );
     }
 
     &__titleBx{
@@ -33,5 +35,20 @@
         color: white;
     }
 
+    &__desc{
+        padding: 1rem;
+        font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+    }
+
+    &__tags{
+        color: white;
+    }
     
+    &__story{
+        width: 85%;
+        margin: 0 auto;
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        color: white;
+    }
+
 }

@@ -89,7 +89,7 @@ export default function Landing({ lastProjects }) {
                         {
                             lastProjects.map((project) => (
                                 <SplideSlide key={project.name} className="slide">
-                                    <Link to={`/projects/${project.id}`} className="slide__link">
+                                    <Link to={`/projects/${project.name}`} className="slide__link">
                                         <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL } className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         <div className="slide__macaron">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
