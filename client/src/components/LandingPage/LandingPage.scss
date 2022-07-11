@@ -213,6 +213,36 @@
             }
         }
 
+        &__sizeStampBx{
+            z-index: 10;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 1rem;
+            right: 1rem;
+            filter: drop-shadow(0 0 0.1rem black);
+
+            &--path {
+                fill: rgba(0, 0, 0, 0.5);
+            }
+
+            &--size {
+                font-family: getDeepMapValue(vars.$var,fonts, subtitle);
+                color: white;
+                position: absolute;
+            }
+        }
+        
+        &:hover{
+            .slide__sizeStampBx--size{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+            .slide__sizeStampBx--path {
+                stroke:  getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+        }
+
         &__macaron {
             position: absolute;
             top: 1rem;

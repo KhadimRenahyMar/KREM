@@ -10,7 +10,8 @@ import Project from '../ProjectPage/ProjectPage';
 import Contact from '../ContactPage/ContactPage';
 import NotFound from '../NotFoundPage/NotFoundPage';
 
-function App({ isMobile }) {
+function App() {
+
   function isMobile() {
     window.mobileCheck = function () {
       let check = false;
@@ -26,7 +27,6 @@ function App({ isMobile }) {
 
   useEffect(() => {
     const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
-    // console.log(localProjects);
 
     if (localProjects === null || localProjects.length === 0) {
       const fetchedLastProjects = [];
@@ -45,30 +45,7 @@ function App({ isMobile }) {
       console.log("storage");
       setLastProjects(localProjects);
     }
-    // console.log(lastProjects);
   }, []);
-
-  const getProjectsInfo = async (project) => {
-    // const text = await axios({
-    //   method: 'GET',
-    //   url: `https://api.github.com/repos/KhadimRenahyMar/Arch-iQ/contents/portfolio/text.md`,
-    //   headers: {
-    //     // Authorization: `Bearer ${githubToken}`,
-    //     'Accept': 'application/vnd.github.v3.raw',
-    //   }
-    // });
-    // const screenshots = await axios({
-    //   method:'GET',
-    //   url: `https://api.github.com/repos/KhadimRenahyMar/${project.name}/contents/portfolio/screenshots`,
-    //   headers: {
-    //     Authorization: `Bearer ${githubToken}`,
-    //     'Accept': 'application/vnd.github.v3.raw',
-    //   }
-    // })
-
-    // console.log(text);
-    // console.log(screenshots);
-  }
   
   // console.log('projects' ,projects);
   // console.log('lastProjects', lastProjects);

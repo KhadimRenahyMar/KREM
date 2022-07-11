@@ -9,8 +9,6 @@
 }
 
 .projectsPage {
-    // position: relative;
-
     &__slides {
         position: relative;
         width: 100%;
@@ -121,40 +119,36 @@
             }
         }
 
-        &__macaron {
+        &__sizeStampBx{
+            z-index: 10;
             position: absolute;
+            display: flex;
+            width: 5vh;
+            justify-content: center;
+            align-items: center;
             top: 1rem;
             right: 1rem;
-            border-radius: 50%;
-
             filter: drop-shadow(0 0 0.1rem black);
-            background-color: rgba(0, 0, 0, 0);
 
             &--path {
                 fill: rgba(0, 0, 0, 0.5);
             }
 
-            &--text {
-                margin: auto;
-                font-size: 1.5rem;
-            }
-
-            svg {
-                fill: white;
-                height: 2rem;
-                width: 2rem;
-                filter: drop-shadow(0 0 0.1rem black);
-            }
-
             &--size {
+                font-family: getDeepMapValue(vars.$var,fonts, subtitle);
                 color: white;
-                padding: 1rem;
+                position: absolute;
             }
         }
 
-        // media query !!
-        &__desktop {
-            width: 80% !important;
+        &:hover {
+            .slide__sizeStampBx--size {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+
+            .slide__sizeStampBx--path {
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
         }
     }
 }

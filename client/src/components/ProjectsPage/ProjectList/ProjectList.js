@@ -11,11 +11,11 @@ export default function ProjectsList({ projects }) {
 
     useEffect(() => {
         const fetchTechs = async () => {
-            if(projects){
+            if (projects) {
                 const data = await axios.post('/techs', {
                     data: projects,
                 });
-                console.log(data.data);
+
                 setTechs(data.data);
             }
         };
@@ -58,12 +58,12 @@ export default function ProjectsList({ projects }) {
                                         <div className="projectList__project-imgBx">
                                             <img className="projectList__project-cover" src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} alt={`vue de la page d'acceuil d' ${project.title}`} />
                                             <div className="projectList__project-sizeStampBx">
+                                                <text className="projectList__project-sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
+                                                    <tspan >{project.size}</tspan>
+                                                </text>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
-                                                    <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
-                                                        <path className="projectList__project-sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                                        <text className="projectList__project-sizeStampBx--size" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
-                                                            <tspan x="6" y="-3">{project.size}</tspan>
-                                                        </text>
+                                                    <g id="Groupe_792" data-name="Groupe 792">
+                                                        <path className="projectList__project-sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                                     </g>
                                                 </svg>
                                             </div>

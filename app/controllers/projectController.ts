@@ -9,11 +9,11 @@ declare module "express-session" {
         projects: project[],
         lastProjects: project[],
         project: project,
-        techs: String[]
+        techs: object[]
     }
 }
 
-type project = {
+export type project = {
     name: string,
     desc: string,
     url: string,
@@ -29,7 +29,6 @@ type project = {
     [key: string]: any;
 }
 
-// const lastProjects: project[] = [];
 let fetchCount = 0;
 
 async function getAllProjects() {
@@ -73,17 +72,6 @@ async function getProjectText(projectName: string) {
     // console.log(data);
     return data;
 }
-// function scrapTechs(){
-//     const techs = [];
-//     for (const project of projects) {
-//         console.log(project.techs);
-//         for(const tech of project.techs){
-//             // console.log(tech);
-//         }
-//     }
-//     projects.forEach((project) => {
-//     }); 
-// };
 
 const projectController = {
     getAllProjects: async (req: Request, res: Response) => {
@@ -115,19 +103,6 @@ const projectController = {
         // console.log(project);
         res.json(project);
     },
-
-    // getProjectText: async (project: project) => {
-    //     // console.log('projectID', projectName);
-    //     const text = await dataMapper.getText(project.name);
-    //     // console.log(text);
-    //     // const project = await Project.findAll({
-    //     //     where: {
-    //     //         id: projectId,
-    //     //     },
-    //     //     include: ['screenshots', 'texts', 'techs', 'tags'],
-    //     // });
-    //     return text;
-    // },
 
     getLastProjects: async (req: Request, res: Response) => {
         // console.log(req.session.projects);

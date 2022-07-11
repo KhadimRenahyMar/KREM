@@ -26,7 +26,7 @@ export default function Projects() {
                 fetchCount = 0;
             }
             const fetchedProjects = [];
-            if(fetchCount === 0){
+            if (fetchCount === 0) {
                 fetchprojectsFromAPI();
             }
         }
@@ -51,7 +51,7 @@ export default function Projects() {
                 localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
             }
 
-            if(fetchCount === 0){
+            if (fetchCount === 0) {
                 fetchLastProjectsFromAPI();
             }
         }
@@ -106,13 +106,13 @@ export default function Projects() {
                                     <Link to={`/projects/${project.name}`} className="slide__link">
                                         <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         {/* src={`./img/${project.cover}`} */}
-                                        <div className="slide__macaron">
+                                        <div className="slide__sizeStampBx">
+                                            <text className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
+                                                <tspan>{project.size}</tspan>
+                                            </text>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
-                                                <g id="Groupe_792" data-name="Groupe 792" transform="translate(-436.499 -581.345)">
-                                                    <path className="slide__macaron--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" transform="translate(436.5 581.34)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                                    <text className="slide__macaron--size" id="_" data-name="&lt;" transform="translate(449 616)" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
-                                                        <tspan x="5" y="-5">{project.size}</tspan>
-                                                    </text>
+                                                <g id="Groupe_792" data-name="Groupe 792">
+                                                    <path className="slide__sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                                 </g>
                                             </svg>
                                         </div>

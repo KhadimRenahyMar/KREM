@@ -33,11 +33,11 @@ export default function TechSlider({ techs, sortProjects }) {
                 <SplideTrack className='splide__track'>
                     {
                         techs.map((tech) => (
-                            <SplideSlide key={tech.id} data-name={tech.fullname} className="slide" onClick={sortProjects}>
+                            <SplideSlide key={tech.name} data-name={tech.fullname} className="slide" onClick={sortProjects}>
                                 <svg className='slide__hiveLogo' xmlns="http://www.w3.org/2000/svg" width="217.163" height="250.546" viewBox="0 0 217.163 250.546">
                                     <path className='slide__hiveLogo--path' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" transform="translate(1.502 1.727)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
                                 </svg>
-                                {/* <img src={`/${tech.shortname}.png`} alt="" className="slide__techLogo" /> */}
+                                <img src={`/techLogos/${tech.name}.png`} alt="" className="slide__techLogo" />
                             </SplideSlide>
                         ))
                     }
