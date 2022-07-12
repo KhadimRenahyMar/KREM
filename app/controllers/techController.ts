@@ -8,6 +8,7 @@ function formatTechList() {
 
 const techController = {
     getAllTechs: async (req: Request, res: Response) => {
+        console.log('TECHS');
         req.session.techs = [];
         const projects: project[] = req.body.data;
         if (projects.length > 0) {
@@ -40,13 +41,6 @@ const techController = {
             req.session.techs.push(...techList);
         }
         res.json(req.session.techs);
-    },
-
-    getTechsByProjects: async (req: Request, res: Response) => {
-        // const techs = await Tech.findAll({
-        //     include: ['projects'],
-        // });
-        // res.json(techs);
     },
 };
 

@@ -243,37 +243,6 @@
             }
         }
 
-        &__macaron {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            border-radius: 50%;
-
-            filter: drop-shadow(0 0 0.1rem black);
-            background-color: rgba(0, 0, 0, 0);
-
-            &--path {
-                fill: rgba(0, 0, 0, 0.5);
-            }
-
-            &--text {
-                margin: auto;
-                font-size: 1.5rem;
-            }
-
-            svg {
-                fill: white;
-                height: 2rem;
-                width: 2rem;
-                filter: drop-shadow(0 0 0.1rem black);
-            }
-
-            &--size {
-                color: white;
-                padding: 1rem;
-            }
-        }
-
         // media query !!
         &__desktop {
             width: 80% !important;
