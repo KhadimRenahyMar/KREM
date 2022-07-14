@@ -13,7 +13,7 @@ export default function Projects() {
 
     useEffect(() => {
         const localProjects = JSON.parse(localStorage.getItem('projects'));
-        console.log('localProjects =', localProjects);
+        // console.log('localProjects =', localProjects);
 
         if (localProjects === null) {
             const fetchprojectsFromAPI = async () => {

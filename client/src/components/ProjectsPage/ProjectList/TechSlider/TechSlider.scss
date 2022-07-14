@@ -10,6 +10,8 @@
 
 .techSlider{
     width: 100%;
+    position: sticky;
+    
     .splide{
         background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
         padding: 0.5rem 0;

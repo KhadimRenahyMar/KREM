@@ -10,14 +10,14 @@
 
 .projectPage {
     // width: 100%;
+    color: white;
 }
 
 .project{
 
     &__intro{
-        color: white;
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-        background-color: getDeepMapValue(vars.$var, colors, primary, primary );
+        
     }
 
     &__titleBx{
@@ -32,23 +32,68 @@
     &__title{
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h3 );
-        color: white;
     }
 
-    &__desc{
-        padding: 1rem;
+    &__githubLink{
+        width: 2rem;
+        height: 2rem;
+
+        &:hover{
+            .project__githubLink--svg{
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+        }
+    }
+    &__slider{
+        position: relative;
+    }
+    
+    &__techDesc{
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary );
         font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
     }
 
-    &__tags{
-        color: white;
+    &__techs{
+        display: flex;
+        flex-wrap: wrap;
     }
-    
+
+    &__tech-item{
+        margin: 0.5rem 0.5rem;
+        padding: 0.5rem;
+        background-color: rgba(255,255,255,0.5);
+        border-radius: 0.5rem;
+    }
+
     &__story{
         width: 85%;
         margin: 0 auto;
         font-family: getDeepMapValue(vars.$var, fonts, text);
-        color: white;
     }
 
+
+    &__descBx {
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+
+    &__desc{
+        padding: 0.8rem;
+        font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+    }
+
+    &__playBx{
+        margin: 0 0.8rem;
+
+        &--btn{
+            width: 2rem;
+        }
+    }
 }

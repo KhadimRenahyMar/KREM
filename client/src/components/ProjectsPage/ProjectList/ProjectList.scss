@@ -9,12 +9,13 @@
 }
 
 .projectList {
-    margin-top: 1rem;
+    margin-top: 10vh;
+    box-shadow: 0px 0px 0.5rem black;
 
     &__title {
         padding: 1rem;
         background-color: getDeepMapValue(vars.$var, colors, primary, primary);
-
+        
         color: white;
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
@@ -27,7 +28,7 @@
     &__legend {
         display: flex;
         flex-wrap: wrap;
-        padding: 1rem;
+        padding: 0.1rem 0;
         font-family: getDeepMapValue(vars.$var, fonts, text);
         font-size: getDeepMapValue(vars.$var, font-sizes,tiny );
         color: getDeepMapValue(vars.$var, colors, secondary, primary );
@@ -50,7 +51,7 @@
     &__list{
         position: relative;
         padding: 1rem;
-        overflow-y: scroll;
+        // overflow-y: scroll;
         height: 80vh;
     }
 

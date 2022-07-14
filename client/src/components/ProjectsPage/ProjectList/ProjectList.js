@@ -40,18 +40,15 @@ export default function ProjectsList({ projects }) {
 
     const sortProjects = (e, techName) => {
         const button = e.currentTarget;
-        console.log(button.childNodes[0].childNodes[0]);
         const icon = button.childNodes[0].childNodes[0];
 
-        const buttons = button.parentNode.childNodes;
-        
         const projectList = [];
-        
+
         if (search.includes(techName)) {
             search.forEach((field) => console.log(field))
             const currentSearch = search.filter(fields => fields !== techName);
             setSearch(currentSearch);
-            if(!currentSearch.includes(techName)){
+            if (!currentSearch.includes(techName)) {
                 const list = makeProjectList(currentSearch);
                 projectList.push(...list);
             }
@@ -68,8 +65,8 @@ export default function ProjectsList({ projects }) {
         setSortedProjects(projectList);
     };
 
-    function makeProjectList(currentSearch){
-        if(currentSearch.length > 0){
+    function makeProjectList(currentSearch) {
+        if (currentSearch.length > 0) {
             const projectList = [];
             for (const project of projects) {
                 const match = currentSearch.every(searchField => {
@@ -81,7 +78,7 @@ export default function ProjectsList({ projects }) {
             }
             return projectList;
         }
-        else{
+        else {
             return projects;
         }
     };
@@ -90,15 +87,15 @@ export default function ProjectsList({ projects }) {
         <div className="projectList">
             <h3 className="projectList__title">Tous mes projets</h3>
             <TechSlider techs={techs} sortProjects={sortProjects} />
-            <div className="projectList__contentBx">
-                <div className="projectList__legend">
+                <ul className="projectList__legend">
                     {/* //sortBySize ? */}
                     <li className="projectList__sizes">XS : composant</li>
                     <li className="projectList__sizes">S : feature</li>
                     <li className="projectList__sizes">M : petit projet</li>
                     <li className="projectList__sizes">L : projet -2 sprints</li>
                     <li className="projectList__sizes">XL : projet +2 sprints</li>
-                </div>
+                </ul>
+            <div className="projectList__contentBx">
                 <ul className="projectList__list">
                     <div className="projectList__layer"></div>
                     {
