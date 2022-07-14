@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "projects", "techs", "tags", "texts", "screenshots", "PROJ_TECH", "PROJ_TAGS";
+DROP TABLE IF EXISTS "projects", "techs", "tags", "texts", "screenshots", "PROJ_TECH", "PROJ_TAGS", "TECH_TAGS";
 
 CREATE TABLE IF NOT EXISTS "projects"(
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -50,6 +50,11 @@ CREATE TABLE IF NOT EXISTS "PROJ_TECH"(
 
 CREATE TABLE IF NOT EXISTS "PROJ_TAGS"(
     "project_id" INTEGER NOT NULL REFERENCES "projects"("id"),
+    "tag_id" INTEGER NOT NULL REFERENCES "tags"("id")
+);
+
+CREATE TABLE IF NOT EXISTS "TECH_TAGS"(
+    "tech_id" INTEGER NOT NULL REFERENCES "techs"("id"),
     "tag_id" INTEGER NOT NULL REFERENCES "tags"("id")
 );
 
@@ -153,5 +158,14 @@ VALUES  (1, 1),
         (3, 15),
         (3, 17),
         (3, 18);
+-- A COMPLETER SUR LA BDD HEROKU !
+INSERT INTO "TECH_TAGS" ("tech_id", "tag_id")
+VALUES  (1, 5),
+        (1, 6),
+        (1, 7),
+        (1, 8),
+        (,),
+        (),
+
 
 COMMIT;

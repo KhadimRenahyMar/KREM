@@ -3,26 +3,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
-import Landing from '../Landing/Landing';
-import Projects from '../Projects/Projects';
-import Skills from '../Skills/Skills';
-import Project from '../Project/Project';
-import Contact from '../Contact/Contact';
-import NotFound from '../404/404';
+import Landing from '../LandingPage/LandingPage';
+import Projects from '../ProjectsPage/ProjectsPage';
+import Skills from '../SkillsPage/SkillsPage';
+import Project from '../ProjectPage/ProjectPage';
+import Contact from '../ContactPage/ContactPage';
+import NotFound from '../NotFoundPage/NotFoundPage';
 
-function App({isMobile}) {
-
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchBack = async () => {
-      const data = await axios.get('/projects');
-      console.log(data.data);
-      localStorage.setItem('projects', data.data);
-      setProjects(data.data);
-    };
-    fetchBack();
-  }, []);
+function App() {
 
   function isMobile() {
     window.mobileCheck = function () {
@@ -35,6 +23,33 @@ function App({isMobile}) {
     return mobile;
   };
 
+  const [lastProjects, setLastProjects] = useState([]);
+
+  useEffect(() => {
+    const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
+
+    if (localProjects === null || localProjects.length === 0) {
+      const fetchedLastProjects = [];
+
+      const fetchLastProjectsFromAPI = async () => {
+        console.log('lasts');
+        const data = await axios.get('/projects/lasts');
+        console.log(data.data);
+        fetchedLastProjects.push(...data.data);
+        setLastProjects(fetchedLastProjects);
+        localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
+      }
+      fetchLastProjectsFromAPI();
+    }
+    else {
+      console.log("storage");
+      setLastProjects(localProjects);
+    }
+  }, []);
+  
+  // console.log('projects' ,projects);
+  // console.log('lastProjects', lastProjects);
+
   return (
     <div className="App">
       <Header />
@@ -44,13 +59,14 @@ function App({isMobile}) {
             path="/"
             key='/'
             element={(
-              <Landing projects={projects} />
+              <Landing lastProjects={lastProjects} />
             )}
           />
 
           <Route
             path="/projects"
-            projects={projects}
+            lastProjects={lastProjects}
+            // projects={projects}
             element={(
               <Projects />
             )}

@@ -28,7 +28,7 @@ export default function NavModal() {
                             </g>
                         </g>
                     </svg>
-                    Acceuil
+                    Accueil
                 </NavLink>
 
                 <NavLink

@@ -1,0 +1,121 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.projectSlider {
+    // width: 100%;
+    .slides {
+        &__titleBx {
+            top: 0;
+            z-index: 10;
+            padding: 1rem;
+            background-color: #202020;
+        }
+
+        &__title {
+            font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            color: white;
+        }
+    }
+
+    .splide {
+        margin: 0 auto;
+        box-shadow: 0px 0px 0.5rem black;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &__arrow {
+            border: 0;
+            border-radius: 0;
+            filter: drop-shadow(0 0 0.1rem black);
+            background-color: rgba(0, 0, 0, 0);
+            transform: scaleX(-1);
+            width: 2.5rem;
+
+            &--path {
+                fill: rgba(0, 0, 0, 0.5);
+            }
+
+            &--text {
+                margin: auto;
+                font-size: 1.5rem;
+            }
+
+            svg {
+                fill: white;
+                height: 3rem;
+                width: 3rem;
+                filter: drop-shadow(0 0 0.1rem black);
+            }
+
+            &:hover {
+                .splide__arrow--path {
+                    fill: getDeepMapValue(vars.$var, colors, tertiary, primary) !important;
+                }
+            }
+        }
+
+        &__desktop {
+            height: 40rem;
+        }
+    }
+
+
+
+    .slide {
+        background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        box-shadow: 0px 0px 1rem black;
+        display: flex;
+        align-items: center;
+
+        &__link {
+            width: 100%;
+        }
+
+        &__cover {
+            width: 100%;
+            height: 100%; //40% pour desktop media queries
+        }
+
+
+    
+        &__sizeStampBx{
+            z-index: 10;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0.5rem;
+            right: 1rem;
+            filter: drop-shadow(0 0 0.1rem black);
+            width: 1.8rem;
+
+            &--path {
+                fill: rgba(0, 0, 0, 0.5);
+            }
+
+            &--size {
+                font-family: getDeepMapValue(vars.$var,fonts, subtitle);
+                color: white;
+                position: absolute;
+            }
+        }
+
+        &:hover{
+            .slide__sizeStampBx--size{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+            .slide__sizeStampBx--path {
+                stroke:  getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+        }
+    }
+}

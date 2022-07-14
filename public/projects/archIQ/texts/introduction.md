@@ -1,1 +1,0 @@
-Premier projet web réalisé avant ma formation de développeur web FUllstack JS, ce projet représente mon premier pas dans le développement web.

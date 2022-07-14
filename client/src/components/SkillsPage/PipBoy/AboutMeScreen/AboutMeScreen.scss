@@ -1,0 +1,77 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.aboutMeScreen {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem 0;
+    font-family: getDeepMapValue(vars.$var, fonts, text);
+
+    &__contentBx {
+        // width: 40%; // desktop
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem 0;
+        // background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 1rem;
+    }
+
+    &__title {
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+        text-align: center;
+    }
+
+    &__list {
+        // display: flex;
+    }
+
+    &__card {
+        margin: 1rem 0 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        &-title {
+            font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            text-align: center;
+        }
+
+        &-textBx{
+            margin: 1rem 0 0;
+        }
+        
+        &-text{
+            hyphens: auto;
+
+        }
+
+        &-gifBx{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        &-gif{
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin: 0 0 0.5rem;
+        }
+        
+        &:hover{
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+    }
+}
