@@ -34,7 +34,7 @@ let fetchCount = 0;
 async function getAllProjects() {
     const fetchedProjects: project[] = await dataMapper.getRepos();
     const formattedProjects: project[] = [];
-    for(let project of fetchedProjects){
+    for (let project of fetchedProjects) {
         project = await formatProject(project);
         formattedProjects.push(project);
     }
@@ -54,35 +54,33 @@ async function formatProject(fetchedProject: project) {
         techs: data.techs,
         screenshots: [],
         packages: data.packages,
-        text: '',
+        text: 'Désolé ce projet n``a pas encore de récit détaillé, revenez plus tard !',
         createdAt: new Date(fetchedProject.created_at),
         pushedAt: new Date(fetchedProject.pushed_at)
-    }; 
+    };
     return project;
 };
 
 async function getProjectScreenshots(projectName: string) {
     const data = await dataMapper.getScreenshots(projectName);
-    // console.log(data);
+    console.log(data);
     return data;
 }
 
 async function getProjectText(projectName: string) {
     const data = await dataMapper.getText(projectName);
-    // console.log(data);
     return data;
 }
 
 const projectController = {
     getAllProjects: async (req: Request, res: Response) => {
-        req.session.projects = [];
         console.log("START");
+        req.session.projects = [];
 
         if (fetchCount === 0) {
             fetchCount += 1;
             const projects: project[] = await getAllProjects();
-            // console.log('projects', projects.length);
-            req.session.projects.push(...projects);
+            req.session.projects = projects;
             fetchCount = 0;
         }
 
@@ -92,15 +90,16 @@ const projectController = {
 
     getProject: async (req: Request, res: Response) => {
         const project: project = req.body.body;
-        // console.log(project);
         const screenshots = await getProjectScreenshots(project.name);
-        project.screenshots.push(...screenshots);
+        if (screenshots) {
+            project.screenshots.push(...screenshots);
+        }
         const text = await getProjectText(project.name);
-        if(text){
+        if (text) {
             project.text = text;
         }
 
-        // console.log(project);
+        console.log(project);
         res.json(project);
     },
 
@@ -113,7 +112,7 @@ const projectController = {
                 const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
                 req.session.lastProjects.push(...sortedProjects);
             }
-            else{  
+            else {
                 const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
                 req.session.lastProjects.push(...sortedProjects);
             }

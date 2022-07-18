@@ -19,36 +19,8 @@ function App() {
       return check;
     };
     const mobile = window.mobileCheck();
-    // console.log(mobile);
     return mobile;
   };
-
-  const [lastProjects, setLastProjects] = useState([]);
-
-  useEffect(() => {
-    const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
-
-    if (localProjects === null || localProjects.length === 0) {
-      const fetchedLastProjects = [];
-
-      const fetchLastProjectsFromAPI = async () => {
-        console.log('lasts');
-        const data = await axios.get('/projects/lasts');
-        console.log(data.data);
-        fetchedLastProjects.push(...data.data);
-        setLastProjects(fetchedLastProjects);
-        localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
-      }
-      fetchLastProjectsFromAPI();
-    }
-    else {
-      console.log("storage");
-      setLastProjects(localProjects);
-    }
-  }, []);
-  
-  // console.log('projects' ,projects);
-  // console.log('lastProjects', lastProjects);
 
   return (
     <div className="App">
@@ -59,14 +31,12 @@ function App() {
             path="/"
             key='/'
             element={(
-              <Landing lastProjects={lastProjects} />
+              <Landing />
             )}
           />
 
           <Route
             path="/projects"
-            lastProjects={lastProjects}
-            // projects={projects}
             element={(
               <Projects />
             )}

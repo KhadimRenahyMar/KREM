@@ -9,4 +9,5 @@ router.get('/projects/all', projectController.getAllProjects);
 router.get('/projects/lasts', projectController.getLastProjects);
 router.post('/projects/:projectId', projectController.getProject);
 router.post('/techs', techController.getAllTechs);
+router.get('/userInfos', mainController.getUserInfo);
 export default router;

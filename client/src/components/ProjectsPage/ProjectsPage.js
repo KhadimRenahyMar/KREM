@@ -10,7 +10,7 @@ export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
     let fetchCount = 0;
-
+    
     useEffect(() => {
         const localProjects = JSON.parse(localStorage.getItem('projects'));
         // console.log('localProjects =', localProjects);
@@ -103,9 +103,12 @@ export default function Projects() {
                         {
                             lastProjects.map((project) => (
                                 <SplideSlide key={project.name} className="slide">
-                                    <Link to={`/projects/${project.name}`} className="slide__link">
+                                    <Link 
+                                    to={`/projects/${project.name}`} 
+                                    className="slide__link"
+                                    state={{ project }}
+                                    >
                                         <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
-                                        {/* src={`./img/${project.cover}`} */}
                                         <div className="slide__sizeStampBx">
                                             <p className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">
                                                 <span>{project.size}</span>

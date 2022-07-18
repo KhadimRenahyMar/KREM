@@ -1,0 +1,25 @@
+{
+    "url": "https://khadimrenahymar.github.io/Arch-iQ/",
+    "coverURL": "https://github.com/KhadimRenahyMar/Arch-iQ/blob/main/portfolio/screenshots/landing.png?raw=true",
+    "size": "M",
+    "techs": [
+        {
+            "name": "HTML",
+            "packages": []
+        },
+        {
+            "name": "Javascript",
+            "packages": []
+        },
+        {
+            "name": "CSS",
+            "packages": []
+        },
+        {
+            "name": "SCSS",
+            "packages": []
+        }
+    ],
+    "designPatterns": [],
+    "components": []
+}
