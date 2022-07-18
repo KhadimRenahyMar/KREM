@@ -18,7 +18,7 @@ export default function ProjectSlider({ project }) {
                     type: 'loop',
                     width: '100%',
                     margin: '0 auto',
-                    // autoplay: true,
+                    autoplay: true,
                     pauseOnHover: false,
                     perPage: 1,
                     drag: true,
@@ -44,7 +44,7 @@ export default function ProjectSlider({ project }) {
                 </div>
                 <SplideTrack>
                     {
-                        project?.screenshots.length > 0 ? (
+                        project.screenshots.length > 0 ? (
                             project.screenshots.map((screenshot) => (
                                 <SplideSlide key={screenshot.name} className="slide">
                                     <img src={screenshot.download_url} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />

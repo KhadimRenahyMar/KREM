@@ -18,6 +18,7 @@ export default function Project() {
     useEffect(() => {
         if (data !== null) {
             if (data.project !== null) {
+                setProjectFound(true);
                 setProject(data.project);
             }
         }
