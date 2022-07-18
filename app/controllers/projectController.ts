@@ -54,7 +54,7 @@ async function formatProject(fetchedProject: project) {
         techs: data.techs,
         screenshots: [],
         packages: data.packages,
-        text: 'Désolé ce projet n``a pas encore de récit détaillé, revenez plus tard !',
+        text: `Désolé ce projet n'a pas encore de récit détaillé, revenez plus tard !`,
         createdAt: new Date(fetchedProject.created_at),
         pushedAt: new Date(fetchedProject.pushed_at)
     };
