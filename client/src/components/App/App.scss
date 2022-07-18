@@ -53,6 +53,19 @@ body {
 }
 
 .utils{
+    &--link{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        padding: 1rem;
+        text-decoration: none;
+        color: white;
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h1);
+        position: relative;
+    }
     &--orange{
         color: getDeepMapValue(vars.$var, colors, tertiary, primary);
     };

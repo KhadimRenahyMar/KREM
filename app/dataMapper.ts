@@ -58,8 +58,6 @@ const dataMapper = {
 
             // console.log(`screenshots ${project}`, result);
             if(result.message){
-                console.log('result message', result.message)
-                console.log('Pas de dossier screenshots dans ce repo !')
                 const response: [] = [];
                 return response;
             }
@@ -83,8 +81,14 @@ const dataMapper = {
                 }
             });
             const result = await data.text();
-            // console.log(`text ${name}`, result);
-            return result;
+            
+            if(JSON.parse(result).message){
+                const response = null;
+                return response;
+            }
+            else{
+                return result;
+            }
         } catch (error) {
             console.log(error);
         }

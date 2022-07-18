@@ -1,9 +1,35 @@
 import { Link } from "react-router-dom";
 import './LandingPage.scss';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-import fakeCover from '../../ressources/landing-page-exemple-1.png';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import noScreenshot from '../../ressources/message/noScreenshot.png';
 
-export default function Landing({ lastProjects }) {
+export default function Landing() {
+    const [lastProjects, setLastProjects] = useState([]);
+
+    useEffect(() => {
+        const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
+    
+        if (localProjects === null || localProjects.length === 0) {
+            const fetchedLastProjects = [];
+
+            const fetchLastProjectsFromAPI = async () => {
+                console.log('lasts');
+                const data = await axios.get('/projects/lasts');
+                // console.log(data.data);
+                fetchedLastProjects.push(...data.data);
+                setLastProjects(fetchedLastProjects);
+                localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
+            }
+            fetchLastProjectsFromAPI();
+        }
+        else {
+            console.log("storage");
+            setLastProjects(localProjects);
+        }
+    }, []);
+
     return (
         <div className='page page__landingPage landingPage'>
 
@@ -89,8 +115,12 @@ export default function Landing({ lastProjects }) {
                         {
                             lastProjects.map((project) => (
                                 <SplideSlide key={project.name} className="slide">
-                                    <Link to={`/projects/${project.name}`} className="slide__link">
-                                        <img src={project.coverURL === undefined || project.coverURL === "" ? fakeCover : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
+                                    <Link 
+                                    to={`/projects/${project.name}`} 
+                                    className="slide__link"
+                                    state={{ project }}
+                                    >
+                                        <img src={project.coverURL === undefined || project.coverURL === "" ? noScreenshot : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
                                         <div className="slide__sizeStampBx">
                                             <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
@@ -103,7 +133,6 @@ export default function Landing({ lastProjects }) {
                                             <h2 className="slide__title">{project.name}</h2>
                                             <p className="slide__text">{project.desc}</p>
                                         </div>
-                                        <div className="slide__layer"></div>
                                     </Link>
                                 </SplideSlide>
                             ))

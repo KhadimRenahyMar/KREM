@@ -69,11 +69,13 @@ export default function ProjectsList({ projects }) {
         if (currentSearch.length > 0) {
             const projectList = [];
             for (const project of projects) {
-                const match = currentSearch.every(searchField => {
-                    return project.techs.includes(searchField);
-                });
-                if (match === true) {
-                    projectList.push(project);
+                for(const tech of project.techs){
+                    const match = currentSearch.every(searchField => {
+                        return tech.name === searchField;
+                    });
+                    if (match === true) {
+                        projectList.push(project);
+                    }
                 }
             }
             return projectList;
@@ -87,16 +89,17 @@ export default function ProjectsList({ projects }) {
         <div className="projectList">
             <h3 className="projectList__title">Tous mes projets</h3>
             <TechSlider techs={techs} sortProjects={sortProjects} />
-                <ul className="projectList__legend">
-                    {/* //sortBySize ? */}
-                    <li className="projectList__sizes">XS : composant</li>
-                    <li className="projectList__sizes">S : feature</li>
-                    <li className="projectList__sizes">M : petit projet</li>
-                    <li className="projectList__sizes">L : projet -2 sprints</li>
-                    <li className="projectList__sizes">XL : projet +2 sprints</li>
-                </ul>
+            <ul className="projectList__legend">
+                {/* //sortBySize ? */}
+                <li className="projectList__sizes">XS : composant</li>
+                <li className="projectList__sizes">S : feature</li>
+                <li className="projectList__sizes">M : petit projet</li>
+                <li className="projectList__sizes">L : projet -2 sprints</li>
+                <li className="projectList__sizes">XL : projet +2 sprints</li>
+            </ul>
             <div className="projectList__contentBx">
                 <ul className="projectList__list">
+                    <span className='projectList__resultCount'>{sortedProjects.length} projets trouvé(s) !</span>
                     <div className="projectList__layer"></div>
                     {
                         sortedProjects.map((project) => (

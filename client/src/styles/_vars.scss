@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap');
 
 $oswald: 'Oswald', sans-serif;
@@ -20,12 +20,14 @@ $var: (
     ),
 
     font-weight : (
+        light: 300,
         normal: 400,
         mid: 500,
         bold: 700,
     ),
     
     font-sizes: (
+        huge: 10rem,
         title:(
             h1: 2.25rem, //36px
             h2: 2rem, //32 px

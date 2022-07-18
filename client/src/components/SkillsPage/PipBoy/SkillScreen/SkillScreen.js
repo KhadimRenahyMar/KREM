@@ -4,33 +4,39 @@ import axios from 'axios';
 
 export default function SkillScreen() {
     const [techs, setTechs] = useState([]);
-
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        const fetchedTechs = [];
+        let localProjects = JSON.parse(localStorage.getItem('projects'));
 
-        const fetchTechPackage = async () => {
-            const data = await axios.get('/techs');
-            const result = await data.data;
-            // console.log(result);
-            fetchedTechs.push(...result);
-        };
-        fetchTechPackage();
-
-        // fetchedTechs.forEach((tech) => {
-        //     tech.tags = sortTags(tech);
-        //     console.log(tech.tag);
-        // });
-
-        // const sortTags = async (tech) => {
-        //     const data = await axios.get('/techTags');
-        //     const result = await data.data;
-        //     console.log(result);
-        //     return result;
-        // }
-
-        setTechs(fetchedTechs);
+        if (localProjects === null) {
+            let fetchProjects = async () => {
+                const data = await axios.get('/projects/all');
+                const result = await data.data;
+                setProjects(result);
+                localStorage.setItem('projects', JSON.stringify(data.data));
+            }
+            localProjects = fetchProjects();
+        }
+        else {
+            setProjects(localProjects);
+        }
     }, []);
+
+    useEffect(() => {
+        if (projects.length > 0) {
+            const fetchedTechs = [];
+            const fetchTechPackage = async () => {
+                const data = await axios.post('/techs', {
+                    data: projects,
+                });
+                const result = await data.data;
+                fetchedTechs.push(...result);
+                setTechs(result);
+            };
+            fetchTechPackage();
+        }
+    }, [projects]);
 
     const showMore = (e) => {
         const skillBx = e.currentTarget;
@@ -46,6 +52,7 @@ export default function SkillScreen() {
         }
     }
 
+    console.log(techs)
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
@@ -191,7 +198,7 @@ export default function SkillScreen() {
 
                             <tbody className="table-body">
 
-                            <tr className="table-row">
+                                <tr className="table-row">
                                     <td className="table-data">VSCode</td>
                                     <td className="table-data table-data--number">5/5</td>
                                 </tr>
@@ -638,17 +645,16 @@ export default function SkillScreen() {
                 {
                     techs.map((tech) => (
                         // TODO : ajouter un tableau TECH_TAGS à la BDD pour pouvoir trier les packages par tech (oneTech-to-manyPackage)
-                        <li key={tech.shortname} className="skillScreen__skill" onClick={showMore}>
+                        <li key={tech.name} className="skillScreen__skill" onClick={showMore}>
                             <div className="skillScreen__skill-header">
                                 <div className="skillScreen__skill-iconBx">
-                                    <img className="skillScreen__skill-icon" src={`/techLogos/${tech.logoURL}.png`} alt='' />
+                                    <img className="skillScreen__skill-icon" src={`/techLogos/${tech.name}.png`} alt='' />
                                 </div>
                                 <div className="skillSCreen__skill-titleBx">
-                                    <h5 className="skillScreen__skill-title">{tech.fullname}</h5>
+                                    <h5 className="skillScreen__skill-title">{tech.name}</h5>
                                     <div className="skillScreen__skill-progressBar"></div>
                                 </div>
                             </div>
-
                             <div className="skillScreen__skill-contentBx hidden">
                                 <h6 className="table-subtitle">Packages</h6>
                                 <table className="table">
@@ -663,10 +669,14 @@ export default function SkillScreen() {
                                         <tr className="table-row">
                                             <td className="table-subhead" colSpan={2}></td>
                                         </tr>
-                                        <tr className="table-row">
-                                            <td className="table-data"></td>
-                                            <td className="table-data table-data--number"></td>
-                                        </tr>
+                                        {
+                                            tech.packages.map((packg) => (
+                                                <tr className="table-row">
+                                                    <td className="table-data">{packg}</td>
+                                                    {/* <td className="table-data table-data--number">{packg.count}</td> */}
+                                                </tr>
+                                            ))
+                                        }
                                     </tbody>
                                 </table>
                             </div>
