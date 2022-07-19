@@ -88,9 +88,13 @@
         }
 
         &:hover{
-
             .xpScreen__card-date{
-                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                &--formation{
+                    color: getDeepMapValue(vars.$var, colors, secondary, primary );
+                }
+                &--xp{
+                    color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                }
             }
             
             .xpScreen__card-skillItem{

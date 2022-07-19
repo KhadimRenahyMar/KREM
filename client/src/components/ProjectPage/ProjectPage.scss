@@ -71,6 +71,21 @@
         width: 85%;
         margin: 0 auto;
         font-family: getDeepMapValue(vars.$var, fonts, text);
+    
+        background-color: rgba(0,0,0,0.5);
+        padding:  1rem;
+    }
+
+    &__storyBx{
+        h2{
+            padding: 1rem 0;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2 );
+        }
+
+        p{
+            font-size: getDeepMapValue(vars.$var, font-sizes, text);
+            line-height: 1.2rem;
+        }
     }
 
 

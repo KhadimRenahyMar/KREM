@@ -90,7 +90,7 @@ export default function AboutMeScreen() {
                                 <div className="aboutMeScreen__card-gif-layer"></div>
                             </div>
                             <p className="aboutMeScreen__card-text">
-                                Pianiste depuis maintenant 13 ans, j'aime tout particulièrement la composition et l'improvisation.
+                                Pianiste depuis maintenant 13 ans, j'aime tout particulièrement la composition et l'improvisation. J'enseigne désormais par plaisir le piano à des élèves allant de 16 à 50 ans.
                             </p>
                         </div>
                     </li>
@@ -244,7 +244,7 @@ export default function AboutMeScreen() {
                 </ul>
             </div>
             <div className="aboutMeScreen__contentBx">
-                <h4 className="aboutMeScreen__title">Mes valeurs et besoins</h4>
+                <h4 className="aboutMeScreen__title">Mes valeurs</h4>
                 <ul className="aboutMeScreen__list">
                     <li className="aboutMeScreen__card" onClick={showMore}>
                         <h5 className="aboutMeScreen__card-title">Bienveillance</h5>

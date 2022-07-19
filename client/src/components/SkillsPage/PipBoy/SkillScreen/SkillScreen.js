@@ -657,28 +657,32 @@ export default function SkillScreen() {
                             </div>
                             <div className="skillScreen__skill-contentBx hidden">
                                 <h6 className="table-subtitle">Packages</h6>
-                                <table className="table">
-                                    <thead className="table-head">
-                                        <tr className="table-row">
-                                            <th className="table-legend">Package</th>
-                                            <th className="table-legend table-legend--number">Score</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody className="table-body">
-                                        <tr className="table-row">
-                                            <td className="table-subhead" colSpan={2}></td>
-                                        </tr>
-                                        {
-                                            tech.packages.map((packg) => (
+                                {
+                                    tech.packages.length > 0 && (
+                                        <table className="table">
+                                            <thead className="table-head">
                                                 <tr className="table-row">
-                                                    <td className="table-data">{packg}</td>
-                                                    {/* <td className="table-data table-data--number">{packg.count}</td> */}
+                                                    <th className="table-legend">Package</th>
+                                                    <th className="table-legend table-legend--number">Score</th>
                                                 </tr>
-                                            ))
-                                        }
-                                    </tbody>
-                                </table>
+                                            </thead>
+
+                                            <tbody className="table-body">
+                                                <tr className="table-row">
+                                                    <td className="table-subhead" colSpan={2}></td>
+                                                </tr>
+                                                {
+                                                    tech.packages.map((packg) => (
+                                                        <tr className="table-row">
+                                                            <td className="table-data">{packg}</td>
+                                                            {/* <td className="table-data table-data--number">{packg.count}</td> */}
+                                                        </tr>
+                                                    ))
+                                                }
+                                            </tbody>
+                                        </table>
+                                    )
+                                }
                             </div>
                         </li>
                     ))

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import projectController from "./projectController";
-import expressSession from 'express-session';
 import { project } from "./projectController";
 function formatTechList() {
 

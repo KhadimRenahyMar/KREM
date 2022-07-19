@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { Project, Screenshot, Tech, Text } from '../models';
 import dataMapper from "../dataMapper";
 // import session from 'express-session';
 
@@ -63,7 +62,6 @@ async function formatProject(fetchedProject: project) {
 
 async function getProjectScreenshots(projectName: string) {
     const data = await dataMapper.getScreenshots(projectName);
-    console.log(data);
     return data;
 }
 
@@ -98,8 +96,6 @@ const projectController = {
         if (text) {
             project.text = text;
         }
-
-        console.log(project);
         res.json(project);
     },
 

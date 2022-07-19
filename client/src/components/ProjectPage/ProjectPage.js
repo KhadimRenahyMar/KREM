@@ -116,7 +116,7 @@ export default function Project() {
                                         </div> */}
                                     </section>
                                     <section className="project__story">
-                                        <div className="story">
+                                        <div className="project__storyBx">
                                             {
                                                 project.text !== null ? (
                                                     <ReactMarkdown>{project.text}</ReactMarkdown>
