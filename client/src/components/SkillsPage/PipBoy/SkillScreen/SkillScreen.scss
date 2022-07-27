@@ -11,108 +11,174 @@
 .skillScreen {
     width: 100%;
 
-    &__skillsList{
+    &__skillsList {
         padding: 0.8rem 0;
     }
-    
-    &__skill{
-        font-family: getDeepMapValue(vars.$var, fonts, subtitle );
+
+    &__skill {
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         border-radius: 1rem;
         display: flex;
         flex-direction: column;
         margin: 0 0 1rem;
 
-        &-header{
+        &-header {
             display: flex;
             align-items: center;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 1rem;
             border-radius: 1rem;
             // box-shadow: 0px 0px 0.5rem black;
             filter: drop-shadow(0 0 0.2rem black);
 
-            &.active{
-                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            &.active {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
 
-        &-iconBx{
+        &-iconBx {
             max-width: 3rem;
             height: 100%;
             margin: 0 1rem 0 0;
-        
+
         }
 
-        &-icon{
+        &-icon {
+            fill: white;
+            filter: drop-shadow(0 0 0 0.1rem black);
             width: 100%;
             height: 100%
         }
 
-        &-titleBx{
+        &-titleBx {
             margin: 1rem 0;
             display: flex;
             justify-content: space-between;
         }
-        
-        &-title{
+
+        &-title {
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
         }
 
-        &-contentBx{
+        &-contentBx {
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 1rem;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .table{
+        .table {
             width: 100%;
             overflow: hidden;
             border-radius: 1rem;
             box-shadow: 0px 0px 0.5rem black;
+            margin-bottom: 1rem;
 
-            &-subtitle{
-                margin: 1rem 0;
-                font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            &-subtitle {
+                margin: 0 0 1rem;
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
             }
 
-            &-row{
+            &-row {
                 border: 1px solid black;
-                &:nth-child(2n){
-                    background-color: rgba(0,0,0,0.5);
+
+                &:nth-child(2n) {
+                    background-color: rgba(0, 0, 0, 0.5);
                 }
-                &:nth-child(1n){
-                    background-color: rgba(255,255,255,0.5);
+
+                &:nth-child(1n) {
+                    background-color: rgba(255, 255, 255, 0.5);
                 }
 
                 // &:hover{
                 //     color: getDeepMapValue(vars.$var, colors, tertiary, primary);
                 // }
-    
+
             }
 
-            &-legend, &-head, &-subhead, &-data {
-                padding: 0.5rem;
+            &-legend,
+            &-head,
+            &-subhead,
+            &-data {
+                padding: 0.8rem;
             }
 
-            &-head{
+            &-head {
                 text-transform: uppercase;
-                // background-color: rgba(255,255,255,0.5);
+                color: black;
             }
-            
-            &-subhead{
-                // background-color: rgba(255,255,255,0.2);
-                background-color: rgba(0,0,0,0.5);
-                // background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
-            }
-            
-            &-data{
-                background-color: getDeepMapValue(vars.$var, colors, secondary, primary );
-                &--number{
-                    
-                    text-align: right;
+
+            &-legend {
+
+                &--value {
+                    text-align: end;
                 }
             }
+
+            &-subhead {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            &-data {
+                background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
+
+                &--value {
+                    text-align: end;
+                }
+            }
+        }
+    }
+
+
+    &__tech {
+        position: relative;
+        margin: 1rem 0;
+        border-radius: 1rem;
+
+        &-layer {
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+
+            &.active {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+
+        &-titleBx {
+            position: relative;
+            padding: 1rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 1rem;
+            box-shadow: 0px 0px 0.2rem black;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            // &.active {
+            //     background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            // }
+        }
+
+        &-title {
+            display: flex;
+            align-items: center;
+        }
+
+        &-icon {
+            max-width: 2rem;
+            margin: 0 1rem 0 0;
+        }
+
+        &-message {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 1rem;
         }
     }
 }

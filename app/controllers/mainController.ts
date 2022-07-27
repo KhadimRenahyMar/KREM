@@ -47,8 +47,7 @@ const mainController = {
         const data = await getContributions(`${process.env.GITHUB_TOKEN}`, 'KhadimRenahyMar')
         
         const moreData = await fetch('https://api.github.com/users/KhadimRenahyMar/repos');
-        const result = await moreData.json()
-        
+        const result = await moreData.json();
         let repoCount = 0;
         for(const repo of result){
             repoCount += 1;

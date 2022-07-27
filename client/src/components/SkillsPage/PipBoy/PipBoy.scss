@@ -35,11 +35,12 @@
     }
 
     &__screens{
+        overflow-y: scroll;
+        height: 70vh; //pour scroll bar, sinon min-height pour que la boite s'étendent d'elle-même 
         width: 90%;
+        margin: auto;
         padding: 1rem;
         color: white;
-        height: 70vh; //pour scroll bar, sinon min-height pour que la boite s'étendent d'elle-même 
-        overflow-y: scroll;
     }
 
 

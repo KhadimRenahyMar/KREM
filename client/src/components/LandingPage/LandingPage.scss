@@ -126,6 +126,14 @@
         align-items: center;
         position: relative;
 
+        &__track {
+            border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        &__list {
+            height: 100%;
+        }
+
         &__arrow {
             border: 0;
             border-radius: 0;
@@ -187,18 +195,23 @@
             color: white;
             position: absolute;
             bottom: 0;
-            padding: 1rem;
             opacity: 0;
             transition: all 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
 
-        &:hover{
-            .slide__descBx{
+        &__desc {
+            padding: 1rem;
+        }
+
+        &:hover {
+            .slide__descBx {
                 opacity: 1;
             }
         }
 
-        &__sizeStampBx{
+        &__sizeStampBx {
             z-index: 10;
             position: absolute;
             display: flex;
@@ -213,18 +226,19 @@
             }
 
             &--size {
-                font-family: getDeepMapValue(vars.$var,fonts, subtitle);
+                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 color: white;
                 position: absolute;
             }
         }
-        
-        &:hover{
-            .slide__sizeStampBx--size{
-                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+
+        &:hover {
+            .slide__sizeStampBx--size {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
+
             .slide__sizeStampBx--path {
-                stroke:  getDeepMapValue(vars.$var, colors, tertiary, primary );
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
 

@@ -4,7 +4,7 @@ const authToken = process.env.GITHUB_TOKEN;
 
 type project = {
     name: string,
-    [key: string]: any;
+    // [key: string]: any;
 }
 
 const dataMapper = {
@@ -43,7 +43,7 @@ const dataMapper = {
         }
     },
 
-    async getScreenshots(project:string) {
+    async getScreenshots(project: string) {
         try {
             const url = `${api_content_url}/${project}/contents/portfolio/screenshots`;
             // console.log(url);
@@ -56,14 +56,10 @@ const dataMapper = {
             });
             const result = await data.json();
 
-            // console.log(`screenshots ${project}`, result);
-            if(result.message){
-                const response: [] = [];
-                return response;
-            }
-            else{
+            if (!result.message) {
                 return result;
             }
+
         } catch (error) {
             console.log(error);
         }
@@ -71,8 +67,7 @@ const dataMapper = {
 
     async getText(name: string) {
         try {
-            const url:string = `${api_content_url}/${name}/contents/portfolio/text.md`;
-            // console.log(url);
+            const url: string = `${api_content_url}/${name}/contents/portfolio/text.md`;
             const data = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -81,14 +76,11 @@ const dataMapper = {
                 }
             });
             const result = await data.text();
-            
-            if(JSON.parse(result).message){
-                const response = null;
-                return response;
-            }
-            else{
+
+            if (result.charAt(0) !== '{') {
                 return result;
             }
+
         } catch (error) {
             console.log(error);
         }

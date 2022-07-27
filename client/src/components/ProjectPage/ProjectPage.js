@@ -118,9 +118,9 @@ export default function Project() {
                                     <section className="project__story">
                                         <div className="project__storyBx">
                                             {
-                                                project.text !== null ? (
+                                                project.text !== null && (
                                                     <ReactMarkdown>{project.text}</ReactMarkdown>
-                                                ) : (<p>Désolé, ce projet n'a pas encore de récit détaillé, revenez plus tard !</p>)
+                                                )
                                             }
                                         </div>
                                     </section>

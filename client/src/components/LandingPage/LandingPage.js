@@ -3,14 +3,14 @@ import './LandingPage.scss';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import noScreenshot from '../../ressources/message/noScreenshot.png';
+import noScreenshot from '../../ressources/bg/noScreenshots1.png';
 
 export default function Landing() {
     const [lastProjects, setLastProjects] = useState([]);
 
     useEffect(() => {
         const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
-    
+
         if (localProjects === null || localProjects.length === 0) {
             const fetchedLastProjects = [];
 
@@ -115,12 +115,12 @@ export default function Landing() {
                         {
                             lastProjects.map((project) => (
                                 <SplideSlide key={project.name} className="slide">
-                                    <Link 
-                                    to={`/projects/${project.name}`} 
-                                    className="slide__link"
-                                    state={{ project }}
+                                    <Link
+                                        to={`/projects/${project.name}`}
+                                        className="slide__link"
+                                        state={{ project }}
                                     >
-                                        <img src={project.coverURL === undefined || project.coverURL === "" ? noScreenshot : project.coverURL} className='slide__cover' alt={`image de couverture du projet ${project.title}`} />
+                                        <img src={project.coverURL === undefined || project.coverURL === "" ? noScreenshot : project.coverURL} className='slide__cover' alt={`couverture du projet ${project.title}`} />
                                         <div className="slide__sizeStampBx">
                                             <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
@@ -130,8 +130,10 @@ export default function Landing() {
                                             </svg>
                                         </div>
                                         <div className="slide__descBx">
-                                            <h2 className="slide__title">{project.name}</h2>
-                                            <p className="slide__text">{project.desc}</p>
+                                            <div className="slide__desc">
+                                                <h2 className="slide__title">{project.name}</h2>
+                                                <p className="slide__text">{project.desc}</p>
+                                            </div>
                                         </div>
                                     </Link>
                                 </SplideSlide>
