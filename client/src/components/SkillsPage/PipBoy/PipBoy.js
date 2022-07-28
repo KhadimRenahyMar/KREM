@@ -85,7 +85,6 @@ export default function PipBoy() {
             }
             if (screen.id === id) {
                 screen.classList.add('visible');
-                // console.log(screen);
             }
         });
     };
