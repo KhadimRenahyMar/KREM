@@ -1,7 +1,7 @@
 import './PipBoy.scss';
 import SkillScreen from './SkillScreen/SkillScreen';
 import ExpScreen from './ExpScreen/ExpScreen';
-import ReviewScreen from './ChartScreen/reviewScreen';
+import ReviewScreen from './reviewScreen/reviewScreen';
 import AboutMeScreen from './AboutMeScreen/AboutMeScreen';
 
 import { useState, useEffect } from 'react';
@@ -102,7 +102,7 @@ export default function PipBoy() {
                 </div>
 
                 <div className="pipboy__screen" id="experience">
-                    <ExpScreen />
+                    <ExpScreen projects={projects}/>
                 </div>
 
                 <div className="pipboy__screen" id="reviews">

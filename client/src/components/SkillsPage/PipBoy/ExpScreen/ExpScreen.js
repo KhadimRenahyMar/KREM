@@ -1,7 +1,37 @@
+import { useEffect, useState } from 'react';
 import './ExpScreen.scss';
 
-export default function ExpScreen(){
-    return(
+export default function ExpScreen({ projects }) {
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        const getTags = () => {
+            const designPatterns = [];
+            for (const project of projects) {
+                for (const pattern of project.designPatterns) {
+                    if (!designPatterns.includes(pattern)) {
+                        designPatterns.push(pattern);
+                    }
+                }
+            }
+
+            const tagList = [];
+            for(let i = 0; i < designPatterns.length; i++){
+                if (tagList.length < 5) {
+                    const randomIndex = Math.floor(Math.random() * designPatterns.length);
+                    const tag = designPatterns[randomIndex];
+                    if(!tagList.includes(tag)){
+                        tagList.push(tag);
+                    }
+                }
+            }
+            
+            setTags(tagList);
+        }
+        getTags();
+    }, [projects]);
+
+    return (
         <div className="xpScreen">
             <div className="xpScreen__legend">
                 <p className="xpScreen__legend-item xpScreen__legend-item--formation">Formation</p>
@@ -10,9 +40,51 @@ export default function ExpScreen(){
 
             <ul className="xpScreen__list">
                 <li className="xpScreen__card xpScreen__card--xp">
+                    <strong className="xpScreen__card-date xpScreen__card-date--xp">Depuis Juillet 2022</strong>
+                    <div className="xpScreen__card-textBx">
+
+                        <h5 className="xpScreen__card-title">Développement Web</h5>
+                        <p className="xpScreen__card-desc">Conception et développement de projets web</p>
+                    </div>
+
+                    <ul className="xpScreen__card-skillList">
+                        {
+                            tags.map((tag) => (
+                                <li key={tag} className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">{tag}</li>
+                            ))
+                        }
+                    </ul>
+                    <div className="xpScreen__card-contentBx hidden">
+                        <p className="xpScreen__card-story">
+
+                        </p>
+                    </div>
+                </li>
+                <li className="xpScreen__card xpScreen__card--xp">
+                    <strong className="xpScreen__card-date xpScreen__card-date--xp">Juin 2022</strong>
+                    <div className="xpScreen__card-textBx">
+
+                        <h5 className="xpScreen__card-title">KREM - Site Portfolio</h5>
+                        <p className="xpScreen__card-desc">Conception et développement d'un site Portfolio</p>
+                    </div>
+
+                    <ul className="xpScreen__card-skillList">
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">API</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Déploiement</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Wireframes</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">responsive</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Workflow design</li>
+                    </ul>
+                    <div className="xpScreen__card-contentBx hidden">
+                        <p className="xpScreen__card-story">
+
+                        </p>
+                    </div>
+                </li>
+                <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">Mai 2022</strong>
                     <div className="xpScreen__card-textBx">
-                        
+
                         <h5 className="xpScreen__card-title">oFood (projet de fin d'étude) - Scrum Master et Project Manager</h5>
                         <p className="xpScreen__card-desc">Développement d'une application de rééquillibrage alimentaire</p>
                     </div>
@@ -97,7 +169,7 @@ export default function ExpScreen(){
                         </p>
                     </div>
                 </li>
-                
+
                 <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">2017-2019</strong>
                     <div className="xpScreen__card-textBx">
@@ -121,7 +193,7 @@ export default function ExpScreen(){
                 <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">2017</strong>
                     <div className="xpScreen__card-textBx">
-                        
+
                         <h5 className="xpScreen__card-title">Service Civique</h5>
                         <p className="xpScreen__card-desc">Restos du Coeur - 8 mois</p>
                     </div>
@@ -144,7 +216,7 @@ export default function ExpScreen(){
                 <li className="xpScreen__card xpScreen__card--formation">
                     <strong className="xpScreen__card-date xpScreen__card-date--formation">2015-2017</strong>
                     <div className="xpScreen__card-textBx">
-                        
+
                         <h5 className="xpScreen__card-title">Licence Philosophie parcours Musique et Musicologie</h5>
                         <p className="xpScreen__card-desc">Université de Nantes / Université Paris Sorbonne</p>
                     </div>
@@ -185,7 +257,7 @@ export default function ExpScreen(){
                         </p>
                     </div>
                 </li>
-                
+
                 <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">2012-2013</strong>
                     <div className="xpScreen__card-textBx">

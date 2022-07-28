@@ -22,7 +22,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
     }
 
-    useEffect(() => {
+    useEffect((projectCount) => {
         // console.log(techs)
 
         const getData = async () => {
@@ -60,12 +60,11 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
         makeData();
     }, [techs]);
-    console.log('children', technos.children);
 
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
-                <li key="technical" className="skillScreen__skill">
+                <li className="skillScreen__skill">
                     <div className="skillScreen__skill-header" onClick={showMore}>
                         <div className="skillScreen__skill-iconBx">
                             <svg className="skillScreen__skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303.98 336.01">
@@ -179,7 +178,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     </div>
                 </li>
 
-                <li key="tools" className="skillScreen__skill">
+                <li className="skillScreen__skill">
                     <div className="skillScreen__skill-header" onClick={showMore}>
                         <div className="skillScreen__skill-iconBx">
                             <svg className="skillScreen__skill-icon" id="Groupe_172" data-name="Groupe 172" xmlns="http://www.w3.org/2000/svg" width="53.568" height="51.119" viewBox="0 0 53.568 51.119">
@@ -236,7 +235,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     </div>
                 </li>
 
-                <li key="components" className="skillScreen__skill">
+                <li className="skillScreen__skill">
                     <div className="skillScreen__skill-header" onClick={showMore}>
                         <div className="skillScreen__skill-iconBx">
                             <div className="skillScreen__skill-icon">
@@ -405,7 +404,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                     <tbody className="table-body">
                                         {
                                             designPatterns?.map((designPattern) => (
-                                                <tr className="table-row">
+                                                <tr key={designPattern} className="table-row">
                                                     <td className="table-data">{designPattern}</td>
                                                 </tr>
                                             ))
@@ -434,7 +433,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                         </table>
                     </div>
                 </li>
-                <li key="packages" className="skillScreen__skill">
+                <li className="skillScreen__skill">
                     <div className="skillScreen__skill-header" onClick={showMore}>
                         <div className="skillScreen__skill-iconBx">
                             <svg className="skillScreen__skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -467,7 +466,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                 <div className="skillScreen__techBx hidden">
                                                     {
                                                     tech.children.length > 0 ? (
-                                                    <table table className="table" >
+                                                    <table className="table" >
                                                         <thead className="table-head">
                                                             <tr key={tech.name} className="table-row">
                                                                 <th className="table-legend">Package</th>
@@ -476,8 +475,8 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                         </thead>
                                                         {
                                                             tech.children.map((packg) => (
-                                                                <tbody className="table-body">
-                                                                    <tr key={packg.name} className="table-row">
+                                                                <tbody key={packg.name} className="table-body">
+                                                                    <tr className="table-row">
                                                                         <td className="table-data" colSpan={2}>{packg.name}</td>
                                                                     </tr>
                                                                 </tbody>
