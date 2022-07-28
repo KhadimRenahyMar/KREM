@@ -1,0 +1,48 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.contact {
+    &__iconBx {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 1rem;
+        &:hover{
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        }
+    }
+
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fill: white;
+    }
+
+    &__credit{
+        display: block;
+        margin-bottom: 1rem;
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-size: getDeepMapValue(vars.$var, font-sizes, text);
+        color: white;
+    }
+}

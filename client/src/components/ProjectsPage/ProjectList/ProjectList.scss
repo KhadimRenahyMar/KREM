@@ -52,7 +52,8 @@
         position: relative;
         padding: 1rem;
         // overflow-y: scroll;
-        height: 80vh;
+        height: auto;
+        margin-bottom: 2rem;
     }
 
     &__layer{

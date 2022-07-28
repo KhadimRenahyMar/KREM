@@ -1,5 +1,5 @@
 import './App.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -7,10 +7,13 @@ import Landing from '../LandingPage/LandingPage';
 import Projects from '../ProjectsPage/ProjectsPage';
 import Skills from '../SkillsPage/SkillsPage';
 import Project from '../ProjectPage/ProjectPage';
-import Contact from '../ContactPage/ContactPage';
+import Contact from '../Contact/Contact';
 import NotFound from '../NotFoundPage/NotFoundPage';
+import Footer from '../Footer/Footer';
 
 function App() {
+  const ref = useRef(null);
+  const [height, setHeight] = useState(0);
 
   function isMobile() {
     window.mobileCheck = function () {
@@ -22,10 +25,18 @@ function App() {
     return mobile;
   };
 
+  useLayoutEffect(() => {
+    const getPageHeight = () => {
+      setHeight(ref.current.clientHeight);
+    };
+    getPageHeight();
+  }, [])
+
+  console.log(height);
   return (
     <div className="App">
       <Header />
-      <main className={isMobile() ? ('main mobile') : ('main desktop')}>
+      <main ref={ref} className={isMobile() ? ('main mobile') : ('main desktop')}>
         <Routes>
           <Route
             path="/"
@@ -58,19 +69,12 @@ function App() {
           />
 
           <Route
-            path="/contact"
-            key='/contact'
-            element={(
-              <Contact isMobile={isMobile} />
-            )}
-          />
-          <Route
             path='*'
             element={<NotFound />}
           />
-
         </Routes>
       </main>
+      <Footer isMobile={isMobile} />
     </div>
   );
 }
