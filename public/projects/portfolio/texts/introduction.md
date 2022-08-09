@@ -1,1 +1,0 @@
-Après avoir complété une formation de développeur FullStack JS auprès de l'école O'clock, il était temps pour moi de créer un site portfolio afin de présenter l'évolution de mes compétences techniques.
