@@ -1,0 +1,25 @@
+{
+    "url": "https://khadimrenahymar.github.io/Arch-iQ/",
+    "coverURL": "",
+    "size": "M",
+    "techs": [
+        {
+            "name": "HTML",
+            "packages": []
+        },
+        {
+            "name": "Javascript",
+            "packages": ["splideJS"]
+        },
+        {
+            "name": "CSS",
+            "packages": []
+        },
+        {
+            "name": "SCSS",
+            "packages": []
+        }
+    ],
+    "designPatterns": ["variables SCSS", "fonctions SCSS"],
+    "components": ["Carousel", "Navigation"]
+}

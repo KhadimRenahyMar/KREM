@@ -1,0 +1,191 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.projectPage {
+    // width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    &__contentBx {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.project {
+    &__intro {
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+
+    }
+
+    &__titleBx {
+        padding: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // background-color: getDeepMapValue(vars.$var, colors, primary, primary );
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &__title {
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h3);
+    }
+
+    &__githubLink {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 0.8rem;
+        border-radius: 1rem;
+
+        &:hover {
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+    }
+
+    &__slider {
+        position: relative;
+    }
+
+    &__descBx {
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    &__desc {
+        padding: 0.8rem;
+        font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+    }
+
+    &__playBx {
+        margin: 0 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &--btn {
+            width: 2rem;
+        }
+
+        &--icon {
+            transform: translate(1px, -0.5px);
+            width: 1rem !important;
+            height: 1rem !important;
+            position: absolute;
+            fill: white;
+        }
+
+        &:hover {
+            .project__playBx--path {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+
+            }
+        }
+    }
+
+    &__tagBx {
+        background-color: rgba(0, 0, 0, 0.7);
+        // backdrop-filter: blur(2px);
+    }
+
+    &__techs {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0.5rem;
+    }
+
+    &__tech {
+        display: flex;
+
+        &-item {
+            display: flex;
+        }
+
+        &-list {
+            display: flex;
+
+            &-item {
+                font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+                margin: 0.5rem 0.2rem;
+                padding: 0.3rem;
+                border-radius: 0.3rem;
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        }
+    }
+
+    &__techSkills {
+        display: flex;
+        padding: 1rem;
+
+        &-title {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        &-contentBx {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            &--left{
+                
+            }
+            &--right{
+                
+            }
+        }
+
+        &-list{
+            &-item{
+                margin: 0.5rem 0;
+            }
+        }
+    }
+
+    
+    &__story {
+        margin: 0 auto;
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        
+        &-contentBx {
+            padding: 1rem;
+            h2 {
+                padding: 1rem 0;
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+            }
+
+            p {
+                font-size: getDeepMapValue(vars.$var, font-sizes, text);
+                line-height: 1.2rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .projectPage {
+        width: 50% !important;
+    }
+}

@@ -1,0 +1,43 @@
+@use 'reset';
+@use 'vars';
+
+body{
+  margin: 0;
+  box-sizing: border-box;
+  // z-index: -10;
+}
+
+.App {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: 100%;
+}
+
+$mobile: url('../assets/bg/bg\ mobile.svg');
+$desktop: url('../assets/bg/BG\ desktop.svg');
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: local('Inconsolata'), url('../assets/fonts/Inconsolata-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: local('Oswald'), url('../assets/fonts/Oswald-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src: local('Roboto Slab'), url('../assets/fonts/RobotoSlab-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
