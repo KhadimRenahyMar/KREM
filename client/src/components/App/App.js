@@ -43,7 +43,6 @@ function App() {
         <Routes>
           <Route
             path="/"
-            key='/'
             element={(
               <Landing />
             )}
@@ -65,7 +64,6 @@ function App() {
 
           <Route
             path="/skills"
-            key='/skills'
             element={(
               <Skills />
             )}

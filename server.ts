@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import { v2 as cloudinary } from 'cloudinary';
 import cors from 'cors';
 import cookieSession from 'cookie-session';
+import process from "process";
 
 const server = express();
 server.use(bodyParser.json());
@@ -22,7 +23,7 @@ server.use(cookieSession({
 }));
 
 server.use(cors({
-    origin:'http://localhost:3000',
+    origin: 'http://localhost:8080',
     credentials: true,
 }));
 
@@ -53,6 +54,15 @@ server.use(router);
 
 server.listen(PORT, () => {
     console.log(`Server launched on http://localhost:${PORT}`);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+    console.error(reason, 'Unhandled Rejection at Promise', p);
+})
+
+process.on('uncaughtException', err => {
+    console.error(err, 'Uncaught Exception thrown');
+    process.exit(1);
 });
 
 module.exports = server;

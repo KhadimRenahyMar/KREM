@@ -10,4 +10,5 @@ router.get('/projects/lasts', projectController.getLastProjects);
 router.post('/projects/:projectId', projectController.getProject);
 router.post('/techs', techController.getAllTechs);
 router.get('/userInfos', mainController.getUserInfo);
+router.get('/getGifs', mainController.getGifs);
 export default router;

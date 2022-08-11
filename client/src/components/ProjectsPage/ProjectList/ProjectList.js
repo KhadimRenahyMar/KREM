@@ -16,7 +16,6 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
     const [search, setSearch] = useState([]);
 
     useEffect(() => {
-        console.log("projectList useEffect", projects.length);
         if (projects.length > 0) {
             setSortedProjects(projects);
 
@@ -90,7 +89,7 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
     return (
         <div className="projectList">
             <h3 className="projectList__title">Tous mes projets</h3>
-            <TechSlider techs={techs} sortProjects={sortProjects} isMobile={isMobile}/>
+            <TechSlider techs={techs} sortProjects={sortProjects} isMobile={isMobile} />
             <ul className="projectList__legend">
                 {/* //sortBySize ? */}
                 <li className="projectList__sizes">XS : composant</li>
@@ -101,7 +100,15 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
             </ul>
             <div className="projectList__contentBx">
                 <div className="projectList__layer"></div>
-                <span className='projectList__resultCount'>{sortedProjects.length} projet(s) trouvé(s) !</span>
+                {
+                    isLoading ? (
+                        <span className='projectList__resultCount'>
+                            Loading ...</span>
+                    ) : (
+                        <span className='projectList__resultCount'>
+                            {sortedProjects.length} projet(s) trouvé(s) !</span>
+                    )
+                }
                 <ul className="projectList__list">
                     {
                         sortedProjects.map((project) => (
@@ -161,6 +168,6 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
                     }
                 </ul>
             </div>
-        </div>
+        </div >
     )
 }

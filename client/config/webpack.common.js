@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const dotenv = require('dotenv-flow').config( {
+const dotenv = require('dotenv-flow').config({
   path: path.join(paths.root)
 });
 
@@ -27,13 +27,13 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.DefinePlugin( {
+    new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.parsed)
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { 
+        {
           from: paths.static,
           to: '',
         }
@@ -44,6 +44,7 @@ module.exports = {
       favicon: paths.assets + '/favicon.ico',
       template: paths.assets + '/index.html',
     }),
+
   ],
 
   module: {

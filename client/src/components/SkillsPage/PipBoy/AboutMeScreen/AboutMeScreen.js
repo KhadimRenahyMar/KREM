@@ -1,23 +1,74 @@
 import './AboutMeScreen.scss';
-import helloThereGIF from '../../../../assets/gif/helloThere.gif';
-import programmationGIF from '../../../../assets/gif/programmation.webp';
-import learningGIF from '../../../../assets/gif/learning.webp';
-import creativityGIF from '../../../../assets/gif/creativity.webp';
-import adaptabilityGIF from '../../../../assets/gif/adaptability.gif';
-import musicGIF from '../../../../assets/gif/music.webp';
-import artGIF from '../../../../assets/gif/art.webp';
-import philosophyGIF from '../../../../assets/gif/philosophy.webp';
-import calmGIF from '../../../../assets/gif/calm.gif';
-import organizedGIF from '../../../../assets/gif/organized.gif';
-import socialGIF from '../../../../assets/gif/social.gif';
-import projectmanagementGIF from '../../../../assets/gif/projectmanagement.gif';
-import communicationGIF from '../../../../assets/gif/communication.gif';
-import graphismGIF from '../../../../assets/gif/graphism.gif';
-import englishGIF from '../../../../assets/gif/english.gif';
+import { useEffect, useRef } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../App/App';
 
-export default function AboutMeScreen() {
+import { cld } from '../../../App/App';
+import { scale } from '@cloudinary/url-gen/actions/resize';
+import { format, quality } from '@cloudinary/url-gen/actions/delivery';
+import { autoBest } from '@cloudinary/url-gen/qualifiers/quality';
+import { useState } from 'react';
+import lozad from 'lozad';
+
+export default function AboutMeScreen({ width }) {
+    const observer = lozad();
+    observer.observe();
+    const [gifFetched, setGifsFetched] = useState(false);
+    const gifBx = useRef([]);
+
+    const makeRef = (gif) => {
+        if (!gifBx.current.includes(gif) && gif !== null) {
+            gifBx.current.push(gif);
+            return gif;
+        }
+    };
+
+    useEffect(() => {
+        if (gifFetched === false) {
+            if (gifBx.current.length > 0) {
+                const getGifs = async () => {
+                    const data = await axios.get(`${API_URL}/getGifs`);
+                    for (let gif of gifBx.current) {
+                        const percent = parseInt(getComputedStyle(gif).width);
+                        const newWidth = 0;
+                        if (percent === 100) {
+                            newWidth = Math.floor(width - (width * 0.1));
+                        }
+                        else {
+                            newWidth = Math.floor(width * 0.5 - (width * 0.1));
+                        }
+                        const content = data.data.find((resource) => resource.filename === gif.id)
+
+                        if (content.format === "webp") {
+                            const newImg = cld.image(`${content.public_id}.${content.format}`)
+                                .setVersion(content.version)
+                                .resize(scale().width(width))
+                                .delivery(format("webm"))
+                                .delivery(quality(autoBest()));
+                            gif.src = newImg.toURL();
+                            gif.setAttribute('data-src', newImg.toURL());
+                            gif.type = "video/webm";
+                        }
+
+                        if (content.format === "webm") {
+                            const newImg = cld.video(`${content.public_id}.${content.format}`)
+                                .setVersion(content.version)
+                                .resize(scale().width(width))
+                                .delivery(quality(autoBest()));
+                            gif.src = newImg.toURL();
+                            gif.setAttribute('data-src', newImg.toURL());
+                            gif.type = "video/webm";
+                        }
+                        observer.observe(gif);
+                    }
+                    setGifsFetched(true);
+                };
+                getGifs();
+            }
+        }
+    }, []);
+
     const showMore = (e) => {
-        console.log(e.currentTarget.childNodes);
         const itemBx = e.currentTarget;
         const title = itemBx.childNodes[0];
         const content = itemBx.childNodes[1];
@@ -41,7 +92,7 @@ export default function AboutMeScreen() {
                             <h5 className="aboutMeScreen__card-title">Anglais</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
                                 <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={englishGIF} alt="" />
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='english' alt="gif animé du Doctor de la série Doctor Who, legende : Quoi ?! " />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">I fell in love with the British culture as a teenager and kept using it on a daily basis since then (mostly with friends). Therefore, I read, write and speak English quite fluently and I understand IT's technical vocabulary perfectly. I can translate both ways easily, which is very convenient when working on a project.</p>
@@ -50,8 +101,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Graphisme</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={graphismGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id="graphism" alt="gif animé d'un graphiste travaillant sur une table lumineuse" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">L'étude du graphisme lors de mon bac professionnel m'a appris à analyser un cahier des charges, à concevoir une charte graphique et à assurer sa cohérence avec le besoin du client.
@@ -61,8 +112,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Communication non-violente</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={communicationGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='communication' alt="gif animé d'un jeune homme souriant, legende : Discutons-en !" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">Après plusieurs années d'experience de travail auprès de différents publics, j'ai développé une bonne compréhension des attentes, besoins et limites d'autui, et ce dans le but de créer et d'entretenir une relation de confiance basée sur le respect, la sincérité et la bienveillance.</p>
@@ -71,8 +122,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Gestion de projet</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={projectmanagementGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='projectmanagement' alt="gif animé du personnage de Lester de Grand Theft Auto 5 devant un tableau chargé d'informations incompréhensibles, legende : Vous êtes avec moi ?" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">Au cours de ma première vie professionnelle en tant que musicien, la curiosité m'a poussé à bâtir de solides compétences dans tous les aspects entourant la production d'une oeuvre musicale.
@@ -83,8 +134,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Adaptabilité</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={adaptabilityGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='adaptability' alt="gif animé de Bear Grills de Man VS Wild, legende : Improvise, Adapt, Overcome." />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">Ayant travaillé sur de nombreuses missions interim de courte durée, j'ai souvent été confronté à des environnements qui m'était étrangers et ai du apprendre à m'adapter rapidement afin de soutenir le rythme des équipes auxquelles j'étais incorporé.</p>
@@ -98,8 +149,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Curieux</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={learningGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='learning' alt="gif animé de Finn et Jake de la série Adventure Time, legende : c'est l'heure d'apprendre !" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -115,8 +166,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Créatif</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={creativityGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='creativity' alt="gif animé d'un croquis en noir et blanc de crane humain vu de profil, à l'intérieur du crane défilent rapidement plusieurs dessins en couleur représentants les idées qui nous traversent" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -129,8 +180,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Organisé</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={organizedGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='organized' alt="gif animé d'un homme retournant son bureau qui effectue un 360 avant de retomber à l'endroit et parfaitement rangé" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -145,8 +196,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Sociable</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={socialGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='social' alt="gif animé de Jim Halpert et Darryl Philbin de la série The Office se faisant un check de façon complice" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -159,8 +210,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Calme</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={calmGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='calm' alt="gif animé de Monty Python: La vie de Brian, Brian sur la croix chante, legende : Always look on the bright side of life" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -176,8 +227,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Musique</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={musicGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='music' alt="gif animé d'un chat noir en haut de forme jouant du piano" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -188,8 +239,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Arts</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={artGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='art' alt="gif animé d'un costume de dinosaure courant à travers un musée" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -202,8 +253,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Lecture et Philosophie</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img className="aboutMeScreen__card-gif" src={philosophyGIF} alt="" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay className="aboutMeScreen__card-gif lozad" ref={makeRef} id='philosophy' alt="gif animé du Penseur de Rodin bougeant son doigt pour faire tourner la roue d'un écran de chargement" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -219,8 +270,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Science-fiction</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className='aboutMeScreen__card-gifBx'>
-                                    <img src={helloThereGIF} alt="" className="aboutMeScreen__card-gif" />
+                                <div className='aboutMeScreen__card-gifBx' >
+                                    <video loop autoPlay ref={makeRef} id='helloThere' alt="gif animé d'Obi-Wan Kenobi de Star Wars : Un nouvel Espoir nous saluant, legende : Hello There !" className="aboutMeScreen__card-gif lozad" />
                                     <div className="aboutMeScreen__card-gif-layer"></div>
                                 </div>
                                 <p className="aboutMeScreen__card-text">
@@ -231,8 +282,8 @@ export default function AboutMeScreen() {
                         <li className="aboutMeScreen__card" onClick={showMore}>
                             <h5 className="aboutMeScreen__card-title">Programmation</h5>
                             <div className="aboutMeScreen__card-textBx hidden">
-                                <div className="aboutMeScreen__card-gifBx">
-                                    <img src={programmationGIF} alt="" className="aboutMeScreen__card-gif" />
+                                <div className="aboutMeScreen__card-gifBx" >
+                                    <video loop autoPlay ref={makeRef} id='programmation' alt="gif animé de Maurice Moss de la série The IT Crowd travaillant sur son ordinateur, remarquant un départ d'incendie et continuant son travail" className="aboutMeScreen__card-gif lozad" />
                                     <div className="aboutMeScreen__card-gif-layer">
                                     </div>
                                 </div>

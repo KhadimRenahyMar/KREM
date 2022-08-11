@@ -6,38 +6,44 @@ import { API_URL } from '../../App/App';
 export default function StatBox(){
     const [userInfos, setUserInfo] = useState(null);
     useEffect(()=> {
-        const fetchInformation = async () => {
-            const data = await axios.get(`${API_URL}/userInfos`);
-            // console.log(data.data);
-            setUserInfo(data.data);
+        const stats = JSON.parse(localStorage.getItem('stats'));
+        if(stats === null){
+            const fetchInformation = async () => {
+                const data = await axios.get(`${API_URL}/userInfos`);
+                setUserInfo(data.data);
+                localStorage.setItem('stats', JSON.stringify(data.data));
+            }
+            fetchInformation();
         }
-        fetchInformation();
+        else{
+            setUserInfo(stats);
+        }
     }, []);
 
     return(
         <ul className="stats__list">
                     <li className="stats__card stats__card--one">
-                        <h4 className="stats__titles">Projets publics</h4>
+                        <h3 className="stats__titles">Projets publics</h3>
                         <strong className="stats__data">{userInfos?.public_repos}</strong>
                     </li>
                     <li className="stats__card stats__card--one">
-                        <h4 className="stats__titles">Projets privés</h4>
+                        <h3 className="stats__titles">Projets privés</h3>
                         <strong className="stats__data">{userInfos?.reposCount}</strong>
                     </li>
                     <li className="stats__card stats__card--four">
-                        <h4 className="stats__titles">Contributions totales</h4>
+                        <h3 className="stats__titles">Contributions totales</h3>
                         <strong className="stats__data"> {userInfos?.commitCount}</strong>
                     </li>
                     <li className="stats__card stats__card--three">
-                        <h4 className="stats__titles">Commit/semaine</h4>
+                        <h3 className="stats__titles">Commit/semaine</h3>
                         <strong className="stats__data">{userInfos?.contribPerWeek}</strong>
                     </li>
                     <li className="stats__card stats__card--two">
-                        <h4 className="stats__titles">Dernier commit</h4>
+                        <h3 className="stats__titles">Dernier commit</h3>
                         <strong className="stats__data">{userInfos?.lastCommit}</strong>
                     </li>
                     <li className="stats__card stats__card--five">
-                        <h4 className="stats__titles">Dernier Projet</h4>
+                        <h3 className="stats__titles">Dernier Projet</h3>
                         <strong className="stats__data">{userInfos?.lastProject}</strong>
                     </li>
                 </ul>

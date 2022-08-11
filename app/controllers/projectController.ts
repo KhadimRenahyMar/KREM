@@ -88,7 +88,7 @@ const projectController = {
             fetchCount = 0;
         }
 
-        // console.log('projects', req.session.projects.length);
+        console.log('projects', req.session.projects.length);
         res.json(req.session.projects);
     },
 

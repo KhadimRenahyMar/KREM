@@ -124,10 +124,10 @@ const dataMapper = {
             const folder = await cloudinary.search.expression(
                 `folder:"KREM/${projectName}"`,
             ).execute();
-            
+
             const coverName = path.parse(cover).name;
             let foundImg = folder.resources.find((resource: any) => resource.filename === coverName);
-            
+
             if (foundImg === undefined) {
                 foundImg = await cloudinary.uploader.upload(`${cover}`, {
                     public_id: `${coverName}`,
@@ -141,21 +141,30 @@ const dataMapper = {
         }
     },
 
-    async getLogosFromCDN(){
+    async getLogosFromCDN() {
         const folder = await cloudinary.search.expression(
             `folder:"KREM/logos"`,
         ).execute();
-        for(let logo of folder.resources){
+        console.log("remaining",folder.rate_limit_remaining);
+        for (let logo of folder.resources) {
             let image = cloudinary.image(`${logo.filename}.${logo.format}`, {
                 transformation: [
-                    {dpr: "auto", responsive: true, width: 16, height: 16, crop: "scale"},
-                    {fetch_format: 'webp'}
+                    { dpr: "auto", responsive: true, width: 16, height: 16, crop: "scale" },
+                    { fetch_format: 'webp' }
                 ]
             })
             logo = image;
         }
         return folder.resources;
-    }
+    },
+
+    async getGifsFromCDN() {
+        const folder = await cloudinary.search.expression(
+            `folder:"KREM/GIFS"`,
+        ).execute();
+        console.log("remaining",folder.rate_limit_remaining);
+        return folder.resources;
+    },
 }
 
 export default dataMapper;

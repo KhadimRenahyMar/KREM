@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import dataMapper from "../dataMapper";
 import projectController from "./projectController";
 
 const mainController = {
@@ -77,7 +78,12 @@ const mainController = {
             lastProject: lastProject
         }
         res.json(obj);
-    }
+    },
+    getGifs: async (req: Request, res: Response) => {
+        const gifs = await dataMapper.getGifsFromCDN();
+        // console.log(gifs);
+        res.json(gifs);
+    },
 };
 
 export default mainController;

@@ -20,15 +20,13 @@ export default function Projects({ isMobile }) {
     const [isLoading, setIsLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
-
-    console.log('projectPage start');
+    console.log("coucou")
     useEffect(() => {
-        console.log('first useEffect');
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('projects'));
 
+        console.log("caucou")
         if (localProjects === null) {
-            console.log("fetch all projects")
             const fetchedProjects = [];
             const fetchprojectsFromAPI = async () => {
                 const data = await axios.get(`${API_URL}/projects/all`);
@@ -37,6 +35,7 @@ export default function Projects({ isMobile }) {
                     if (project.coverURL !== undefined) {
                         const responsiveURL = cld.image(`${project.coverURL}`)
                             .resize(scale().width(width))
+                            .setVersion(project.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))
                             .delivery(quality(autoBest()));
@@ -53,13 +52,13 @@ export default function Projects({ isMobile }) {
             fetchprojectsFromAPI();
         }
         else {
-            console.log('get projects from storage')
             setProjects(localProjects);
             setIsLoading(false);
         }
     }, []);
 
     useEffect(() => {
+        console.log("cacou")
         const lastProjectsStorage = JSON.parse(localStorage.getItem('lastProjects'));
         if (lastProjectsStorage === null) {
             const width = splide.current.offsetWidth;
@@ -71,10 +70,11 @@ export default function Projects({ isMobile }) {
                 for (let project of fetchedLastProjects) {
                     if (project.coverURL !== undefined) {
                         const responsiveURL = cld.image(`${project.coverURL}`)
-                            .resize(scale().width(width))
-                            .delivery(format(auto()))
-                            .delivery(dpr(2.0))
-                            .delivery(quality(autoBest()));
+                        .resize(scale().width(width))
+                        .setVersion(project.version)
+                        .delivery(format(auto()))
+                        .delivery(dpr(2.0))
+                        .delivery(quality(autoBest()));
                         project.coverURL = responsiveURL.toURL();
                     }
                     else {
@@ -93,8 +93,7 @@ export default function Projects({ isMobile }) {
         }
     }, [projects]);
 
-    console.log('render projectPage');
-
+    console.log("end")
     return (
         <div className="page page__projectsPage projectsPage">
 

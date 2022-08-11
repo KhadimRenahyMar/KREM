@@ -11,15 +11,25 @@ import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 import { auto } from "@cloudinary/url-gen/qualifiers/format";
 import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
-
 import loadingImg from '../../assets/bg/loading2.webp';
 import noScreenshot from '../../assets/bg/noScreenshots2.webp';
 
+import lozad from 'lozad';
+
 export default function Landing() {
+    const observer = lozad();
+    observer.observe();
     const splide = useRef(null);
     const [isLoading, setIsLoading] = useState(true);
     const [lastProjects, setLastProjects] = useState([]);
-
+    const refBx = useRef([])
+    const makeRef = (e) =>{
+        if(!refBx.current.includes(e)){
+            refBx.current.push(e)
+            observer.observe(e);
+            return e;
+        }
+    }
     const scroll = () => {
         window.scrollTo(0, splide.current.offsetTop - 100);
     };
@@ -35,8 +45,9 @@ export default function Landing() {
                 fetchedLastProjects.push(...data.data);
                 for (let project of fetchedLastProjects) {
                     if (project.coverURL !== undefined) {
-                        let responsiveURL = cld.image(`${project.coverURL}`)
+                        let responsiveURL = cld.image(`${project.coverURL}`, {loading: "lazy"})
                             .resize(scale().width(width))
+                            .setVersion(project.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))
                             .delivery(quality(autoBest()));
@@ -46,7 +57,6 @@ export default function Landing() {
                         project.coverURL = 'undefined';
                     }
                 }
-                
                 setLastProjects(fetchedLastProjects);
                 localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
                 setIsLoading(false);
@@ -147,7 +157,7 @@ export default function Landing() {
                             <SplideTrack>
                                 <SplideSlide key='loading' className="slide">
                                     <div className="slide__link">
-                                        <img rel="preload" src={loadingImg} className='slide__cover' alt={`couverture en cours de chargement, merci de patienter`} />
+                                        <img rel="preload" src={loadingImg} className='slide__cover' alt={`couverture en cours de chargement, merci de patienter`} loading="lazy"/>
                                     </div>
                                 </SplideSlide>
                             </SplideTrack>
@@ -163,9 +173,9 @@ export default function Landing() {
                                             >
                                                 {
                                                     project.coverURL !== 'undefined' ? (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={splide && splide.current.offsetWidth} height={splide && splide.current.offsetHeight} ref={makeRef}/>
                                                     ) : (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth}/>
+                                                        <img data-splide-lazy={project.coverURL} rel="preload" src={noScreenshot} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={splide && splide.current.offsetWidth} height={splide && splide.current.offsetHeight} ref={makeRef}/>
                                                     )
                                                 }
                                                 <div className="slide__sizeStampBx">

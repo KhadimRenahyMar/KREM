@@ -5,7 +5,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
     const [technos, setTechnos] = useState([]);
     const showMore = (e) => {
         const skillHeader = e.currentTarget;
-        // console.log(skillHeader)
         const content = skillHeader.parentNode.childNodes[1];
         const layer = skillHeader.childNodes[0].childNodes[0];
         console.log(layer);
@@ -60,7 +59,8 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
         makeData();
     }, [techs]);
-    console.log(technos)
+    // console.log(technos)
+    
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
