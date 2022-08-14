@@ -65,7 +65,7 @@ const dataMapper = {
             const folder = await cloudinary.search.expression(
                 `folder:"KREM/${project}"`,
             ).execute();
-
+            console.log("remaining",folder.rate_limit_remaining);
             let cloudinaryResults: any = [];
             for (let img of result) {
                 img.name = path.parse(img.name).name;

@@ -52,7 +52,7 @@ export default function PipBoy() {
     }, []);
 
     useEffect(() => {
-        if (techs.length === 0) {
+        if (techs === null) {
             if (projects.length > 0) {
                 const fetchedTechs = [];
                 const fetchTechPackage = async () => {

@@ -20,12 +20,11 @@ export default function Projects({ isMobile }) {
     const [isLoading, setIsLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
-    console.log("coucou")
+    
     useEffect(() => {
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('projects'));
 
-        console.log("caucou")
         if (localProjects === null) {
             const fetchedProjects = [];
             const fetchprojectsFromAPI = async () => {
@@ -58,7 +57,6 @@ export default function Projects({ isMobile }) {
     }, []);
 
     useEffect(() => {
-        console.log("cacou")
         const lastProjectsStorage = JSON.parse(localStorage.getItem('lastProjects'));
         if (lastProjectsStorage === null) {
             const width = splide.current.offsetWidth;
@@ -93,7 +91,6 @@ export default function Projects({ isMobile }) {
         }
     }, [projects]);
 
-    console.log("end")
     return (
         <div className="page page__projectsPage projectsPage">
 

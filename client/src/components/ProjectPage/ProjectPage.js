@@ -7,54 +7,90 @@ import ReactMarkdown from 'react-markdown';
 import NotFound from "../NotFoundPage/NotFoundPage";
 import { API_URL } from "../App/App";
 
+import { cld } from "../App/App";
+import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
+import { scale } from "@cloudinary/url-gen/actions/resize";
+import { auto } from "@cloudinary/url-gen/qualifiers/format";
+import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
+
 export default function Project() {
     const location = useLocation();
     const data = location.state;
 
     const projectName = useParams().slug;
     const [project, setProject] = useState(null);
+    const [projects, setProjects] = useState(null);
     const [projectFound, setProjectFound] = useState(true);
-    let fetchCount = 0;
+    const [isLoading, setIsLoading] = useState(true);
+    const localProject = JSON.parse(localStorage.getItem('project'));
+    
     useEffect(() => {
-        if (data !== null) {
-            if (data.project !== null) {
-                setProjectFound(true);
-                setProject(data.project);
-            }
+        console.log('projects')
+        console.log('data.project', data?.project)
+        if (data?.project !== undefined) {
+            setProjectFound(true);
+            setProject(data?.project);
         }
 
-        if (project === null) {
-            let projects = JSON.parse(localStorage.getItem('projects'));
-            const fetchProject = async () => {
-                if (projects === null) {
-                    if (fetchCount === 0) {
-                        fetchCount = 1;
-                        const fetchProjects = await axios.get(`${API_URL}/projects/all`);
-                        projects = fetchProjects.data;
-                        fetchCount = 0;
-                        localStorage.setItem('projects', JSON.stringify(fetchProjects.data));
-                    }
-                }
-                const wantedProject = projects.find(project => project.name.toLowerCase() === projectName.toLowerCase());
+        console.log("local", localProject);
+        if (localProject !== null || localProject !== undefined) {
+            setProjectFound(true);
+            setProject(localProject);
+        }
 
-                if (wantedProject === undefined) {
-                    setProjectFound(false);
+
+        if (data?.project === undefined && localProject === null) {
+            let localProjects = JSON.parse(localStorage.getItem('currentProjects'));
+            if (localProjects === null) {
+                let currentProjects = [];
+                const fetchProjects = async () => {
+                    console.log("fetch")
+                    const fetchProjects = await axios.get(`${API_URL}/projects/all`);
+                    currentProjects.push(fetchProjects.data);
+                    localStorage.setItem('currentProjects', JSON.stringify(fetchProjects.data));
+                    setProjects(fetchProjects.data);
                 }
-                if (wantedProject !== undefined) {
-                    if (fetchCount === 0) {
-                        fetchCount = 1;
-                        const currentProject = await axios.post(`${API_URL}/projects/${wantedProject.name}`, {
+                fetchProjects();
+                console.log(localProjects);
+            }
+            else {
+                setProjects(localProjects)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (data?.project !== undefined) {
+            setProjectFound(true);
+            setProject(data?.project);
+        }
+
+        if (localProject !== null || localProject !== undefined) {
+            setProjectFound(true);
+            setProject(localProject);
+        }
+
+        let localProjects = JSON.parse(localStorage.getItem('currentProjects'));
+
+        console.log("project after fetch projects", localProjects);
+        if (localProjects !== null) {
+            const wantedProject = localProjects.find(project => project.name.toLowerCase() === projectName.toLowerCase());
+            if (wantedProject === undefined) {
+                setProjectFound(false);
+            }
+            if (wantedProject !== undefined) {
+                if (wantedProject.screenshots.length === 0) {
+                    const getProjectInfo = async () => {
+                        const data = await axios.post(`${API_URL}/projects/${wantedProject.name}`, {
                             body: wantedProject,
                         });
-                        // console.log(currentProject);
-                        setProject(currentProject.data);
-                        fetchCount = 0;
+                        setProject(data.data);
                     }
+                    getProjectInfo();
                 }
             }
-            fetchProject();
         }
-    }, []);
+    }, [projects]);
 
     console.log(project);
     return (
@@ -77,7 +113,7 @@ export default function Project() {
                                         <ProjectSlider project={project} className='project__slider' />
                                         <div className="project__descBx">
                                             <p className="project__desc">{project && project.desc}</p>
-                                            <a href={project.url} target="_blank" className="project__playBx">
+                                            <a href={project?.url} target="_blank" className="project__playBx">
                                                 <svg className='project__playBx--btn' xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                                     <path className="project__playBx--path" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                                 </svg>
@@ -109,7 +145,7 @@ export default function Project() {
                                                     <h4 className="project__techSkills-title">Composants</h4>
                                                     <ul className="project__techSkills-list">
                                                         {
-                                                            project.components.map((component) => (
+                                                            project?.components.map((component) => (
                                                                 <li key={component.name} className="project__techSkills-list-item">{component}</li>
                                                             ))
                                                         }
@@ -119,7 +155,7 @@ export default function Project() {
                                                     <h4 className="project__techSkills-title">Patrons de conception</h4>
                                                     <ul className="project__desPatt-list">
                                                         {
-                                                            project.designPatterns.map((designPattern) => (
+                                                            project?.designPatterns.map((designPattern) => (
                                                                 <li key={designPattern.name} className="project__desPatt-list-item">{designPattern}</li>
                                                             ))
                                                         }
@@ -131,8 +167,8 @@ export default function Project() {
                                     <section className="project__story">
                                         <div className="project__story-contentBx">
                                             {
-                                                project.text !== null && (
-                                                    <ReactMarkdown>{project.text}</ReactMarkdown>
+                                                project?.text !== null && (
+                                                    <ReactMarkdown>{project?.text}</ReactMarkdown>
                                                 )
                                             }
                                         </div>

@@ -41,7 +41,7 @@ export default function Landing() {
         if (localProjects === null) {
             const fetchedLastProjects = [];
             const fetchLastProjectsFromAPI = async () => {
-                const data = await axios.get(`${API_URL}/projects/lasts`);
+                const data = await axios.get(`http://localhost:5050/projects/lasts`);
                 fetchedLastProjects.push(...data.data);
                 for (let project of fetchedLastProjects) {
                     if (project.coverURL !== undefined) {

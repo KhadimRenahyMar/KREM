@@ -3,14 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { useEffect, useState } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
-
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 const Landing = loadable(() => import('../LandingPage/LandingPage'));
-const Projects = loadable(() => import('../ProjectsPage/ProjectsPage'))
+const Projects = loadable(() => import('../ProjectsPage/ProjectsPage'));
 const Project = loadable(() => import('../ProjectPage/ProjectPage'));
-const Skills = loadable(() => import('../SkillsPage/SkillsPage'))
-const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'))
+const Skills = loadable(() => import('../SkillsPage/SkillsPage'));
+const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'));
 
 export const API_URL = "http://localhost:5050";
 export const cld = new Cloudinary({

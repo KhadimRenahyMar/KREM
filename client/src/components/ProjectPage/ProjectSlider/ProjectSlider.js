@@ -4,32 +4,29 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useRef, useState } from 'react';
 import { scale } from '@cloudinary/url-gen/actions/resize';
+import { cld } from '../../App/App';
+import { AdvancedImage } from '@cloudinary/react';
 
 export default function ProjectSlider({ project }) {
     const slider = useRef(null);
     const [screenshots, setScreenshots] = useState([]);
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: `ddjt1r39a`,
-        }
-    });
-
     useEffect(() => {
-        const makeScreenshots = () => {
-            console.log('screenshots', project.screenshots);
-            const screenshots = [];
-            project.screenshots.forEach(shot => {
-                const newImg = cld.image(`KREM/${project.name}/${shot.filename}`)
-                    .format("webp")
-                    .quality('auto')
-                    .resize(scale().width(slider.current.offsetWidth))
-                    .setVersion(shot.version);
-                screenshots.push(newImg);
-            });
-            setScreenshots(screenshots);
+        if (project.screenshots) {
+            const makeScreenshots = () => {
+                const screenshots = [];
+                project.screenshots.forEach(shot => {
+                    const newImg = cld.image(`KREM/${project.name}/${shot.filename}`)
+                        .format("webp")
+                        .quality('auto')
+                        .resize(scale().width(slider.current.offsetWidth))
+                        .setVersion(shot.version);
+                    screenshots.push(newImg);
+                });
+                setScreenshots(screenshots);
+            }
+            makeScreenshots();
         }
-        makeScreenshots();
     }, [project]);
 
     return (
@@ -72,7 +69,11 @@ export default function ProjectSlider({ project }) {
                         screenshots.length > 0 ? (
                             screenshots.map((screenshot) => (
                                 <SplideSlide key={screenshot.publicId} className="slide">
-                                    <img src={screenshot.toURL()} alt="" className="slide__cover" />
+                                    {/* <AdvancedImage
+                                        public-id={screenshot.publicId}
+                                        loading='lazy'
+                                    ></AdvancedImage> */}
+                                    <img rel='preload' fetchpriority="high" src={screenshot.toURL()} alt="" className="slide__cover" />
                                     <div className="slide__sizeStampBx">
                                         <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
@@ -84,14 +85,14 @@ export default function ProjectSlider({ project }) {
                         ) : (
                             <SplideSlide className="slide">
                                 {
-                                    project.coverURL !== 'undefined' ? (
-                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover' alt={`couverture du projet ${project.name}`} width={slider.current.offsetWidth} />
+                                    project?.coverURL !== 'undefined' ? (
+                                        <img data-splide-lazy={project?.coverURL} rel="preload" fetchpriority="high" src={project?.coverURL} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
                                     ) : (
-                                        <img data-splide-lazy={project.coverURL} rel="preload" src='/noScreenshots2.webp' className='slide__cover' alt={`couverture du projet ${project.name}`} width={slider.current.offsetWidth} />
+                                        <img rel="preload" src='/noScreenshots2.webp' className='slide__cover' alt={`couverture du projet ${project?.name}`} />
                                     )
                                 }
                                 <div className="slide__sizeStampBx">
-                                    <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
+                                    <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project?.size}</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                         <path className="slide__sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                     </svg>

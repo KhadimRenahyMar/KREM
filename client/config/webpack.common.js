@@ -58,13 +58,14 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
+              presets: ['@babel/preset-env']
             },
           },
         ],
       },
       // Images
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|webp|webm)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp|webm|svg|)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'images/[hash][ext][query]'
@@ -72,7 +73,7 @@ module.exports = {
       },
       // Fonts and SVGs
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf|)$/,
         type: 'asset',
         generator: {
           filename: 'fonts/[hash][ext][query]'

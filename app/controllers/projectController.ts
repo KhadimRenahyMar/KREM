@@ -106,17 +106,16 @@ const projectController = {
     },
 
     getLastProjects: async (req: Request, res: Response) => {
+        console.log(req.session.lastProjects);
         if (req.session.lastProjects === undefined) {
             req.session.lastProjects = [];
-            if (!req.session.projects) {
-                req.session.projects = await getAllProjects();
-                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-                req.session.lastProjects.push(...sortedProjects);
-            }
-            else {
-                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-                req.session.lastProjects.push(...sortedProjects);
-            }
+            req.session.projects = await getAllProjects();
+            const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
+            req.session.lastProjects.push(...sortedProjects);
+        }
+        else {
+            const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
+            req.session.lastProjects.push(...sortedProjects);
         }
         // console.log(req.session.lastProjects);
         res.json(req.session.lastProjects);

@@ -2,8 +2,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 
 import './styles/_reset.css';
-// import './styles/index.scss';
-import(/* webpackPreload: true */ './styles/index.scss');
+import './styles/index.scss';
+// import(/* webpackPreload: true */ './styles/index.scss');
 import App from './components/App/App';
 
 const rootReactElement = (

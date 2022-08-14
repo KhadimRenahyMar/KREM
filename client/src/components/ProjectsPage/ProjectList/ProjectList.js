@@ -41,7 +41,7 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
         const icon = button.childNodes[0].childNodes[0];
 
         const projectList = [];
-
+        console.log("techname", techName);
         if (search.includes(techName)) {
             search.forEach((field) => console.log(field))
             const currentSearch = search.filter(fields => fields !== techName);
@@ -58,6 +58,8 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
             projectList.push(...list);
             icon.classList.add('active');
         }
+        console.log("search",search);
+        console.log('projectList', projectList)
         setSortedProjects(projectList);
     };
 
