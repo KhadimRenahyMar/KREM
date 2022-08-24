@@ -61,38 +61,41 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
-
             const folder = await cloudinary.search.expression(
                 `folder:"KREM/${project}"`,
             ).execute();
-            console.log("remaining",folder.rate_limit_remaining);
+            console.log("getScreenshots remaining", folder.rate_limit_remaining);
+            
             let cloudinaryResults: any = [];
-            for (let img of result) {
-                img.name = path.parse(img.name).name;
-
-                const found = folder.resources.find((resource: any) => resource.filename === img.name);
-                if (found === undefined || folder.total_count <= 1) {
-                    const newImg = await cloudinary.uploader.upload(`${img.download_url}`, {
-                        public_id: `${img.name}`,
-                        folder: `KREM/${project}`,
-                    });
-
-                    if (!cloudinaryResults.includes(newImg)) {
-                        cloudinaryResults.push(newImg);
-                    }
-                }
-                else {
-                    folder.resources.forEach((resource: any) => {
-                        if (resource.folder === `KREM/${project}`) {
-                            if (!cloudinaryResults.includes(resource)) {
-                                cloudinaryResults.push(resource);
-                            }
+            if(result.message === "Not Found"){
+                return cloudinaryResults;
+            }
+            else{
+                for (let img of result) {
+                    img.name = path.parse(img.name).name;
+    
+                    const found = folder.resources.find((resource: any) => resource.filename === img.name);
+                    if (found === undefined || folder.total_count <= 1) {
+                        const newImg = await cloudinary.uploader.upload(`${img.download_url}`, {
+                            public_id: `${img.name}`,
+                            folder: `KREM/${project}`,
+                        });
+    
+                        if (!cloudinaryResults.includes(newImg)) {
+                            cloudinaryResults.push(newImg);
                         }
-                    });
-                }
-            };
-
-            return cloudinaryResults;
+                    }
+                    else {
+                        const screenshots = folder.resources.filter((resource: any) => { resource.folder === `KREM/${project}` })
+                        screenshots.forEach((shot: any) => {
+                            if (!cloudinaryResults.includes(shot)) {
+                                cloudinaryResults.push(shot);
+                            }
+                        });
+                    }
+                };
+                return cloudinaryResults;
+            }
         } catch (error) {
             console.log(error);
         }
@@ -124,17 +127,21 @@ const dataMapper = {
             const folder = await cloudinary.search.expression(
                 `folder:"KREM/${projectName}"`,
             ).execute();
+            console.log("getCoverFromCDN remaining", projectName ,folder.rate_limit_remaining);
 
             const coverName = path.parse(cover).name;
             let foundImg = folder.resources.find((resource: any) => resource.filename === coverName);
-
             if (foundImg === undefined) {
                 foundImg = await cloudinary.uploader.upload(`${cover}`, {
                     public_id: `${coverName}`,
                     folder: `KREM/${projectName}`
                 });
             }
-            const response = `${foundImg.public_id}.${foundImg.format}`
+            const response: object = {
+                path: `${foundImg.public_id}.${foundImg.format}`,
+                version: foundImg.version,
+                url: '',
+            }
             return response;
         } catch (error) {
             console.log(error);
@@ -145,7 +152,7 @@ const dataMapper = {
         const folder = await cloudinary.search.expression(
             `folder:"KREM/logos"`,
         ).execute();
-        console.log("remaining",folder.rate_limit_remaining);
+        console.log("getLogosFromCDN remaining", folder.rate_limit_remaining);
         for (let logo of folder.resources) {
             let image = cloudinary.image(`${logo.filename}.${logo.format}`, {
                 transformation: [
@@ -162,7 +169,7 @@ const dataMapper = {
         const folder = await cloudinary.search.expression(
             `folder:"KREM/GIFS"`,
         ).execute();
-        console.log("remaining",folder.rate_limit_remaining);
+        console.log("getGifsFromCDN remaining", folder.rate_limit_remaining);
         return folder.resources;
     },
 }

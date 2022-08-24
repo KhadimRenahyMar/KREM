@@ -1,16 +1,7 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
-import projectController from "./projectController";
 
 const mainController = {
-    homepage: async (req: Request, res: Response) => {
-        // console.log('coucou');
-        // const lastProjects = await projectController.getLastProjects(req, res);
-
-        // console.log(lastProjects);
-        // res.json(lastProjects);
-    },
-
     getUserInfo: async (req: Request, res: Response) => {
         async function getContributions(token: string, username: string) {
             const headers = {
@@ -81,7 +72,6 @@ const mainController = {
     },
     getGifs: async (req: Request, res: Response) => {
         const gifs = await dataMapper.getGifsFromCDN();
-        // console.log(gifs);
         res.json(gifs);
     },
 };
