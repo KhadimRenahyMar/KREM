@@ -33,8 +33,8 @@ export default function PipBoy() {
                 const result = await data.data;
                 for (let project of result) {
                     if (project.coverURL !== undefined) {
-                        const responsiveURL = cld.image(`${project.coverURL}`)
-                            .resize(scale().width(width))
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
+                            // .resize(scale().width(width))
                             .setVersion(project.coverURL.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))

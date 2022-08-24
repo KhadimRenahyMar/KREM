@@ -40,35 +40,41 @@ export default function Landing() {
 
         if (localProjects === null) {
             const projects = JSON.parse(localStorage.getItem('projects'));
-            const fetchedLastProjects = [];
-            const fetchLastProjectsFromAPI = async () => {
-                const data = await axios.get(`${API_URL}/projects/all`);
-                fetchedLastProjects.push(...data.data);
-                for (let project of fetchedLastProjects) {
-                    if (project.coverURL !== undefined) {
-                        let responsiveURL = cld.image(`${project.coverURL.path}`, { loading: "lazy" })
-                            .resize(scale().width(width))
-                            .setVersion(project.coverURL.version)
-                            .delivery(format(auto()))
-                            .delivery(dpr(2.0))
-                            .delivery(quality(autoBest()));
-                        project.coverURL.url = responsiveURL.toURL();
+            
+            if (projects === null) {
+                const fetchedLastProjects = [];
+                const fetchLastProjectsFromAPI = async () => {
+                    const data = await axios.get(`${API_URL}/projects/all`);
+                    fetchedLastProjects.push(...data.data);
+                    for (let project of fetchedLastProjects) {
+                        if (project.coverURL !== undefined) {
+                            let responsiveURL = cld.image(`${project.coverURL.path}`, { loading: "lazy" })
+                                .resize(scale().width(width))
+                                .setVersion(project.coverURL.version)
+                                .delivery(format(auto()))
+                                .delivery(dpr(2.0))
+                                .delivery(quality(autoBest()));
+                            project.coverURL.url = responsiveURL.toURL();
+                        }
+                        else {
+                            project.coverURL = 'undefined';
+                        }
                     }
-                    else {
-                        project.coverURL = 'undefined';
-                    }
+                    const sortedProjects = fetchedLastProjects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
+                    setLastProjects(sortedProjects);
+                    setIsLoading(false);
+                    localStorage.setItem('lastProjects', JSON.stringify(sortedProjects));
+                    localStorage.setItem('projects', JSON.stringify(fetchedLastProjects));
                 }
-                const sortedProjects = fetchedLastProjects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
+                fetchLastProjectsFromAPI();
+            }
+            else {
+                const sortedProjects = projects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
                 setLastProjects(sortedProjects);
                 setIsLoading(false);
                 localStorage.setItem('lastProjects', JSON.stringify(sortedProjects));
-                localStorage.setItem('projects', JSON.stringify(fetchedLastProjects));
+                localStorage.setItem('projects', JSON.stringify(localProjects));
             }
-            fetchLastProjectsFromAPI();
-        }
-        else {
-            setLastProjects(localProjects);
-            setIsLoading(false);
         }
     }, []);
 

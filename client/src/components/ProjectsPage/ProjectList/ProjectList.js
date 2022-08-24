@@ -86,7 +86,7 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
         cards.current.push(card);
         return card;
     };
-    console.log(sortedProjects);
+    // console.log(sortedProjects);
 
     return (
         <div className="projectList">

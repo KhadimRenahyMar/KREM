@@ -57,7 +57,6 @@ export default function Projects({ isMobile }) {
     }, []);
 
     useEffect(() => {
-        console.log(projects);
         const lastProjectsStorage = JSON.parse(localStorage.getItem('lastProjects'));
         if (lastProjectsStorage === null) {
             if (projects.length > 0) {
@@ -88,7 +87,6 @@ export default function Projects({ isMobile }) {
         }
     }, [projects]);
     // console.log(isLoading);
-    console.log(projects)
     
     return (
         <div className="page page__projectsPage projectsPage">
