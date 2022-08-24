@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
 import './SkillScreen.scss';
+import { useEffect, useState } from 'react';
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 export default function SkillScreen({ projectCount, techs, components, designPatterns }) {
     const [technos, setTechnos] = useState([]);
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
     const showMore = (e) => {
         const skillHeader = e.currentTarget;
         const content = skillHeader.parentNode.childNodes[1];
         const layer = skillHeader.childNodes[0].childNodes[0];
-        console.log(layer);
         if (content.classList.contains('hidden')) {
             content.classList.remove('hidden');
             skillHeader.classList.add('active');
@@ -21,8 +23,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
     }
 
     useEffect(() => {
-        // console.log(techs)
-
         const getData = async () => {
             let nodeList = [];
             for (const tech of techs) {
@@ -55,12 +55,15 @@ export default function SkillScreen({ projectCount, techs, components, designPat
             const chartData = {
                 children: await getData(),
             };
-            setTechnos(chartData);
+            if(chartData.children.length > 0){
+                setTechnos(chartData);
+                setDataIsLoaded(true);
+            }
         }
         makeData();
     }, [techs]);
-    // console.log(technos)
-    
+    // console.log(dataIsLoaded);
+
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
@@ -450,14 +453,14 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     </div>
                     <div className="skillScreen__skill-contentBx hidden">
                         {
-                            technos?.children?.length > 0 && (
+                            dataIsLoaded ? ( 
                                 <ul className="skillScreen__techList">
                                     {
                                         technos?.children.map((tech) => (
                                             <li key={tech.name} className="skillScreen__tech">
                                                 <div className="skillScreen__tech-titleBx" onClick={showMore}>
                                                     <div className="skillScreen__tech-title">
-                                                        <div className="skillScreen__tech-layer" style={Object.assign({}, {"width": `${tech.percent}%`}, {backgroundColor: '#FFAA00'})}></div>
+                                                        <div className="skillScreen__tech-layer" style={Object.assign({}, { "width": `${tech.percent}%` }, { backgroundColor: '#FFAA00' })}></div>
                                                         <img src={tech.logo.secure_url} alt="" className="skillScreen__tech-icon" />
                                                         <h2 className="skillScreen__tech-name">{tech.name}</h2>
                                                     </div>
@@ -465,25 +468,25 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                 </div>
                                                 <div className="skillScreen__techBx hidden">
                                                     {
-                                                    tech.children.length > 0 ? (
-                                                    <table className="table" >
-                                                        <thead className="table-head">
-                                                            <tr key={tech.name} className="table-row">
-                                                                <th className="table-legend">Package</th>
-                                                                <th className="table-legend table-legend--value">{tech.children.length} packages</th>
-                                                            </tr>
-                                                        </thead>
-                                                        {
-                                                            tech.children.map((packg) => (
-                                                                <tbody key={packg.name} className="table-body">
-                                                                    <tr className="table-row">
-                                                                        <td className="table-data" colSpan={2}>{packg.name}</td>
+                                                        tech.children.length > 0 ? (
+                                                            <table className="table" >
+                                                                <thead className="table-head">
+                                                                    <tr key={tech.name} className="table-row">
+                                                                        <th className="table-legend">Package</th>
+                                                                        <th className="table-legend table-legend--value">{tech.children.length} packages</th>
                                                                     </tr>
-                                                                </tbody>
-                                                            ))
-                                                        }
-                                                    </table>
-                                                    ) : (
+                                                                </thead>
+                                                                {
+                                                                    tech.children.map((packg) => (
+                                                                        <tbody key={packg.name} className="table-body">
+                                                                            <tr className="table-row">
+                                                                                <td className="table-data" colSpan={2}>{packg.name}</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    ))
+                                                                }
+                                                            </table>
+                                                        ) : (
                                                             <p className="skillScreen__tech-message">Désolé, aucun package n'a été trouvé pour cette technologie. Essayez un autre onglet !</p>
                                                         )
                                                     }
@@ -492,6 +495,12 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                         ))
                                     }
                                 </ul>
+                            ) : (
+                                <div className="utils__loader">
+                                    <Dimmer active>
+                                        <Loader size='massive' className='utils__loader--text'>Loading</Loader>
+                                    </Dimmer>
+                                </div>
                             )
                         }
                     </div>

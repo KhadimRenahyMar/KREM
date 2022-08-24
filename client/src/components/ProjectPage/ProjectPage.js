@@ -7,11 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import NotFound from "../NotFoundPage/NotFoundPage";
 import { API_URL } from "../App/App";
 
-import { cld } from "../App/App";
-import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
-import { scale } from "@cloudinary/url-gen/actions/resize";
-import { auto } from "@cloudinary/url-gen/qualifiers/format";
-import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 export default function Project() {
     const location = useLocation();
@@ -19,87 +15,103 @@ export default function Project() {
 
     const projectName = useParams().slug;
     const [project, setProject] = useState(null);
-    const [projects, setProjects] = useState(null);
+    const [wantedProject, setWantedProject] = useState(null);
     const [projectFound, setProjectFound] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
-    const localProject = JSON.parse(localStorage.getItem('project'));
-    
+
+    const params = useParams();
+    let currentLocalProject = JSON.parse(localStorage.getItem('project'));
+    if (currentLocalProject?.name !== params.slug) {
+        localStorage.removeItem('project');
+    }
+
     useEffect(() => {
-        console.log('projects')
-        console.log('data.project', data?.project)
+        // console.log('data.project', data?.project)
         if (data?.project !== undefined) {
-            setProjectFound(true);
-            setProject(data?.project);
+            setWantedProject(data?.project);
         }
 
-        console.log("local", localProject);
-        if (localProject !== null || localProject !== undefined) {
-            setProjectFound(true);
-            setProject(localProject);
+        let localProject = JSON.parse(localStorage.getItem('project'));
+        // console.log(localProject);
+        if (localProject?.name === params.slug) {
+            setWantedProject(localProject);
         }
 
-
-        if (data?.project === undefined && localProject === null) {
+        if (data?.project === undefined && localProject?.name !== params.slug) {
             let localProjects = JSON.parse(localStorage.getItem('currentProjects'));
             if (localProjects === null) {
-                let currentProjects = [];
                 const fetchProjects = async () => {
-                    console.log("fetch")
                     const fetchProjects = await axios.get(`${API_URL}/projects/all`);
-                    currentProjects.push(fetchProjects.data);
                     localStorage.setItem('currentProjects', JSON.stringify(fetchProjects.data));
-                    setProjects(fetchProjects.data);
+                    const currentProject = fetchProjects.data.find(project => project.name.toLowerCase() === projectName.toLowerCase());
+                    if (currentProject === undefined) {
+                        setProjectFound(false);
+                    }
+                    else {
+                        setWantedProject(currentProject);
+                    }
                 }
                 fetchProjects();
-                console.log(localProjects);
             }
             else {
-                setProjects(localProjects)
+                const currentProject = localProjects.find(project => project.name.toLowerCase() === projectName.toLowerCase());
+
+                if (currentProject === undefined) {
+                    setProjectFound(false);
+                }
+                else {
+                    setWantedProject(currentProject);
+                }
             }
         }
     }, [])
 
     useEffect(() => {
-        if (data?.project !== undefined) {
-            setProjectFound(true);
-            setProject(data?.project);
+        const localProject = JSON.parse(localStorage.getItem('project'));
+        if (localProject?.name !== params.slug && wantedProject !== null) {
+            const getProjectInfo = async () => {
+                const data = await axios.post(`${API_URL}/projects/${wantedProject.name}`, {
+                    body: wantedProject,
+                });
+                setProject(data.data);
+            }
+            getProjectInfo();
         }
-
-        if (localProject !== null || localProject !== undefined) {
-            setProjectFound(true);
+        else {
             setProject(localProject);
         }
+    }, [wantedProject]);
 
-        let localProjects = JSON.parse(localStorage.getItem('currentProjects'));
 
-        console.log("project after fetch projects", localProjects);
-        if (localProjects !== null) {
-            const wantedProject = localProjects.find(project => project.name.toLowerCase() === projectName.toLowerCase());
-            if (wantedProject === undefined) {
-                setProjectFound(false);
-            }
-            if (wantedProject !== undefined) {
-                if (wantedProject.screenshots.length === 0) {
-                    const getProjectInfo = async () => {
-                        const data = await axios.post(`${API_URL}/projects/${wantedProject.name}`, {
-                            body: wantedProject,
-                        });
-                        setProject(data.data);
-                    }
-                    getProjectInfo();
-                }
-            }
+    const showMore = (e) => {
+        const itemBx = e.currentTarget.parentNode;
+        const title = itemBx.childNodes[0];
+        console.log(title);
+        const content = itemBx.childNodes[1];
+        console.log(content);
+        if (content.classList.contains('utils--hidden')) {
+            content.classList.remove('utils--hidden');
+            title.classList.add('utils--active');
         }
-    }, [projects]);
+        else {
+            content.classList.add('utils--hidden');
+            title.classList.remove('utils--active');
+        }
+    }
 
-    console.log(project);
+    console.log("projet at the end", project)
     return (
         <div>
             {
                 projectFound ? (
                     <div className="page page__projectPage projectPage">
                         {
-                            project !== null && (
+                            project === null ? (
+                                <div className="utils__loader utils__loader--wholePage">
+                                    <Dimmer active>
+                                        <Loader size='massive' className='utils__loader--text'>Loading</Loader>
+                                    </Dimmer>
+                                </div>
+                            ) : (
                                 <div className="projectPage__contentBx">
                                     <section className="project__intro" id='#up'>
                                         <div className="project__titleBx">
@@ -112,7 +124,7 @@ export default function Project() {
                                         </div>
                                         <ProjectSlider project={project} className='project__slider' />
                                         <div className="project__descBx">
-                                            <p className="project__desc">{project && project.desc}</p>
+                                            <p className="project__desc">{project && project.desc} <br/> Taille : {project.size}</p>
                                             <a href={project?.url} target="_blank" className="project__playBx">
                                                 <svg className='project__playBx--btn' xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
                                                     <path className="project__playBx--path" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
@@ -123,27 +135,30 @@ export default function Project() {
                                             </a>
                                         </div>
                                         <div className="project__tagBx">
-                                            <h5 className="project__tech-title">Techs</h5>
-                                            <ul className="project__techs">
-                                                {
-                                                    project?.techs.map((tech) => (
-                                                        <li key={tech.name} className="project__tech-item">
-                                                            <ul className="project__tech-list">
-                                                                <li key={tech.name} className="project__tech-list-item">{tech.name}</li>
-                                                                {
-                                                                    tech.packages.map((packg) => (
-                                                                        <li key={packg} className="project__tech-list-item">{packg}</li>
-                                                                    ))
-                                                                }
-                                                            </ul>
-                                                        </li>
-                                                    ))
-                                                }
-                                            </ul>
+                                            
                                             <div className="project__techSkills">
-                                                <div className="project__techSkills-contentBx project__techSkills-contentBx--left">
-                                                    <h4 className="project__techSkills-title">Composants</h4>
-                                                    <ul className="project__techSkills-list">
+                                                <div className="project__techSkills-contentBx project__techSkills-contentBx">
+                                                    <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
+                                                    <ul className="project__techSkills-list utils--hidden" >
+                                                    {
+                                                        project?.techs.map((tech) => (
+                                                            <li key={tech.name} className="project__techSkills-list-item">
+                                                                <ul className="project__techSkills-list">
+                                                                    <li key={tech.name} className="project__techSkills-list__item">{tech.name}</li>
+                                                                    {
+                                                                        tech.packages.map((packg) => (
+                                                                            <li key={packg} className="project__techSkills-list__item">{packg}</li>
+                                                                        ))
+                                                                    }
+                                                                </ul>
+                                                            </li>
+                                                        ))
+                                                    }
+                                                    </ul>
+                                                </div>
+                                                <div className="project__techSkills-contentBx">
+                                                    <h4 className="project__techSkills-title" onClick={showMore}>Composants</h4>
+                                                    <ul className="project__techSkills-list utils--hidden" >
                                                         {
                                                             project?.components.map((component) => (
                                                                 <li key={component.name} className="project__techSkills-list-item">{component}</li>
@@ -151,12 +166,12 @@ export default function Project() {
                                                         }
                                                     </ul>
                                                 </div>
-                                                <div className="project__techSkills-contentBx project__techSkills-contentBx--right">
-                                                    <h4 className="project__techSkills-title">Patrons de conception</h4>
-                                                    <ul className="project__desPatt-list">
+                                                <div className="project__techSkills-contentBx">
+                                                    <h4 className="project__techSkills-title" onClick={showMore}>Patrons de conception</h4>
+                                                    <ul className="project__techSkills-list utils--hidden">
                                                         {
                                                             project?.designPatterns.map((designPattern) => (
-                                                                <li key={designPattern.name} className="project__desPatt-list-item">{designPattern}</li>
+                                                                <li key={designPattern.name} className="project__techSkills-list-item">{designPattern}</li>
                                                             ))
                                                         }
                                                     </ul>
@@ -165,6 +180,7 @@ export default function Project() {
                                         </div>
                                     </section>
                                     <section className="project__story">
+                                        <div className="project__story--layer"></div>
                                         <div className="project__story-contentBx">
                                             {
                                                 project?.text !== null && (

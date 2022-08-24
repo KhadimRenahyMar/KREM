@@ -3,7 +3,10 @@
 @import '@splidejs/react-splide/css';
 
 @function getDeepMapValue($map, $keys...) {
-    @each $key in $keys { $map: map-get($map, $key); }
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
     @return $map;
 }
 
@@ -12,9 +15,11 @@ body {
     margin: 0;
     scroll-behavior: smooth;
     background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
-};
+}
 
-.App{
+;
+
+.App {
     display: flex;
     flex-direction: column;
 }
@@ -25,56 +30,30 @@ body {
     left: 0;
 }
 
-.mobile, .desktop {
+.mobile,
+.desktop {
     position: relative;
     z-index: -1;
     min-width: 100%;
-    min-height: 100vh;
     background-repeat: repeat-y;
-    background-position: center;
+    background-position-x: 50%;
 }
 
 .mobile {
     background-image: getDeepMapValue(vars.$var, bg, mobile);
 }
 
-.desktop{
+.desktop {
     background-image: getDeepMapValue(vars.$var, bg, desktop);
 }
 
-.page{
+.page {
     margin: 10vh auto 0rem;
     display: flex;
     flex-direction: column;
 }
 
-.utils{
-    &--orange{
-        color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-    };
-
-    &--white{
-        color: white
-    }
-
-    &--hidden{
-        display: none !important;
-    }
-    &--upBtn{
-        width: 100%;
-        padding: 1rem 0;
-        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-        text-decoration: none;
-        color: white;
-        font-family: getDeepMapValue(vars.$var, fonts, title);
-        text-align: center;
-    }
-    // &--active{
-        
-    // }
-}
-
-@media screen and (min-width: 600px){
+@media screen and (min-width: 600px) {
     // .page{
     //     width: 50%;
     //     margin: auto;

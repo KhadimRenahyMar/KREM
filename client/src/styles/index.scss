@@ -1,6 +1,14 @@
 @use 'reset';
 @use 'vars';
 
+@function getDeepMapValue($map, $keys...) {
+  @each $key in $keys {
+      $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
 body{
   margin: 0;
   box-sizing: border-box;
@@ -40,4 +48,51 @@ $desktop: url('../assets/bg/BG\ desktop.svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+
+.utils {
+  &--orange {
+      color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+  }
+
+  &--white {
+      color: white
+  }
+
+  &--hidden {
+      display: none !important;
+  }
+
+  &--upBtn {
+      width: 100%;
+      padding: 1rem 0;
+      background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+      text-decoration: none;
+      color: white;
+      font-family: getDeepMapValue(vars.$var, fonts, title);
+      text-align: center;
+  }
+  &--hidden{
+    display: none;
+  }
+
+  &--active{
+    display: block;
+  }
+
+  &__loader {
+      position: relative;
+      min-height: 20rem;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      &--wholePage {
+        height: 90vh;
+      }
+      &--text {
+          font-family: getDeepMapValue(vars.$var, fonts, title) !important;
+          font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+          text-transform: uppercase;
+      }
+  }
 }

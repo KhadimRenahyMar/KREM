@@ -20,7 +20,7 @@ export default function Projects({ isMobile }) {
     const [isLoading, setIsLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
-    
+
     useEffect(() => {
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('projects'));
@@ -32,16 +32,16 @@ export default function Projects({ isMobile }) {
                 fetchedProjects.push(...data.data);
                 for (let project of fetchedProjects) {
                     if (project.coverURL !== undefined) {
-                        const responsiveURL = cld.image(`${project.coverURL}`)
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
                             .resize(scale().width(width))
-                            .setVersion(project.version)
+                            .setVersion(project.coverURL.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))
                             .delivery(quality(autoBest()));
-                        project.coverURL = responsiveURL.toURL();
+                        project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
-                        project.coverURL = 'undefined';
+                        project.coverURL = "undefined";
                     }
                 }
                 setProjects(fetchedProjects);
@@ -57,40 +57,39 @@ export default function Projects({ isMobile }) {
     }, []);
 
     useEffect(() => {
+        console.log(projects);
         const lastProjectsStorage = JSON.parse(localStorage.getItem('lastProjects'));
         if (lastProjectsStorage === null) {
-            const width = splide.current.offsetWidth;
-            setIsLoading(true)
-            const fetchedLastProjects = [];
-            const fetchLastProjectsFromAPI = async () => {
-                const data = await axios.get(`${API_URL}/projects/lasts`);
-                fetchedLastProjects.push(...data.data);
-                for (let project of fetchedLastProjects) {
-                    if (project.coverURL !== undefined) {
-                        const responsiveURL = cld.image(`${project.coverURL}`)
-                        .resize(scale().width(width))
-                        .setVersion(project.version)
-                        .delivery(format(auto()))
-                        .delivery(dpr(2.0))
-                        .delivery(quality(autoBest()));
-                        project.coverURL = responsiveURL.toURL();
+            if (projects.length > 0) {
+                const width = splide.current.offsetWidth;
+                const sortedProjects = projects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
+                console.log("before", sortedProjects);
+                for (let project of sortedProjects) {
+                    if (project.coverURL !== "undefined") {
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
+                            .resize(scale().width(width))
+                            .setVersion(project.version)
+                            .delivery(format(auto()))
+                            .delivery(dpr(2.0))
+                            .delivery(quality(autoBest()));
+                            console.log('prout')
+                        project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
                         project.coverURL = 'undefined';
                     }
                 }
-                setLastProjects(fetchedLastProjects);
-                localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
-                setIsLoading(false);
+                setLastProjects(sortedProjects);
+                localStorage.setItem('lastProjects', JSON.stringify(sortedProjects));
             }
-            fetchLastProjectsFromAPI();
         }
         else {
             setLastProjects(lastProjectsStorage);
-            setIsLoading(false);
         }
     }, [projects]);
-
+    // console.log(isLoading);
+    console.log(projects)
+    
     return (
         <div className="page page__projectsPage projectsPage">
 
@@ -150,9 +149,9 @@ export default function Projects({ isMobile }) {
                                             >
                                                 {
                                                     project.coverURL !== 'undefined' ? (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy={project.coverURL.url} rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
                                                     ) : (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy={project.coverURL.url} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
                                                     )
                                                 }
                                                 <div className="slide__sizeStampBx">

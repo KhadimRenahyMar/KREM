@@ -24,27 +24,27 @@ export default function StatBox(){
         <ul className="stats__list">
                     <li className="stats__card stats__card--one">
                         <h3 className="stats__titles">Projets publics</h3>
-                        <strong className="stats__data">{userInfos?.public_repos}</strong>
+                        <strong className="stats__data">{userInfos ? (userInfos?.public_repos) : ('Loading...')}</strong>
                     </li>
                     <li className="stats__card stats__card--one">
                         <h3 className="stats__titles">Projets privés</h3>
-                        <strong className="stats__data">{userInfos?.reposCount}</strong>
+                        <strong className="stats__data">{userInfos ? (userInfos?.reposCount) : ('Loading...')}</strong>
                     </li>
                     <li className="stats__card stats__card--four">
                         <h3 className="stats__titles">Contributions totales</h3>
-                        <strong className="stats__data"> {userInfos?.commitCount}</strong>
+                        <strong className="stats__data"> {userInfos ? (userInfos?.commitCount) : ('Loading...')}</strong>
                     </li>
                     <li className="stats__card stats__card--three">
                         <h3 className="stats__titles">Commit/semaine</h3>
-                        <strong className="stats__data">{userInfos?.contribPerWeek}</strong>
+                        <strong className="stats__data">{userInfos ? (userInfos?.contribPerWeek) : ('Loading...')}</strong>
                     </li>
                     <li className="stats__card stats__card--two">
                         <h3 className="stats__titles">Dernier commit</h3>
-                        <strong className="stats__data">{userInfos?.lastCommit}</strong>
+                        <strong className="stats__data">{userInfos ? (userInfos?.lastCommit) : ('Loading...')}</strong>
                     </li>
                     <li className="stats__card stats__card--five">
                         <h3 className="stats__titles">Dernier Projet</h3>
-                        <strong className="stats__data">{userInfos?.lastProject}</strong>
+                        <strong className="stats__data">{userInfos ? (userInfos?.lastProject) : ('Loading...')}</strong>
                     </li>
                 </ul>
     )

@@ -2,7 +2,7 @@ import './Contact.scss';
 
 export default function Contact({ isMobile }) {
     return (
-        <aside aside className="contact" >
+        <aside className="contact" >
             <div className="contact__contactBx">
                 <h2 className="contact__title">Contact</h2>
                 {

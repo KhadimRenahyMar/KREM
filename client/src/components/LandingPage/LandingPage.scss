@@ -208,7 +208,6 @@
             color: white;
             position: absolute;
             bottom: 0;
-            opacity: 0;
             transition: all 0.5s ease-in-out;
             display: flex;
             flex-direction: column;
@@ -216,12 +215,6 @@
 
         &__desc {
             padding: 1rem;
-        }
-
-        &:hover {
-            .slide__descBx {
-                opacity: 1;
-            }
         }
 
         &__sizeStampBx {
@@ -233,15 +226,20 @@
             top: 1rem;
             right: 1rem;
             filter: drop-shadow(0 0 0.1rem black);
-
+            width: 2rem;
+            height: 2rem;
+            
             &--path {
                 fill: rgba(0, 0, 0, 0.5);
             }
 
             &--size {
+                display: block;
+                margin: auto;
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 color: white;
                 position: absolute;
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             }
         }
 
@@ -264,9 +262,8 @@
 
 
 
-
     .optionBar {
-        margin-top: 3rem;
+        // margin-top: 3rem;
         display: flex;
         width: 100%;
         position: relative;
@@ -337,7 +334,6 @@
             height: 17rem;
             width: 100%;
             border-top: getDeepMapValue(vars.$var, effects, glass, border) getDeepMapValue(vars.$var, colors, primary, shade);
-            backdrop-filter: blur(2px);
             background-color: rgba(255, 255, 255, 0.5);
         }
     }
@@ -376,11 +372,12 @@
     }
 
     .optionBar {
-        margin-bottom: 5rem;
-
+        // margin-bottom: 5rem;
         &__bar {
+            border-top: 0 !important;
             height: 100% !important;
             top: 0 !important;
+            backdrop-filter: blur(2px);
         }
 
         &__buttons {

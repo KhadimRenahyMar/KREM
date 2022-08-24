@@ -14,12 +14,12 @@ const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'));
 export const API_URL = "http://localhost:5050";
 export const cld = new Cloudinary({
   cloud: {
-      cloudName: 'ddjt1r39a'
+    cloudName: 'ddjt1r39a'
   }
 });
 
 function App() {
-  const [isMobile, setIsMobile ] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     function isMobile() {
@@ -34,7 +34,7 @@ function App() {
     const mobile = isMobile();
     setIsMobile(mobile);
   }, [])
-  
+
   return (
     <div className="App">
       <Header />

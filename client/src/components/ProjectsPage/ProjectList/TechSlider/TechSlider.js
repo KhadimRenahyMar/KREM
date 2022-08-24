@@ -2,7 +2,6 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import './TechSlider.scss';
 
 export default function TechSlider({ techs, sortProjects, isMobile }) {
-    console.log(isMobile)
     return (
         <div className="techSlider">
             {
@@ -78,7 +77,7 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
                                 techs.map((tech) => (
                                     <SplideSlide key={tech.name} className="slide" onClick={(e) => sortProjects(e, tech.name)}>
                                         <svg className='slide__hiveLogo' xmlns="http://www.w3.org/2000/svg" width="217.163" height="250.546" viewBox="0 0 217.163 250.546">
-                                            <path className='slide__hiveLogo--path' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" transform="translate(1.502 1.727)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
+                                            <path className='slide__hiveLogo--path' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
                                         </svg>
                                         <img rel='preload' src={tech.logo.secure_url} alt={`logo ${tech.filename} - cliquer ?`} className="slide__techLogo" />
                                     </SplideSlide>

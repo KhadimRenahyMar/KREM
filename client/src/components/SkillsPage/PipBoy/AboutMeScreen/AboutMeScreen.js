@@ -14,6 +14,7 @@ export default function AboutMeScreen({ width }) {
     const observer = lozad();
     observer.observe();
     const [gifFetched, setGifsFetched] = useState(false);
+    const [gifs, setGifs] = useState([]);
     const gifBx = useRef([]);
 
     const makeRef = (gif) => {
@@ -24,49 +25,61 @@ export default function AboutMeScreen({ width }) {
     };
 
     useEffect(() => {
-        if (gifFetched === false) {
-            if (gifBx.current.length > 0) {
-                const getGifs = async () => {
-                    const data = await axios.get(`${API_URL}/getGifs`);
-                    for (let gif of gifBx.current) {
-                        const percent = parseInt(getComputedStyle(gif).width);
-                        const newWidth = 0;
-                        if (percent === 100) {
-                            newWidth = Math.floor(width - (width * 0.1));
-                        }
-                        else {
-                            newWidth = Math.floor(width * 0.5 - (width * 0.1));
-                        }
-                        const content = data.data.find((resource) => resource.filename === gif.id)
-
-                        if (content.format === "webp") {
-                            const newImg = cld.image(`${content.public_id}.${content.format}`)
-                                .setVersion(content.version)
-                                .resize(scale().width(width))
-                                .delivery(format("webm"))
-                                .delivery(quality(autoBest()));
-                            gif.src = newImg.toURL();
-                            gif.setAttribute('data-src', newImg.toURL());
-                            gif.type = "video/webm";
-                        }
-
-                        if (content.format === "webm") {
-                            const newImg = cld.video(`${content.public_id}.${content.format}`)
-                                .setVersion(content.version)
-                                .resize(scale().width(width))
-                                .delivery(quality(autoBest()));
-                            gif.src = newImg.toURL();
-                            gif.setAttribute('data-src', newImg.toURL());
-                            gif.type = "video/webm";
-                        }
-                        observer.observe(gif);
-                    }
-                    setGifsFetched(true);
-                };
-                getGifs();
-            }
+        const localGifs = JSON.parse(localStorage.getItem('gifs'));
+        if (localGifs === null) {
+            const getGifs = async () => {
+                const data = await axios.get(`${API_URL}/getGifs`);
+                setGifs(data.data);
+                localStorage.setItem('gifs', JSON.stringify(data.data))
+            };
+            getGifs();
+        }
+        else {
+            setGifs(localGifs);
         }
     }, []);
+
+    useEffect(() => {
+        // console.log('about first useEffect, [gifFetched]', gifFetched);
+        const localGifs = JSON.parse(localStorage.getItem('gifs'));
+        // console.log(localGifs);
+        if (localGifs !== null) {
+            if (gifBx.current.length > 0) {
+                for (let gif of gifBx.current) {
+                    const percent = parseInt(getComputedStyle(gif).width);
+                    const newWidth = 0;
+                    if (percent === 100) {
+                        newWidth = Math.floor(width - (width * 0.1));
+                    }
+                    else {
+                        newWidth = Math.floor(width * 0.5 - (width * 0.1));
+                    }
+                    const content = localGifs.find((resource) => resource.filename === gif.id)
+                    if (content.format === "webp") {
+                        const newImg = cld.image(`${content.public_id}.${content.format}`)
+                            .setVersion(content.version)
+                            .resize(scale().width(newWidth))
+                            .delivery(format("webm"))
+                            .delivery(quality(autoBest()));
+                        gif.src = newImg.toURL();
+                        gif.setAttribute('data-src', newImg.toURL());
+                        gif.type = "video/webm";
+                    }
+
+                    if (content.format === "webm") {
+                        const newImg = cld.video(`${content.public_id}.${content.format}`)
+                            .setVersion(content.version)
+                            .resize(scale().width(newWidth))
+                            .delivery(quality(autoBest()));
+                        gif.src = newImg.toURL();
+                        gif.setAttribute('data-src', newImg.toURL());
+                        gif.type = "video/webm";
+                    }
+                    observer.observe(gif);
+                }
+            }
+        }
+    }, [gifs])
 
     const showMore = (e) => {
         const itemBx = e.currentTarget;
