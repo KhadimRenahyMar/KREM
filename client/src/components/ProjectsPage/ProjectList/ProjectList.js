@@ -5,15 +5,19 @@ import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react'
 import { API_URL } from '../../App/App';
-import loadingImg from '../../../assets/bg/loading2.webp';
+// import loadingImg from '../../../assets/bg/loading2.webp';
 import noScreenshot from '../../../assets/bg/noScreenshots2.webp';
+import lozad from 'lozad';
 
-export default function ProjectsList({ projects, isMobile, isLoading }) {
+export default function ProjectsList({ projects, isMobile, techIsLoading, setTechIsLoading }) {
+    const observer = lozad();
+    observer.observe();
+
     const cards = useRef([]);
     const [techs, setTechs] = useState([]);
     const [sortedProjects, setSortedProjects] = useState([]);
     const [search, setSearch] = useState([]);
-    const [techIsLoading, setTechIsLoading] = useState(true);
+    const [sizeSearch, setSizeSearch] = useState([]);
 
     useEffect(() => {
         if (projects.length > 0) {
@@ -38,38 +42,88 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
         }
     }, [projects]);
 
-    const sortProjects = (e, techName) => {
+    const sortProjects = (e, type, data) => {
         const button = e.currentTarget;
         const icon = button.childNodes[0].childNodes[0];
 
         const projectList = [];
-        if (search.includes(techName)) {
-            search.forEach((field) => console.log(field))
-            const currentSearch = search.filter(fields => fields !== techName);
-            setSearch(currentSearch);
-            if (!currentSearch.includes(techName)) {
-                const list = makeProjectList(currentSearch);
+        if (search.includes(data) || sizeSearch.includes(data)) {
+            let currentSearch = search;
+            let currentSizeSearch = sizeSearch;
+
+            if (search.length > 0 && type === 'tech') {
+                currentSearch = search.filter(fields => fields !== data);
+                setSearch(currentSearch);
+                icon.classList.remove('active');
+            }
+
+            if (sizeSearch.length > 0 && type === 'size') {
+                currentSizeSearch = sizeSearch.filter(fields => fields !== data);
+                setSizeSearch(currentSizeSearch);
+                button.classList.remove('active');
+            }
+
+            if (!currentSearch.includes(data) || !currentSizeSearch.includes(data)) {
+                const list = makeProjectList(currentSearch, currentSizeSearch);
                 projectList.push(...list);
             }
-            icon.classList.remove('active');
         }
         else {
-            search.push(techName);
-            const list = makeProjectList(search);
+            if (type === "tech") {
+                search.push(data);
+                icon.classList.add('active');
+            }
+            else {
+                sizeSearch.push(data)
+                button.classList.add('active');
+            }
+            const list = makeProjectList(search, sizeSearch);
             projectList.push(...list);
-            icon.classList.add('active');
         }
         setSortedProjects(projectList);
     };
 
-    function makeProjectList(currentSearch) {
-        if (currentSearch.length > 0) {
+    function makeProjectList(search, sizeSearch) {
+        if (search.length > 0 || sizeSearch.length > 0) {
+
             const projectList = [];
             for (const project of projects) {
-                for (const tech of project.techs) {
-                    const match = currentSearch.every(searchField => {
-                        return tech.name === searchField;
+
+                if (search.length > 0 && sizeSearch.length === 0) {
+                    const techList = [];
+                    for (let tech of project.techs) {
+                        if (!techList.includes(tech.name)) {
+                            techList.push(tech.name);
+                        }
+                    }
+                    const match = search.every((searchField) => techList.includes(searchField))
+
+                    if (match === true && !projectList.includes(project)) {
+                        projectList.push(project);
+                    }
+                }
+                else if (sizeSearch.length > 0 && search.length === 0) {
+                    const match = sizeSearch.some(searchField => {
+                        return project.size === searchField;
                     });
+                    if (match === true) {
+                        projectList.push(project);
+                    }
+                }
+                else if (sizeSearch.length > 0 && search.length > 0) {
+                    const test = () => {
+                        const size = sizeSearch.some(searchField => project.size === searchField);
+
+                        const test = search.every((searchField) => project.techs.some((tech) => tech.name === searchField))
+
+                        if (test === true && size === true) {
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                    const match = test();
                     if (match === true) {
                         projectList.push(project);
                     }
@@ -84,16 +138,15 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
 
     const getRef = (card) => {
         cards.current.push(card);
+        observer.observe(card);
         return card;
     };
-    // console.log(sortedProjects);
 
     return (
         <div className="projectList">
             {
-                isLoading && techIsLoading ? (
+                techIsLoading ? (
                     <div className="utils__loader">
-                        {/* //utils */}
                         <Dimmer active>
                             <Loader size='massive' className='utils__loader--text'>Loading</Loader>
                         </Dimmer>
@@ -103,15 +156,14 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
                         <h3 className="projectList__title">Tous mes projets</h3>
                         <TechSlider techs={techs} sortProjects={sortProjects} isMobile={isMobile} />
                         <ul className="projectList__legend">
-                            {/* //sortBySize ? */}
-                            <li className="projectList__sizes">XS : composant</li>
-                            <li className="projectList__sizes">S : feature</li>
-                            <li className="projectList__sizes">M : petit projet</li>
-                            <li className="projectList__sizes">L : projet -2 sprints</li>
-                            <li className="projectList__sizes">XL : projet +2 sprints</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}>XS : composant</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}>S : feature</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "M")}>M : petit projet</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "L")}>L : projet -2 sprints</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XL")}>XL : projet +2 sprints</li>
                         </ul>
                         <div className="projectList__contentBx">
-                            <div className="projectList__layer"></div>
+                            <div className="projectList__layer utils--layer"></div>
                             <span className='projectList__resultCount'>
                                 {sortedProjects.length} projet(s) trouvé(s) !</span>
                             <ul className="projectList__list">
@@ -126,7 +178,7 @@ export default function ProjectsList({ projects, isMobile, isLoading }) {
                                                 <div className="projectList__project-imgBx">
                                                     {
                                                         project.coverURL !== 'undefined' ? (
-                                                            <img rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover' alt={`couverture du projet ${project.name}`} width={cards.current.offsetWidth} />
+                                                            <img rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={cards.current.offsetWidth} />
                                                         ) : (
                                                             <img src={noScreenshot} className='slide__cover' alt={`le project ${project.name} n'a pas d'aperçu`} width={cards.current.offsetWidth} />
                                                         )

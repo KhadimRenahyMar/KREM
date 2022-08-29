@@ -97,8 +97,8 @@ export default function Project() {
             title.classList.remove('utils--active');
         }
     }
+    // console.log("projet at the end", project)
 
-    console.log("projet at the end", project)
     return (
         <div>
             {

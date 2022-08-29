@@ -52,6 +52,10 @@ $desktop: url('../assets/bg/BG\ desktop.svg');
 
 
 .utils {
+  &--layer{
+    width: 100%;
+  }
+
   &--orange {
       color: getDeepMapValue(vars.$var, colors, tertiary, primary);
   }
@@ -73,8 +77,10 @@ $desktop: url('../assets/bg/BG\ desktop.svg');
       font-family: getDeepMapValue(vars.$var, fonts, title);
       text-align: center;
   }
+
   &--hidden{
-    display: none;
+    visibility: hidden;
+    // display: none;
   }
 
   &--active{

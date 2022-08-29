@@ -16,7 +16,6 @@ export default function ProjectSlider({ project }) {
             const makeScreenshots = () => {
                 const screenshots = [];
                 project.screenshots.forEach(shot => {
-                    console.log(shot);
                     const newImg = cld.image(`${shot.public_id}`)
                         .format("webp")
                         .quality('auto')
@@ -32,7 +31,6 @@ export default function ProjectSlider({ project }) {
             localStorage.setItem("project", JSON.stringify(project))
         }
         else {
-            console.log(project.coverURL)
             if (project.coverURL !== undefined) {
                 const newImg = cld.image(`${project.coverURL.path}`)
                     .format("webp")
@@ -48,7 +46,6 @@ export default function ProjectSlider({ project }) {
         }
     }, [project]);
 
-    console.log(project?.coverURL);
     return (
         <div ref={slider} className="projectSlider">
             <Splide hasTrack={false}

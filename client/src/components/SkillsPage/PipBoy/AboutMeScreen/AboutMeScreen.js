@@ -13,7 +13,7 @@ import lozad from 'lozad';
 export default function AboutMeScreen({ width }) {
     const observer = lozad();
     observer.observe();
-    const [gifFetched, setGifsFetched] = useState(false);
+    
     const [gifs, setGifs] = useState([]);
     const gifBx = useRef([]);
 
@@ -40,9 +40,7 @@ export default function AboutMeScreen({ width }) {
     }, []);
 
     useEffect(() => {
-        // console.log('about first useEffect, [gifFetched]', gifFetched);
         const localGifs = JSON.parse(localStorage.getItem('gifs'));
-        // console.log(localGifs);
         if (localGifs !== null) {
             if (gifBx.current.length > 0) {
                 for (let gif of gifBx.current) {

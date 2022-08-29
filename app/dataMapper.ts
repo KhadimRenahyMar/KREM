@@ -9,10 +9,11 @@ type project = {
     name: string,
     // [key: string]: any;
 }
-type file = {
-    name: string,
-    path: string
-}
+
+// type file = {
+//     name: string,
+//     path: string
+// }
 
 const dataMapper = {
     async getRepos() {
@@ -52,7 +53,6 @@ const dataMapper = {
     async getScreenshots(project: string) {
         try {
             const url = `${api_content_url}/${project}/contents/portfolio/screenshots`;
-            // console.log(url);
             const data = await fetch(url, {
                 method: 'GET',
                 headers: {

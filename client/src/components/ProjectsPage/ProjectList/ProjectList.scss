@@ -36,6 +36,8 @@
     }
 
     &__contentBx {
+        width: 100%;
+        min-height: 10rem;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -65,9 +67,13 @@
         text-align: center;
     }
 
+    .active{
+        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+    }
+
     &__resultCount {
         margin: 1rem 1.2rem 0;
-        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         color: white;
     }
@@ -83,7 +89,6 @@
         z-index: -1;
         top: 0;
         left: 0;
-        width: 100%;
         min-height: 100%;
         background-color: rgba(255, 255, 255, 0.5);
     }

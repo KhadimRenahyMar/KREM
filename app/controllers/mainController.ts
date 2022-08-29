@@ -70,6 +70,7 @@ const mainController = {
         }
         res.json(obj);
     },
+    
     getGifs: async (req: Request, res: Response) => {
         const gifs = await dataMapper.getGifsFromCDN();
         res.json(gifs);

@@ -19,9 +19,6 @@ import lozad from 'lozad';
 export default function Landing() {
     const observer = lozad();
     observer.observe();
-    const splide = useRef(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [lastProjects, setLastProjects] = useState([]);
     const refBx = useRef([])
     const makeRef = (e) => {
         if (!refBx.current.includes(e)) {
@@ -30,6 +27,10 @@ export default function Landing() {
             return e;
         }
     }
+    
+    const splide = useRef(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [lastProjects, setLastProjects] = useState([]);
     const scroll = () => {
         window.scrollTo(0, splide.current.offsetTop - 100);
     };
@@ -37,7 +38,7 @@ export default function Landing() {
     useEffect(() => {
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('lastProjects'));
-
+        
         if (localProjects === null) {
             const projects = JSON.parse(localStorage.getItem('projects'));
             
@@ -75,6 +76,11 @@ export default function Landing() {
                 localStorage.setItem('lastProjects', JSON.stringify(sortedProjects));
                 localStorage.setItem('projects', JSON.stringify(localProjects));
             }
+
+        }
+        else {
+            setLastProjects(localProjects);
+            setIsLoading(false);
         }
     }, []);
 
@@ -82,7 +88,7 @@ export default function Landing() {
         <div className='page page__landingPage landingPage'>
 
             <section className="landingPage__intro">
-                <div className="landingPage__layer"></div>
+                <div className="landingPage__layer utils--layer"></div>
                 <div className="landingPage__contentBx">
                     <div className='landingPage__textBx'>
                         <h2 className='landingPage__name'>

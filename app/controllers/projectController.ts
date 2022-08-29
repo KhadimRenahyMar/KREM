@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
-// import session from 'express-session';
 
 
 declare module "express-session" {
@@ -94,21 +93,6 @@ const projectController = {
             project.text = text;
         }
         res.json(project);
-    },
-
-    getLastProjects: async (req: Request, res: Response) => {
-        // console.log(req.session.lastProjects);
-        if (req.session.lastProjects === undefined) {
-            req.session.lastProjects = [];
-            req.session.projects = await getAllProjects();
-            const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-            req.session.lastProjects.push(...sortedProjects);
-        }
-        else {
-            const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-            req.session.lastProjects.push(...sortedProjects);
-        }
-        res.json(req.session.lastProjects);
     },
 };
 
