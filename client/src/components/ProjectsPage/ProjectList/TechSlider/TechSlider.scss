@@ -44,7 +44,6 @@
                 filter: drop-shadow(0 0 0.5rem black);
                 stroke-width: 0.8rem;
                 fill: rgba(0,0,0,0.5);
-                
             }
             .active{
                 fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
@@ -53,7 +52,7 @@
         
         &__techLogo{
             position: absolute;
-            width: 2rem;
+            width: 30%;
             margin: 0 auto;
             border: 0;
             border-radius: 0.2rem;

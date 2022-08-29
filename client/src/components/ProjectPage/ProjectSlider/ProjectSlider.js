@@ -1,35 +1,49 @@
 import './ProjectSlider.scss';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-// import noScreenshot from '../../../ressources/bg/noScreenshots2.webp';
-import { Cloudinary } from "@cloudinary/url-gen";
 import { useEffect, useRef, useState } from 'react';
 import { scale } from '@cloudinary/url-gen/actions/resize';
+import { cld } from '../../App/App';
+
+import noScreenshot from '../../../assets/bg/noScreenshots2.webp';
 
 export default function ProjectSlider({ project }) {
     const slider = useRef(null);
     const [screenshots, setScreenshots] = useState([]);
-
-    const cld = new Cloudinary({
-        cloud: {
-            cloudName: `ddjt1r39a`,
-        }
-    });
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const makeScreenshots = () => {
-            console.log('screenshots', project.screenshots);
-            const screenshots = [];
-            project.screenshots.forEach(shot => {
-                const newImg = cld.image(`KREM/${project.name}/${shot.filename}`)
+        if (project?.screenshots.length > 0) {
+            const makeScreenshots = () => {
+                const screenshots = [];
+                project.screenshots.forEach(shot => {
+                    const newImg = cld.image(`${shot.public_id}`)
+                        .format("webp")
+                        .quality('auto')
+                        .resize(scale().width(slider.current.offsetWidth))
+                        .setVersion(shot.version);
+                    const imgURL = newImg.toURL();
+                    screenshots.push(imgURL);
+                });
+                setScreenshots(screenshots);
+                setIsLoading(false);
+            }
+            makeScreenshots();
+            localStorage.setItem("project", JSON.stringify(project))
+        }
+        else {
+            if (project.coverURL !== undefined) {
+                const newImg = cld.image(`${project.coverURL.path}`)
                     .format("webp")
                     .quality('auto')
                     .resize(scale().width(slider.current.offsetWidth))
-                    .setVersion(shot.version);
-                screenshots.push(newImg);
-            });
-            setScreenshots(screenshots);
+                    .setVersion(project.coverURL.version);
+                project.coverURL= newImg.toURL();
+                setIsLoading(false);
+            }
+            else {
+                project.coverURL = 'undefined';
+            }
         }
-        makeScreenshots();
     }, [project]);
 
     return (
@@ -45,6 +59,7 @@ export default function ProjectSlider({ project }) {
                     margin: '0 auto',
                     autoplay: true,
                     pauseOnHover: false,
+                    lazyLoad: true,
                     perPage: 1,
                     drag: true,
                 }}
@@ -71,32 +86,24 @@ export default function ProjectSlider({ project }) {
                     {
                         screenshots.length > 0 ? (
                             screenshots.map((screenshot) => (
-                                <SplideSlide key={screenshot.publicId} className="slide">
-                                    <img src={screenshot.toURL()} alt="" className="slide__cover" />
-                                    <div className="slide__sizeStampBx">
-                                        <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
-                                            <path className="slide__sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                        </svg>
-                                    </div>
+                                <SplideSlide key={screenshot} className="slide">
+                                    <img rel='preload' fetchpriority="high" src={screenshot} alt="" className="slide__cover" />
                                 </SplideSlide>
                             ))
                         ) : (
-                            <SplideSlide className="slide">
+                            <div>
                                 {
-                                    project.coverURL !== 'undefined' ? (
-                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover' alt={`couverture du projet ${project.name}`} width={slider.current.offsetWidth} />
+                                    isLoading === false && project?.coverURL.path !== 'undefined' ? (
+                                        <SplideSlide className="slide">
+                                            <img data-splide-lazy={project?.coverURL.path} rel="preload" fetchpriority="high" src={project?.coverURL} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
+                                        </SplideSlide>
                                     ) : (
-                                        <img data-splide-lazy={project.coverURL} rel="preload" src='/noScreenshots2.webp' className='slide__cover' alt={`couverture du projet ${project.name}`} width={slider.current.offsetWidth} />
+                                        <SplideSlide className="slide">
+                                            <img rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
+                                        </SplideSlide>
                                     )
                                 }
-                                <div className="slide__sizeStampBx">
-                                    <span className="slide__sizeStampBx--size" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300">{project.size}</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
-                                        <path className="slide__sizeStampBx--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                    </svg>
-                                </div>
-                            </SplideSlide>
+                            </div>
                         )
                     }
                 </SplideTrack>

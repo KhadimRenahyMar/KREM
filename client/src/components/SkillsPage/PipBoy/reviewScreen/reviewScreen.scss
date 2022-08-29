@@ -33,7 +33,8 @@
             line-height: 2rem;
 
             &--downright {
-                text-align: end;
+                display: flex;
+                justify-content: flex-end;
             }
         }
 

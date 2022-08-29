@@ -6,7 +6,7 @@ export default function NotFound() {
     return (
         <div className="page page__NotFoundPage NotFoundPage">
             <div className="NotFoundPage__message">
-                <div className="NotFoundPage__layer" ></div>
+                <div className="NotFoundPage__layer utils--layer" ></div>
                 <h2 className="NotFoundPage__404">404</h2>
                 <em className="NotFoundPage__notFound NotFoundPage__notFound--full">Pas trouvé</em>
                 <em className="NotFoundPage__notFound NotFoundPage__notFound--lighter">Pas trouvé</em>

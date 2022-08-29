@@ -5,17 +5,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
-const port = 3000;
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'css/[name].css'
     }),
     // Stats bundle
     new BundleStatsWebpackPlugin(),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      as(entry) {
+        if (/\.css$/.test(entry)) return 'style';
+        if (/\.woff$/.test(entry)) return 'font';
+        if (/\.js$/.test(entry)) return 'script';
+        return 'script';
+      },
+    }),
   ],
   module: {
     rules: [
@@ -75,22 +84,5 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-  devServer: {
-    client: {
-      overlay: true,
-      logging: 'warn',
-    },
-    devMiddleware: {
-      stats: 'minimal',
-
-    },
-    static: {
-      directory: paths.build,
-    },
-    historyApiFallback: true,
-    open: false,
-    compress: true,
-    hot: true,
-    port,
-  },
+  // watch: true,
 });

@@ -10,11 +10,11 @@
     position: absolute;
     top: 0rem;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-
+    
     &__layer{
+        min-height: 100vh;
         position: absolute;
         background-color: getDeepMapValue(vars.$var, colors, secondary, primary );
     }

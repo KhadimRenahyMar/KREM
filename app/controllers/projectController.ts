@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
-// import session from 'express-session';
 
 
 declare module "express-session" {
@@ -18,7 +17,7 @@ export type project = {
     desc: string,
     url: string,
     repoURL: string,
-    coverURL?: string,
+    coverURL?: object,
     size: string,
     techs: Object[],
     screenshots: Object[],
@@ -54,6 +53,7 @@ async function formatProject(fetchedProject: project) {
         repoURL: fetchedProject.html_url,
         coverURL: cover,
         size: data.size,
+        descTechs: data.mainTechs,
         techs: data.techs,
         screenshots: [],
         packages: data.packages,
@@ -65,16 +65,6 @@ async function formatProject(fetchedProject: project) {
     };
     return project;
 };
-
-async function getProjectScreenshots(projectName: string) {
-    const data = await dataMapper.getScreenshots(projectName);
-    return data;
-}
-
-async function getProjectText(projectName: string) {
-    const data = await dataMapper.getText(projectName);
-    return data;
-}
 
 const projectController = {
     getAllProjects: async (req: Request, res: Response) => {
@@ -88,38 +78,21 @@ const projectController = {
             fetchCount = 0;
         }
 
-        // console.log('projects', req.session.projects.length);
+        // console.log('projects', req.session.projects);
         res.json(req.session.projects);
     },
 
     getProject: async (req: Request, res: Response) => {
         const project: project = req.body.body;
-        const screenshots = await getProjectScreenshots(project.name);
+        const screenshots = await dataMapper.getScreenshots(project.name);
         if (screenshots) {
             project.screenshots.push(...screenshots);
         }
-        const text = await getProjectText(project.name);
+        const text = await dataMapper.getText(project.name);
         if (text) {
             project.text = text;
         }
         res.json(project);
-    },
-
-    getLastProjects: async (req: Request, res: Response) => {
-        if (req.session.lastProjects === undefined) {
-            req.session.lastProjects = [];
-            if (!req.session.projects) {
-                req.session.projects = await getAllProjects();
-                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-                req.session.lastProjects.push(...sortedProjects);
-            }
-            else {
-                const sortedProjects = req.session.projects.sort((a, b) => Number(b.createdAt.getTime()) - Number(a.createdAt.getTime())).slice(0, 5);
-                req.session.lastProjects.push(...sortedProjects);
-            }
-        }
-        // console.log(req.session.lastProjects);
-        res.json(req.session.lastProjects);
     },
 };
 

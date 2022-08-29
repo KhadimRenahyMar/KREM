@@ -9,7 +9,6 @@
 }
 
 .projectPage {
-    // width: 100%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -21,6 +20,8 @@
 }
 
 .project {
+    box-shadow: 0px 0px 0.2rem black;
+    
     &__intro {
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
 
@@ -31,7 +32,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        // background-color: getDeepMapValue(vars.$var, colors, primary, primary );
         background-color: rgba(0, 0, 0, 0.5);
     }
 
@@ -67,12 +67,14 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-between
+        justify-content: space-between;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
     }
 
     &__desc {
         padding: 0.8rem;
         font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+
     }
 
     &__playBx {
@@ -81,9 +83,10 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        height: 4rem;
 
         &--btn {
-            width: 2rem;
+            width: 2.5rem;
         }
 
         &--icon {
@@ -104,81 +107,130 @@
 
     &__tagBx {
         background-color: rgba(0, 0, 0, 0.7);
-        // backdrop-filter: blur(2px);
-    }
-
-    &__techs {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 0.5rem;
-    }
-
-    &__tech {
-        display: flex;
-
-        &-item {
-            display: flex;
-        }
-
-        &-list {
-            display: flex;
-
-            &-item {
-                font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
-                margin: 0.5rem 0.2rem;
-                padding: 0.3rem;
-                border-radius: 0.3rem;
-                background-color: rgba(255, 255, 255, 0.5);
-            }
-        }
     }
 
     &__techSkills {
         display: flex;
-        padding: 1rem;
+        flex-wrap: wrap;
+        
+        .utils--active{
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
 
         &-title {
-            margin-bottom: 1rem;
+            padding: 0.7rem;
             text-align: center;
+            text-transform: uppercase;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: getDeepMapValue(vars.$var, colors, secondary, primary );
+            box-shadow: 0px 0px 0.2rem black;
         }
 
         &-contentBx {
             display: flex;
             flex-direction: column;
-            width: 50%;
-            &--left{
-                
-            }
-            &--right{
-                
-            }
+            width: 100%;
         }
 
-        &-list{
-            &-item{
-                margin: 0.5rem 0;
+        &-list {
+            list-style: inside;
+            // background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: getDeepMapValue(vars.$var, fonts, text);
+            font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+            align-items: center;
+
+            &-item {
+                margin: 0.5rem 0;  
+                // padding: 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &__item{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
             }
         }
     }
 
-    
+
     &__story {
+        position: relative;
+        width: 100%;
         margin: 0 auto;
         font-family: getDeepMapValue(vars.$var, fonts, text);
-
         background-color: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        
+
+        &--layer{
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(1.5px);
+        }
+
         &-contentBx {
             padding: 1rem;
-            h2 {
+
+            h2,
+            h3,
+            h4,
+            h5,
+            p {
                 padding: 1rem 0;
+            }
+            
+            h2 {
+                font-family: getDeepMapValue(vars.$var, fonts, title);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+                border-bottom: 1px solid white;
+                display: flex;
+                justify-content: center;
+                padding: 3rem 0 1rem;
+                text-transform: uppercase;
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
 
+            h3 {
+                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h3);
+                text-decoration: underline;
+            }
+
+            h4 {
+                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h4);
+            }
+
+            h5 {
+                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+            }
+            
             p {
+                font-family: getDeepMapValue(vars.$var, fonts, text);
                 font-size: getDeepMapValue(vars.$var, font-sizes, text);
                 line-height: 1.2rem;
+                hyphens: auto;
+                max-width: 50ch;
+                margin: 0 auto;
+            }
+
+            a{
+                text-decoration: none;
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
             }
         }
     }

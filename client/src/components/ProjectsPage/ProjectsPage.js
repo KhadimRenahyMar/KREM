@@ -15,35 +15,48 @@ import { scale } from "@cloudinary/url-gen/actions/resize";
 import { auto } from "@cloudinary/url-gen/qualifiers/format";
 import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
 
+import lozad from 'lozad';
+
 export default function Projects({ isMobile }) {
+    const observer = lozad();
+    observer.observe();
+    const imgBx = useRef([]);
+
+    const makeRef = (img) => {
+        if (!imgBx.current.includes(img) && img !== null) {
+            imgBx.current.push(img);
+            observer.observe(img);
+            return img;
+        }
+    };
+
     const splide = useRef(null);
     const [isLoading, setIsLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const [lastProjects, setLastProjects] = useState([]);
+    const [techIsLoading, setTechIsLoading] = useState(true);
 
-    console.log('projectPage start');
     useEffect(() => {
-        console.log('first useEffect');
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('projects'));
 
         if (localProjects === null) {
-            console.log("fetch all projects")
             const fetchedProjects = [];
             const fetchprojectsFromAPI = async () => {
                 const data = await axios.get(`${API_URL}/projects/all`);
                 fetchedProjects.push(...data.data);
                 for (let project of fetchedProjects) {
                     if (project.coverURL !== undefined) {
-                        const responsiveURL = cld.image(`${project.coverURL}`)
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
                             .resize(scale().width(width))
+                            .setVersion(project.coverURL.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))
                             .delivery(quality(autoBest()));
-                        project.coverURL = responsiveURL.toURL();
+                        project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
-                        project.coverURL = 'undefined';
+                        project.coverURL = "undefined";
                     }
                 }
                 setProjects(fetchedProjects);
@@ -53,7 +66,6 @@ export default function Projects({ isMobile }) {
             fetchprojectsFromAPI();
         }
         else {
-            console.log('get projects from storage')
             setProjects(localProjects);
             setIsLoading(false);
         }
@@ -62,39 +74,32 @@ export default function Projects({ isMobile }) {
     useEffect(() => {
         const lastProjectsStorage = JSON.parse(localStorage.getItem('lastProjects'));
         if (lastProjectsStorage === null) {
-            const width = splide.current.offsetWidth;
-            setIsLoading(true)
-            const fetchedLastProjects = [];
-            const fetchLastProjectsFromAPI = async () => {
-                const data = await axios.get(`${API_URL}/projects/lasts`);
-                fetchedLastProjects.push(...data.data);
-                for (let project of fetchedLastProjects) {
-                    if (project.coverURL !== undefined) {
-                        const responsiveURL = cld.image(`${project.coverURL}`)
+            if (projects.length > 0) {
+                const width = splide.current.offsetWidth;
+                const sortedProjects = projects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
+                for (let project of sortedProjects) {
+                    if (project.coverURL !== "undefined") {
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
                             .resize(scale().width(width))
+                            .setVersion(project.version)
                             .delivery(format(auto()))
                             .delivery(dpr(2.0))
                             .delivery(quality(autoBest()));
-                        project.coverURL = responsiveURL.toURL();
+                        project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
                         project.coverURL = 'undefined';
                     }
                 }
-                setLastProjects(fetchedLastProjects);
-                localStorage.setItem('lastProjects', JSON.stringify(fetchedLastProjects));
-                setIsLoading(false);
+                setLastProjects(sortedProjects);
+                localStorage.setItem('lastProjects', JSON.stringify(sortedProjects));
             }
-            fetchLastProjectsFromAPI();
         }
         else {
             setLastProjects(lastProjectsStorage);
-            setIsLoading(false);
         }
     }, [projects]);
-
-    console.log('render projectPage');
-
+    
     return (
         <div className="page page__projectsPage projectsPage">
 
@@ -154,9 +159,9 @@ export default function Projects({ isMobile }) {
                                             >
                                                 {
                                                     project.coverURL !== 'undefined' ? (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" fetchpriority="high" src={project.coverURL} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy={project.coverURL.url} rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} ref={makeRef} width={splide.current.offsetWidth} />
                                                     ) : (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy={project.coverURL.url} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
                                                     )
                                                 }
                                                 <div className="slide__sizeStampBx">
@@ -169,10 +174,10 @@ export default function Projects({ isMobile }) {
                                                         </g>
                                                     </svg>
                                                 </div>
+                                                <div className="slide__layer utils--layer"></div>
                                                 <div className="slide__descBx">
                                                     <h2 className="slide__title">{project.name}</h2>
                                                 </div>
-                                                <div className="slide__layer"></div>
                                             </Link>
                                         </SplideSlide>
                                     ))
@@ -184,7 +189,7 @@ export default function Projects({ isMobile }) {
 
             </section>
             <section className="projects__projectBx">
-                <ProjectList projects={projects} isMobile={isMobile} isLoading={isLoading} />
+                <ProjectList projects={projects} isMobile={isMobile} setTechIsLoading={setTechIsLoading} techIsLoading={techIsLoading} />
             </section>
         </div>
     );

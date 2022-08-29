@@ -1,5 +1,5 @@
 import './PipBoy.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import loadable from '@loadable/component';
 import { API_URL } from '../../App/App';
@@ -8,29 +8,49 @@ const ExpScreen = loadable(() => import('./ExpScreen/ExpScreen'));
 const AboutMeScreen = loadable(() => import('./AboutMeScreen/AboutMeScreen'));
 const ReviewScreen = loadable(() => import('./reviewScreen/reviewScreen'));
 
+import { cld } from '../../App/App';
+import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
+import { scale } from "@cloudinary/url-gen/actions/resize";
+import { auto } from "@cloudinary/url-gen/qualifiers/format";
+import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
 
 export default function PipBoy() {
-
     const [projects, setProjects] = useState([]);
     const [techs, setTechs] = useState([]);
     const [components, setComponents] = useState([]);
     const [designPatterns, setDesignPatterns] = useState([]);
-    let fetchCount = 0;
-    useEffect(() => {
-        let localProjects = JSON.parse(localStorage.getItem('projects'));
+    const screen = useRef(null);
+    const [width, setWidth] = useState(0);
 
+    useEffect(() => {
+        const parentWidth = screen.current.parentElement.clientWidth;
+        setWidth(parentWidth);
+        const localProjects = JSON.parse(localStorage.getItem('projects'));
         if (localProjects === null) {
-            if(fetchCount === 0){
-                let fetchProjects = async () => {
-                    fetchCount = 1;
-                    const data = await axios.get(`${API_URL}/projects/all`);
-                    const result = await data.data;
-                    setProjects(result);
-                    localStorage.setItem('projects', JSON.stringify(data.data));
-                    fetchCount = 0;
+            const projectList = [];
+            let fetchProjects = async () => {
+                const data = await axios.get(`${API_URL}/projects/all`);
+                const result = await data.data;
+                for (let project of result) {
+                    if (project.coverURL !== undefined) {
+                        const responsiveURL = cld.image(`${project.coverURL.path}`)
+                            // .resize(scale().width(width))
+                            .setVersion(project.coverURL.version)
+                            .delivery(format(auto()))
+                            .delivery(dpr(2.0))
+                            .delivery(quality(autoBest()));
+                        project.coverURL.url = responsiveURL.toURL();
+                    }
+                    else {
+                        project.coverURL = 'undefined';
+                    }
                 }
-                localProjects = fetchProjects();
+                projectList.push(result);
+                setProjects(result);
+                localStorage.setItem('projects', JSON.stringify(result));
             }
+            fetchProjects();
+            console.log(projectList)
         }
         else {
             setProjects(localProjects);
@@ -38,28 +58,27 @@ export default function PipBoy() {
     }, []);
 
     useEffect(() => {
-        if (techs.length === 0) {
-            if (projects.length > 0) {
-                if(fetchCount === 0) {
-                    const fetchedTechs = [];
+        if(projects !== null && projects.length > 0){
+            const localTechs = JSON.parse(localStorage.getItem('techs'));
+            if (localTechs === null) {
+                if (projects?.length > 0) {
                     const fetchTechPackage = async () => {
-                        fetchCount = 1;
                         const data = await axios.post(`${API_URL}/techs`, {
                             data: projects,
                         });
-                        console.log(data.data);
                         const result = await data.data;
-                        fetchedTechs.push(...result);
+                        localStorage.setItem('techs', JSON.stringify(result));
                         setTechs(result);
-                        fetchCount = 0;
                     };
-                    fetchTechPackage();                    
+                    fetchTechPackage();
                 }
-
             }
+            else {
+                setTechs(localTechs);
+            }
+
             const componentList = [];
             const designPatternsList = [];
-
             for (const project of projects) {
                 for (const component of project.components) {
                     if (!componentList.includes(component)) {
@@ -94,10 +113,11 @@ export default function PipBoy() {
             }
             if (screen.id === id) {
                 screen.classList.add('visible');
+                screen.width = screen.clientWidth;
             }
         });
     };
-
+    
     return (
         <div className="pipBoy">
             <div className="pipboy__btns pipboy__btns--up">
@@ -110,15 +130,15 @@ export default function PipBoy() {
                 </div>
 
                 <div className="pipboy__screen" id="experience">
-                    <ExpScreen projects={projects}/>
+                    <ExpScreen projects={projects} />
                 </div>
 
                 <div className="pipboy__screen" id="reviews">
                     <ReviewScreen />
                 </div>
 
-                <div className="pipboy__screen" id="aboutMe">
-                    <AboutMeScreen />
+                <div className="pipboy__screen" id="aboutMe" ref={screen}>
+                    <AboutMeScreen width={width} />
                 </div>
                 {/* // TODO scroll bar */}
             </div>

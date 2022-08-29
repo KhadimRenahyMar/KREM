@@ -10,7 +10,7 @@ export default function NavModal() {
 
     return (
         <nav className='nav navModal utils--hidden'>
-            <div className="navModal__layer mobile"></div>
+            <div className="navModal__layer utils--layer mobile"></div>
             <ul className="navModal__linkList">
                 <NavLink
                     to='/' className='navModal__link' onClick={close}>

@@ -2,8 +2,6 @@ import './Header.scss';
 import Navigation from './Navigation/Navigation';
 import NavModal from './NavModal/navModal';
 
-// import hive from '../../assets/bg/';
-
 export default function Header() {
     const isMobile = () => {
         window.mobileCheck = function () {
@@ -17,7 +15,6 @@ export default function Header() {
 
     const toggle = (e) => {
         const modal = e.currentTarget.parentElement.parentElement.childNodes[1];
-        // console.log(e.currentTarget.parentElement.parentElement.childNodes);
         if (modal.classList.contains('utils--hidden')) {
             modal.classList.remove('utils--hidden');
             document.body.style.overflowY = 'hidden';
@@ -49,7 +46,9 @@ export default function Header() {
                     </svg>
                 </div>
                 <div className='header__navIcon' onClick={toggle}>
-                    <svg className='header__icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" /></svg>
+                    <svg className='header__icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
+                    </svg>
                 </div>
             </div>
             <NavModal />
@@ -60,20 +59,20 @@ export default function Header() {
                 <div className="header__nav">
                     <div className="header__logo">
                         <svg className='header__logo-icon' xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="85.54" height="96.676" viewBox="0 0 85.54 96.676" alt="Logo du site portfolio KREM">
-                        <defs>
-                            <filter id="Tracé_417" x="0" y="0" width="85.54" height="96.676" filterUnits="userSpaceOnUse">
-                                <feOffset input="SourceAlpha" />
-                                <feGaussianBlur stdDeviation="2" result="blur" />
-                                <feFlood />
-                                <feComposite operator="in" in2="blur" />
-                                <feComposite in="SourceGraphic" />
-                            </filter>
-                        </defs>
-                        <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_417)">
-                            <text x='18' y='58' fontSize='1.5rem' fill='white'>KREM</text>
-                            <path className='header__logo-icon--path' id="Tracé_417-2" data-name="Tracé 417" d="M69.48,20.837l.056,39.453L35.325,80.065,1.058,60.388,1,20.936,35.211,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="5" />
-                        </g>
-                    </svg>
+                            <defs>
+                                <filter id="Tracé_417" x="0" y="0" width="85.54" height="96.676" filterUnits="userSpaceOnUse">
+                                    <feOffset input="SourceAlpha" />
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
+                                    <feFlood />
+                                    <feComposite operator="in" in2="blur" />
+                                    <feComposite in="SourceGraphic" />
+                                </filter>
+                            </defs>
+                            <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_417)">
+                                <text x='18' y='58' fontSize='1.5rem' fill='white'>KREM</text>
+                                <path className='header__logo-icon--path' id="Tracé_417-2" data-name="Tracé 417" d="M69.48,20.837l.056,39.453L35.325,80.065,1.058,60.388,1,20.936,35.211,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="5" />
+                            </g>
+                        </svg>
                     </div>
                     <Navigation />
                 </div>

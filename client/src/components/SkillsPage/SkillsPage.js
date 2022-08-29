@@ -1,6 +1,7 @@
 import './SkillsPage.scss';
 import PipBoy from './PipBoy/PipBoy';
 import StatBox from './StatBox/StatBox';
+import pic from '../../assets/photos/22052022-9-2.webp';
 
 export default function Skills() {
     return (
@@ -13,7 +14,7 @@ export default function Skills() {
                         <em className="intro__moto">"Ad Astra, per aspera</em>
                     </div>
                 </div>
-                <div className="intro__picture"></div>
+                <div className="intro__picture" style={{backgroundImage: `url(${pic})`}}></div>
             </section>
             <section className="stats">
                 <StatBox />
