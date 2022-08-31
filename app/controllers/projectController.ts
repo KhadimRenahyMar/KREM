@@ -1,17 +1,6 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
 
-
-// declare module "express-session" {
-//     interface Session {
-//         test: string,
-//         projects: project[],
-//         lastProjects: project[],
-//         project: project,
-//         techs: object[]
-//     }
-// }
-
 export type project = {
     name: string,
     desc: string,

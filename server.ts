@@ -5,7 +5,7 @@ import router from './app/routes/router';
 import bodyParser from 'body-parser';
 import { v2 as cloudinary } from 'cloudinary';
 const cors = require('cors');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 const compression = require('compression');
 import process from "process";
 
@@ -17,14 +17,14 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.set('trust proxy', 1);
 
-server.use(cookieSession({
-    name: 'session',
-    keys: [
-        'Guess it',
-    ],
-    maxAge: 31536000,
-    secure: true,
-}));
+// server.use(cookieSession({
+//     name: 'session',
+//     keys: [
+//         'Guess it',
+//     ],
+//     maxAge: 31536000,
+//     secure: true,
+// }));
 
 const PORT = process.env.PORT || 3000;
 
