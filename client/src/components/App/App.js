@@ -10,8 +10,8 @@ const Projects = loadable(() => import('../ProjectsPage/ProjectsPage'));
 const Project = loadable(() => import('../ProjectPage/ProjectPage'));
 const Skills = loadable(() => import('../SkillsPage/SkillsPage'));
 const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'));
+export let API_URL = process.env.NODE_ENV === "production" ? "https://krem-portfolio.herokuapp.com" : "http://localhost:5050";
 
-export const API_URL = "http://localhost:5050";
 export const cld = new Cloudinary({
   cloud: {
     cloudName: 'ddjt1r39a'
@@ -73,7 +73,7 @@ function App() {
             element={<NotFound />}
           />
         </Routes>
-      <Footer isMobile={isMobile} />
+        <Footer isMobile={isMobile} />
       </main>
     </div>
   );
