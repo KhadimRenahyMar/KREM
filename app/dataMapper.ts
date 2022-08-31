@@ -26,6 +26,7 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
+            console.log('resut from Github', result);
             return result;
         } catch (error) {
             console.log(error);
