@@ -11,12 +11,6 @@
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.7",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "babel-loader": "^8.2.3",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -27,6 +21,12 @@
     "sass": "^1.49.9"
   },
   "dependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
     "webpack": "^5.70.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
