@@ -18,10 +18,11 @@ type project = {
 const dataMapper = {
     async getRepos() {
         try {
+            console.log("auth", authToken);
             const data = await fetch(api_url, {
                 method: 'GET',
                 headers: {
-                    Authorization: `Bearer ${authToken}`,
+                    Authorization: `token ${authToken}`,
                     'Accept': 'application/vnd.github.v3.raw',
                 }
             });

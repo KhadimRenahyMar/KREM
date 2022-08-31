@@ -23,7 +23,6 @@ let fetchCount = 0;
 
 async function getAllProjects() {
     const fetchedProjects: project[] = await dataMapper.getRepos();
-    console.log("fetchedProjects",fetchedProjects);
     const formattedProjects: project[] = [];
     for (let project of fetchedProjects) {
         project = await formatProject(project);
