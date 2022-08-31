@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
-import projectController from "./projectController";
 import { project } from "./projectController";
 
 const techController = {
     getAllTechs: async (req: Request, res: Response) => {
-        req.session.techs = [];
+        let finalTechList = [];
         const projects: project[] = req.body.data;
 
         if (projects.length > 0) {
@@ -38,10 +37,10 @@ const techController = {
                     techList.push(obj);
                 }
             })
-            req.session.techs.push(...techList);
+            finalTechList.push(...techList);
         }
         
-        res.json(req.session.techs);
+        res.json(finalTechList);
     },
 };
 

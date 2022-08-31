@@ -2,15 +2,15 @@ import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
 
 
-declare module "express-session" {
-    interface Session {
-        test: string,
-        projects: project[],
-        lastProjects: project[],
-        project: project,
-        techs: object[]
-    }
-}
+// declare module "express-session" {
+//     interface Session {
+//         test: string,
+//         projects: project[],
+//         lastProjects: project[],
+//         project: project,
+//         techs: object[]
+//     }
+// }
 
 export type project = {
     name: string,
@@ -69,17 +69,17 @@ async function formatProject(fetchedProject: project) {
 const projectController = {
     getAllProjects: async (req: Request, res: Response) => {
         console.log("START");
-        req.session.projects = [];
+        let projectList: project[] = [];
 
         if (fetchCount === 0) {
             fetchCount += 1;
             const projects: project[] = await getAllProjects();
-            req.session.projects = projects;
+            projectList = projects;
             fetchCount = 0;
         }
 
-        // console.log('projects', req.session.projects);
-        res.json(req.session.projects);
+        // console.log('projects', projectList);
+        res.json(projectList);
     },
 
     getProject: async (req: Request, res: Response) => {
