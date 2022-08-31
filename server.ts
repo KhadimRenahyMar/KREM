@@ -4,11 +4,10 @@ import express from 'express';
 import router from './app/routes/router';
 import bodyParser from 'body-parser';
 import { v2 as cloudinary } from 'cloudinary';
-// import cors from 'cors';
 const cors = require('cors');
-import cookieSession from 'cookie-session';
+const cookieSession = require('cookie-session');
+const compression = require('compression');
 import process from "process";
-import compression from 'compression';
 
 import { Request, Response } from "express";
 
