@@ -1,0 +1,83 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.head {
+    top: 0;
+}
+
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 11;
+    font-family: getDeepMapValue(vars.$var, fonts, title);
+
+    &__navBx {
+        z-index: 1;
+        min-height: 4rem;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+        box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.5);
+    }
+
+    &__nav {
+        width: 50%;
+        height: 100%;
+        margin: 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__icon {
+        width: 1.3rem;
+        padding: 1rem;
+        color: #f5f5f5;
+        margin: 0.5rem;
+        fill: #f5f5f5;
+        filter: drop-shadow(0 0 0.2rem black);
+
+        &:hover {
+            fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+    }
+
+    &__logo {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 0.8rem;
+        filter: drop-shadow(0 0 0.1rem black);
+        cursor: pointer;
+
+        &-icon{
+            width: 3.5rem;
+            height: 3.5rem;
+            &--text{
+                fill: #f5f5f5;
+            }
+        }
+
+        &:hover{
+            .header__logo-icon--text{
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+            }
+
+            path{
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+    }
+}

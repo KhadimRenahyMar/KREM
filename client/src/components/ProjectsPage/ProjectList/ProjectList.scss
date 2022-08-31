@@ -1,0 +1,203 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+.projectList {
+    box-shadow: 0px 0px 0.5rem black;
+    position: relative;
+
+    &__contentBx {
+        &--loading {
+            position: relative;
+            height: 20rem;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        &--text {
+            font-family: getDeepMapValue(vars.$var, fonts, title) !important;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+            text-transform: uppercase;
+        }
+    }
+
+    &__title {
+        padding: 1rem;
+        background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+
+        color: #f5f5f5;
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+    }
+
+    &__contentBx {
+        width: 100%;
+        min-height: 10rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    &__legend {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.1rem 0;
+        font-family: getDeepMapValue(vars.$var, fonts, text);
+        font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+        color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        list-style: none;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &__sizes {
+        margin: 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 0px 0.1rem black;
+        border-radius: 0.5rem;
+        text-align: center;
+    }
+
+    .active {
+        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+    }
+
+    &__resultCount {
+        margin: 1rem 1.2rem 0;
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        color: #f5f5f5;
+    }
+
+    &__list {
+        padding: 1rem;
+        // overflow-y: scroll;
+        height: auto;
+    }
+
+    &__layer {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        min-height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &__project {
+        position: relative;
+        margin: 1rem 0;
+        overflow: hidden;
+        border-radius: 1rem;
+        box-shadow: 0px 0px 0.2rem black;
+
+        &-link {
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-imgBx {
+            display: flex;
+            height: 70%;
+        }
+
+        &-cover {
+            width: 100%;
+            height: 100%;
+        }
+
+        &-sizeStampBx {
+            z-index: 10;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 1rem;
+            right: 1rem;
+            filter: drop-shadow(0 0 0.1rem black);
+            width: 2.5rem;
+
+            &--path {
+                fill: rgba(0, 0, 0, 0.5);
+            }
+
+            &--size {
+                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+                color: #f5f5f5;
+                position: absolute;
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            }
+        }
+
+        &-textBx {
+            height: 1.2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1rem;
+            font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+            color: #f5f5f5;
+        }
+
+        &--tech {
+            margin: 0rem 0 0 0.2rem;
+            background-color: getDeepMapValue(vars.$var, colors, primary, primary);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        &:hover {
+            .projectList__project-sizeStampBx--size {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+
+            .projectList__project-sizeStampBx--path {
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+
+            .projectList__project-textBx {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .projectList {
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &__layer {
+            backdrop-filter: blur(0.1rem);
+        }
+
+        &__project {
+            width: 30%;
+
+            &--tech {
+                font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+            }
+
+            &:hover {
+                transform: scale(1.05);
+                transition: 0.3s ease-in-out;
+            }
+        }
+    }
+}

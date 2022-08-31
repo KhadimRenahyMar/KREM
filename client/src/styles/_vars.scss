@@ -1,0 +1,86 @@
+$oswald: 'Oswald', sans-serif;
+$inconsolata : 'Inconsolata', monospace;
+$roboto: 'Roboto Slab', serif;
+$mobile: url('/src/assets/bg/bg\ mobile.svg');
+$desktop: url('/src/assets/bg/BG\ desktop.svg');
+
+$var: (
+    bg: (
+        mobile: $mobile,
+        desktop: $desktop, 
+    ),
+    fonts : (
+        title: $oswald,
+        subtitle: $inconsolata,
+        text: $roboto
+    ),
+
+    font-weight : (
+        light: 300,
+        normal: 400,
+        mid: 500,
+        bold: 700,
+    ),
+    
+    font-sizes: (
+        huge: 10rem,
+        title:(
+            h1: 2.25rem, //36px
+            h2: 2rem, //32 px
+            h3: 1.875rem, //30px
+            h4: 1.75rem, //28px
+            h5: 1.5rem, //24px
+            h6: 1.125rem, //18 px
+        ), 
+        text: 1rem,
+        little: 0.875rem,
+        tiny: 0.75rem
+    ),
+
+    colors : (
+        primary : (
+            primary: #202020,
+            lighter: #3D3D3D,
+            mid: #525252,
+            shade: #666,
+            very-light: #8F8F8F
+        ),
+
+        secondary : (
+            primary: #04192E,
+            lighter: #08335E,
+            mid: #0B4783,
+            mid-light: #0F5CA9,
+            shade: #1270CE,
+            shade-light: #1E85EB,
+            very-light: #4399EF
+        ),
+
+        tertiary : (
+            primary: #FFAA00,
+            lighter: #FFBB33,
+            mid: #FFC95C,
+            shade: #FFD685,
+            very-light: #FFE4AD
+        )
+    ),
+
+    shadows: (
+        text: (
+            title: 0px 0px 0.1rem,
+        ),
+
+    //     very-close: ,
+    //     close:,
+    //     normal:,
+    //     far:,
+    //     very-far: ,
+    ),
+    
+    effects: (
+        glass:(
+            bd-filter: blur(5rem) brightness(2),
+            border: 0.2rem solid,
+        )
+    ),
+);
