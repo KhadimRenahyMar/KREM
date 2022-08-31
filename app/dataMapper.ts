@@ -18,7 +18,6 @@ type project = {
 const dataMapper = {
     async getRepos() {
         try {
-            console.log(process.env);
             console.log(process.env.GITHUB_TOKEN);
             console.log("auth", authToken);
             const data = await fetch(api_url, {
