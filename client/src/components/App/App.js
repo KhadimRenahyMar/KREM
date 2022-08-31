@@ -73,8 +73,8 @@ function App() {
             element={<NotFound />}
           />
         </Routes>
-      </main>
       <Footer isMobile={isMobile} />
+      </main>
     </div>
   );
 }

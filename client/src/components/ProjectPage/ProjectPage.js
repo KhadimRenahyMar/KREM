@@ -25,13 +25,11 @@ export default function Project() {
     }
 
     useEffect(() => {
-        // console.log('data.project', data?.project)
         if (data?.project !== undefined) {
             setWantedProject(data?.project);
         }
 
         let localProject = JSON.parse(localStorage.getItem('project'));
-        // console.log(localProject);
         if (localProject?.name === params.slug) {
             setWantedProject(localProject);
         }
@@ -124,36 +122,42 @@ export default function Project() {
                                         </div>
                                         <ProjectSlider project={project} className='project__slider' />
                                         <div className="project__descBx">
-                                            <p className="project__desc">{project && project.desc} <br/> Taille : {project.size}</p>
-                                            <a href={project?.url} target="_blank" className="project__playBx">
-                                                <svg className='project__playBx--btn' xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
-                                                    <path className="project__playBx--path" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
-                                                </svg>
-                                                <svg className='project__playBx--icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                                    <path className="project__playBx--icon" d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z" />
-                                                </svg>
-                                            </a>
+                                            <p className="project__desc">{project && project.desc} <br /> Taille : {project.size}</p>
+                                            {
+                                                project.url ? (
+                                                    <a href={project?.url} target="_blank" className="project__playBx">
+                                                        <svg className='project__playBx--btn' xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
+                                                            <path className="project__playBx--path" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
+                                                        </svg>
+                                                        <svg className='project__playBx--icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                            <path className="project__playBx--icon" d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z" />
+                                                        </svg>
+                                                    </a>
+                                                ) : (
+                                                    <p className="project__playBx--message">Ce projet n'est pas encore déployé !</p>
+                                                )
+                                            }
                                         </div>
                                         <div className="project__tagBx">
-                                            
+
                                             <div className="project__techSkills">
                                                 <div className="project__techSkills-contentBx project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
                                                     <ul className="project__techSkills-list utils--hidden" >
-                                                    {
-                                                        project?.techs.map((tech) => (
-                                                            <li key={tech.name} className="project__techSkills-list-item">
-                                                                <ul className="project__techSkills-list">
-                                                                    <li key={tech.name} className="project__techSkills-list__item">{tech.name}</li>
-                                                                    {
-                                                                        tech.packages.map((packg) => (
-                                                                            <li key={packg} className="project__techSkills-list__item">{packg}</li>
-                                                                        ))
-                                                                    }
-                                                                </ul>
-                                                            </li>
-                                                        ))
-                                                    }
+                                                        {
+                                                            project?.techs.map((tech) => (
+                                                                <li key={tech.name} className="project__techSkills-list-item">
+                                                                    <ul className="project__techSkills-list">
+                                                                        <li key={tech.name} className="project__techSkills-list__item">{tech.name}</li>
+                                                                        {
+                                                                            tech.packages.map((packg) => (
+                                                                                <li key={packg} className="project__techSkills-list__item">{packg}</li>
+                                                                            ))
+                                                                        }
+                                                                    </ul>
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                                 <div className="project__techSkills-contentBx">

@@ -30,7 +30,7 @@
         padding: 1rem;
         background-color: getDeepMapValue(vars.$var, colors, primary, primary);
 
-        color: white;
+        color: #f5f5f5;
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
     }
@@ -67,7 +67,7 @@
         text-align: center;
     }
 
-    .active{
+    .active {
         background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
     }
 
@@ -75,7 +75,7 @@
         margin: 1rem 1.2rem 0;
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-        color: white;
+        color: #f5f5f5;
     }
 
     &__list {
@@ -134,7 +134,7 @@
 
             &--size {
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-                color: white;
+                color: #f5f5f5;
                 position: absolute;
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             }
@@ -148,7 +148,7 @@
             justify-content: space-between;
             padding: 1.5rem 1rem;
             font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-            color: white;
+            color: #f5f5f5;
         }
 
         &--tech {
@@ -189,8 +189,14 @@
 
         &__project {
             width: 30%;
+
             &--tech {
                 font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+            }
+
+            &:hover {
+                transform: scale(1.05);
+                transition: 0.3s ease-in-out;
             }
         }
     }

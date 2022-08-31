@@ -17,8 +17,6 @@ body {
     background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
 }
 
-;
-
 .App {
     display: flex;
     flex-direction: column;
@@ -54,8 +52,9 @@ body {
 }
 
 @media screen and (min-width: 600px) {
-    // .page{
-    //     width: 50%;
-    //     margin: auto;
-    // }
+    .page {
+        // width: 50%;
+        // margin: auto;
+        filter: drop-shadow(0px 0px 0.1rem black); // ???
+    }
 }

@@ -11,7 +11,7 @@
 .xpScreen {
     font-family: getDeepMapValue(vars.$var, fonts, text);
     margin: 1rem 0;
-    
+
     &__legend {
         display: flex;
         justify-content: space-evenly;
@@ -29,6 +29,7 @@
 
             &--formation {
                 background-color: rgba(255, 255, 255, 0.5);
+                color: getDeepMapValue(vars.$var, colors, secondary, primary);
             }
         }
     }
@@ -44,6 +45,7 @@
         padding: 1rem;
         border-radius: 1rem;
         box-shadow: 0px 0px 0.2rem black;
+        border: 1px solid rgba(0, 0, 0, 0.3);
 
         &-date {
             color: getDeepMapValue(vars.$var, colors, primary, shade);
@@ -67,7 +69,7 @@
         &-skillItem {
             font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
             margin: 0.2rem;
-            padding: 0.8rem;
+            padding: 0.7rem 0.8rem;
             border-radius: 0.5rem;
 
             &--xp {
@@ -85,21 +87,26 @@
 
         &--formation {
             background-color: rgba(255, 255, 255, 0.5);
+
+            .xpScreen__card-textBx {
+                color: getDeepMapValue(vars.$var, colors, secondary, primary);
+            }
         }
 
-        &:hover{
-            .xpScreen__card-date{
-                &--formation{
-                    color: getDeepMapValue(vars.$var, colors, secondary, primary );
+        &:hover {
+            .xpScreen__card-date {
+                &--formation {
+                    color: getDeepMapValue(vars.$var, colors, secondary, primary);
                 }
-                &--xp{
-                    color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+
+                &--xp {
+                    color: getDeepMapValue(vars.$var, colors, tertiary, primary);
                 }
             }
-            
-            .xpScreen__card-skillItem{
+
+            .xpScreen__card-skillItem {
                 color: getDeepMapValue(vars.$var, colors, secondary, primary);
-                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
     }

@@ -10,19 +10,18 @@
 
 .aboutMeScreen {
     width: 100%;
-    margin: 0 0 1rem;
+    // margin: 0 0 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     font-family: getDeepMapValue(vars.$var, fonts, text);
+    overflow-x: hidden;
 
     &__contentBx {
-        // width: 40%; // desktop
+        // width: 95%;
         width: 100%;
-        padding: 1rem;
+        padding: 1rem 0 0;
         margin: 0 0 2rem;
-        // background-color: rgba(0, 0, 0, 0.5);
-        // background-color: rgba(255, 255, 255, 0.5);
         border-radius: 1rem;
     }
 
@@ -45,49 +44,56 @@
         background-color: rgba(0, 0, 0, 0.5);
         padding: 1rem;
         border-radius: 0.5rem;
-        border: 1px solid black;
-        box-shadow: 0px 0px 0.2rem black;
-        &list{
+        border: 0.1px solid black;
+        filter: drop-shadow(0px 0px 0.1rem black);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
+        &list {
             display: flex;
         }
+
         &-title {
             font-family: getDeepMapValue(vars.$var, fonts, subtitle);
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
             text-align: center;
         }
 
-        &-textBx{
+        &-textBx {
             margin: 1rem 0 0;
         }
-        
-        &-text{
+
+        &-text {
+            padding-top: 1rem;
+            text-align: center;
             hyphens: auto;
             line-height: 1.2rem;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
         }
 
-        &-gifBx{
+        &-gifBx {
             margin: 0 auto;
             position: relative;
             display: flex;
             justify-content: center;
         }
-        
-        &-gif{
+
+        &-gif {
             width: 100%;
             height: 100%;
             border-radius: 1rem;
             overflow: hidden;
             margin: 0 0 0.5rem;
         }
-        
-        &:hover{
+
+        &:hover {
             background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
     }
 }
 
 @media screen and (min-width:600px) {
-    .aboutMeScreen__card-gif{
+    .aboutMeScreen__card-gif {
         width: 50%;
     }
 }

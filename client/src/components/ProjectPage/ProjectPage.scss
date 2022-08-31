@@ -9,7 +9,7 @@
 }
 
 .projectPage {
-    color: white;
+    color: #f5f5f5;
     display: flex;
     flex-direction: column;
 
@@ -85,6 +85,10 @@
         cursor: pointer;
         height: 4rem;
 
+        &--message{
+            padding: 0 1rem;
+        }
+
         &--btn {
             width: 2.5rem;
         }
@@ -94,7 +98,7 @@
             width: 1rem !important;
             height: 1rem !important;
             position: absolute;
-            fill: white;
+            fill: #f5f5f5;
         }
 
         &:hover {
@@ -183,6 +187,7 @@
 
         &-contentBx {
             padding: 1rem;
+            letter-spacing:0.2px;
 
             h2,
             h3,
@@ -190,6 +195,8 @@
             h5,
             p {
                 padding: 1rem 0;
+                text-align: justify;
+                hyphens: auto;
             }
             
             h2 {
@@ -224,7 +231,7 @@
                 font-size: getDeepMapValue(vars.$var, font-sizes, text);
                 line-height: 1.2rem;
                 hyphens: auto;
-                max-width: 50ch;
+                max-width: 70ch;
                 margin: 0 auto;
             }
 

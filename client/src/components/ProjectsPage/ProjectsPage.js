@@ -189,7 +189,7 @@ export default function Projects({ isMobile }) {
 
             </section>
             <section className="projects__projectBx">
-                <ProjectList projects={projects} isMobile={isMobile} setTechIsLoading={setTechIsLoading} techIsLoading={techIsLoading} />
+                <ProjectList projects={projects} isMobile={isMobile} setTechIsLoading={setTechIsLoading} techIsLoading={techIsLoading} isLoading={isLoading} />
             </section>
         </div>
     );

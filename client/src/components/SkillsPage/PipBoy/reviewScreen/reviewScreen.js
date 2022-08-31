@@ -13,7 +13,7 @@ export default function ChartScreen() {
                         <br /><br />
                         <strong className="reviewScreen__review-subtitle">Evolution technique: </strong>
                         <br /><br />
-                        Les notions essentielles sont acquises tant au niveau du front que du back. C’est désormais la pratique et la rencontre de défis algorithmiques qui te tireront vers le haut. ""C’est en forgeant que l’on devient forgeron"". Multiplie les petits projets, ou poursuit tes apprentissages sur de plus gros, en parallèle tes recherches d’emploi. "Null" doute que tu continueras de progresser !
+                        Les notions essentielles sont acquises tant au niveau du front que du back. C’est désormais la pratique et la rencontre de défis algorithmiques qui te tireront vers le haut. "C’est en forgeant que l’on devient forgeron". Multiplie les petits projets, ou poursuit tes apprentissages sur de plus gros, en parallèle tes recherches d’emploi. "Null" doute que tu continueras de progresser !
                         <br /><br />
                         Par ailleurs, tu as été une personne pour laquelle j’ai eu en tant que référent de la promo, toute confiance pour m’appuyer. J’avais une confiance absolue en toi pour faire vivre le groupe d’apothéose, être moteur et fédérateur. Ta technicité d’une part, et ta bienveillance d’autre part, auront été tes meilleurs atouts toute la formation durant, et en particulier à la fin.
                         <br /><br />

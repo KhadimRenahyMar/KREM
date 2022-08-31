@@ -13,6 +13,7 @@ import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 import { auto } from "@cloudinary/url-gen/qualifiers/format";
 import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default function PipBoy() {
     const [projects, setProjects] = useState([]);
@@ -58,7 +59,7 @@ export default function PipBoy() {
     }, []);
 
     useEffect(() => {
-        if(projects !== null && projects.length > 0){
+        if (projects !== null && projects.length > 0) {
             const localTechs = JSON.parse(localStorage.getItem('techs'));
             if (localTechs === null) {
                 if (projects?.length > 0) {
@@ -117,7 +118,7 @@ export default function PipBoy() {
             }
         });
     };
-    
+
     return (
         <div className="pipBoy">
             <div className="pipboy__btns pipboy__btns--up">
@@ -126,19 +127,49 @@ export default function PipBoy() {
             </div>
             <div className="pipboy__screens">
                 <div className="pipboy__screen visible" id="skills">
-                    <SkillScreen projectCount={projects.length} techs={techs} components={components} designPatterns={designPatterns} />
+                    <Scrollbars className='utils__scrollbar'
+                        autoHide
+                        autoHideTimeout={2000}
+                        autoHideDuration={1000}
+                        hideTracksWhenNotNeeded
+                        renderTrackVertical={props => <div {...props} className="utils__scrollbar--track-vertical" />}
+                        renderThumbVertical={props => <div {...props} className="utils__scrollbar--thumb-vertical" />}
+                        renderView={props => <div {...props} className="utils__scrollbar--view" />}>
+                        <SkillScreen projectCount={projects.length} techs={techs} components={components} designPatterns={designPatterns} />
+                    </Scrollbars>
                 </div>
 
                 <div className="pipboy__screen" id="experience">
-                    <ExpScreen projects={projects} />
+                    <Scrollbars className='utils__scrollbar'
+                        autoHide
+                        hideTracksWhenNotNeeded
+                        renderTrackVertical={props => <div {...props} className="utils__scrollbar--track-vertical" />}
+                        renderThumbVertical={props => <div {...props} className="utils__scrollbar--thumb-vertical" />}
+                        renderView={props => <div {...props} className="utils__scrollbar--view" />}>
+                        <ExpScreen projects={projects} />
+                    </Scrollbars>
                 </div>
 
                 <div className="pipboy__screen" id="reviews">
-                    <ReviewScreen />
+                    <Scrollbars className='utils__scrollbar'
+                        autoHide
+                        hideTracksWhenNotNeeded
+                        renderTrackVertical={props => <div {...props} className="utils__scrollbar--track-vertical" />}
+                        renderThumbVertical={props => <div {...props} className="utils__scrollbar--thumb-vertical" />}
+                        renderView={props => <div {...props} className="utils__scrollbar--view" />}>
+                        <ReviewScreen />
+                    </Scrollbars>
                 </div>
 
                 <div className="pipboy__screen" id="aboutMe" ref={screen}>
-                    <AboutMeScreen width={width} />
+                    <Scrollbars className='utils__scrollbar'
+                        autoHide
+                        hideTracksWhenNotNeeded
+                        renderTrackVertical={props => <div {...props} className="utils__scrollbar--track-vertical" />}
+                        renderThumbVertical={props => <div {...props} className="utils__scrollbar--thumb-vertical" />}
+                        renderView={props => <div {...props} className="utils__scrollbar--view" />}>
+                        <AboutMeScreen width={width} />
+                    </Scrollbars>
                 </div>
                 {/* // TODO scroll bar */}
             </div>
