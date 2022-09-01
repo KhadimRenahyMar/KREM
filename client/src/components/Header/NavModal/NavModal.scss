@@ -12,6 +12,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     
     &__layer{
         min-height: 100vh;
@@ -21,7 +22,7 @@
 
     &__linkList{
         z-index: 1;
-        min-height: 90vh;
+        min-height: 90%;
         margin-top: 10vh;
     }
     
