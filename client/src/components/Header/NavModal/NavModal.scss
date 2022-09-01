@@ -21,13 +21,13 @@
 
     &__linkList{
         z-index: 1;
-        min-height: 100vh;
+        min-height: 90vh;
         margin-top: 10vh;
     }
     
     &__link{
         width: 100%;
-        height: 30%;
+        min-height: 33.3333%;
         display: flex;
         flex-direction: column;
         justify-content: center;
