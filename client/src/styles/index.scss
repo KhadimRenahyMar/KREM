@@ -9,13 +9,18 @@
   @return $map;
 }
 html, body{
-  // height: 100%;
-  // z-index: -1;
+  height: 100%
 }
 
 body {
+  position: relative;
+  z-index: -1;
   margin: 0;
   box-sizing: border-box;
+}
+
+#root{
+  z-index: 1;
 }
 
 .App {
