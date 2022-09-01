@@ -8,9 +8,9 @@ export type project = {
     repoURL: string,
     coverURL?: object,
     size: string,
+    descTechs: string[],
     techs: Object[],
     screenshots: Object[],
-    packages: Object[],
     components: string[],
     designPatterns: string[],
     text: string,
@@ -45,7 +45,6 @@ async function formatProject(fetchedProject: project) {
         descTechs: data.mainTechs,
         techs: data.techs,
         screenshots: [],
-        packages: data.packages,
         components: data.components,
         designPatterns: data.designPatterns,
         text: `Désolé ce projet n'a pas encore de récit détaillé, revenez plus tard !`,
@@ -66,7 +65,6 @@ const projectController = {
             projectList = projects;
             fetchCount = 0;
         }
-
         // console.log('projects', projectList);
         res.json(projectList);
     },

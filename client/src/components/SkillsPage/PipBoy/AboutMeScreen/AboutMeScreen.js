@@ -9,6 +9,7 @@ import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 import { autoBest } from '@cloudinary/url-gen/qualifiers/quality';
 import { useState } from 'react';
 import lozad from 'lozad';
+import Proptypes from 'prop-types';
 
 export default function AboutMeScreen({ width }) {
     const observer = lozad();
@@ -309,4 +310,8 @@ export default function AboutMeScreen({ width }) {
             </ul>
         </div>
     )
+}
+
+AboutMeScreen.propTypes = {
+    width: Proptypes.number.isRequired,
 }

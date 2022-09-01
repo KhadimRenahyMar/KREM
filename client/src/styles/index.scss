@@ -106,6 +106,8 @@ $desktop: url('../assets/bg/BG\ desktop.svg');
   }
 
   &__scrollbar {
+    height: 95% !important;
+    margin: auto 0;
     &--track-vertical {
       top: 2px;
       bottom: 2px;

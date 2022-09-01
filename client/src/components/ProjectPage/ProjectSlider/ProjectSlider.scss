@@ -88,12 +88,13 @@
             height: 100%; //40% pour desktop media queries
         }
 
-        &:hover{
-            .slide__sizeStampBx--size{
-                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        &:hover {
+            .slide__sizeStampBx--size {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
+
             .slide__sizeStampBx--path {
-                stroke:  getDeepMapValue(vars.$var, colors, tertiary, primary );
+                stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
     }

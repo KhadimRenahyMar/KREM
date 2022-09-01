@@ -1,5 +1,4 @@
-import './reviewScreen.scss';
-// import React from "react";
+import './ReviewScreen.scss';
 
 export default function ChartScreen() {
 

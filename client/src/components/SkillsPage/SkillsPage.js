@@ -11,10 +11,12 @@ export default function Skills() {
                     <h2 className="intro__title">Khadim, 26 ans</h2>
                     <div className="intro__desc">
                         <span className="intro__desc--job">Développeur Fullstack JS</span>
-                        <em className="intro__moto">"Ad Astra, per aspera</em>
+                        <em className="intro__moto">"Ad astra, per aspera"</em>
                     </div>
                 </div>
-                <div className="intro__picture" style={{backgroundImage: `url(${pic})`}}></div>
+                <div className="intro__picture" style={{backgroundImage: `url(${pic})`}}>
+                <div className="intro__picture--dot" cx="6" cy="6" r="4"></div>
+                </div>
             </section>
             <section className="stats">
                 <StatBox />

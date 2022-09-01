@@ -6,7 +6,7 @@ import { API_URL } from '../../App/App';
 const SkillScreen = loadable(() => import('./SkillScreen/SkillScreen'));
 const ExpScreen = loadable(() => import('./ExpScreen/ExpScreen'));
 const AboutMeScreen = loadable(() => import('./AboutMeScreen/AboutMeScreen'));
-const ReviewScreen = loadable(() => import('./reviewScreen/reviewScreen'));
+const ReviewScreen = loadable(() => import('./ReviewScreen/ReviewScreen'));
 
 import { cld } from '../../App/App';
 import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
@@ -43,7 +43,7 @@ export default function PipBoy() {
                         project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
-                        project.coverURL = 'undefined';
+                        project.coverURL = undefined;
                     }
                 }
                 projectList.push(result);
@@ -51,7 +51,6 @@ export default function PipBoy() {
                 localStorage.setItem('projects', JSON.stringify(result));
             }
             fetchProjects();
-            console.log(projectList)
         }
         else {
             setProjects(localProjects);

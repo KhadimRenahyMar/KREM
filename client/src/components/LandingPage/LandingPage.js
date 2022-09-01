@@ -58,7 +58,7 @@ export default function Landing() {
                             project.coverURL.url = responsiveURL.toURL();
                         }
                         else {
-                            project.coverURL = 'undefined';
+                            project.coverURL = undefined;
                         }
                     }
                     const sortedProjects = fetchedLastProjects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
@@ -187,10 +187,10 @@ export default function Landing() {
                                                 state={{ project }}
                                             >
                                                 {
-                                                    project.coverURL !== 'undefined' ? (
+                                                    project.coverURL !== undefined ? (
                                                         <img data-splide-lazy={project.coverURL.url} rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={splide && splide.current.offsetWidth} height={splide && splide.current.offsetHeight} ref={makeRef} />
                                                     ) : (
-                                                        <img data-splide-lazy={project.coverURL} rel="preload" src={noScreenshot} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={splide && splide.current.offsetWidth} height={splide && splide.current.offsetHeight} ref={makeRef} />
+                                                        <img data-splide-lazy="noScreenshot" rel="preload" src={noScreenshot} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={splide && splide.current.offsetWidth} height={splide && splide.current.offsetHeight} ref={makeRef} />
                                                     )
                                                 }
                                                 <div className="slide__sizeStampBx">

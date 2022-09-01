@@ -5,6 +5,9 @@ import { scale } from '@cloudinary/url-gen/actions/resize';
 import { cld } from '../../App/App';
 
 import noScreenshot from '../../../assets/bg/noScreenshots2.webp';
+import loadingImg from '../../../assets/bg/loading2.webp';
+
+import PropTypes from 'prop-types';
 
 export default function ProjectSlider({ project }) {
     const slider = useRef(null);
@@ -32,16 +35,18 @@ export default function ProjectSlider({ project }) {
         }
         else {
             if (project.coverURL !== undefined) {
+                console.log('cover')
                 const newImg = cld.image(`${project.coverURL.path}`)
                     .format("webp")
                     .quality('auto')
                     .resize(scale().width(slider.current.offsetWidth))
                     .setVersion(project.coverURL.version);
-                project.coverURL= newImg.toURL();
+                project.coverURL = newImg.toURL();
                 setIsLoading(false);
             }
             else {
-                project.coverURL = 'undefined';
+                project.coverURL = undefined;
+                setIsLoading(false);
             }
         }
     }, [project]);
@@ -82,32 +87,72 @@ export default function ProjectSlider({ project }) {
                         </svg>
                     </button>
                 </div>
-                <SplideTrack>
-                    {
-                        screenshots.length > 0 ? (
-                            screenshots.map((screenshot) => (
-                                <SplideSlide key={screenshot} className="slide">
-                                    <img rel='preload' fetchpriority="high" src={screenshot} alt="" className="slide__cover" />
-                                </SplideSlide>
-                            ))
-                        ) : (
-                            <div>
-                                {
-                                    isLoading === false && project?.coverURL.path !== 'undefined' ? (
-                                        <SplideSlide className="slide">
-                                            <img data-splide-lazy={project?.coverURL.path} rel="preload" fetchpriority="high" src={project?.coverURL} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
+                {
+                    isLoading ? (
+                        <SplideTrack>
+                            <SplideSlide key='loading' className="slide">
+                                <div className="slide__link">
+                                    <img rel="preload" src={loadingImg} className='slide__cover' alt={`couverture en cours de chargement, merci de patienter`} loading="lazy" />
+                                </div>
+                            </SplideSlide>
+                        </SplideTrack>
+                    ) : (
+                        <SplideTrack>
+                            {
+                                screenshots.length > 0 ? (
+                                    screenshots.map((screenshot) => (
+                                        <SplideSlide key={screenshot} className="slide">
+                                            <img rel='preload' fetchpriority="high" src={screenshot} alt={`aperçu des pages et fonctionnalités principales du projet ${project.name}`} className="slide__cover" />
                                         </SplideSlide>
-                                    ) : (
-                                        <SplideSlide className="slide">
-                                            <img rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
-                                        </SplideSlide>
-                                    )
-                                }
-                            </div>
-                        )
-                    }
-                </SplideTrack>
+                                    ))
+                                ) : (
+                                    <div>
+                                        {
+                                            project?.coverURL !== undefined ? (
+                                                <SplideSlide className="slide">
+                                                    <img data-splide-lazy={project?.coverURL.path} rel="preload" fetchpriority="high" src={project?.coverURL} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
+                                                </SplideSlide>
+                                            ) : (
+                                                <SplideSlide className="slide">
+                                                    <img rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project?.name}`} />
+                                                </SplideSlide>
+                                            )
+                                        }
+                                    </div>
+                                )
+                            }
+                        </SplideTrack>
+                    )
+                }
             </Splide>
         </div>
     )
+}
+
+ProjectSlider.propTypes = {
+    project: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        desc: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        repoURL: PropTypes.string.isRequired,
+        coverURL: PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            version: PropTypes.number.isRequired,
+            url: PropTypes.string.isRequired,
+        }),
+        size: PropTypes.string.isRequired,
+        descTechs: PropTypes.array.isRequired,
+        techs: PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                packages: PropTypes.array.isRequired,
+            })
+        ).isRequired,
+        screenshots: PropTypes.array.isRequired,
+        components: PropTypes.array.isRequired,
+        designPatterns: PropTypes.array.isRequired,
+        text: PropTypes.string.isRequired,
+        createdAt: PropTypes.string.isRequired,
+        pushedAt: PropTypes.string.isRequired,
+    }).isRequired,
 }

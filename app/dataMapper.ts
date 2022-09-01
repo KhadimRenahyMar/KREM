@@ -10,11 +10,6 @@ type project = {
     // [key: string]: any;
 }
 
-// type file = {
-//     name: string,
-//     path: string
-// }
-
 const dataMapper = {
     async getRepos() {
         try {
@@ -28,7 +23,6 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
-            console.log('resut from Github', result);
             return result;
         } catch (error) {
             console.log(error);
@@ -68,28 +62,28 @@ const dataMapper = {
                 `folder:"KREM/${project}"`,
             ).execute();
             console.log("getScreenshots remaining", folder.rate_limit_remaining);
-            
+
             let cloudinaryResults: any = [];
-            if(result.message === "Not Found"){
+            if (result.message === "Not Found") {
                 return cloudinaryResults;
             }
-            else{
+            else {
                 for (let img of result) {
                     img.name = path.parse(img.name).name;
-    
+
                     const found = folder.resources.find((resource: any) => resource.filename === img.name);
                     if (found === undefined || folder.total_count <= 1) {
                         const newImg = await cloudinary.uploader.upload(`${img.download_url}`, {
                             public_id: `${img.name}`,
                             folder: `KREM/${project}`,
                         });
-    
+
                         if (!cloudinaryResults.includes(newImg)) {
                             cloudinaryResults.push(newImg);
                         }
                     }
                     else {
-                        const screenshots = folder.resources.filter((resource: any) => { resource.folder === `KREM/${project}` })
+                        const screenshots = folder.resources.filter((resource: any) => resource.folder === `KREM/${project}`)
                         screenshots.forEach((shot: any) => {
                             if (!cloudinaryResults.includes(shot)) {
                                 cloudinaryResults.push(shot);
@@ -130,7 +124,7 @@ const dataMapper = {
             const folder = await cloudinary.search.expression(
                 `folder:"KREM/${projectName}"`,
             ).execute();
-            console.log("getCoverFromCDN remaining", projectName ,folder.rate_limit_remaining);
+            console.log("getCoverFromCDN remaining", projectName, folder.rate_limit_remaining);
 
             const coverName = path.parse(cover).name;
             let foundImg = folder.resources.find((resource: any) => resource.filename === coverName);

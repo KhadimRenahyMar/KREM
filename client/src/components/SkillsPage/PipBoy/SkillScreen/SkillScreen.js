@@ -1,6 +1,7 @@
 import './SkillScreen.scss';
 import { useEffect, useState } from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react';
+import Proptypes from 'prop-types';
 
 export default function SkillScreen({ projectCount, techs, components, designPatterns }) {
     const [technos, setTechnos] = useState([]);
@@ -62,7 +63,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
         makeData();
     }, [techs]);
-    // console.log(dataIsLoaded);
 
     return (
         <div className="skillScreen">
@@ -459,7 +459,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                 <div className="skillScreen__tech-titleBx" onClick={showMore}>
                                                     <div className="skillScreen__tech-title">
                                                         <div className="skillScreen__tech-layer" style={Object.assign({}, { "width": `${tech.percent}%` }, { backgroundColor: '#FFAA00' })}></div>
-                                                        <img src={tech.logo.secure_url} alt="" className="skillScreen__tech-icon" />
+                                                        <img src={tech.logo.secure_url} alt={`logo de ${tech.name}`} className="skillScreen__tech-icon" />
                                                         <h2 className="skillScreen__tech-name">{tech.name}</h2>
                                                     </div>
                                                     <span className="skillscreen__tech-lvl">{tech.level} / {projectCount}</span>
@@ -506,4 +506,11 @@ export default function SkillScreen({ projectCount, techs, components, designPat
             </ul>
         </div >
     )
+}
+
+SkillScreen.propTypes = {
+    projectCount: Proptypes.number.isRequired,
+    techs: Proptypes.array.isRequired,
+    components: Proptypes.array.isRequired,
+    designPatterns: Proptypes.array.isRequired,
 }

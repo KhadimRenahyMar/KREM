@@ -62,22 +62,31 @@
         filter: drop-shadow(0 0 0.1rem black);
         cursor: pointer;
 
-        &-icon{
+        &-icon {
             width: 3.5rem;
             height: 3.5rem;
-            &--text{
+
+            &--text {
                 fill: #f5f5f5;
             }
         }
 
-        &:hover{
-            .header__logo-icon--text{
-                fill: getDeepMapValue(vars.$var, colors, tertiary, primary );
+        &:hover {
+            .header__logo-icon--text {
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
 
-            path{
+            path {
                 stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .header {
+        &__navBx {
+            height: 8vh;
         }
     }
 }

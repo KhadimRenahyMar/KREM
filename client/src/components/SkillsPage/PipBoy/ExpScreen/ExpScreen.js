@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './ExpScreen.scss';
+import Proptypes from 'prop-types';
 
 export default function ExpScreen({ projects }) {
     const [tags, setTags] = useState([]);
@@ -307,4 +308,8 @@ export default function ExpScreen({ projects }) {
             </ul>
         </div>
     )
+}
+
+ExpScreen.propTypes = {
+    projects: Proptypes.array.isRequired,
 }

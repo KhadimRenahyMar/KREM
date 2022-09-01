@@ -50,7 +50,6 @@
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             line-height: 1.2rem;
             padding-bottom: 1rem;
-            filter: drop-shadow(0 0 0.1rem black);
         }
 
         &-subtitle {

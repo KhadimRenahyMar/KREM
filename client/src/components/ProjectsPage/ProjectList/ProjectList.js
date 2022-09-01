@@ -8,6 +8,7 @@ import { API_URL } from '../../App/App';
 import loadingImg from '../../../assets/bg/loading2.webp';
 import noScreenshot from '../../../assets/bg/noScreenshots2.webp';
 import lozad from 'lozad';
+import PropTypes from 'prop-types';
 
 export default function ProjectsList({ projects, isMobile, techIsLoading, setTechIsLoading, isLoading }) {
     const observer = lozad();
@@ -183,7 +184,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                                     ) : (
                                                         <div className="projectList__project-imgBx">
                                                             {
-                                                                project?.coverURL !== 'undefined' ? (
+                                                                project?.coverURL !== undefined ? (
                                                                     <img rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} width={cards.current.offsetWidth} />
                                                                 ) : (
                                                                     <img src={noScreenshot} className='slide__cover' alt={`le project ${project.name} n'a pas d'aperçu`} width={cards.current.offsetWidth} />
@@ -223,4 +224,12 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
             }
         </div >
     )
+}
+
+ProjectsList.propTypes = {
+    isMobile: PropTypes.bool.isRequired,
+    techIsLoading: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    setTechIsLoading: PropTypes.func.isRequired,
+    projects: PropTypes.array.isRequired,
 }

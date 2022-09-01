@@ -21,7 +21,7 @@
 
 .project {
     box-shadow: 0px 0px 0.2rem black;
-    
+
     &__intro {
         font-family: getDeepMapValue(vars.$var, fonts, subtitle);
 
@@ -41,16 +41,17 @@
     }
 
     &__githubLink {
-        width: 2rem;
-        height: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.5);
         padding: 0.8rem;
         border-radius: 1rem;
-
-        &:hover {
+        
+        border: 1px solid getDeepMapValue(vars.$var, colors, tertiary, primary);
+        &:focus {
             background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
@@ -85,7 +86,7 @@
         cursor: pointer;
         height: 4rem;
 
-        &--message{
+        &--message {
             padding: 0 1rem;
         }
 
@@ -116,8 +117,8 @@
     &__techSkills {
         display: flex;
         flex-wrap: wrap;
-        
-        .utils--active{
+
+        .utils--active {
             background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
 
@@ -130,7 +131,7 @@
             justify-content: center;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.5);
-            color: getDeepMapValue(vars.$var, colors, secondary, primary );
+            color: getDeepMapValue(vars.$var, colors, secondary, primary);
             box-shadow: 0px 0px 0.2rem black;
         }
 
@@ -151,14 +152,14 @@
             align-items: center;
 
             &-item {
-                margin: 0.5rem 0;  
+                margin: 0.5rem 0;
                 // padding: 0.5rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
 
-            &__item{
+            &__item {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -175,7 +176,7 @@
         font-family: getDeepMapValue(vars.$var, fonts, text);
         background-color: rgba(0, 0, 0, 0.5);
 
-        &--layer{
+        &--layer {
             z-index: -1;
             position: absolute;
             top: 0;
@@ -187,7 +188,7 @@
 
         &-contentBx {
             padding: 1rem;
-            letter-spacing:0.2px;
+            letter-spacing: 0.2px;
 
             h2,
             h3,
@@ -198,7 +199,7 @@
                 text-align: justify;
                 hyphens: auto;
             }
-            
+
             h2 {
                 font-family: getDeepMapValue(vars.$var, fonts, title);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
@@ -225,7 +226,7 @@
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
             }
-            
+
             p {
                 font-family: getDeepMapValue(vars.$var, fonts, text);
                 font-size: getDeepMapValue(vars.$var, font-sizes, text);
@@ -235,9 +236,9 @@
                 margin: 0 auto;
             }
 
-            a{
+            a {
                 text-decoration: none;
-                color: getDeepMapValue(vars.$var, colors, tertiary, primary );
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
     }
@@ -246,5 +247,19 @@
 @media screen and (min-width: 600px) {
     .projectPage {
         width: 50% !important;
+    }
+
+    .project {
+        &__githubLink {
+            &:hover {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+
+        &__techSkills-title {
+            &:hover {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
     }
 }

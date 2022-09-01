@@ -1,4 +1,5 @@
 import './Contact.scss';
+import PropTypes from 'prop-types';
 
 export default function Contact({ isMobile }) {
     return (
@@ -31,4 +32,8 @@ export default function Contact({ isMobile }) {
             </div>
         </aside >
     );
+}
+
+Contact.propTypes = {
+    isMobile: PropTypes.bool.isRequired,
 }

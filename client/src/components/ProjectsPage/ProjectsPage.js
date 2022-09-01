@@ -16,6 +16,7 @@ import { auto } from "@cloudinary/url-gen/qualifiers/format";
 import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
 
 import lozad from 'lozad';
+import PropTypes from 'prop-types';
 
 export default function Projects({ isMobile }) {
     const observer = lozad();
@@ -56,7 +57,7 @@ export default function Projects({ isMobile }) {
                         project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
-                        project.coverURL = "undefined";
+                        project.coverURL = undefined;
                     }
                 }
                 setProjects(fetchedProjects);
@@ -78,7 +79,7 @@ export default function Projects({ isMobile }) {
                 const width = splide.current.offsetWidth;
                 const sortedProjects = projects.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 5);
                 for (let project of sortedProjects) {
-                    if (project.coverURL !== "undefined") {
+                    if (project.coverURL !== undefined) {
                         const responsiveURL = cld.image(`${project.coverURL.path}`)
                             .resize(scale().width(width))
                             .setVersion(project.version)
@@ -88,7 +89,7 @@ export default function Projects({ isMobile }) {
                         project.coverURL.url = responsiveURL.toURL();
                     }
                     else {
-                        project.coverURL = 'undefined';
+                        project.coverURL = undefined;
                     }
                 }
                 setLastProjects(sortedProjects);
@@ -158,10 +159,10 @@ export default function Projects({ isMobile }) {
                                                 state={{ project }}
                                             >
                                                 {
-                                                    project.coverURL !== 'undefined' ? (
+                                                    project.coverURL !== undefined ? (
                                                         <img data-splide-lazy={project.coverURL.url} rel="preload" fetchpriority="high" src={project.coverURL.url} className='slide__cover lozad' alt={`couverture du projet ${project.name}`} ref={makeRef} width={splide.current.offsetWidth} />
                                                     ) : (
-                                                        <img data-splide-lazy={project.coverURL.url} rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
+                                                        <img data-splide-lazy="noScreenshot" rel="preload" src={noScreenshot} className='slide__cover' alt={`couverture du projet ${project.name}`} width={splide.current.offsetWidth} />
                                                     )
                                                 }
                                                 <div className="slide__sizeStampBx">
@@ -193,4 +194,8 @@ export default function Projects({ isMobile }) {
             </section>
         </div>
     );
+}
+
+Projects.propTypes = {
+    isMobile: PropTypes.bool.isRequired,
 }

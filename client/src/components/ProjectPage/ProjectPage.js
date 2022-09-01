@@ -83,9 +83,7 @@ export default function Project() {
     const showMore = (e) => {
         const itemBx = e.currentTarget.parentNode;
         const title = itemBx.childNodes[0];
-        console.log(title);
         const content = itemBx.childNodes[1];
-        console.log(content);
         if (content.classList.contains('utils--hidden')) {
             content.classList.remove('utils--hidden');
             title.classList.add('utils--active');
@@ -143,42 +141,67 @@ export default function Project() {
                                             <div className="project__techSkills">
                                                 <div className="project__techSkills-contentBx project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
-                                                    <ul className="project__techSkills-list utils--hidden" >
-                                                        {
-                                                            project?.techs.map((tech) => (
-                                                                <li key={tech.name} className="project__techSkills-list-item">
-                                                                    <ul className="project__techSkills-list">
-                                                                        <li key={tech.name} className="project__techSkills-list__item">{tech.name}</li>
-                                                                        {
-                                                                            tech.packages.map((packg) => (
-                                                                                <li key={packg} className="project__techSkills-list__item">{packg}</li>
-                                                                            ))
-                                                                        }
-                                                                    </ul>
-                                                                </li>
-                                                            ))
-                                                        }
-                                                    </ul>
+                                                    {
+                                                        project.techs.lenght > 0 ? (
+                                                            <ul className="project__techSkills-list utils--hidden" >
+                                                                {
+                                                                    project?.techs.map((tech) => (
+                                                                        <li key={`${project.name}/${tech.name}`} className="project__techSkills-list-item">
+                                                                            <ul className="project__techSkills-list">
+                                                                                <li key={tech.name} className="project__techSkills-list__item">{tech.name}</li>
+                                                                                {
+                                                                                    tech.packages.map((packg) => (
+                                                                                        <li key={packg} className="project__techSkills-list__item">{packg}</li>
+                                                                                    ))
+                                                                                }
+                                                                            </ul>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ul>
+                                                        ) : (
+                                                            <div className="project__techSkills-list utils--hidden" >
+                                                                <p className="project__techSkills-list-item">Navré, ce projet ne dispose pas encore de la liste de ses technologies !</p>
+                                                            </div>
+                                                        )
+                                                    }
                                                 </div>
                                                 <div className="project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Composants</h4>
-                                                    <ul className="project__techSkills-list utils--hidden" >
-                                                        {
-                                                            project?.components.map((component) => (
-                                                                <li key={component.name} className="project__techSkills-list-item">{component}</li>
-                                                            ))
-                                                        }
-                                                    </ul>
+                                                    {
+                                                        project.components.lenght > 0 ? (
+                                                            <ul className="project__techSkills-list utils--hidden" >
+                                                                {
+                                                                    project?.components.map((component) => (
+                                                                        <li key={component} className="project__techSkills-list-item">{component}</li>
+                                                                    ))
+                                                                }
+                                                            </ul>
+                                                        ) : (
+                                                            <div className="project__techSkills-list utils--hidden" >
+                                                                <p className="project__techSkills-list-item">Navré, ce projet ne dispose pas encore de la liste de ses composants !</p>
+                                                            </div>
+                                                        )
+                                                    }
                                                 </div>
                                                 <div className="project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Patrons de conception</h4>
-                                                    <ul className="project__techSkills-list utils--hidden">
-                                                        {
-                                                            project?.designPatterns.map((designPattern) => (
-                                                                <li key={designPattern.name} className="project__techSkills-list-item">{designPattern}</li>
-                                                            ))
-                                                        }
-                                                    </ul>
+
+                                                    {
+                                                        project.designPatterns.lenght > 0 ? (
+                                                            <ul className="project__techSkills-list utils--hidden">
+                                                                {
+                                                                    project?.designPatterns.map((designPattern) => (
+                                                                        <li key={designPattern} className="project__techSkills-list-item">{designPattern}</li>
+                                                                    ))
+                                                                }
+                                                            </ul>
+                                                        ) : (
+                                                            <div className="project__techSkills-list utils--hidden" >
+                                                                <p className="project__techSkills-list-item">Navré, ce projet ne dispose pas encore de la liste de ses patrons de conception !</p>
+                                                            </div>
+                                                        )
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
