@@ -36,7 +36,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     }
                     newPackgList.push(packgObj);
                 }
-                // console.log('newPackgList', newPackgList);
                 techCount = techCount + tech.count;
                 let percent = techCount * 100 / projectCount;
                 let techObj = {
@@ -46,7 +45,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     percent: percent,
                     logo: tech.logo,
                 }
-                // console.log('techObj', techObj);
                 nodeList.push(techObj);
             }
             return nodeList;

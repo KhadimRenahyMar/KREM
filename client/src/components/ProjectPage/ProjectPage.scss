@@ -43,18 +43,20 @@
     &__githubLink {
         width: 1.8rem;
         height: 1.8rem;
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 0.8rem;
+        padding: 1rem;
         border-radius: 1rem;
-        
-        border: 1px solid getDeepMapValue(vars.$var, colors, tertiary, primary);
+
+        &--svg {
+            z-index: 1;
+        }
+
         &:focus {
-            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-            color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            color: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
     }
 
@@ -79,12 +81,14 @@
     }
 
     &__playBx {
-        margin: 0 0.8rem;
+        position: relative;
+        margin: 0 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         height: 4rem;
+        width: 1rem;
 
         &--message {
             padding: 0 1rem;
@@ -92,6 +96,7 @@
 
         &--btn {
             width: 2.5rem;
+            position: absolute;
         }
 
         &--icon {
@@ -251,9 +256,15 @@
 
     .project {
         &__githubLink {
+            padding: 1rem 1.5rem;
+
             &:hover {
-                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+                fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
+        }
+
+        &__playBx {
+            width: 2rem;
         }
 
         &__techSkills-title {

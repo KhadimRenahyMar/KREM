@@ -222,7 +222,7 @@ export default function Landing() {
                         <div className="optionBar__buttonBx">
                             <Link to='/projects' className='optionBar__button'>
                                 <svg className='optionBar__hiveSVG' xmlns="http://www.w3.org/2000/svg" width="217.163" height="250.546" viewBox="0 0 217.163 250.546">
-                                    <path className='optionBar__hivePath' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" transform="translate(1.502 1.727)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
+                                    <path className='optionBar__hivePath' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
                                 </svg>
                                 <span className='optionBar__desc'>
                                     <svg className='optionBar__svg optionBar__svg--mountainIcon' xmlns="http://www.w3.org/2000/svg" width="68.091" height="53.927" viewBox="0 0 68.091 53.927">
@@ -244,7 +244,7 @@ export default function Landing() {
                         <div className="optionBar__buttonBx">
                             <Link to='/skills' className='optionBar__button'>
                                 <svg className='optionBar__hiveSVG' xmlns="http://www.w3.org/2000/svg" width="217.163" height="250.546" viewBox="0 0 217.163 250.546">
-                                    <path className='optionBar__hivePath' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" transform="translate(1.502 1.727)" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
+                                    <path className='optionBar__hivePath' id="Tracé_178" data-name="Tracé 178" d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="5" />
                                 </svg>
                                 <span className='optionBar__desc'>
                                     <svg className='optionBar__svg optionBar__svg--skillIcon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66.09 47.16"><title>Fichier 2</title>

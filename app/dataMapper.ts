@@ -7,14 +7,11 @@ import path from 'path';
 
 type project = {
     name: string,
-    // [key: string]: any;
 }
 
 const dataMapper = {
     async getRepos() {
         try {
-            console.log(process.env.GITHUB_TOKEN);
-            console.log("auth", authToken);
             const data = await fetch(api_url, {
                 method: 'GET',
                 headers: {
@@ -40,7 +37,6 @@ const dataMapper = {
                 }
             });
             const result = await data.json();
-            // console.log(`result ${project.name}`, result.length);
             return result;
         } catch (error) {
             console.log(error);

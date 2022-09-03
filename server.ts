@@ -5,7 +5,6 @@ import router from './app/routes/router';
 import bodyParser from 'body-parser';
 import { v2 as cloudinary } from 'cloudinary';
 const cors = require('cors');
-// const cookieSession = require('cookie-session');
 const compression = require('compression');
 import process from "process";
 
@@ -17,23 +16,13 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.set('trust proxy', 1);
 
-// server.use(cookieSession({
-//     name: 'session',
-//     keys: [
-//         'Guess it',
-//     ],
-//     maxAge: 31536000,
-//     secure: true,
-// }));
-
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV === "production") {
-    console.log(process.env.NODE_ENV);
     server.use(express.static(path.join(__dirname, 'client/dist'), {
         setHeaders: (res, path) => {
             res.setHeader('Cache-Control', 'max-age=31536000'),
-            res.setHeader('Accept-Encoding', 'gzip')
+                res.setHeader('Accept-Encoding', 'gzip')
         }
     }));
 }
@@ -41,14 +30,14 @@ else {
     server.use(express.static(path.join(__dirname, 'client/build'), {
         setHeaders: (res, path) => {
             res.setHeader('Cache-Control', 'max-age=31536000'),
-            res.setHeader('Accept-Encoding', 'gzip')
+                res.setHeader('Accept-Encoding', 'gzip')
         }
     }));
+    server.use(cors({
+        origin: 'http://localhost:8080',
+        credentials: true,
+    }));
 }
-server.use(cors({
-    origin: 'http://localhost:8080',
-    credentials: true,
-}));
 
 cloudinary.config({
     cloud_name: 'ddjt1r39a',

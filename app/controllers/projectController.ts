@@ -28,7 +28,6 @@ async function getAllProjects() {
         project = await formatProject(project);
         formattedProjects.push(project);
     }
-    // console.log('formatted projects', formattedProjects)
     return formattedProjects;
 };
 
@@ -65,7 +64,6 @@ const projectController = {
             projectList = projects;
             fetchCount = 0;
         }
-        // console.log('projects', projectList);
         res.json(projectList);
     },
 

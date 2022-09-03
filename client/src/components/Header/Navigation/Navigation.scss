@@ -1,16 +1,19 @@
 @use 'src/styles/vars';
 
 @function getDeepMapValue($map, $keys...) {
-    @each $key in $keys { $map: map-get($map, $key); }
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
     @return $map;
 }
 
-.nav{
+.nav {
     min-height: 10vh;
     display: flex;
     height: 100%;
-    
-    &__link{
+
+    &__link {
         height: 100%;
         display: flex;
         align-items: center;
@@ -19,15 +22,19 @@
         text-transform: uppercase;
         min-height: 100%;
         padding: 0rem 2rem;
-        
-        &:hover{
-            background-color: getDeepMapValue(vars.$var,colors, tertiary, primary);
+
+        &:hover {
+            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
     }
 }
 
 @media screen and (min-width: 600px) {
-    .nav{
+    .nav {
         min-height: 8vh;
+
+        &__link {
+            transition: all 0.1s ease-in-out;
+        }
     }
 }

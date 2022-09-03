@@ -17,7 +17,7 @@
             z-index: 1;
             padding: 1rem;
             background-color: rgba(0, 0, 0, 0.8);
-            font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+            font-family: getDeepMapValue(vars.$var, fonts, title);
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             color: #f5f5f5;
         }

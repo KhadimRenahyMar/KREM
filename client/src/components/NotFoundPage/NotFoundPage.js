@@ -15,7 +15,7 @@ export default function NotFound() {
                 <em className="NotFoundPage__notFound NotFoundPage__notFound--light">Pas trouvé</em>
                 <em className="NotFoundPage__notFound NotFoundPage__notFound--very-light">Vraiment pas trouvé</em>
             </div>
-            <Link to='/' className="utils--upBtn">ACCEUIL</Link>
+            <Link to='/' className="utils__btn utils__btn--home">ACCEUIL</Link>
         </div>
     );
 }

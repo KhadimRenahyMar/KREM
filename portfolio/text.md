@@ -23,14 +23,10 @@
 
 ## A propos
 Le 27 Mai 2022, venant tout juste de terminer ma formation de ![Dévellopeur Web Fullstack JS](https://oclock.io/formations/developpeur-web-fullstack-javascript) auprès de l'école O'clock, je décides de construire un site Portfolio afin de me présenter, de présenter mes projets web et de mettre en avant mon savoir-faire nouvellement acquis.
-La mission était donc apparement une formalité de fin de formation, une étape "facile" et rapide; mais si j'ai appris une chose dans mon parcours, c'est à ne pas confondre facilité et simplicité. Car si la ligne droite est bel et bien "le chemin le plus rapide", la façon de la parcourir compte tout autant. 
-
-La facilité est souvent issue d'un manque de perspective, d'une sur-simplification du chemin à parcourir vers l'objectif que nous nous sommes fixé. L'illusion de la facilité nait donc avec la croyance que cette ligne serait faite de raccourcis permettant de s'affranchir du temps de la recherche et de l'erreur. Elle pousse à l'inattention et ne nous apprend rien si ce n'est à faire preuve de plus de rigueur, à l'éviter.
-
-La simplicité, dans la grande majorité des domaines, au contraire, est un résultat : l'aboutissement d'un processus de conception complexe visant à maximiser la valeur d'un prototype tout en minimisant les détours encombrants, et ce afin de rendre la ligne la plus droite possible. L'erreur qui découle de ce processus est dans ce cas formatrice, et me semble le meilleur chemin vers la maitrise.
+La mission était donc apparement une formalité de fin de formation, une étape "facile" et rapide; mais si j'ai appris une chose dans mon parcours, c'est à ne pas confondre facilité et simplicité. 
 Le rapport d'expérience ci-dessous tente donc d'en attester. 
 
-La section ![Processus](#processus) détaille dans un premier temps les considérations préalables aux développement du projet web ainsi que les choix de conception initiaux. 
+La section ![Processus](#processus) détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
 La section ![Challenges Rencontrés](#challenges-rencontrés) explore une séléction des meilleurs erreurs qui me soit arrivé lors du développement, ainsi que les solutions qui y ont été apportées. 
 Enfin, la ![Conclusion](#conclusion) aborde différentes pistes de réfléxion afin d'offrir une meilleure perspective sur ce projet.
 
@@ -124,6 +120,22 @@ En tant que visiteur
 - Github API : API me permettant de récupérer les ressources directement dans mes "repo" github et d'obtenir les statistiques de la page "Compétences".
 
 ### Design
+
+La définition d'une charte graphique (losrqu'il n'y en a pas déjà une) est généralement l'une des étapes les plus importante pour structurer mon code, avec la définition d'un modèle de donnée et le choix des routes que ces données emprunteront.
+
+Alors que la tendance web design depuis 2018 est plutôt au minimalisme, j'ai choisi de créer un design plus personnel car le but du projet, de mon portfolio, est de présenter mon univers.
+
+Tout d'abord, parce que c'est l'aspect visuel le plus évident, j'ai décidé de définir les couleurs en m'appuyant du site Coolors qui permet de choisir une palette cohérente.
+Pour les composants d'interface classique (Navigation, Footer, Contact) j'ai choisi un Eerie Black (#202020) car c'est un choix éprouvé et robuste, il est notemment utilisé pour le dark mode.
+Pour définir l'atmosphère et l'identité de mon projet, j'ai choisi un bleu Oxford (#04192E), couleur profonde et apaisante qui ne fatigue pas le regard. 
+Enfin, pour indiquer la possibilité pour l'utilisateur d'intéragir avec l'intérface, je me repose sur du Jaune Chrome (#FFAA00), couleur vive et chaleureuse.
+Ce choix de couleur s'appui peu sur le contraste pour établir une hierachie visuelle, mais plutôt sur le rôle que chacune occupe. La relation qu'ont ces couleurs entre-elles met en valeur la donnée et distance ce projet des codes du site vitrine pour le rapprocher du sentiment que peux offrir une application.
+En appui, j'utilise contextuellement du blanc (#f5f5f5) et du noir (#000) à mi-opacité afin de créer des nuances des couleurs principales sans rompre leur cohésion.
+Après avoir effectué le premier jet de mes wireframes, il m'est apparu que cela manquait encore de présence, c'est pourquoi j'ai habillé le background d'un motif léger de nuage contouré positionnés en damier. 
+
+Ensuite, j'ai eu à choisir mes polices d'écriture. Puisque ce projet repose principalement sur des données écrites, la hierarchie importe énormement afin de ne pas saturer le visiteur d'information. C'est pourquoi j'ai utilisé Fontjoy afin de choisir 3 polices d'écriture cohérentes : Oswald pour l'interface du portfolio, Inconsolata pour les titres et sous-titre en rapport avec le contenu et Roboto Slab pour les textes. J'ai également ajusté la hauteur de ligne et l'espacement des caractères, toujours dans le but de permettre une plus grande lisibilité.
+
+Pour certain éléments d'UI intéractifs, j'ai décidé d'opter un motif hexagonale plus original et élégant qu'un cercle classique ou qu'un jeu d'arrondis.
 ### UX
 ### Déploiement
 

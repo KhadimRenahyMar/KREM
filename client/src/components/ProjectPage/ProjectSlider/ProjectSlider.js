@@ -35,7 +35,6 @@ export default function ProjectSlider({ project }) {
         }
         else {
             if (project.coverURL !== undefined) {
-                console.log('cover')
                 const newImg = cld.image(`${project.coverURL.path}`)
                     .format("webp")
                     .quality('auto')

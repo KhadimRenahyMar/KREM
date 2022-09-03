@@ -31,7 +31,8 @@
         background-color: getDeepMapValue(vars.$var, colors, primary, primary);
 
         color: #f5f5f5;
-        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        text-transform: uppercase;
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
     }
 
@@ -176,11 +177,11 @@
 
 @media screen and (min-width: 600px) {
     .projectList {
-
         &__list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            // margin: auto;
+            justify-content: space-around;
         }
 
         &__layer {
@@ -188,7 +189,7 @@
         }
 
         &__project {
-            width: 30%;
+            width: 17rem;
 
             &--tech {
                 font-size: getDeepMapValue(vars.$var, font-sizes, tiny);

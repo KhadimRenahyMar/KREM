@@ -55,11 +55,6 @@ export default function ExpScreen({ projects }) {
                             ))
                         }
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
                 <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">Juin 2022</strong>
@@ -76,11 +71,6 @@ export default function ExpScreen({ projects }) {
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">responsive</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Workflow design</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
                 <li className="xpScreen__card xpScreen__card--xp">
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">Mai 2022</strong>
@@ -98,11 +88,6 @@ export default function ExpScreen({ projects }) {
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Mise en place d'outil de suivi</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Mise en place de conventions de code</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--formation">
@@ -113,18 +98,13 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Autonomie</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Maquettage d'une application</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Accessibilité web</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Conventions de code</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Pair-programming</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Scrum</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Culture Web</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--xp">
@@ -135,18 +115,13 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Etablir des priorités</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Gestion de planning</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Structuration de tâches</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Coordination d'équipes</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Plannification</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Mise en relation</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Stratégie marketting</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--xp">
@@ -157,18 +132,11 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Communication non-violente</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Ecoute</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Transmission d'information</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Ecoute</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Communication non-violente</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Actualisation des connaissances</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--xp">
@@ -179,16 +147,12 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Travail d'équipe</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Autonomie</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Fiabilité</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Adaptabilité</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Respect des procédures de sécurité</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Apprentissage rapide</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--xp">
@@ -200,18 +164,13 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Ecoute</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Respect des protocoles</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Bienveillance</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Sens des responsabilité</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Pédagogie</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Entretien des zones communes</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Esprit d'équipe</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--formation">
@@ -223,18 +182,12 @@ export default function ExpScreen({ projects }) {
                     </div>
 
                     <ul className="xpScreen__card-skillList">
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Logique mathématique</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Capacité d'analyse</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Culture Générale</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Méthodologie</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Capacité d'analyse et de synthèse</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Argumentation</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Logique mathématique</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Culture Générale</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--formation">
@@ -246,17 +199,8 @@ export default function ExpScreen({ projects }) {
 
                     <ul className="xpScreen__card-skillList">
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">TOEIC (770/990)</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Prévention et Secours Civiques de niveau 1</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--xp">
@@ -274,15 +218,8 @@ export default function ExpScreen({ projects }) {
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Analyse du besoin client</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Respect du cahier des charges</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Travail d'équipe</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Recherche d'identité graphique</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp"></li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--xp">Recherche d'identité graphique multi-support</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
 
                 <li className="xpScreen__card xpScreen__card--formation">
@@ -296,14 +233,8 @@ export default function ExpScreen({ projects }) {
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Analyse d'une charte graphique</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Illustration 2D/3D</li>
                         <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Suite Adobe</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Rigueur</li>
-                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Persévérance</li>
+                        <li className="xpScreen__card-skillItem xpScreen__card-skillItem--formation">Sens de la composition</li>
                     </ul>
-                    <div className="xpScreen__card-contentBx hidden">
-                        <p className="xpScreen__card-story">
-
-                        </p>
-                    </div>
                 </li>
             </ul>
         </div>
