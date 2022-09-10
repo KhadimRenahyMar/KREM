@@ -207,9 +207,11 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                                     <h3 className="projectList__project-title">{project.name}</h3>
                                                     <div className="projectList__project--techBx">
                                                         {
-                                                            project?.descTechs.map((tech) => (
-                                                                <span key={tech} className="projectList__project--tech">{tech}</span>
-                                                            ))
+                                                            project?.descTechs?.length > 0 && (
+                                                                project?.descTechs.map((tech) => (
+                                                                    <span key={tech} className="projectList__project--tech">{tech}</span>
+                                                                ))
+                                                            )
                                                         }
                                                     </div>
                                                 </div>

@@ -11,7 +11,6 @@ const Project = loadable(() => import('../ProjectPage/ProjectPage'));
 const Skills = loadable(() => import('../SkillsPage/SkillsPage'));
 const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'));
 export let API_URL = process.env.NODE_ENV === "production" ? "https://krem-portfolio.herokuapp.com" : "http://localhost:5050";
-console.log(API_URL)
 
 export const cld = new Cloudinary({
   cloud: {
