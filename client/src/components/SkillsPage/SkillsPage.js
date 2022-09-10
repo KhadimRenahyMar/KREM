@@ -21,7 +21,6 @@ export default function Skills() {
             <section className="stats">
                 <StatBox />
             </section>
-
             <section className="pipboy">
                 <PipBoy />
             </section>

@@ -47,6 +47,7 @@
 
     &__legend {
         display: flex;
+        justify-content: space-evenly;
         flex-wrap: wrap;
         padding: 0.1rem 0;
         font-family: getDeepMapValue(vars.$var, fonts, text);
@@ -198,6 +199,13 @@
             &:hover {
                 transform: scale(1.05);
                 transition: 0.3s ease-in-out;
+            }
+        }
+
+        &__sizes {
+            cursor: pointer;
+            &:hover{
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
     }

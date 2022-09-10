@@ -152,6 +152,5 @@ ProjectSlider.propTypes = {
         designPatterns: PropTypes.array.isRequired,
         text: PropTypes.string.isRequired,
         createdAt: PropTypes.string.isRequired,
-        pushedAt: PropTypes.string.isRequired,
     }).isRequired,
 }

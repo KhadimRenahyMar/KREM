@@ -93,7 +93,7 @@
             }
         }
 
-        &:hover {
+        &:hover, &:focus {
             .xpScreen__card-date {
                 &--formation {
                     color: getDeepMapValue(vars.$var, colors, secondary, primary);

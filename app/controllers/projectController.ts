@@ -15,7 +15,6 @@ export type project = {
     designPatterns: string[],
     text: string,
     createdAt: Date,
-    pushedAt: Date,
     [key: string]: any;
 }
 
@@ -47,8 +46,7 @@ async function formatProject(fetchedProject: project) {
         components: data.components,
         designPatterns: data.designPatterns,
         text: `Désolé ce projet n'a pas encore de récit détaillé, revenez plus tard !`,
-        createdAt: new Date(fetchedProject.created_at),
-        pushedAt: new Date(fetchedProject.pushed_at)
+        createdAt: new Date(fetchedProject.created_at)
     };
     return project;
 };

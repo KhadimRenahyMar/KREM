@@ -28,8 +28,8 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 1rem;
             border-radius: 1rem;
-            filter: drop-shadow(0 0 0.2rem black);
-
+            filter: drop-shadow(0 0 0.1rem black);
+            // box-shadow: 0px 0px 0.1rem black;
             &.active {
                 background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }

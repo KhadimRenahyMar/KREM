@@ -6,6 +6,7 @@ import axios from "axios";
 import ProjectList from "./ProjectList/ProjectList";
 
 import { API_URL } from '../App/App';
+import { checkUpdate } from '../App/App';
 import loadingImg from '../../assets/bg/loading2.webp';
 import noScreenshot from '../../assets/bg/noScreenshots2.webp';
 
@@ -40,8 +41,8 @@ export default function Projects({ isMobile }) {
     useEffect(() => {
         const width = splide.current.offsetWidth;
         const localProjects = JSON.parse(localStorage.getItem('projects'));
-
-        if (localProjects === null) {
+        const lastUpdate = checkUpdate();
+        if (localProjects === null || lastUpdate > 1) {
             const fetchedProjects = [];
             const fetchprojectsFromAPI = async () => {
                 const data = await axios.get(`${API_URL}/projects/all`);

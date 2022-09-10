@@ -12,11 +12,19 @@ const Skills = loadable(() => import('../SkillsPage/SkillsPage'));
 const NotFound = loadable(() => import('../NotFoundPage/NotFoundPage'));
 export let API_URL = process.env.NODE_ENV === "production" ? "https://krem-portfolio.herokuapp.com" : "http://localhost:5050";
 
+
 export const cld = new Cloudinary({
   cloud: {
     cloudName: 'ddjt1r39a'
   }
 });
+
+export const checkUpdate = () => {
+  const lastUpdate = localStorage.getItem('lastUpdate');
+  const date = new Date().getTime();
+  const result = (date - lastUpdate) / (1000*60*60*24*7);
+  return result;
+}
 
 function App() {
   const [isMobile, setIsMobile] = useState(true);
@@ -38,7 +46,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main className={isMobile ? ('main mobile') : ('main desktop')}>
+      <main className='main'>
+        <div className={isMobile ? ("mobile") : ("desktop")}></div>
         <Routes>
           <Route
             path="/"

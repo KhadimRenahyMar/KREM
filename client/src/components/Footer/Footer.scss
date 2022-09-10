@@ -16,7 +16,8 @@
     width: 100%;
     background-color: getDeepMapValue(vars.$var, colors, primary, primary);
 
-    &__credit{
+
+    &__credit {
         display: block;
         margin-bottom: 1rem;
         font-family: getDeepMapValue(vars.$var, fonts, title);
@@ -27,12 +28,14 @@
 
 
 @media screen and (min-width: 600px) {
-    .footer{
+    .footer {
         width: 50%;
         margin: 0 auto;
+        // position: absolute;
+        // bottom: 0;
 
-        &__credit{
-            font-size: getDeepMapValue(vars.$var, font-sizes, tiny );
+        &__credit {
+            font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
             text-align: center;
             margin: 0.5rem auto;
         }

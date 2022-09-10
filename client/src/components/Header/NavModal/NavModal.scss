@@ -18,6 +18,7 @@
         min-height: 100vh;
         position: absolute;
         background-color: getDeepMapValue(vars.$var, colors, secondary, primary );
+        opacity: 1;
     }
 
     &__linkList{

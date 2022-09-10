@@ -6,8 +6,13 @@ import ProjectSlider from "./ProjectSlider/ProjectSlider";
 import ReactMarkdown from 'react-markdown';
 import NotFound from "../NotFoundPage/NotFoundPage";
 import { API_URL } from "../App/App";
-
+import { checkUpdate } from "../App/App";
+import { cld } from "../App/App";
+import { dpr, format, quality } from "@cloudinary/url-gen/actions/delivery";
+import { auto } from "@cloudinary/url-gen/qualifiers/format";
+import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
 import { Dimmer, Loader } from 'semantic-ui-react';
+
 
 export default function Project() {
     const location = useLocation();
@@ -28,19 +33,32 @@ export default function Project() {
         if (data?.project !== undefined) {
             setWantedProject(data?.project);
         }
-
         let localProject = JSON.parse(localStorage.getItem('project'));
         if (localProject?.name === params.slug) {
             setWantedProject(localProject);
         }
 
         if (data?.project === undefined && localProject?.name !== params.slug) {
-            let localProjects = JSON.parse(localStorage.getItem('currentProjects'));
-            if (localProjects === null) {
+            let localProjects = JSON.parse(localStorage.getItem('projects'));
+            const lastUpdate = checkUpdate();
+            if (localProjects === null || lastUpdate > 1) {
                 const fetchProjects = async () => {
-                    const fetchProjects = await axios.get(`${API_URL}/projects/all`);
-                    localStorage.setItem('currentProjects', JSON.stringify(fetchProjects.data));
-                    const currentProject = fetchProjects.data.find(project => project.name.toLowerCase() === projectName.toLowerCase());
+                    const fetchedProjects = await axios.get(`${API_URL}/projects/all`);
+                    for (let project of fetchedProjects.data) {
+                        if (project.coverURL !== undefined) {
+                            const responsiveURL = cld.image(`${project.coverURL.path}`)
+                                .setVersion(project.coverURL.version)
+                                .delivery(format(auto()))
+                                .delivery(dpr(2.0))
+                                .delivery(quality(autoBest()));
+                            project.coverURL.url = responsiveURL.toURL();
+                        }
+                        else {
+                            project.coverURL = undefined;
+                        }
+                    }
+                    localStorage.setItem('projects', JSON.stringify(fetchedProjects.data));
+                    const currentProject = fetchedProjects.data.find(project => project.name.toLowerCase() === projectName.toLowerCase());
                     if (currentProject === undefined) {
                         setProjectFound(false);
                     }
