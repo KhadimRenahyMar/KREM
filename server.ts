@@ -33,11 +33,11 @@ else {
                 res.setHeader('Accept-Encoding', 'gzip')
         }
     }));
-    server.use(cors({
-        origin: 'http://localhost:8080',
-        credentials: true,
-    }));
 }
+server.use(cors({
+    origin: 'http://localhost:5050',
+    credentials: true,
+}));
 
 cloudinary.config({
     cloud_name: 'ddjt1r39a',
