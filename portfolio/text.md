@@ -1,19 +1,19 @@
 ### Table des matières
-- A propos 
+0. A propos 
 
-- Le processus
+1. Le processus
     - MVP
     - UX
     - User-stories
     - Choix technologique
     - Design
 
-- Challenges rencontrés
+2. Challenges rencontrés
     - SSR vs CSR
     - Chart
     - Base de donnée vs API
 
-- Conclusion
+3. Conclusion
 
 
 ## A propos
@@ -22,7 +22,6 @@ Après une formation de Développeur Web Fullstack réalisé au sein de l'école
 La mise en place de ces outils essentiels est souvent considéré comme une formalité, or le contenu de ces outils est destiné à évoluer, génèrant un besoin d'actualisation récurente et chronophage.
 
 Il m'est donc apparu nécéssaire de réduire cette contrainte en développant un outil plus dynamique afin de centraliser mes réalisations et de permettre de suivre l'évolution de mes compétences.
-
 
 Ce rapport d'expérience détaille la conception de cet outil :  
 La section [Processus](#processus) détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
@@ -37,7 +36,9 @@ Bonne lecture,
 KREM est un site portfolio dont le but est de présenter le curriculum, les compétencess et les projets web de son auteur.
 
 ### UX
-Un site portfolio classique se classe généralement dans la catégorie des sites vitrines, dont le but est de présenter un produit ou un service. Plus globalement, l'objectif est de délivrer une information aux visiteurs, et chaque élément est conçu pour cette vocation. 
+Un site portfolio classique se classe généralement dans la catégorie des sites vitrines, dont le but est de présenter un produit ou un service. 
+Plus globalement, l'objectif est de délivrer une information aux visiteurs, et chaque élément est conçu pour cette vocation. 
+
 Avec le temps, les visiteurs ont appris à associer les codes et fonctionnements du site vitrine type avec des attentes spécifiques : sachant que le site regorge d'information dont seulement une minorité d'entre-elles le concerne, le visiteur tend à lire l'interface en diagonale, le temps de s'orienter vers l'information qui lui est la plus pertinente, et délaisse le reste. 
 
 Dans le contexte d'une application, le visiteur devient utilisateur et les conséquences de ce changement de statut change son comportement face à l'information. 
@@ -47,7 +48,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 
 ### Choix technologique
 
-### Frontend
+#### Frontend
 - React : dans l'optique d'obtenir l'experience utilisateur la plus agréable possible, j'ai choisi d'utiliser React pour son focus sur l'intéractivité des composants d'UI et la fluide qui en découle. L'application en une seule page (SPA) qui en résulte offre de nombreux outils qui m'ont permis de simplifier l'architecture et l'arborescence du projet.
 - React-router-dom: bibliothéque de routage React dont le but est de rendre l'interface React synchrone avec l'URL du navigateur
 - prop-types : outil de validation de type, permet de contrôler le type de donnée que mes composants se transmettent afin d'assurer le respect de leur intégrité.
@@ -60,7 +61,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 - React Modele : boîte à outil React développé par O'clock. Ce package m'a été particulièrement utile car il offre une trame de configuration webpack propre m'ayant ensuite permis d'assurer une compatibilité maximale entre webpack et les autres technologies que j'utilise.
 - eslint : outil de vérification de synthaxe et d'erreur Javascript en temps réél.
 
-### Backend
+#### Backend
 - NodeJS + Express : nodeJS est un langage Javascript composé de bibliothèques permettant d'ouvrir et fermer des connections réseau, base sur laquelle Express, framework d'application nodeJS, m'offre une panoplie d'outils simple pour créer le serveur sur lequel tourne mon projet. J'ai choisi d'utiliser nodeJS et Express pour le ratio efficacité/simplicité qu'ils offrent.
 - Typescript : langage Javascript fortement typé, le typage Typescript m'a permis de m'assurer de la préservation de l'intégrité des données transitant côté backend.
 - bodyparser : middleware nodeJS permettant d'analyser les données transmises dans le corps d'une requête. 
@@ -149,7 +150,7 @@ Après une première série de wireframes, l'identité visuelle semblait encore 
 Un motif contouré de nuage positionné en damier a d'abord été ajouté à l'arrière plan. Par contraste, ce damier guide l'oeil du visiteur vers le centre de la page où l'information réside.
 Certains éléments intéractifs adopte également un motif hexagonale, plus original et élégant qu'un cercle classique ou qu'un jeu d'arrondis, et ce afin d'informer le visiteur des interactions possibles. Enfin, deux images ont été conçues sur-mesure à l'aide de Vault Boy Maker et d'Illustrator pour remplacer les messages d'avertissements (chargement en cours et aperçu manquant) et de les rendre plus personnels.
 
-### 3 Challenges Rencontrés
+### Challenges Rencontrés
 
 #### SSR vs CSR
 Le SSR (server-side rendering) ou "rendu du site par le serveur" est généralement la méthode de rendu la plus optimisée pour un site centré sur la donnée (Wikipédia, Amazon, Google, GitHub, StackOverflow, etc) car le serveur est le mieux configuré pour maintenir une relation efficace et sécurisée avec une base de donnée.

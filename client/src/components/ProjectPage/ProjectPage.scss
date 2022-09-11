@@ -129,7 +129,6 @@
 
         &-title {
             padding: 0.7rem;
-            text-align: center;
             text-transform: uppercase;
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
             display: flex;
@@ -168,7 +167,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                list-style: none;
+                // list-style: none;
             }
         }
     }
@@ -197,6 +196,7 @@
             width: 75%;
             margin: 0 auto;
             li{
+                margin: 0.5rem 0;
                 p{
                     text-transform: uppercase;
                     text-decoration: underline;
@@ -236,14 +236,14 @@
             }
 
             h3 {
+                padding: 3rem 0 1rem;
+                width: 50%;
+                margin: 0 auto 2rem;
+                border-bottom: 1px solid white;
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h3);
                 text-align: center;
                 text-transform: uppercase;
-                padding: 3rem 0 1rem;
-                width: 50%;
-                margin: 0 auto;
-                border-bottom: 1px solid white;
             }
 
             h4 {
