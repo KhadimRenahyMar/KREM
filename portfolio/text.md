@@ -10,16 +10,10 @@
 
 - Challenges rencontrés
     - SSR vs CSR
-    - Base de donnée vs API
     - Chart
+    - Base de donnée vs API
 
 - Conclusion
-
-    - Déploiement
-    - Forces
-    - si c'était à refaire
-
-- Remerciements
 
 
 ## A propos
@@ -31,9 +25,9 @@ Il m'est donc apparu nécéssaire de réduire cette contrainte en développant u
 
 
 Ce rapport d'expérience détaille la conception de cet outil :  
-La section ![Processus](#processus) détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
-La section ![Challenges Rencontrés](#challenges-rencontrés) explore une séléction des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
-Enfin, la ![Conclusion](#conclusion) aborde différentes pistes de réfléxion afin d'offrir une meilleure perspective sur ce projet.
+La section "Processus" détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
+La section "Challenges Rencontrés" explore une séléction des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
+Enfin, la "Conclusion" aborde différentes pistes de réfléxion afin d'offrir une meilleure perspective sur ce projet.
 
 Bonne lecture,
 
@@ -55,7 +49,6 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 
 #### Frontend
 - React : dans l'optique d'obtenir l'experience utilisateur la plus agréable possible, j'ai choisi d'utiliser React pour son focus sur l'intéractivité des composants d'UI et la fluide qui en découle. L'application en une seule page (SPA) qui en résulte offre de nombreux outils qui m'ont permis de simplifier l'architecture et l'arborescence du projet.
-
 - React-router-dom: bibliothéque de routage React dont le but est de rendre l'interface React synchrone avec l'URL du navigateur
 - prop-types : outil de validation de type, permet de contrôler le type de donnée que mes composants se transmettent afin d'assurer le respect de leur intégrité.
 - sass : pré-processeur CSS permettant une synthaxe SCSS, notemment l'indentation des classes CSS qui offre une hierarchisation des classes plus intuitive.
@@ -64,7 +57,6 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 - react-markdown : outil permettant d'incorporer du contenu markdown en JSX.  
 - semantic UI : bibliothèque d'éléments d'UI dont est tiré le loader visible lors du chargement des données. 
 - webpack + babel : webpack est un outil d'empaquetage permettant de rassembler de façon optimale les nombreux fichiers de code et ressources en un paquet optimisé pour le web. Babel est un compilateur Javascript qui m'a été utile pour assurer la plus grande compatibilité possible entre la synthaxe ES6 et les différents navigateur web.
-
 - React Modele : boîte à outil React développé par O'clock. Ce package m'a été particulièrement utile car il offre une trame de configuration webpack propre m'ayant ensuite permis d'assurer une compatibilité maximale entre webpack et les autres technologies que j'utilise.
 - eslint : outil de vérification de synthaxe et d'erreur Javascript en temps réél.
 
@@ -107,12 +99,12 @@ En tant que visiteur
 |Project|avoir accès à une explication détaillée|de comprendre les enjeux de développement du projet|
 |Project|pouvoir remonter directement en haut de la page|retrouver la navigation plus facilement|
 
-|Routes|Je veux ... | Afin ...|
+|Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
 |Skills|avoir un récapitulatifs des informations de l'auteur|me concentrer sur les savoirs-être|
 |Skills|Avoir accès aux statistiques d'activité Github de l'auteur|de savoir si l'auteur est toujours actif|
 
-|Routes|Je veux ... | Afin ...|
+|Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
 |Skills - écran "Compétences"|Pouvoir consulter les compétences techniques (frentend/backend) de l'auteur|de savoir si l'auteur est familier du processus de développement d'un projet web|
 |Skills - écran "Compétences"|pouvoir consulter la liste des technologies et composants|de connaitre le niveau de compétence sur les technologies qui m'intéresse|
@@ -120,12 +112,12 @@ En tant que visiteur
 |Skills - écran "Reviews"|voir recommandation/avis concernant l'auteur|d'avoir un point de vue exterieur sur le profil |
 |Skills - écran "Qui suis-je"|connaitre les compétences transverses, traits de personnalités et centres d'intérêt de l'auteur|de mieux comprendre la personne derrière le profil|
 
-|Routes|Je veux ... | Afin ...|
+|Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
 |404|avoir un avertissement|de savoir que la requête que j'ai effectuée est erronnée|
 |404|Avoir un moyen rapide de retourner à l'accueil|de faciliter la navigation|
 
-|Routes|Je veux ... | Afin ...|
+|Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
 |*|avoir accès à un menu "Contact"|contacter l'auteur rapidement lorsque je suis certain de la pertinence d'une mise en relation|
 
@@ -204,7 +196,7 @@ Ainsi, non seulement il n'est plus besoin de redéployer KREM à chaque modifica
 
 Ayant tout de même besoin de garder ces données à portée de main le temps de la navigation, le localStorage a permis de les stocker temporairement, ce qui évite, une fois la charge réparti, de contacter les API trop souvent. Mais le localStorage enregistre les données qui lui sont passées "jusqu'à nouvel ordre". Il a donc également fallu imposer une limite de temps à ce stockage, fixer une durée d'une semaine après laquelle l'application contacte l'API malgré tout afin d'actualiser ses données et de les transmettre au localStorage pour une nouvelle durée d'une semaine.
 
-### Conclusion
+## Conclusion
 Si ce projet était à refaire, un détail des besoins du projet plus complet permettrais . Ainsi, je n'essaierais plus de faire rentrer mon projet dans un modèle d'architecture, je composerais le bon modèle architecture en fonction des besoins du projet.
 Je passerais moins de temps sur la conception de mes wireframes, j'attendrais d'avoir posé l'ossature du projet avant d'entrer dans des détails susceptible de changer.
 

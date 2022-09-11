@@ -194,7 +194,20 @@
         &-contentBx {
             padding: 1rem;
             letter-spacing: 0.2px;
+            width: 75%;
+            margin: 0 auto;
             li{
+                p{
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                }
+                ul{
+                    list-style: circle;
+                    
+                    li{
+                        color: red;
+                    }
+                }
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -225,12 +238,15 @@
             h3 {
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h3);
-                text-decoration: underline;
+                text-align: center;
+                text-transform: uppercase;
             }
 
             h4 {
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h4);
+                text-decoration: underline;
+                text-transform: uppercase;
             }
 
             h5 {
@@ -250,6 +266,17 @@
             a {
                 text-decoration: none;
                 color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+
+            table{
+                width: 75%;
+                margin: 2rem auto;
+
+                td, th{
+                    border: 1px solid white;
+                    padding: 0.5rem;
+                }
+
             }
         }
     }

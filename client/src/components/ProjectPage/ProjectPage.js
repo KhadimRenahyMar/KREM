@@ -4,6 +4,8 @@ import axios from "axios";
 import './ProjectPage.scss';
 import ProjectSlider from "./ProjectSlider/ProjectSlider";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 import NotFound from "../NotFoundPage/NotFoundPage";
 import { API_URL } from "../App/App";
 import { checkUpdate } from "../App/App";
@@ -236,7 +238,7 @@ export default function Project() {
                                         <div className="project__story-contentBx">
                                             {
                                                 project?.text !== null && (
-                                                    <ReactMarkdown>{project?.text}</ReactMarkdown>
+                                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{project?.text}</ReactMarkdown>
                                                 )
                                             }
                                         </div>
