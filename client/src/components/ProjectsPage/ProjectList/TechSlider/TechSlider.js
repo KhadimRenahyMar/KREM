@@ -18,7 +18,7 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
             return img;
         }
     };
-    console.log(techs);
+
     return (
         <div className="techSlider">
             {
@@ -67,7 +67,7 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
                             // type: 'loop',
                             autoplay: true,
                             pauseOnHover: true,
-                            perPage: 10,
+                            perPage: 8,
                             perMove: 1,
                             // padding: '1.5rem',
                             lazyLoad: 'nearby',

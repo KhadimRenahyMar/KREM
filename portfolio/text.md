@@ -18,16 +18,16 @@
 
 ## A propos
 
-Après une formation de Développeur Web Fullstack réalisé au sein de l'école ![O'clock](https://oclock.io/formations/developpeur-web-fullstack-javascript), il est conseillé de présenter ses réalisations, de réaliser un CV et de créer un profil LinkedIn. 
+Après une formation de Développeur Web Fullstack réalisé au sein de l'école [O'clock](https://oclock.io/formations/developpeur-web-fullstack-javascript), il est conseillé de présenter ses réalisations, de réaliser un CV et de créer un profil LinkedIn. 
 La mise en place de ces outils essentiels est souvent considéré comme une formalité, or le contenu de ces outils est destiné à évoluer, génèrant un besoin d'actualisation récurente et chronophage.
 
 Il m'est donc apparu nécéssaire de réduire cette contrainte en développant un outil plus dynamique afin de centraliser mes réalisations et de permettre de suivre l'évolution de mes compétences.
 
 
 Ce rapport d'expérience détaille la conception de cet outil :  
-La section "Processus" détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
-La section "Challenges Rencontrés" explore une séléction des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
-Enfin, la "Conclusion" aborde différentes pistes de réfléxion afin d'offrir une meilleure perspective sur ce projet.
+La section [Processus](#processus) détaille dans un premier temps les considérations préalables aux développement de ce projet web ainsi que les choix de conception. 
+La section [Challenges Rencontrés](#3-challenges-rencontrés) explore une séléction des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
+Enfin, la [Conclusion](#conclusion) aborde différentes pistes de réfléxion afin d'offrir une meilleure perspective sur ce projet.
 
 Bonne lecture,
 
@@ -73,8 +73,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 
 
 ### User-stories
-En tant que visiteur
-|Routes (frontend)|Je veux ... | Afin ...|
+|Routes (frontend)| En tant que visiteur je veux ... | Afin ...|
 |--|--|--|
 |accueil|être accueilli sur le site|de situer le contexte dans lequel je me trouves|
 |accueil|connaître les informations basique sur l'auteur|de savoir qui s'adresse à moi|

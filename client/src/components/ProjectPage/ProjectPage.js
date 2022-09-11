@@ -118,7 +118,7 @@ export default function Project() {
     const scroll = () => {
         window.scrollTo(0, title.current.offsetTop - 100);
     };
-    
+    console.log(project);
     return (
         <div>
             {
@@ -169,7 +169,7 @@ export default function Project() {
                                                 <div className="project__techSkills-contentBx project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
                                                     {
-                                                        project.techs.lenght > 0 ? (
+                                                        project.techs.length > 0 ? (
                                                             <ul className="project__techSkills-list utils--hidden" >
                                                                 {
                                                                     project?.techs.map((tech) => (
@@ -196,7 +196,7 @@ export default function Project() {
                                                 <div className="project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Composants</h4>
                                                     {
-                                                        project.components.lenght > 0 ? (
+                                                        project.components.length > 0 ? (
                                                             <ul className="project__techSkills-list utils--hidden" >
                                                                 {
                                                                     project?.components.map((component) => (
@@ -215,7 +215,7 @@ export default function Project() {
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Patrons de conception</h4>
 
                                                     {
-                                                        project.designPatterns.lenght > 0 ? (
+                                                        project.designPatterns.length > 0 ? (
                                                             <ul className="project__techSkills-list utils--hidden">
                                                                 {
                                                                     project?.designPatterns.map((designPattern) => (
