@@ -193,30 +193,32 @@
         &-contentBx {
             padding: 1rem;
             letter-spacing: 0.2px;
-            width: 75%;
+            width: 85%;
             margin: 0 auto;
+            max-width: 70ch;
 
             ol{
-                list-style: decimal !important;
-                
-            }
-            li{
-                margin: 0.5rem 0;
-                p{
-                    text-transform: uppercase;
-                    text-decoration: underline;
-                }
-                ul{
-                    list-style: circle;
-                    
-                    li{
-                        color: red;
+                width: 75%;
+                margin: 0 auto;
+                list-style: upper-roman;
+                li{
+                    p{
+                        text-transform: uppercase;
+                        color: getDeepMapValue(vars.$var,colors, tertiary,primary);
                     }
                 }
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+            }
+            ul{
+                list-style-type: initial;
+                list-style-position: inside !important;
+                li{
+                    margin: 0.5rem 0;
+                    
+                    p{
+                        text-transform: uppercase;
+                        text-decoration: underline;
+                    }
+                }
             }
             
             h2,
@@ -255,7 +257,6 @@
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h4);
                 text-decoration: underline;
-                text-transform: uppercase;
             }
 
             h5 {
@@ -268,7 +269,6 @@
                 font-size: getDeepMapValue(vars.$var, font-sizes, text);
                 line-height: 1.2rem;
                 hyphens: auto;
-                max-width: 70ch;
                 margin: 0 auto;
             }
 
@@ -278,8 +278,8 @@
             }
 
             table{
-                width: 75%;
-                margin: 2rem auto;
+                margin: 2rem 0;
+                hyphens: none;
 
                 td, th{
                     border: 1px solid white;

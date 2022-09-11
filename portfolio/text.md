@@ -1,19 +1,19 @@
 ### Table des matières
 0. A propos 
 
-1. Le processus
+1. [Processus](#processus)
     - MVP
     - UX
     - User-stories
     - Choix technologique
     - Design
 
-2. Challenges rencontrés
+2. [Challenges rencontrés](#challenges-rencontrés)
     - SSR vs CSR
     - Chart
     - Base de donnée vs API
 
-3. Conclusion
+3. [Conclusion](#conclusion)
 
 
 ## A propos
@@ -76,11 +76,11 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 ### User-stories
 |Routes (frontend)| En tant que visiteur je veux ... | Afin ...|
 |--|--|--|
-|accueil|être accueilli sur le site|de situer le contexte dans lequel je me trouves|
-|accueil|connaître les informations basique sur l'auteur|de savoir qui s'adresse à moi|
-|accueil|Avoir accès à une navigation|cerner les différentes sections du site|
-|accueil|avoir un premier aperçu du contenu (projets)|de me faire un premier avis sur la pertinence du contenu par rapport à mon besoin|
-|accueil|avoir un menu contextuel| faciliter la navigation si je ne suis pas certain de savoir par où débuter la visite|
+|Accueil|être accueilli sur le site|de situer le contexte dans lequel je me trouves|
+|Accueil|connaître les informations basique sur l'auteur|de savoir qui s'adresse à moi|
+|Accueil|Avoir accès à une navigation|cerner les différentes sections du site|
+|Accueil|avoir un premier aperçu du contenu (projets)|de me faire un premier avis sur la pertinence du contenu par rapport à mon besoin|
+|Accueil|avoir un menu contextuel| faciliter la navigation si je ne suis pas certain de savoir par où débuter la visite|
 
 |Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
@@ -115,7 +115,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 |Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
 |404|avoir un avertissement|de savoir que la requête que j'ai effectuée est erronnée|
-|404|Avoir un moyen rapide de retourner à l'accueil|de faciliter la navigation|
+|404|Avoir un moyen rapide de retourner à l'Accueil|de faciliter la navigation|
 
 |Routes (frontend)|Je veux ... | Afin ...|
 |--|--|--|
