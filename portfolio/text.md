@@ -47,7 +47,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 
 ### Choix technologique
 
-#### Frontend
+### Frontend
 - React : dans l'optique d'obtenir l'experience utilisateur la plus agréable possible, j'ai choisi d'utiliser React pour son focus sur l'intéractivité des composants d'UI et la fluide qui en découle. L'application en une seule page (SPA) qui en résulte offre de nombreux outils qui m'ont permis de simplifier l'architecture et l'arborescence du projet.
 - React-router-dom: bibliothéque de routage React dont le but est de rendre l'interface React synchrone avec l'URL du navigateur
 - prop-types : outil de validation de type, permet de contrôler le type de donnée que mes composants se transmettent afin d'assurer le respect de leur intégrité.
@@ -60,7 +60,7 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 - React Modele : boîte à outil React développé par O'clock. Ce package m'a été particulièrement utile car il offre une trame de configuration webpack propre m'ayant ensuite permis d'assurer une compatibilité maximale entre webpack et les autres technologies que j'utilise.
 - eslint : outil de vérification de synthaxe et d'erreur Javascript en temps réél.
 
-#### Backend
+### Backend
 - NodeJS + Express : nodeJS est un langage Javascript composé de bibliothèques permettant d'ouvrir et fermer des connections réseau, base sur laquelle Express, framework d'application nodeJS, m'offre une panoplie d'outils simple pour créer le serveur sur lequel tourne mon projet. J'ai choisi d'utiliser nodeJS et Express pour le ratio efficacité/simplicité qu'ils offrent.
 - Typescript : langage Javascript fortement typé, le typage Typescript m'a permis de m'assurer de la préservation de l'intégrité des données transitant côté backend.
 - bodyparser : middleware nodeJS permettant d'analyser les données transmises dans le corps d'une requête. 

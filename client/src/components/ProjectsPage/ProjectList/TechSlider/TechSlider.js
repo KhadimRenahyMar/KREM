@@ -18,7 +18,7 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
             return img;
         }
     };
-
+    console.log(techs);
     return (
         <div className="techSlider">
             {

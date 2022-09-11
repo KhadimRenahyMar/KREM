@@ -25,7 +25,7 @@
             "packages": ["react-dom", "react-router-dom", "react-markdown", "axios", "webpack","babel", "splideJS", "semanticUI", "prop-types"]
         },
         {
-            "name": "NodeJS",
+            "name": "nodeJS",
             "packages": ["express", "dotenv", "cors", "compression"]
         },
         {
