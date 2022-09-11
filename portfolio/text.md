@@ -89,7 +89,7 @@ KREM a donc été conçu afin de prendre en compte le contexte et les besoins de
 |Projects|voir la liste des derniers projets|de consulter les projets les plus récents|
 |Projects|voir la liste des projets|de pouvoir en consulter le détail|
 |Projects|pouvoir filtrer les projets par technologie|de consulter uniquement les projets correspondant à une ou plusieurs technologies précises|
-|Projects|de pouvoir filtrer les projets par taille|de trier les projets par leur durée de développement/difficulté|
+|Projects|de pouvoir filtrer les projets par taille|de trier les projets par leur niveau de complexité|
 |Projects|avoir un aperçu du contenu des projets (nom, taille, technologies)|de consulter les projets les plus pertinents et d'avoir une confirmation visuelle du filtrage des projets|
 
 |Routes (frontend)|Je veux ... | afin ...|
@@ -161,6 +161,9 @@ Un motif contouré de nuages positionnés en damier a d'abord été ajouté à l
 Certains éléments interactifs adoptent également un motif hexagonal, plus original et élégant qu'un cercle classique ou qu'un jeu d'arrondis, et ce, afin d'informer le visiteur des interactions possibles. 
 
 Enfin, deux images ont été conçues sur-mesure à l'aide de Vault Boy Maker et d'Illustrator pour remplacer les messages d'avertissements (chargement en cours et aperçu manquant) et de les rendre plus personnels.
+
+#### Accessibilité
+Le design sus-mentionné a ensuite été adapté grâce à l'extension Web Disability Simulator (de Metamatrix AB) pour faciliter l'accès du site aux personnes souffrant de troubles de la vision (achromatopsie, dyschromatopsie). Cette extension a également permis d'adapter la composition de l'interface (notamment la taille des éléments) aux personnes souffrant de la maladie de Parkinson.
 
 ### Challenges Rencontrés
 

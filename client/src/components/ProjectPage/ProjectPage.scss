@@ -191,36 +191,39 @@
         }
 
         &-contentBx {
+            position: relative;
             padding: 1rem;
             letter-spacing: 0.2px;
             width: 85%;
             margin: 0 auto;
             max-width: 70ch;
-
-            ol{
+            ol {
                 width: 75%;
                 margin: 0 auto;
                 list-style: upper-roman;
-                li{
-                    p{
+
+                li {
+                    p {
                         text-transform: uppercase;
-                        color: getDeepMapValue(vars.$var,colors, tertiary,primary);
+                        color: getDeepMapValue(vars.$var, colors, tertiary, primary);
                     }
                 }
             }
-            ul{
+
+            ul {
                 list-style-type: initial;
                 list-style-position: inside !important;
-                li{
+                text-align: justify;
+                li {
                     margin: 0.5rem 0;
-                    
-                    p{
+
+                    p {
                         text-transform: uppercase;
                         text-decoration: underline;
                     }
                 }
             }
-            
+
             h2,
             h3,
             h4,
@@ -243,10 +246,11 @@
             }
 
             h3 {
-                padding: 3rem 0 1rem;
-                width: 50%;
-                margin: 0 auto 2rem;
-                border-bottom: 1px solid white;
+                padding: 1rem 0;
+                // width: 50%;
+                margin: 4rem auto 2rem;
+                border-top: 1px solid getDeepMapValue(vars.$var, colors, tertiary, primary);
+                border-bottom: 1px solid getDeepMapValue(vars.$var, colors, tertiary, primary);
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h3);
                 text-align: center;
@@ -256,7 +260,8 @@
             h4 {
                 font-family: getDeepMapValue(vars.$var, fonts, subtitle);
                 font-size: getDeepMapValue(vars.$var, font-sizes, title, h4);
-                text-decoration: underline;
+                text-align: center;
+                border-bottom: 1px solid getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
 
             h5 {
@@ -277,13 +282,17 @@
                 color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
 
-            table{
-                margin: 2rem 0;
-                hyphens: none;
-
+            table {
+                width: 100%;
+                margin: 2rem auto;
                 td, th{
+                    hyphens: none;
                     border: 1px solid white;
                     padding: 0.5rem;
+                }
+
+                td{
+                    max-width: 11ch;
                 }
 
             }
@@ -312,6 +321,14 @@
         &__techSkills-title {
             &:hover {
                 background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+
+        &__story{
+            &-contentBx{
+                h3{
+                    width: 50%;
+                }
             }
         }
     }
