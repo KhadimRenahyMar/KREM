@@ -23,7 +23,7 @@
         backdrop-filter: blur(1.5px);
         border-top: getDeepMapValue(vars.$var, effects, glass, border) getDeepMapValue(vars.$var, colors, primary, shade);
     
-        border-bottom: 2px solid white;
+        border-bottom: 2px solid #f5f5f5;
         padding-top: 1rem 0;
     }
 

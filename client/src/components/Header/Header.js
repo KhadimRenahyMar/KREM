@@ -69,7 +69,7 @@ export default function Header() {
                                 </filter>
                             </defs>
                             <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Tracé_417)">
-                                <text x='18' y='58' fontSize='1.5rem' fill='white'>KREM</text>
+                                <text x='18' y='58' fontSize='1.5rem' fill='#f5f5f5'>KREM</text>
                                 <path className='header__logo-icon--path' id="Tracé_417-2" data-name="Tracé 417" d="M69.48,20.837l.056,39.453L35.325,80.065,1.058,60.388,1,20.936,35.211,1.16Z" transform="translate(7.5 7.73)" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="5" />
                             </g>
                         </svg>

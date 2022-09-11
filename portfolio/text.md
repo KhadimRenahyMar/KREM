@@ -94,7 +94,7 @@ KREM a donc été conçu afin de prendre en compte le contexte et les besoins de
 
 |Routes (frontend)|Je veux ... | afin ...|
 |--|--|--|
-|Project|voir des screenshots/wireframes du projet réalisé|d'avoir un aperçu visuel du résultat final|
+|Project|voir des screenshots et/ou wireframes du projet réalisé|d'avoir un aperçu visuel du résultat final|
 |Project|retrouver les informations basiques du projet (description, taille)|de confirmer la consistance des informations de la page Projects|
 |Project|pouvoir accéder au site|de profiter d'une expérience utilisateur personnelle avant d'entrer dans les détails|
 |Project|voir la liste des composants, packages et patrons de conception utilisés |d'avoir un résumé des enjeux techniques du projet|
@@ -108,7 +108,7 @@ KREM a donc été conçu afin de prendre en compte le contexte et les besoins de
 
 |Routes (frontend)|Je veux ... | afin ...|
 |--|--|--|
-|Skills - écran "Compétences"|pouvoir consulter les compétences techniques (frontend/backend) de l'auteur|de savoir si l'auteur est familier du processus de développement d'un projet web|
+|Skills - écran "Compétences"|pouvoir consulter les compétences techniques de l'auteur|de savoir si l'auteur est familier du processus de développement d'un projet web|
 |Skills - écran "Compétences"|pouvoir consulter la liste des technologies et composants|de connaitre le niveau de compétence de l'auteur sur les technologies qui m'intéressent|
 |Skills - écran "Parcours"|voir une liste des expériences professionnelles de l'auteur|de me faire une idée de son parcours professionnel|
 |Skills - écran "Reviews"|voir les recommandations et avis concernant l'auteur|d'avoir un point de vue extérieur sur son profil |
