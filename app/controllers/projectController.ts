@@ -45,7 +45,7 @@ async function formatProject(fetchedProject: project) {
         screenshots: [],
         components: data.components,
         designPatterns: data.designPatterns,
-        text: `Désolé ce projet n'a pas encore de récit détaillé, revenez plus tard !`,
+        text: ``,
         createdAt: new Date(fetchedProject.created_at)
     };
     return project;

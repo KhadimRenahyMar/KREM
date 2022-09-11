@@ -11,7 +11,9 @@ const techController = {
             const techs: Array<any> = [];
             for (const project of projects) {
                 for (let tech of project.techs) {
-                    techs.push(tech);
+                    if (!techs.includes(tech)) {
+                        techs.push(tech);
+                    }
                 }
             }
             const logos = await dataMapper.getLogosFromCDN();
@@ -24,12 +26,16 @@ const techController = {
                     logo: "",
                 };
                 obj.name = tech.name;
-                const techLogo = logos.find((logo:any)=> logo.filename === obj.name);
+                const techLogo = logos.find((logo: any) => logo.filename === obj.name);
                 for (let tech of techs) {
                     if (tech.name === obj.name) {
                         obj.logo = techLogo;
                         obj.count += 1;
-                        obj.packages.push(...tech.packages); 
+                        for(let packg of tech.packages){
+                            if (!obj.packages.includes(packg)) {
+                                obj.packages.push(packg);
+                            }
+                        }
                     }
                 }
 
@@ -39,7 +45,7 @@ const techController = {
             })
             finalTechList.push(...techList);
         }
-        
+
         res.json(finalTechList);
     },
 };

@@ -190,6 +190,10 @@
             backdrop-filter: blur(1.5px);
         }
 
+        &--alert{
+            text-align: center !important;
+        }
+
         &-contentBx {
             position: relative;
             padding: 1rem;

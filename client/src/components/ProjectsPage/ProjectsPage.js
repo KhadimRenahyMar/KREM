@@ -64,6 +64,8 @@ export default function Projects({ isMobile }) {
                 setProjects(fetchedProjects);
                 setIsLoading(false);
                 localStorage.setItem('projects', JSON.stringify(fetchedProjects));
+                const date = new Date().getTime();
+                localStorage.setItem('lastUpdate', date);
             }
             fetchprojectsFromAPI();
         }

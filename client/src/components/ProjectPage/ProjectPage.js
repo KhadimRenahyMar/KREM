@@ -60,6 +60,8 @@ export default function Project() {
                         }
                     }
                     localStorage.setItem('projects', JSON.stringify(fetchedProjects.data));
+                    const date = new Date().getTime();
+                    localStorage.setItem('lastUpdate', date);
                     const currentProject = fetchedProjects.data.find(project => project.name.toLowerCase() === projectName.toLowerCase());
                     if (currentProject === undefined) {
                         setProjectFound(false);
@@ -118,7 +120,7 @@ export default function Project() {
     const scroll = () => {
         window.scrollTo(0, title.current.offsetTop - 100);
     };
-    console.log(project);
+
     return (
         <div>
             {
@@ -237,8 +239,10 @@ export default function Project() {
                                         <div className="project__story--layer"></div>
                                         <div className="project__story-contentBx">
                                             {
-                                                project?.text !== null && (
+                                                project?.text.length > 0 ? (
                                                     <ReactMarkdown remarkPlugins={[remarkGfm]}>{project?.text}</ReactMarkdown>
+                                                ):(
+                                                    <p className="project__story--alert">Désolé, ce projet n'a pas encore de récit détaillé, revenez plus tard !</p>
                                                 )
                                             }
                                         </div>

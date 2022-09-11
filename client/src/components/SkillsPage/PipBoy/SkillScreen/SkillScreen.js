@@ -34,8 +34,11 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     let packgObj = {
                         name: packg,
                     }
-                    newPackgList.push(packgObj);
+                    if(!newPackgList.includes(packgObj)){
+                        newPackgList.push(packgObj);
+                    }
                 }
+
                 techCount = techCount + tech.count;
                 let percent = techCount * 100 / projectCount;
                 let techObj = {
@@ -45,7 +48,9 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                     percent: percent,
                     logo: tech.logo,
                 }
-                nodeList.push(techObj);
+                if(!nodeList.includes(techObj)){
+                    nodeList.push(techObj);
+                }
             }
             return nodeList;
         };
@@ -61,7 +66,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
         makeData();
     }, [techs]);
-
+    
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
@@ -474,7 +479,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                                 </thead>
                                                                 {
                                                                     tech.children.map((packg) => (
-                                                                        <tbody key={packg.name} className="table-body">
+                                                                        <tbody key={`${tech.name}/${packg.name}`} className="table-body">
                                                                             <tr className="table-row">
                                                                                 <td className="table-data" colSpan={2}>{packg.name}</td>
                                                                             </tr>

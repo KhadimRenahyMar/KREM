@@ -48,6 +48,8 @@ export default function PipBoy() {
                 projectList.push(result);
                 setProjects(result);
                 localStorage.setItem('projects', JSON.stringify(result));
+                const date = new Date().getTime();
+                localStorage.setItem('lastUpdate', date);
             }
             fetchProjects();
         }
