@@ -50,44 +50,26 @@ KREM est un portfolio de type site vitrine, et s'il ne possède pas d'utilisateu
 
 #### Frontend
 - React : dans l'optique d'obtenir l'experience utilisateur la plus agréable possible, KREM utilise React pour son focus sur l'interactivité des composants d'UI et la fluidité qui en découle. L'application en une seule page (SPA) qui en résulte offre de nombreux outils qui m'ont permis de simplifier l'architecture et l'arborescence du projet.
-
 - React-router-dom: bibliothéque de routage React dont le but est de rendre l'interface React synchrone avec l'URL du navigateur.
-
 - prop-types : outil de validation de type, permet de contrôler le type de donnée que mes composants se transmettent afin d'assurer le respect de leur intégrité.
-
 - sass : pré-processeur CSS permettant une synthaxe SCSS, notemment l'indentation des classes CSS qui offre une hierarchisation des classes plus intuitive.
-
 - axios : client HTTP pour navigateur et nodeJS, axios m'a servi a récupérer (fetch) mes données depuis les API de Github et Cloudinary.
-
 - lozad : outil permettant un chargement de ressource (images) différé, lozad m'a été utile pour réduire le temps de chargement initial de la page.
-
 - react-markdown : outil permettant d'incorporer du contenu markdown en JSX.
-
-- semantic UI : bibliothèque d'éléments d'UI dont est tiré le loader visible lors du chargement des données. 
-
+- semantic UI : bibliothèque d'éléments d'UI dont est tiré le loader visible lors du chargement des données.
 - webpack + babel : webpack est un outil d'empaquetage permettant de rassembler de façon optimale les nombreux fichiers de code et ressources en un paquet optimisé pour le web. Babel est un compilateur Javascript qui m'a été utile pour assurer la plus grande compatibilité possible entre la synthaxe ES6 et les différents navigateur web.
-
 - React Modele : boîte à outil React développé par O'clock. Ce package m'a été particulièrement utile car il offre une trame de configuration webpack propre m'ayant ensuite permis d'assurer une compatibilité maximale entre webpack et les autres technologies que j'utilise.
-
 - eslint : outil de vérification de synthaxe et d'erreur Javascript en temps réél.
 
 #### Backend
 - NodeJS + Express : nodeJS est un langage Javascript composé de bibliothèques permettant d'ouvrir et fermer des connections réseau, base sur laquelle Express, framework d'application nodeJS, m'offre une panoplie d'outils simple pour créer le serveur sur lequel tourne mon projet. J'ai choisi d'utiliser nodeJS et Express pour le ratio efficacité/simplicité qu'ils offrent.
-
 - Typescript : langage Javascript fortement typé, le typage Typescript m'a permis de m'assurer de la préservation de l'intégrité des données transitant côté backend.
-
-- bodyparser : middleware nodeJS permettant d'analyser les données transmises dans le corps d'une requête. 
-
+- bodyparser : middleware nodeJS permettant d'analyser les données transmises dans le corps d'une requête.
 - cookie-session : middleware nodeJS permettant de stocker des informations temporairement.
-
 - cors : package nodeJS permettant le partage de ressource à des origines (url) multiples. Me sers principalement en mode "développement" où React opère sur le port 8080 tandis que le backend tourne sur le port 5050.
-
-- dotenv : outil de chargement de variable d'environnement, me sers à contenir et utiliser les données sensibles (secret, clés API...) en toute confidentialité. 
-
+- dotenv : outil de chargement de variable d'environnement, me sers à contenir et utiliser les données sensibles (secret, clés API...) en toute confidentialité.
 - compression : middleware nodeJS me permettant de compresser les réponses aux requête en Gzip, format de compression offrant de meilleur performance.
-
 - cloudinary (Admin API) : API me permettant de récuperer mes ressources hebergé sur le CDN Cloudinary.
-
 - Github API : API me permettant de récupérer les ressources directement dans mes "repo" github et d'obtenir les statistiques de la page "Compétences".
 
 
