@@ -195,6 +195,11 @@
             letter-spacing: 0.2px;
             width: 75%;
             margin: 0 auto;
+
+            ol{
+                list-style: decimal !important;
+                
+            }
             li{
                 margin: 0.5rem 0;
                 p{
