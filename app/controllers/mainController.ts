@@ -58,7 +58,7 @@ const mainController = {
         };
         const lastContrib = contribs.slice(-1)[0];
         const avgCommitWeek = Math.round(calendar.totalContributions / 52);
-        const lastProject = result.slice(-1)[0].name;
+        const lastProject = result.sort((a:any,b:any)=> Number(new Date(a.created_at)) - Number(new Date(b.created_at))).slice(-1)[0].name;
         
         const obj = {
             public_repos : repoCount,

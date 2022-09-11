@@ -116,8 +116,7 @@ export default function Project() {
     const scroll = () => {
         window.scrollTo(0, title.current.offsetTop - 100);
     };
-    // console.log("projet at the end", project)
-
+    
     return (
         <div>
             {

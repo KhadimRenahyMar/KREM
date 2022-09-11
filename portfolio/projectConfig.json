@@ -1,7 +1,8 @@
 {
-    "url": "https://khadimrenahymar.github.io/Arch-iQ/",
+    "url": "https://krem-portfolio.herokuapp.com/",
     "coverURL": "",
     "size": "M",
+    "mainTechs": ["React", "nodeJS", "TS"],
     "techs": [
         {
             "name": "HTML",
@@ -9,7 +10,7 @@
         },
         {
             "name": "Javascript",
-            "packages": ["splideJS"]
+            "packages": []
         },
         {
             "name": "CSS",
@@ -18,8 +19,20 @@
         {
             "name": "SCSS",
             "packages": []
+        },
+        {
+            "name": "React",
+            "packages": ["react-dom", "react-router-dom", "react-markdown", "axios", "webpack","babel", "splideJS", "semanticUI", "prop-types"]
+        },
+        {
+            "name": "NodeJS",
+            "packages": ["express", "dotenv", "cors", "compression"]
+        },
+        {
+            "name": "Typescript",
+            "packages": ["ts-node"]
         }
     ],
     "designPatterns": ["variables SCSS", "fonctions SCSS"],
-    "components": ["Carousel", "Navigation"]
+    "components": ["Carousel", "Navigation", "Modale"]
 }

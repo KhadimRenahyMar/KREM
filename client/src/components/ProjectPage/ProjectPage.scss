@@ -194,7 +194,13 @@
         &-contentBx {
             padding: 1rem;
             letter-spacing: 0.2px;
-
+            li{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
             h2,
             h3,
             h4,

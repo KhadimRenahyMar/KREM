@@ -25,6 +25,10 @@ if (process.env.NODE_ENV === "production") {
                 res.setHeader('Accept-Encoding', 'gzip')
         }
     }));
+    server.use(cors({
+        origin: 'https://krem-portfolio.herokuapp.com',
+        credentials: true,
+    }));
 }
 else {
     server.use(express.static(path.join(__dirname, 'client/build'), {
@@ -33,11 +37,11 @@ else {
                 res.setHeader('Accept-Encoding', 'gzip')
         }
     }));
+    server.use(cors({
+        origin: 'http://localhost:8080',
+        credentials: true,
+    }));
 }
-server.use(cors({
-    origin: 'http://localhost:8080',
-    credentials: true,
-}));
 
 cloudinary.config({
     cloud_name: 'ddjt1r39a',

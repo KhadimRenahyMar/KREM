@@ -140,7 +140,7 @@ ProjectSlider.propTypes = {
             url: PropTypes.string.isRequired,
         }),
         size: PropTypes.string.isRequired,
-        descTechs: PropTypes.array.isRequired,
+        descTechs: PropTypes.array,
         techs: PropTypes.arrayOf(
             PropTypes.shape({
                 name: PropTypes.string.isRequired,

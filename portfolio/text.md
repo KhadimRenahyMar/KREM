@@ -24,7 +24,7 @@
 
 ## A propos
 
-Après une formation de Développeur Web Fullstack réalisé au sein de l'école ![O'clock](), il est conseillé de présenter ses réalisations, de réaliser un CV et de créer un profil LinkedIn. 
+Après une formation de Développeur Web Fullstack réalisé au sein de l'école ![O'clock](https://oclock.io/formations/developpeur-web-fullstack-javascript), il est conseillé de présenter ses réalisations, de réaliser un CV et de créer un profil LinkedIn. 
 La mise en place de ces outils essentiels est souvent considéré comme une formalité, or le contenu de ces outils est destiné à évoluer, génèrant un besoin d'actualisation récurente et chronophage.
 
 Il m'est donc apparu nécéssaire de réduire cette contrainte en développant un outil plus dynamique afin de centraliser mes réalisations et de permettre de suivre l'évolution de mes compétences.
