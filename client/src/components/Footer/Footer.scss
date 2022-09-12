@@ -29,15 +29,25 @@
 
 @media screen and (min-width: 600px) {
     .footer {
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
-        // position: absolute;
-        // bottom: 0;
 
         &__credit {
             font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
             text-align: center;
             margin: 0.5rem auto;
         }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .footer {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer {
+        width: 50%;
     }
 }

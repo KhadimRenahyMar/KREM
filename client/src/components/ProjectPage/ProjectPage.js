@@ -92,6 +92,23 @@ export default function Project() {
                 const data = await axios.post(`${API_URL}/projects/${wantedProject.name}`, {
                     body: wantedProject,
                 });
+                switch (data.data.size) {
+                    case 'XS':
+                        data.data.size = "Composant";
+                        break;
+                    case 'S':
+                        data.data.size = "Fonctionnalité";
+                        break;
+                    case 'M':
+                        data.data.size = "Projet (-2 sprint)";
+                        break;
+                    case 'L':
+                        data.data.size = "Projet (+2 sprint)";
+                        break;
+                    case 'XL':
+                        data.data.size = "Projet (+5 sprint)";
+                        break;
+                }
                 setProject(data.data);
             }
             getProjectInfo();
@@ -149,7 +166,7 @@ export default function Project() {
                                         </div>
                                         <ProjectSlider project={project} className='project__slider' />
                                         <div className="project__descBx">
-                                            <p className="project__desc">{project && project.desc} <br /> Taille : {project.size}</p>
+                                            <p className="project__desc">{project && project.desc} <br /> Taille du projet : {project.size}</p>
                                             {
                                                 project.url ? (
                                                     <a href={project?.url} target="_blank" className="project__playBx">
@@ -241,7 +258,7 @@ export default function Project() {
                                             {
                                                 project?.text.length > 0 ? (
                                                     <ReactMarkdown remarkPlugins={[remarkGfm]}>{project?.text}</ReactMarkdown>
-                                                ):(
+                                                ) : (
                                                     <p className="project__story--alert">Désolé, ce projet n'a pas encore de récit détaillé, revenez plus tard !</p>
                                                 )
                                             }

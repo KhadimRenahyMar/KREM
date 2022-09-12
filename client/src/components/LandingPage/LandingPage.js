@@ -14,8 +14,8 @@ import { auto } from "@cloudinary/url-gen/qualifiers/format";
 import { autoBest } from "@cloudinary/url-gen/qualifiers/quality";
 import loadingImg from '../../assets/bg/loading2.webp';
 import noScreenshot from '../../assets/bg/noScreenshots2.webp';
-
 import lozad from 'lozad';
+
 export default function Landing() {
     const observer = lozad();
     observer.observe();
@@ -137,12 +137,10 @@ export default function Landing() {
                 <Splide hasTrack={false}
                     className="splide"
                     tag="section"
-                    aria-label="My Favorite Images"
+                    aria-label="landingSlider"
                     options={{
                         rewind: true,
                         type: 'loop',
-                        width: '100%',
-                        margin: '0 auto',
                         autoplay: true,
                         pauseOnHover: false,
                         perPage: 1,

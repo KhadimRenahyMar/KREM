@@ -22,7 +22,7 @@
         background-color: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(1.5px);
         border-top: getDeepMapValue(vars.$var, effects, glass, border) getDeepMapValue(vars.$var, colors, primary, shade);
-    
+
         border-bottom: 2px solid #f5f5f5;
         padding-top: 1rem 0;
     }
@@ -93,7 +93,7 @@
 
     &__hive {
         position: absolute;
-        right: 0rem;
+        right: 0.5rem;
         top: -13rem;
         display: flex;
         justify-content: center;
@@ -139,6 +139,18 @@
         align-items: center;
         position: relative;
 
+        &__pagination {
+            transition: all 0.2s ease-in-out;
+
+            li {
+                top: 0;
+            }
+
+            .is-active {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+
         &__track {
             border-bottom: 3px solid rgba(255, 255, 255, 0.5);
         }
@@ -173,13 +185,16 @@
 
             &:hover {
                 .splide__arrow--path {
+                    transition: all 0.2s ease-in-out;
                     fill: getDeepMapValue(vars.$var, colors, tertiary, primary) !important;
                 }
             }
         }
 
-        &__desktop {
-            height: 40rem;
+        &:hover {
+            .splide__pagination {
+                opacity: 0;
+            }
         }
     }
 
@@ -190,6 +205,17 @@
         align-items: center;
         background-color: getDeepMapValue(vars.$var, colors, secondary, primary);
         box-shadow: 0px 0px 1rem black;
+
+        &__title {
+            margin-bottom: 0.2rem;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+        }
+
+        &__text {
+            margin-bottom: 0.2rem;
+            font-style: italic;
+            font-size: getDeepMapValue(vars.$var, font-sizes, text);
+        }
 
         &__link {
             width: 100%;
@@ -214,7 +240,7 @@
         }
 
         &__desc {
-            padding: 1rem;
+            padding: 0.7rem 1rem;
         }
 
         &__sizeStampBx {
@@ -249,7 +275,12 @@
             }
 
             .slide__sizeStampBx--path {
+                transition: all 0.2s ease-in-out;
                 stroke: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+
+            .slide__title {
+                color: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
         }
     }
@@ -335,39 +366,53 @@
     .landingPage {
         &__intro {
             margin-top: 20rem;
+            display: flex;
         }
 
         &__contentBx {
-            margin: 20rem 0 0;
-            width: 47%;
-            margin: auto;
+            width: 100%;
         }
 
         &__hive {
-            right: 0;
-            top: -17rem;
-            width: 30rem;
-            height: 30rem;
+            left: 41vw;
+            top: -107%;
+            width: 55vw;
+            height: 190%;
+            transform: scale(1.1);
         }
 
         &__subtitle {
-            transform: scale(1.5) translate(0px, -2px);
+            margin: 0 auto;
+            transform: scale(1.3) translate(0px, -0.2vw);
         }
 
         &__name,
         &__text {
-            transform: scale(1.2) translate(5rem, -1.5rem);
         }
     }
 
     .slides {
-        width: 50%;
+        width: 100%;
         margin: auto;
+        // padding-top: ;
+    }
+
+    .slide {
+        &__title {
+            margin-bottom: 0.5rem;
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+        }
+
+        &__text {
+            font-style: italic;
+            font-size: getDeepMapValue(vars.$var, font-sizes, text);
+        }
     }
 
     .optionBar {
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
+
         &__bar {
             border-top: 0 !important;
             height: 100% !important;
@@ -386,5 +431,99 @@
             margin: 0rem auto !important;
             width: 50%;
         }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .landingPage {
+        &__contentBx {
+            margin: 20rem 0 0;
+            width: 70%;
+            margin: auto;
+        }
+
+        &__hive {
+            left: 35vw;
+            top: -107%;
+            width: 40vw;
+            height: 190%;
+        }
+
+        &__subtitle {
+            transform: scale(1.4) translate(0px, -2px);
+        }
+    }
+
+    .slides {
+        width: 75%;
+        margin: auto;
+        // padding-top: ;
+    }
+
+    .optionBar {
+        width: 75%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .landingPage {
+        &__contentBx {
+            margin: 20rem 0 0;
+            width: 50%;
+            margin: auto;
+        }
+
+        &__hive {
+            left: 24vw;
+            top: -107%;
+            width: 50%;
+            height: 190%;
+        }
+        &__subtitle {
+            transform: scale(1.3) translate(0px, -2px);
+        }
+    }
+
+    .slides {
+        width: 50%;
+        margin: auto;
+        // padding-top: ;
+    }
+
+    .optionBar {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .landingPage {
+        &__contentBx {
+            margin: 20rem 0 0;
+            width: 50%;
+            margin: auto;
+        }
+
+        &__hive {
+            left: 24vw;
+            top: -107%;
+            width: 50%;
+            height: 190%;
+        }
+        &__subtitle {
+            transform: scale(1.4) translate(0px, -2px);
+        }
+    }
+
+    .slides {
+        width: 50%;
+        margin: auto;
+        // padding-top: ;
+    }
+
+    .optionBar {
+        width: 50%;
+        margin: 0 auto;
     }
 }

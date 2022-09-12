@@ -31,6 +31,12 @@
         align-items: center;
         position: relative;
 
+        &__pagination {
+            .is-active {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+        }
+        
         &__arrow {
             border: 0;
             border-radius: 0;
@@ -77,10 +83,6 @@
 
         &__link {
             width: 100%;
-            // background-image: url("../../../ressources/bg/noScreenshots2.webp");
-            // background-position: center;
-            // background-repeat: no-repeat;
-            // background-size: contain;
         }
 
         &__cover {

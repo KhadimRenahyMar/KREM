@@ -107,7 +107,7 @@ export default function Projects({ isMobile }) {
     const scroll = () => {
         window.scrollTo(0, splide.current.offsetTop - 100);
     };
-
+    
     return (
         <div className="page page__projectsPage projectsPage">
 
@@ -116,14 +116,13 @@ export default function Projects({ isMobile }) {
                 <Splide hasTrack={false}
                     className="splide"
                     tag="section"
-                    aria-label="My Favorite Images"
+                    aria-label="projectsSlider"
                     options={{
                         rewind: true,
                         type: 'loop',
-                        width: '100%',
-                        margin: '0 auto',
                         autoplay: true,
-                        pauseOnHover: false,
+                        pauseOnHover: true,
+                        pauseOnFocus: true,
                         perPage: 1,
                         drag: true,
                     }}
@@ -185,6 +184,7 @@ export default function Projects({ isMobile }) {
                                                 <div className="slide__layer utils--layer"></div>
                                                 <div className="slide__descBx">
                                                     <h2 className="slide__title">{project.name}</h2>
+                                                    <p className="slide__desc">{project.desc}</p>
                                                 </div>
                                             </Link>
                                         </SplideSlide>

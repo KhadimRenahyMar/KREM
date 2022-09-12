@@ -157,11 +157,11 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                         <h3 className="projectList__title">Tous mes projets</h3>
                         <TechSlider techs={techs} sortProjects={sortProjects} isMobile={isMobile} />
                         <ul className="projectList__legend">
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}>XS : composant</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}>S : feature</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "M")}>M : petit projet</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "L")}>L : projet -2 sprints</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XL")}>XL : projet +2 sprints</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}>XS : Composant</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}>S : Fonctionnalité</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "M")}>M : Projet (-2 sprint)</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "L")}>L : Projet (+2 sprint)</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XL")}>XL : Projet (+5 sprint)</li>
                         </ul>
                         <div className="projectList__contentBx">
                             <div className="projectList__layer utils--layer"></div>

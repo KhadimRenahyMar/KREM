@@ -55,12 +55,10 @@ export default function ProjectSlider({ project }) {
             <Splide hasTrack={false}
                 className="splide"
                 tag="section"
-                aria-label="My Favorite Images"
+                aria-label="projectSlider"
                 options={{
                     rewind: true,
                     type: 'loop',
-                    width: '100%',
-                    margin: '0 auto',
                     autoplay: true,
                     pauseOnHover: false,
                     lazyLoad: true,

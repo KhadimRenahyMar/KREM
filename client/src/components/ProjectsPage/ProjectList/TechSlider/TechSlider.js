@@ -2,7 +2,6 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import './TechSlider.scss';
 import lozad from 'lozad';
 import { useRef } from 'react';
-import { auto } from '@cloudinary/url-gen/qualifiers/quality';
 import PropTypes from 'prop-types';
 
 export default function TechSlider({ techs, sortProjects, isMobile }) {
@@ -26,21 +25,18 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
                     <Splide hasTrack={false}
                         className="splide"
                         tag="section"
-                        aria-label="My Favorite Images"
+                        aria-label="techSlider"
                         options={{
                             rewind: true,
-                            // type: 'loop',
                             autoplay: true,
                             pauseOnFocus: true,
                             perPage: 4,
                             perMove: 1,
-                            // padding: '1.5rem',
                             lazyLoad: 'nearby',
                             drag: 'free',
                             snap: true,
                             pagination: false,
                             arrows: false,
-                            // rewindByDrag: true,
                         }}
                     >
                         <SplideTrack className='splide__track'>
@@ -63,21 +59,15 @@ export default function TechSlider({ techs, sortProjects, isMobile }) {
                         aria-label="techSlider"
                         options={{
                             rewind: true,
-                            // autoWidth,
-                            // type: 'loop',
                             autoplay: true,
                             pauseOnHover: true,
                             perPage: 8,
                             perMove: 1,
-                            // padding: '1.5rem',
                             lazyLoad: 'nearby',
                             drag: 'free',
                             snap: true,
+                            pagination: false,
                             arrows: false,
-                            // dragMinThreshold: {
-                            //     mouse: 0,
-                            //     touch: 10,
-                            // },
                         }}
                     >
                         <SplideTrack className='splide__track'>
