@@ -12,8 +12,9 @@
     &__intro {
         position: relative;
         margin-top: 13rem;
-        // margin-bottom: 15rem;
         z-index: 1;
+        // height: 75vh;
+        margin-bottom: 25vh;
     }
 
     &__layer {
@@ -43,12 +44,6 @@
         color: getDeepMapValue(vars.$var, colors, secondary, lighter);
     }
 
-    &__name,
-    &__subtitle {
-        font-family: getDeepMapValue(vars.$var, fonts, title);
-        font-weight: getDeepMapValue(vars.$var, font-weight, normal);
-    }
-
     &__name {
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
         color: #f5f5f5;
@@ -56,15 +51,38 @@
         text-shadow: getDeepMapValue(vars.$var, shadows, text, title) getDeepMapValue(vars.$var, colors, secondary, primary);
     }
 
+    &__text {
+        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+    }
+
+    &__name,
+    &__subtitle {
+        font-family: getDeepMapValue(vars.$var, fonts, title);
+        font-weight: getDeepMapValue(vars.$var, font-weight, normal);
+    }
+
     &__subtitle {
         line-height: 2.5rem;
         text-shadow: getDeepMapValue(vars.$var, shadows, text, title) getDeepMapValue(vars.$var, colors, primary, primary);
         width: 12rem;
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
+        white-space: nowrap;
     }
 
-    &__text {
-        font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+    &__hive {
+        position: absolute;
+        right: 0.5rem;
+        top: -13rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20rem;
+        height: 20rem;
+        background-image: url('../../assets/bg/hive-BG-landing.svg');
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: getDeepMapValue(vars.$var, colors, primary, shade);
     }
 
     &__icon {
@@ -91,31 +109,11 @@
         }
     }
 
-    &__hive {
-        position: absolute;
-        right: 0.5rem;
-        top: -13rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 20rem;
-        height: 20rem;
-        background-image: url('../../assets/bg/hive-BG-landing.svg');
-        background-size: 90%;
-        background-repeat: no-repeat;
-        background-position: center;
-        color: getDeepMapValue(vars.$var, colors, primary, shade);
-
-        &--dekstop {
-            width: 25rem;
-            height: 25rem;
-        }
-    }
 
 
 
     .slides {
-        padding-top: 21vh;
+        // padding-top: 21vh;
         // background-color: rgba(0, 0, 0, 0.5);
 
         &__titleBx {
@@ -208,7 +206,7 @@
 
         &__title {
             margin-bottom: 0.2rem;
-            font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
         }
 
         &__text {
@@ -371,19 +369,22 @@
 
         &__contentBx {
             width: 100%;
+            padding: 4rem;
         }
 
         &__hive {
-            left: 41vw;
-            top: -107%;
-            width: 55vw;
+            left: 45vw;
+            top: -112%;
+            width: 50vw;
             height: 190%;
             transform: scale(1.1);
         }
 
         &__subtitle {
-            margin: 0 auto;
-            transform: scale(1.3) translate(0px, -0.2vw);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.125;
+            padding-right: 2rem;
+            padding-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
         &__name,
@@ -394,7 +395,6 @@
     .slides {
         width: 100%;
         margin: auto;
-        // padding-top: ;
     }
 
     .slide {
@@ -443,21 +443,31 @@
         }
 
         &__hive {
-            left: 35vw;
+            left: 42vw;
             top: -107%;
-            width: 40vw;
+            width: 40%;
             height: 190%;
         }
 
         &__subtitle {
-            transform: scale(1.4) translate(0px, -2px);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.15;
+            padding-right: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        &__name{
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.2;
+        }
+
+        &__text {
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6) * 1.05;
         }
     }
+
 
     .slides {
         width: 75%;
         margin: auto;
-        // padding-top: ;
     }
 
     .optionBar {
@@ -475,21 +485,32 @@
         }
 
         &__hive {
-            left: 24vw;
+            left: 30vw;
             top: -107%;
-            width: 50%;
+            width: 43%;
             height: 190%;
         }
+
         &__subtitle {
-            transform: scale(1.3) translate(0px, -2px);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.2;
+            padding-right: 2.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        &__name{
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.2;
+        }
+
+        &__text {
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6) * 1.05;
         }
     }
 
     .slides {
         width: 50%;
         margin: auto;
-        // padding-top: ;
     }
+
 
     .optionBar {
         width: 50%;
@@ -506,20 +527,30 @@
         }
 
         &__hive {
-            left: 24vw;
-            top: -107%;
-            width: 50%;
-            height: 190%;
+            top: -110%;
+            left: 27vw;
+            width: 45%;
         }
+
         &__subtitle {
-            transform: scale(1.4) translate(0px, -2px);
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.4;
+            padding-right: 4.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        &__name{
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h2) * 1.2;
+        }
+
+        &__text {
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6) * 1.1;
         }
     }
+
 
     .slides {
         width: 50%;
         margin: auto;
-        // padding-top: ;
     }
 
     .optionBar {
