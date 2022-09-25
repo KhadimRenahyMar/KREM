@@ -61,13 +61,16 @@
         margin: 0 0.8rem;
         filter: drop-shadow(0 0 0.1rem black);
         cursor: pointer;
-
+        text-decoration: none;
+        // test
         &-icon {
             width: 3.5rem;
             height: 3.5rem;
+            text-decoration: none;
 
             &--text {
                 fill: #f5f5f5;
+                text-decoration: none;
             }
         }
 

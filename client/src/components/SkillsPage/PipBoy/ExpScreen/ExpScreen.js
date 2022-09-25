@@ -76,8 +76,13 @@ export default function ExpScreen({ projects }) {
                     <strong className="xpScreen__card-date xpScreen__card-date--xp">Mai 2022</strong>
                     <div className="xpScreen__card-textBx">
 
-                        <h5 className="xpScreen__card-title">oFood (projet de fin d'étude) - Scrum Master et Project Manager</h5>
+                        <h5 className="xpScreen__card-title">oFood - Scrum Master et Project Manager</h5>
                         <p className="xpScreen__card-desc">Développement d'une application de rééquillibrage alimentaire</p>
+                        <ul className='xpScreen__card-list'>
+                            <li className='xpScreen__card-list-item'>Projet de fin d’études de 4 semaines (4 sprint)</li>
+                            <li className='xpScreen__card-list-item'>Equipe de 5 développeurs</li>
+                            <li className='xpScreen__card-list-item'>Présentation du projet : <a className='xpScreen__card-list-link' href='https://youtu.be/4VXu_f9cHiI?t=2761' target='_blank'>Ofood</a></li>
+                        </ul>
                     </div>
 
                     <ul className="xpScreen__card-skillList">
@@ -94,7 +99,13 @@ export default function ExpScreen({ projects }) {
                     <strong className="xpScreen__card-date xpScreen__card-date--formation">2021</strong>
                     <div className="xpScreen__card-textBx">
                         <h5 className="xpScreen__card-title">O'Clock (Promotion Atome) - cursus "Fullstack JS", spécialisation React</h5>
-                        <p className="xpScreen__card-desc">Titre Professionnel "Développeur Web et Web Mobile"</p>
+                        <p className="xpScreen__card-desc">Titre Professionnel "Développeur Web et Web Mobile" (RNCP III - Bac+2)</p>
+                        <ul className='xpScreen__card-list'>
+                            <li className='xpScreen__card-list-item'>5 mois – 700 heures intensives de formation</li>
+                            <li className='xpScreen__card-list-item'>Socle (3 mois) : HTML5/CSS3/Javascript/nodeJS/postgreSQL</li>
+                            <li className='xpScreen__card-list-item'>Spécialisation (1 mois) : React</li>
+                            <li className='xpScreen__card-list-item'>Projet (1 mois) : <a className='xpScreen__card-list-link' href='https://youtu.be/4VXu_f9cHiI?t=2761' target='_blank'>Ofood</a></li>
+                        </ul>
                     </div>
 
                     <ul className="xpScreen__card-skillList">

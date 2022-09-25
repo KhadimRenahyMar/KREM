@@ -89,7 +89,10 @@ export default function Landing() {
         <div className='page page__landingPage landingPage'>
 
             <section className="landingPage__intro">
-                <div className="landingPage__layer utils--layer"></div>
+                <div className="landingPage__layer utils--layer">
+                    <div className="landingPage__layer--bg"></div>
+                    <div className="landingPage__layer--fx"></div>
+                </div>
                 <div className="landingPage__contentBx">
                     <div className='landingPage__textBx'>
                         <h2 className='landingPage__name'>
@@ -120,12 +123,32 @@ export default function Landing() {
                         </svg>
                     </span>
                     <div className='landingPage__hive'>
-                        <strong className='landingPage__subtitle'>
+                        <strong x="50%" y="50%" className='landingPage__subtitle'>
                             LA
                             <span className='utils--white'> LOGIQUE </span><br />
                             AU SERVICE DE <br />
                             LA<span className='utils--orange'> CRÉATIVITÉ </span>
                         </strong>
+                        <svg className="landingPage__hive--shape" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="281.33" height="310.113" viewBox="0 0 281.33 310.113">
+                            <defs>
+                                <filter id="Tracé_420" x="10.267" y="1.205" width="271.063" height="308.908" filterUnits="userSpaceOnUse">
+                                    <feOffset input="SourceAlpha" />
+                                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                    <feFlood />
+                                    <feComposite operator="in" in2="blur" />
+                                    <feComposite in="SourceGraphic" />
+                                </filter>
+                                <filter id="Tracé_419" x="0" y="0" width="262.063" height="299.908" filterUnits="userSpaceOnUse">
+                                    <feOffset input="SourceAlpha" />
+                                    <feGaussianBlur stdDeviation="2" result="blur-2" />
+                                    <feFlood />
+                                    <feComposite operator="in" in2="blur-2" />
+                                    <feComposite in="SourceGraphic" />
+                                </filter>
+                            </defs>
+                            <path id="Tracé_420-2" data-name="Tracé 420" d="M245.86,71.519l.2,141.069L123.734,283.3,1.208,212.939,1,71.87,123.326,1.16Z" transform="translate(22.27 13.43)" fill="#04192e" stroke="#fff" stroke-miterlimit="10" stroke-width="5" />
+                            <path id="Tracé_419-2" data-name="Tracé 419" d="M245.86,71.519l.2,141.069L123.734,283.3,1.208,212.939,1,71.87,123.326,1.16Z" transform="translate(7.5 7.73)" fill="#04192e" stroke="#fa0" stroke-miterlimit="10" stroke-width="5" />
+                        </svg>
                     </div>
                 </div>
             </section>

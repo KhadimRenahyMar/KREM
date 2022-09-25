@@ -81,6 +81,19 @@
             }
         }
 
+        &-list{
+            list-style:disc;
+            list-style-position: inside;
+
+            &-link{
+                text-decoration: none;
+                color: white;
+                &:hover{
+                    color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+                }
+            }
+        }
+
         &--xp {
             background-color: rgba(0, 0, 0, 0.5);
         }
