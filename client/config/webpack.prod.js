@@ -12,7 +12,10 @@ module.exports = merge(common, {
   devtool: false,
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].css',
+      attributes: {
+        'media': "all"
+      }
     }),
     // Stats bundle
     new BundleStatsWebpackPlugin(),
