@@ -42,31 +42,39 @@
     &__card {
         margin: 1rem 0 0;
         background-color: rgba(0, 0, 0, 0.5);
-        padding: 1rem;
         border-radius: 0.5rem;
         border: 0.1px solid black;
         box-shadow: 0px 0px 0.2rem black;
-        cursor: pointer;
+        overflow: hidden;
 
         &list {
             display: flex;
         }
 
         &-title {
+            padding: 1rem;
             font-family: getDeepMapValue(vars.$var, fonts, subtitle);
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
             text-align: center;
+            cursor: pointer;
+
+            &:hover,
+            &:focus,
+            &.active {
+                background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
         }
 
         &-textBx {
-            margin: 1rem 0 0;
+            // margin: 1rem 0 0;
         }
 
         &-text {
-            padding-top: 1rem;
-            text-align: center;
+            max-width: 50ch;
+            margin: 2rem 2rem;
+            text-align: justify;
             hyphens: auto;
-            line-height: 1.2rem;
+            line-height: 1.7rem;
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
         }
 
@@ -80,14 +88,9 @@
         &-gif {
             width: 100%;
             height: 100%;
-            border-radius: 1rem;
             overflow: hidden;
-            margin: 0 0 0.5rem;
         }
 
-        &:hover {
-            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-        }
     }
 }
 
@@ -95,6 +98,29 @@
     .aboutMeScreen {
         &__card {
             transition: all 0.12s ease-in-out;
+
+            &-gif {
+                width: 50%;
+                border-radius: 1rem;
+                margin-top: 2rem;
+            }
+
+            &-text {
+                max-width: 50ch;
+                margin: 2rem auto;
+                padding: 0 2rem;
+                text-align: justify;
+                hyphens: auto;
+                line-height: 1.2rem;
+                font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .aboutMeScreen {
+        &__card {
             &-gif {
                 width: 50%;
             }

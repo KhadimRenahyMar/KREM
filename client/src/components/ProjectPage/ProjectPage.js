@@ -166,7 +166,14 @@ export default function Project() {
                                         </div>
                                         <ProjectSlider project={project} className='project__slider' />
                                         <div className="project__descBx">
-                                            <p className="project__desc">{project && project.desc} <br /> Taille du projet : {project.size}</p>
+                                            <div className="project__desc">
+                                                <h2 className="project__desc--subtitle">
+                                                    {project && project.desc}
+                                                </h2>
+                                                <p className="project__desc--size">
+                                                    Taille : {project.size}
+                                                </p>
+                                            </div>
                                             {
                                                 project.url ? (
                                                     <a href={project?.url} target="_blank" className="project__playBx">

@@ -157,11 +157,11 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                         <h3 className="projectList__title">Tous mes projets</h3>
                         <TechSlider techs={techs} sortProjects={sortProjects} isMobile={isMobile} />
                         <ul className="projectList__legend">
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}>XS : Composant</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}>S : Fonctionnalité</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "M")}>M : Projet (-2 sprint)</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "L")}>L : Projet (+2 sprint)</li>
-                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XL")}>XL : Projet (+5 sprint)</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}><strong className="projectList__sizes--size">XS</strong>Composant</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}><strong className="projectList__sizes--size">S</strong>Fonctionnalité</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "M")}><strong className="projectList__sizes--size">M</strong>Projet (-2 sprint)</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "L")}><strong className="projectList__sizes--size">L</strong>Projet (+2 sprint)</li>
+                            <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XL")}><strong className="projectList__sizes--size">XL</strong>Projet (+5 sprint)</li>
                         </ul>
                         <div className="projectList__contentBx">
                             <div className="projectList__layer utils--layer"></div>

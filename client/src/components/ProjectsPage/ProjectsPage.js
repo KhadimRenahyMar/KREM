@@ -181,7 +181,6 @@ export default function Projects({ isMobile }) {
                                                         </g>
                                                     </svg>
                                                 </div>
-                                                <div className="slide__layer utils--layer"></div>
                                                 <div className="slide__descBx">
                                                     <h2 className="slide__title">{project.name}</h2>
                                                     <p className="slide__desc">{project.desc}</p>

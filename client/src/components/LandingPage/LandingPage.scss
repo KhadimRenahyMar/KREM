@@ -129,8 +129,6 @@
 
 
     .slides {
-        // padding-top: 21vh;
-        // background-color: rgba(0, 0, 0, 0.5);
 
         &__titleBx {
             top: 0;
@@ -226,6 +224,7 @@
         }
 
         &__text {
+            display: none;
             margin-bottom: 0.2rem;
             font-style: italic;
             font-size: getDeepMapValue(vars.$var, font-sizes, text);
@@ -295,6 +294,9 @@
 
             .slide__title {
                 color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+            }
+            .slide__text{
+                display: flex;
             }
         }
     }

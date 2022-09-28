@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+
 const Landing = loadable(() => import('../LandingPage/LandingPage'));
 const Projects = loadable(() => import('../ProjectsPage/ProjectsPage'));
 const Project = loadable(() => import('../ProjectPage/ProjectPage'));

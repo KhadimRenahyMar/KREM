@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import dataMapper from "../dataMapper";
+import moment from "moment";
 
 const mainController = {
     getUserInfo: async (req: Request, res: Response) => {
@@ -64,7 +65,7 @@ const mainController = {
             public_repos : repoCount,
             reposCount : data.data.user.repositories.totalCount,
             commitCount : calendar.totalContributions,
-            lastCommit : lastContrib.date,
+            lastCommit : new Date(lastContrib.date).toLocaleDateString('fr'),
             contribPerWeek : avgCommitWeek,
             lastProject: lastProject
         }

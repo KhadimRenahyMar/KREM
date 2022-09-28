@@ -13,7 +13,7 @@
     &__slides {
         position: relative;
         width: 100%;
-        
+
         &__title {
             z-index: 1;
             padding: 1rem;
@@ -49,7 +49,7 @@
             filter: drop-shadow(0 0 0.1rem black);
             background-color: rgba(0, 0, 0, 0);
             transform: scaleX(-1);
-            width: 4rem;
+            width: 3rem;
 
             &--path {
                 fill: rgba(0, 0, 0, 0.5);
@@ -94,16 +94,17 @@
         box-shadow: 0px 0px 1rem black;
         display: flex;
         align-items: center;
-
-        &__title{
-            margin-bottom: 0.2rem;
-            font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+        
+        &__title {
+            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+            padding: 0.8rem;
         }
 
-        &__text{
-            margin-bottom: 0.2rem;
+        &__desc {
             font-style: italic;
             font-size: getDeepMapValue(vars.$var, font-sizes, text);
+            
+            display: none;
         }
 
         &__link {
@@ -123,28 +124,20 @@
             color: #f5f5f5;
             position: absolute;
             bottom: 0;
-            padding: 1rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        &__layer {
-            transition: all 0.2s ease-in-out;
-            opacity: 0;
-            background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-        }
-
-        &:hover {
+        &:hover, &:focus {
             .slide {
-                &__layer {
-                    display: flex;
-                    opacity: 50%;
+                &__title {
+                    padding: 0.7rem 1rem 0.2rem;
+                    color: getDeepMapValue(vars.$var, colors, tertiary, primary );
                 }
 
-                &__cover {
-                    filter: saturate(50%) contrast(50%) grayscale(50%);
+                &__desc {
+                    display: flex;
+                    padding: 0 0 1rem 1rem;
                 }
             }
         }
@@ -156,7 +149,7 @@
             width: 5vh;
             justify-content: center;
             align-items: center;
-            top: 1rem;
+            top: 0.8rem;
             right: 1rem;
             filter: drop-shadow(0 0 0.1rem black);
 
@@ -184,15 +177,11 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .slide{
-        &__title{
-            margin-bottom: 0.5rem;
+    .slide {
+        &__title {
+            margin-bottom: 0.2rem;
+            padding: 1rem 0 0 1rem;
             font-size: getDeepMapValue(vars.$var, font-sizes, title, h2);
-        }
-
-        &__text{
-            font-style: italic;
-            font-size: getDeepMapValue(vars.$var, font-sizes, text);
         }
     }
 }

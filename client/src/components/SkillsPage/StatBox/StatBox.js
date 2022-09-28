@@ -19,7 +19,7 @@ export default function StatBox(){
             setUserInfo(stats);
         }
     }, []);
-
+    
     return(
         <ul className="stats__list">
                     <li className="stats__card stats__card--one">
