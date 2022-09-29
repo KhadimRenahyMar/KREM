@@ -10,7 +10,6 @@
 
 .techSlider {
     width: 100%;
-    position: sticky;
 
     .splide {
         display: block;
@@ -40,10 +39,11 @@
             position: relative;
             // position: absolute;
             width: 70%;
-            height: 60%;
+            height: 70%;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: initial;
             filter: drop-shadow(0 0 0.5rem black);
 
             &--path {
@@ -64,7 +64,7 @@
 
         &__techLogo {
             position: absolute;
-            width: 30%;
+            height: 35%;
             margin: 0 auto;
             border: 0;
             border-radius: 0.2rem;

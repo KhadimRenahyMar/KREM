@@ -25,7 +25,7 @@ Il est donc apparu nécessaire de réduire cette contrainte en développant un o
 
 Ce rapport d'expérience détaille la conception de cet outil :  
 La section [Processus](#processus) introduit les considérations préalables au développement de ce projet web ainsi que les choix de conception. 
-La section [Challenges Rencontrés](#3-challenges-rencontrés) explore une sélection des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
+La section [Challenges Rencontrés](#challenges-rencontrés) explore une sélection des difficultés auxquelles j'ai été confronté lors du développement, ainsi que les solutions qui y ont été apportées. 
 Enfin, la [Conclusion](#conclusion) aborde différentes pistes de réflexion afin d'offrir une meilleure perspective sur ce projet.
 
 Bonne lecture,

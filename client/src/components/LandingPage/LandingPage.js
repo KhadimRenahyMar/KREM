@@ -240,7 +240,10 @@ export default function Landing() {
 
             </section>
             <div className='optionBar'>
-                <div className="optionBar__bar"></div>
+                <div className="optionBar__bar">
+                    <div className="optionBar__bar--bg"></div>
+                    <div className="optionBar__bar--fx"></div>
+                </div>
                 <div className="optionBar__buttons">
                     <div className="optionBar__buttonBx">
                         <Link to='/projects' className='optionBar__button'>

@@ -5,6 +5,7 @@ import './ProjectPage.scss';
 import ProjectSlider from "./ProjectSlider/ProjectSlider";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from "rehype-slug";
 
 import NotFound from "../NotFoundPage/NotFoundPage";
 import { API_URL } from "../App/App";
@@ -264,7 +265,7 @@ export default function Project() {
                                         <div className="project__story-contentBx">
                                             {
                                                 project?.text.length > 0 ? (
-                                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{project?.text}</ReactMarkdown>
+                                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>{project?.text}</ReactMarkdown>
                                                 ) : (
                                                     <p className="project__story--alert">Désolé, ce projet n'a pas encore de récit détaillé, revenez plus tard !</p>
                                                 )
