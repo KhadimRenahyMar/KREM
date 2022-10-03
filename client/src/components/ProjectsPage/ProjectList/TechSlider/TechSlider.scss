@@ -19,7 +19,7 @@
         box-shadow: 0px 0px 0.2rem black;
 
         &__track {
-            height: 13vh;
+            height: 10vh;
             filter: drop-shadow(0px 0px 0.1rem black);
             box-shadow: inset 0px 0px 0.5rem black;
             background-color: #f5f5f5;
@@ -30,14 +30,12 @@
         position: relative;
         box-shadow: none;
         background-color: rgba(255, 255, 255, 0.5);
-        // padding: 0.7rem 0;
         display: flex;
         justify-content: center;
         align-items: center;
 
         &__hiveLogo {
             position: relative;
-            // position: absolute;
             width: 70%;
             height: 70%;
             display: flex;
@@ -68,13 +66,22 @@
             margin: 0 auto;
             border: 0;
             border-radius: 0.2rem;
-            filter: drop-shadow(0 0 0.05rem black);
+            // filter: drop-shadow(0 0 0.05rem black);
         }
 
         &:hover {
             .slide__hiveLogo--path {
                 fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
             }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .techSlider {
+        &__hiveLogo {
+            width: 70%;
+            height: 70%;
         }
     }
 }

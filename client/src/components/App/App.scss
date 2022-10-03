@@ -44,8 +44,8 @@ body,
     min-width: 100%;
     min-height: 100%;
     background-repeat: repeat;
-    background-position: center;
-    // background-size: 100%;
+    // background-position: center;
+    // background-position-x: 25%;
 }
 
 .mobile {
@@ -53,6 +53,7 @@ body,
 }
 
 .desktop {
+    background-position: 90%;
     background-image: getDeepMapValue(vars.$var, bg, desktop);
 }
 

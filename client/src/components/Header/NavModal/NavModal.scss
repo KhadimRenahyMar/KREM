@@ -67,3 +67,12 @@
         }
     }
 }
+
+@media screen and (min-width: 600px) {
+    .navModal{
+        &__linkList{
+            min-height: 92%;
+            margin-top: 8vh;
+        }
+    }
+}

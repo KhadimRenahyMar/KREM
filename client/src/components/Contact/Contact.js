@@ -1,13 +1,20 @@
 import './Contact.scss';
 import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Contact({ isMobile }) {
+    const [width, setWidth] = useState(window.innerWidth);
+    const getWidth = () => {
+        setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', getWidth)
     return (
-        <aside className="contact" >
+        <aside className="contact">
             <div className="contact__contactBx">
                 <h2 className="contact__title">Contact</h2>
                 {
-                    isMobile && (
+                    width < 600 && (
                         <div className="contact__textBx">
                             <p className="contact__text">Vous recherchez un dev ? Contactez-moi !</p>
                         </div>
