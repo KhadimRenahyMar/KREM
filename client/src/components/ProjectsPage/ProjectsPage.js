@@ -120,7 +120,7 @@ export default function Projects({ isMobile }) {
                     options={{
                         rewind: true,
                         type: 'loop',
-                        autoplay: true,
+                        // autoplay: true,
                         pauseOnHover: true,
                         pauseOnFocus: true,
                         perPage: 1,
@@ -130,7 +130,7 @@ export default function Projects({ isMobile }) {
                     <div className="splide__arrows">
                         <button className="splide__arrow splide__arrow--prev">
                             <p className="splide__arrow--text splide__arrow--text-left" id="_" data-name="&lt;" fontFamily="Inconsolata-Light, Inconsolata" fontWeight="300"><span>&lt;</span></p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="44.056" height="50.827" viewBox="0 0 44.056 50.827">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.056 50.827">
                                 <g id="Groupe_792" data-name="Groupe 792">
                                     <path className="splide__arrow--path" id="Tracé_437" data-name="Tracé 437" d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z" fill="none" stroke="#fff" strokeMiterlimit="10" strokeWidth="2" />
                                 </g>

@@ -242,6 +242,14 @@
     }
 }
 
+@media screen and (max-width: 350px) {
+    .projectList{
+        &__optionBx{
+            top: 15vh;
+        }
+    }
+}
+
 @media screen and (min-width: 600px) {
     .projectList{
         &__optionBx{

@@ -61,8 +61,8 @@
 
     &__text {
         font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
-        text-align: justify;
         hyphens: auto;
+        word-break: break-word;
 
     }
 
