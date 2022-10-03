@@ -161,7 +161,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                 <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "XS")}>
                                     <strong className="projectList__sizes--size">XS</strong>
                                     {
-                                        window.innerWidth > 400 && (
+                                        window.innerWidth > 600 && (
                                             <p className="projectList__sizes--desc">Composant</p>
                                         )
                                     }
@@ -169,7 +169,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                 <li className="projectList__sizes" onClick={(e) => sortProjects(e, "size", "S")}>
                                     <strong className="projectList__sizes--size">S</strong>
                                     {
-                                        window.innerWidth > 400 && (
+                                        window.innerWidth > 600 && (
                                             <p className="projectList__sizes--desc">Fonctionnalité</p>
                                         )
                                     }
@@ -178,7 +178,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                     <strong className="projectList__sizes--size">M</strong>
                                     {
 
-                                        window.innerWidth > 400 && (
+                                        window.innerWidth > 600 && (
                                             <p className="projectList__sizes--desc">Projet (-2 sprint)</p>
                                         )
                                     }
@@ -187,7 +187,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                     <strong className="projectList__sizes--size">L</strong>
                                     {
 
-                                        window.innerWidth > 400 && (
+                                        window.innerWidth > 600 && (
                                             <p className="projectList__sizes--desc">Projet (+2 sprint)</p>
                                         )
                                     }
@@ -196,7 +196,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
                                     <strong className="projectList__sizes--size">XL</strong>
                                     {
 
-                                        window.innerWidth > 400 && (
+                                        window.innerWidth > 600 && (
                                             <p className="projectList__sizes--desc">Projet (+5 sprint)</p>
                                         )
                                     }

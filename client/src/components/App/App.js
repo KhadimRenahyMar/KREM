@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import bgDesktop from '../../assets/bg/BG desktop.svg';
+import bgMobile from '../../assets/bg/bg mobile.svg';
 
 const Landing = loadable(() => import('../LandingPage/LandingPage'));
 const Projects = loadable(() => import('../ProjectsPage/ProjectsPage'));
@@ -22,7 +24,7 @@ export const cld = new Cloudinary({
 export const checkUpdate = () => {
   const lastUpdate = localStorage.getItem('lastUpdate');
   const date = new Date().getTime();
-  const result = (date - lastUpdate) / (1000*60*60*24*7);
+  const result = (date - lastUpdate) / (1000 * 60 * 60 * 24 * 7);
   return result;
 }
 
@@ -47,7 +49,15 @@ function App() {
     <div className="App">
       <Header />
       <main className='main'>
-        <div className={isMobile ? ("mobile") : ("desktop")}></div>
+      <div className={isMobile ? ("mobile") : ("desktop")} style={isMobile ? ({backgroundImage: `url(${bgMobile})`}) : ({backgroundImage: `url(${bgDesktop})`})}>
+          {/* {
+            isMobile ? (
+              <iframe className='mobile' src={bgMobile} type=""/>
+            ) : (
+              <iframe className='desktop' src={bgDesktop} type=""/>
+            )
+          } */}
+        </div>
         <Routes>
           <Route
             path="/"

@@ -44,15 +44,16 @@ body,
     min-width: 100%;
     min-height: 100%;
     background-repeat: repeat;
+    overflow: hidden;
 }
 
 .mobile {
-    background-image: getDeepMapValue(vars.$var, bg, mobile);
+    // background-image: getDeepMapValue(vars.$var, bg, mobile);
 }
 
 .desktop {
-    background-position: 90%;
-    background-image: getDeepMapValue(vars.$var, bg, desktop);
+    background-position: 10% !important;
+    // background-image: getDeepMapValue(vars.$var, bg, desktop);
 }
 
 .page {
