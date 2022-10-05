@@ -46,8 +46,6 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
     const sortProjects = (e, type, data) => {
         const button = e.currentTarget;
         const icon = button.childNodes[0].childNodes[0];
-        console.log("1",icon)
-        console.log("2",button)
         const projectList = [];
         if (search.includes(data) || sizeSearch.includes(data)) {
             let currentSearch = search;

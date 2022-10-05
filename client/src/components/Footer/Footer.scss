@@ -18,8 +18,10 @@
 
 
     &__credit {
+        line-height: 1.2;
+        text-align: center;
         display: block;
-        margin-bottom: 1rem;
+        margin: 0 1rem 1rem;
         font-family: getDeepMapValue(vars.$var, fonts, title);
         font-size: getDeepMapValue(vars.$var, font-sizes, text);
         color: #f5f5f5;
