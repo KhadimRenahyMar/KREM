@@ -48,6 +48,10 @@
         fill: #f5f5f5;
         filter: drop-shadow(0 0 0.2rem black);
 
+        &.active {
+            fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+
         &:hover {
             fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
         }
@@ -62,6 +66,7 @@
         filter: drop-shadow(0 0 0.1rem black);
         cursor: pointer;
         text-decoration: none;
+
         // test
         &-icon {
             width: 3.5rem;
@@ -91,7 +96,8 @@
         &__navBx {
             height: 8vh;
         }
-        &__nav{
+
+        &__nav {
             width: 100%;
         }
     }
@@ -99,7 +105,7 @@
 
 @media screen and (min-width: 900px) {
     .header {
-        &__nav{
+        &__nav {
             width: 75%;
         }
     }
@@ -107,7 +113,7 @@
 
 @media screen and (min-width: 1200px) {
     .header {
-        &__nav{
+        &__nav {
             width: 50%;
         }
     }

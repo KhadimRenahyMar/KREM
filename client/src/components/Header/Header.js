@@ -16,13 +16,16 @@ export default function Header() {
 
     const toggle = (e) => {
         const modal = e.currentTarget.parentElement.parentElement.childNodes[1];
+        const icon = e.currentTarget.childNodes[0];
         if (modal.classList.contains('utils--hidden')) {
             modal.classList.remove('utils--hidden');
             document.body.style.overflowY = 'hidden';
+            icon.classList.add('active');
         }
         else {
             document.body.style.overflowY = 'unset';
             modal.classList.add('utils--hidden');
+            icon.classList.remove('active');
         }
     }
 

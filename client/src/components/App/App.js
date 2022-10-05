@@ -50,13 +50,6 @@ function App() {
       <Header />
       <main className='main'>
       <div className={isMobile ? ("mobile") : ("desktop")} style={isMobile ? ({backgroundImage: `url(${bgMobile})`}) : ({backgroundImage: `url(${bgDesktop})`})}>
-          {/* {
-            isMobile ? (
-              <iframe className='mobile' src={bgMobile} type=""/>
-            ) : (
-              <iframe className='desktop' src={bgDesktop} type=""/>
-            )
-          } */}
         </div>
         <Routes>
           <Route

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import '../Header.scss';
 import './NavModal.scss';
+import bg from '../../../assets/bg/bg mobile.svg';
 
 export default function NavModal() {
     const close = (e) => {
@@ -10,7 +11,7 @@ export default function NavModal() {
 
     return (
         <nav className='nav navModal utils--hidden'>
-            <div className="navModal__layer utils--layer mobile"></div>
+            <div className="navModal__layer utils--layer" style={{backgroundImage: `url(${bg})`}}></div>
             <ul className="navModal__linkList">
                 <NavLink
                     to='/' className='navModal__link' onClick={close}>

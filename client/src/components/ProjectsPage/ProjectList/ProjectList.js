@@ -46,7 +46,8 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
     const sortProjects = (e, type, data) => {
         const button = e.currentTarget;
         const icon = button.childNodes[0].childNodes[0];
-
+        console.log("1",icon)
+        console.log("2",button)
         const projectList = [];
         if (search.includes(data) || sizeSearch.includes(data)) {
             let currentSearch = search;
@@ -61,12 +62,13 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
             if (sizeSearch.length > 0 && type === 'size') {
                 currentSizeSearch = sizeSearch.filter(fields => fields !== data);
                 setSizeSearch(currentSizeSearch);
-                button.classList.remove('active');
+                icon.classList.remove('active');
             }
 
             if (!currentSearch.includes(data) || !currentSizeSearch.includes(data)) {
                 const list = makeProjectList(currentSearch, currentSizeSearch);
                 projectList.push(...list);
+                icon.classList.remove('active');
             }
         }
         else {
@@ -76,7 +78,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
             }
             else {
                 sizeSearch.push(data)
-                button.classList.add('active');
+                icon.classList.add('active');
             }
             const list = makeProjectList(search, sizeSearch);
             projectList.push(...list);

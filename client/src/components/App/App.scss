@@ -47,13 +47,8 @@ body,
     overflow: hidden;
 }
 
-.mobile {
-    // background-image: getDeepMapValue(vars.$var, bg, mobile);
-}
-
 .desktop {
     background-position: 10% !important;
-    // background-image: getDeepMapValue(vars.$var, bg, desktop);
 }
 
 .page {
