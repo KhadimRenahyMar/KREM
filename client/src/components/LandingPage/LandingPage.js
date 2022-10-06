@@ -90,8 +90,8 @@ export default function Landing() {
 
             <section className="landingPage__intro">
                 <div className="landingPage__layer utils--layer">
-                    <div className="landingPage__layer--bg"></div>
                     <div className="landingPage__layer--fx"></div>
+                    <div className="landingPage__layer--bg"></div>
                 </div>
                 <div className="landingPage__contentBx">
                     <div className='landingPage__textBx'>
