@@ -26,8 +26,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](https://github.com/KhadimRenahyMar/Arch-iQ/blob/main/portfolio/screenshots/landing.png?raw=true)
+![Desktop](https://raw.githubusercontent.com/KhadimRenahyMar/KREM/main/portfolio/screenshots/0cover.webp)
 
+![Mobile](https://raw.githubusercontent.com/KhadimRenahyMar/KREM/main/portfolio/screenshots/0covf_-_mobile.webp)
 
 ### Liens
 
