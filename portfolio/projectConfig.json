@@ -1,6 +1,6 @@
 {
     "url": "https://krem-portfolio.herokuapp.com/",
-    "coverURL": "",
+    "coverURL": "https://raw.githubusercontent.com/KhadimRenahyMar/KREM/main/portfolio/screenshots/0cover.webp",
     "size": "M",
     "mainTechs": ["React", "nodeJS", "TS"],
     "techs": [
