@@ -14,6 +14,7 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     &__layer {
         z-index: -1;

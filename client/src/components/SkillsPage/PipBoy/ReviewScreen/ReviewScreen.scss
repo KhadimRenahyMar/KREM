@@ -67,3 +67,22 @@
         }
     }
 }
+
+@media screen and (min-width: 600px) {
+    .reviewScreen {
+        &__review {
+            &-text {
+                text-align: justify;
+                hyphens: auto;
+                max-width: 75%;
+                margin: 0 auto;
+                line-height: 1.2;
+            }
+            
+            &-quotationMark{
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+    }
+}

@@ -120,7 +120,7 @@ export default function Projects({ isMobile }) {
                     options={{
                         rewind: true,
                         type: 'loop',
-                        // autoplay: true,
+                        autoplay: true,
                         pauseOnHover: true,
                         pauseOnFocus: true,
                         perPage: 1,

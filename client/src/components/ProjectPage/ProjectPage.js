@@ -276,7 +276,7 @@ export default function Project() {
                                                 project?.text.length > 0 ? (
                                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>{project?.text}</ReactMarkdown>
                                                 ) : (
-                                                    <p className="project__story--alert">Désolé, ce projet n'a pas encore de récit détaillé, revenez plus tard !</p>
+                                                    <p className="project__story--alert">Navré, ce projet ne possède pas encore de compte-rendu d'expérience, revenez plus tard !</p>
                                                 )
                                             }
                                         </div>

@@ -22,7 +22,7 @@
         },
         {
             "name": "React",
-            "packages": ["react-dom", "react-router-dom", "react-markdown", "axios", "webpack","babel", "splideJS", "semanticUI", "prop-types"]
+            "packages": ["react-dom", "react-router-dom", "react-markdown", "remark-gfm", "rehype-slug", "axios", "webpack","babel", "splideJS", "semanticUI", "prop-types", "react-custom-scrollbars"]
         },
         {
             "name": "nodeJS",
@@ -33,6 +33,6 @@
             "packages": ["ts-node"]
         }
     ],
-    "designPatterns": ["variables SCSS", "fonctions SCSS"],
+    "designPatterns": ["variables SCSS", "fonctions SCSS", "BEM"],
     "components": ["Carousel", "Navigation", "Modale"]
 }

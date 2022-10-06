@@ -171,7 +171,6 @@ export default function PipBoy() {
                         <AboutMeScreen width={width} />
                     </Scrollbars>
                 </div>
-                {/* // TODO scroll bar */}
             </div>
             <div className="pipboy__btns pipboy__btns--down">
                 <button className="pipboy__button" id="reviews" onClick={showScreen}>Reviews</button>

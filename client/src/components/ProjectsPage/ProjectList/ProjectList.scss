@@ -102,7 +102,6 @@
 
     &__list {
         padding: 1rem;
-        // overflow-y: scroll;
         height: auto;
     }
 
@@ -212,7 +211,6 @@
         &__list {
             display: flex;
             flex-wrap: wrap;
-            // margin: auto;
             justify-content: space-around;
         }
 

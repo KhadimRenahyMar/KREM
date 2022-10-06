@@ -26,6 +26,8 @@ export default function SkillScreen({ projectCount, techs, components, designPat
     useEffect(() => {
         const getData = async () => {
             let nodeList = [];
+            let nTechs = techs.length;
+
             for (const tech of techs) {
                 let techCount = 0;
                 let newPackgList = [];
@@ -38,9 +40,9 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                         newPackgList.push(packgObj);
                     }
                 }
-
                 techCount = techCount + tech.count;
-                let percent = techCount * 100 / projectCount;
+                let percent = Math.round(techCount * 100 / projectCount);
+                
                 let techObj = {
                     name: tech.name,
                     level: tech.count,
@@ -465,7 +467,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                                         <img src={tech.logo.secure_url} alt={`logo de ${tech.name}`} className="skillScreen__tech-icon" />
                                                         <h2 className="skillScreen__tech-name">{tech.name}</h2>
                                                     </div>
-                                                    <span className="skillscreen__tech-lvl">{tech.level} / {projectCount}</span>
+                                                    <span className="skillscreen__tech-lvl">{tech.percent}%</span>
                                                 </div>
                                                 <div className="skillScreen__techBx hidden">
                                                     {
