@@ -10,7 +10,7 @@
         },
         {
             "name": "Javascript",
-            "packages": []
+            "packages": ["webpack"]
         },
         {
             "name": "CSS",
