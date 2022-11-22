@@ -397,3 +397,26 @@
         }
     }
 }
+.techList{
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.techs{
+    margin: 0.3rem 0.5rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.desc{
+    text-align: justify;
+    hyphens: auto;
+    width: 80%;
+    max-width: 50ch;
+    margin: 1rem auto;
+}

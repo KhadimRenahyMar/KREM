@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import Proptypes from 'prop-types';
 
-export default function SkillScreen({ projectCount, techs, components, designPatterns }) {
+export default function SkillScreen({ projects, techs, components, designPatterns }) {
     const [technos, setTechnos] = useState([]);
     const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
@@ -26,31 +26,32 @@ export default function SkillScreen({ projectCount, techs, components, designPat
     useEffect(() => {
         const getData = async () => {
             let nodeList = [];
-            let nTechs = techs.length;
-
             for (const tech of techs) {
-                let techCount = 0;
                 let newPackgList = [];
                 for (const packg of tech.packages) {
-                    techCount += 0.2;
                     let packgObj = {
                         name: packg,
                     }
-                    if(!newPackgList.includes(packgObj)){
+                    if (!newPackgList.includes(packgObj)) {
                         newPackgList.push(packgObj);
                     }
                 }
-                techCount = techCount + tech.count;
-                let percent = Math.round(techCount * 100 / projectCount);
-                
+                let projectCount = 0;
+                for (let project of projects) {
+                    for (let techno of project.techs) {
+                        if (techno.name === tech.name) {
+                            projectCount += 1;
+                        }
+                    }
+                }
                 let techObj = {
                     name: tech.name,
                     level: tech.count,
                     children: newPackgList,
-                    percent: percent,
                     logo: tech.logo,
+                    count: projectCount,
                 }
-                if(!nodeList.includes(techObj)){
+                if (!nodeList.includes(techObj)) {
                     nodeList.push(techObj);
                 }
             }
@@ -68,7 +69,7 @@ export default function SkillScreen({ projectCount, techs, components, designPat
         }
         makeData();
     }, [techs]);
-    
+
     return (
         <div className="skillScreen">
             <ul className="skillScreen__skillsList">
@@ -463,11 +464,14 @@ export default function SkillScreen({ projectCount, techs, components, designPat
                                             <li key={tech.name} className="skillScreen__tech">
                                                 <div className="skillScreen__tech-titleBx" onClick={showMore}>
                                                     <div className="skillScreen__tech-title">
-                                                        <div className="skillScreen__tech-layer" style={Object.assign({}, { "width": `${tech.percent}%` }, { backgroundColor: '#FFAA00' })}></div>
+                                                        <div className="skillScreen__tech-layer"></div>
                                                         <img src={tech.logo.secure_url} alt={`logo de ${tech.name}`} className="skillScreen__tech-icon" />
                                                         <h2 className="skillScreen__tech-name">{tech.name}</h2>
                                                     </div>
-                                                    <span className="skillscreen__tech-lvl">{tech.percent}%</span>
+                                                    <div className="skillScreen__tech-lvlBx">
+                                                        <span className="skillScreen__tech-lvl">{tech.count} projet(s)</span>
+                                                        <span className="skillScreen__tech-lvl">{tech.children.length} package(s)</span>
+                                                    </div>
                                                 </div>
                                                 <div className="skillScreen__techBx hidden">
                                                     {
@@ -514,7 +518,6 @@ export default function SkillScreen({ projectCount, techs, components, designPat
 }
 
 SkillScreen.propTypes = {
-    projectCount: Proptypes.number.isRequired,
     techs: Proptypes.array.isRequired,
     components: Proptypes.array.isRequired,
     designPatterns: Proptypes.array.isRequired,

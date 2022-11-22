@@ -210,7 +210,7 @@ export default function Project() {
                                         </div>
                                         <div className="project__tagBx">
 
-                                            <div className="project__techSkills">
+                                            {/* <div className="project__techSkills">
                                                 <div className="project__techSkills-contentBx project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
                                                     {
@@ -275,10 +275,22 @@ export default function Project() {
                                                         )
                                                     }
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
+                                        <p className="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi expedita aliquid perferendis delectus rem?</p>
+                                    {
+                                        project.techs.length > 0 && (
+                                            <ul className="techList">
+                                                {
+                                                    project.techs.map((tech) => (
+                                                        <li className="techs">{tech.name}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        )
+                                    }
                                     </section>
-                                    <section className="project__story">
+                                    {/* <section className="project__story">
                                         <div className="project__story--layer"></div>
                                         <div className="project__story-contentBx" ref={getHeight} >
                                             {
@@ -289,7 +301,7 @@ export default function Project() {
                                                 )
                                             }
                                         </div>
-                                    </section>
+                                    </section> */}
                                     {
                                         story !== null && height > 800 && (
                                             <a href='#' className="utils__btn" onClick={scroll}>
