@@ -210,7 +210,7 @@ export default function Project() {
                                         </div>
                                         <div className="project__tagBx">
 
-                                            {/* <div className="project__techSkills">
+                                            <div className="project__techSkills">
                                                 <div className="project__techSkills-contentBx project__techSkills-contentBx">
                                                     <h4 className="project__techSkills-title" onClick={showMore}>Techs</h4>
                                                     {
@@ -275,22 +275,50 @@ export default function Project() {
                                                         )
                                                     }
                                                 </div>
-                                            </div> */}
+                                            </div>
                                         </div>
-                                        <p className="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi expedita aliquid perferendis delectus rem?</p>
-                                    {
-                                        project.techs.length > 0 && (
-                                            <ul className="techList">
+
+                                        {/* <div className="project__desc">
+                                            {
+                                                project.techs.length > 0 && (
+                                                    <ul className="techList">
+                                                        {
+                                                            project.techs.map((tech) => (
+                                                                <li className="techs">{tech.name}</li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                )
+                                            }
+                                            <h3 className="descTitle">Description</h3>
+                                            <p className="desc">{project.desc}</p>
+                                            <h4 className="descTitle">Détails</h4>
+                                            <p>Composant : 
                                                 {
-                                                    project.techs.map((tech) => (
-                                                        <li className="techs">{tech.name}</li>
+                                                    project.components.map((component) => (
+                                                        ` ${component} / `
                                                     ))
                                                 }
-                                            </ul>
-                                        )
-                                    }
+                                            </p>
+                                            <p>Design Patterns : 
+                                                {
+                                                    project.designPatterns.map((designPattern) => (
+                                                        ` ${designPattern} / `
+                                                    ))
+                                                }
+                                            </p>
+                                            <p>Déploiement : 
+                                                {
+                                                    project.deployed ? (
+                                                        ` ${project.deployed}`
+                                                    ) : (
+                                                        " Ce projet n'est pas encore déployé !"
+                                                    )
+                                                }
+                                            </p>
+                                        </div> */}
                                     </section>
-                                    {/* <section className="project__story">
+                                    <section className="project__story">
                                         <div className="project__story--layer"></div>
                                         <div className="project__story-contentBx" ref={getHeight} >
                                             {
@@ -301,7 +329,7 @@ export default function Project() {
                                                 )
                                             }
                                         </div>
-                                    </section> */}
+                                    </section>
                                     {
                                         story !== null && height > 800 && (
                                             <a href='#' className="utils__btn" onClick={scroll}>

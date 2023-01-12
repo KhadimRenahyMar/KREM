@@ -45,7 +45,13 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
 
     const sortProjects = (e, type, data) => {
         const button = e.currentTarget;
-        const icon = button.childNodes[0].childNodes[0];
+        let icon = null;
+        if(type === "size"){
+            icon = button.childNodes[0];
+        }
+        else{
+            icon = button.childNodes[0].childNodes[0];
+        }
         const projectList = [];
         if (search.includes(data) || sizeSearch.includes(data)) {
             let currentSearch = search;

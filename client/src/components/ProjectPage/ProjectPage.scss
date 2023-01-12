@@ -397,26 +397,43 @@
         }
     }
 }
-.techList{
-    width: 90%;
-    margin: 1rem auto;
+
+
+.project__desc {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.descTitle {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.techList {
+    margin: 0.8rem auto;
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.techs{
-    margin: 0.3rem 0.5rem;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
+.project__intro {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
 }
 
-.desc{
+.techs {
+    // font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+    margin: 0.3rem 0.4rem;
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #f5f5f5;
+}
+
+.desc {
     text-align: justify;
     hyphens: auto;
-    width: 80%;
-    max-width: 50ch;
-    margin: 1rem auto;
+    // max-width: 50ch;
+    margin: 1rem 0;
 }
