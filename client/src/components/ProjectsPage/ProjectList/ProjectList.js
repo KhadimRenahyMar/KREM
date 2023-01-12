@@ -66,7 +66,7 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
             if (sizeSearch.length > 0 && type === 'size') {
                 currentSizeSearch = sizeSearch.filter(fields => fields !== data);
                 setSizeSearch(currentSizeSearch);
-                icon.classList.remove('active');
+                icon.parentElement.classList.remove('active');
             }
 
             if (!currentSearch.includes(data) || !currentSizeSearch.includes(data)) {
@@ -82,7 +82,8 @@ export default function ProjectsList({ projects, isMobile, techIsLoading, setTec
             }
             else {
                 sizeSearch.push(data)
-                icon.classList.add('active');
+                icon.parentElement.classList.add('active');
+                console.log("icon", icon.parentElement);
             }
             const list = makeProjectList(search, sizeSearch);
             projectList.push(...list);
