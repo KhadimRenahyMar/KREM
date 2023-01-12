@@ -10,7 +10,7 @@ export default function Skills() {
     useEffect(()=> {
         const today = new Date();
         const birthdate = new Date(1996, 0, 17);
-        const age = today.getFullYear() - birthdate.getFullYear();
+        let age = today.getFullYear() - birthdate.getFullYear();
         const month = today.getMonth() - birthdate.getMonth();
         if(month < 0 || (month === 0 && today.getDate() < birthdate.getDate())){
             age--;

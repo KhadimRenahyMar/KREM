@@ -277,6 +277,46 @@ export default function Project() {
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {/* <div className="project__desc">
+                                            {
+                                                project.techs.length > 0 && (
+                                                    <ul className="techList">
+                                                        {
+                                                            project.techs.map((tech) => (
+                                                                <li className="techs">{tech.name}</li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                )
+                                            }
+                                            <h3 className="descTitle">Description</h3>
+                                            <p className="desc">{project.desc}</p>
+                                            <h4 className="descTitle">Détails</h4>
+                                            <p>Composant : 
+                                                {
+                                                    project.components.map((component) => (
+                                                        ` ${component} / `
+                                                    ))
+                                                }
+                                            </p>
+                                            <p>Design Patterns : 
+                                                {
+                                                    project.designPatterns.map((designPattern) => (
+                                                        ` ${designPattern} / `
+                                                    ))
+                                                }
+                                            </p>
+                                            <p>Déploiement : 
+                                                {
+                                                    project.deployed ? (
+                                                        ` ${project.deployed}`
+                                                    ) : (
+                                                        " Ce projet n'est pas encore déployé !"
+                                                    )
+                                                }
+                                            </p>
+                                        </div> */}
                                     </section>
                                     <section className="project__story">
                                         <div className="project__story--layer"></div>

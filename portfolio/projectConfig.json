@@ -5,16 +5,8 @@
     "mainTechs": ["React", "nodeJS", "TS"],
     "techs": [
         {
-            "name": "HTML",
-            "packages": []
-        },
-        {
             "name": "Javascript",
             "packages": ["webpack"]
-        },
-        {
-            "name": "CSS",
-            "packages": []
         },
         {
             "name": "SCSS",

@@ -135,7 +135,7 @@ export default function PipBoy() {
                         renderTrackVertical={props => <div {...props} className="utils__scrollbar--track-vertical" />}
                         renderThumbVertical={props => <div {...props} className="utils__scrollbar--thumb-vertical" />}
                         renderView={props => <div {...props} className="utils__scrollbar--view" />}>
-                        <SkillScreen projectCount={projects.length} techs={techs} components={components} designPatterns={designPatterns} />
+                        <SkillScreen projects={projects} techs={techs} components={components} designPatterns={designPatterns} />
                     </Scrollbars>
                 </div>
 
