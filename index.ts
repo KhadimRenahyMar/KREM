@@ -1,7 +1,7 @@
 require('dotenv').config();
 import path from "path";
 import express from 'express';
-import router from './routes/router';
+import router from './api/routes/router';
 import bodyParser from 'body-parser';
 import { v2 as cloudinary } from 'cloudinary';
 import cors from "cors";
