@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "./index.ts",
+  "main": "index.ts",
   "engines": {
     "node": "18.13.0",
     "npm": "8.19.3"
@@ -19,8 +19,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development ts-node-dev --no-notify ./api/index.ts",
-    "start": "NODE_ENV=production ts-node-dev --no-notify ./api/index.ts",
+    "dev": "NODE_ENV=development ts-node-dev --no-notify ./index.ts",
+    "start": "NODE_ENV=production ts-node-dev --no-notify ./index.ts",
     "heroku-postbuild": "cd client && npm install && npm run start"
   },
   "dependencies": {
