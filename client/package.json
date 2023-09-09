@@ -22,10 +22,10 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
     "sass": "^1.49.9",
-    "ts-loader": "^9.4.4",
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "ts-loader": "^9.4.4",
     "@babel/core": "^7.17.7",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
