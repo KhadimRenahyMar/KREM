@@ -1,0 +1,150 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+.xpScreen {
+  font-family: getDeepMapValue(vars.$var, fonts, text);
+  margin: 1rem 0;
+
+  &__legend {
+    display: flex;
+    justify-content: space-evenly;
+
+    &-item {
+      margin: 0 0.5rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      width: 100%;
+      text-align: center;
+
+      &--xp {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      &--formation {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: getDeepMapValue(vars.$var, colors, secondary, primary);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 0.2rem black;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    &-date {
+      color: getDeepMapValue(vars.$var, colors, primary, shade);
+      font-family: getDeepMapValue(vars.$var, fonts, title);
+      font-size: getDeepMapValue(vars.$var, font-sizes, title, h5);
+    }
+
+    &-textBx {
+      margin: 0 0 1rem 1rem;
+      word-break: break-word;
+    }
+
+    &-title {
+      margin: 1rem 0 0;
+    }
+
+    &-skillList {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-skillItem {
+      font-size: getDeepMapValue(vars.$var, font-sizes, tiny);
+      margin: 0.2rem;
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.5rem;
+
+      &--xp {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      &--formation {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &-list {
+      list-style: disc;
+      list-style-position: inside;
+      margin-bottom: 1rem;
+
+      &-link {
+        text-decoration: none;
+
+        &--xp {
+          color: #f5f5f5;
+
+        }
+
+        &--formation {
+          color: #202020;
+
+        }
+
+        &:hover {
+          color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+
+      }
+
+      &-item {
+        &--xp {
+          color: #f5f5f5;
+        }
+
+        &--formation {
+          color: #202020;
+        }
+      }
+    }
+
+    &--xp {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &--formation {
+      background-color: rgba(255, 255, 255, 0.5);
+
+      .xpScreen__card-textBx {
+        color: getDeepMapValue(vars.$var, colors, secondary, primary);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .xpScreen__card-date {
+        &--formation {
+          color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        }
+
+        &--xp {
+          color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        }
+      }
+
+      .xpScreen__card-skillItem {
+        color: getDeepMapValue(vars.$var, colors, secondary, primary);
+        background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+      }
+    }
+  }
+}

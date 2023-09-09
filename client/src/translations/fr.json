@@ -1,0 +1,51 @@
+{
+  "pages": {
+    "landing": {
+      "lastProjects": "Mes derniers projets"
+    }
+  },
+  "components": {
+    "contact": {
+      "title": "Contact",
+      "text": "Vous recherchez un dev ? Contactez-moi !"
+    },
+    "footer": {
+      "credit": "Ce site a été conçu et développé par Khadim Renahy-Mar"
+    },
+    "nav": {
+      "landing": "Accueil",
+      "projects": "Projets",
+      "skills": "Compétences"
+    },
+    "landing": {
+      "intro": "Je suis développeur Web Fullstack, j'ai 27 ans",
+      "welcome": "Bienvenue sur mon portfolio !",
+      "options": {
+        "seeMore": "Jeter un oeil à mes projets",
+        "knowMore": "En savoir plus sur moi"
+      }
+    },
+    "notFound": {
+      "notFound": "Pas trouvé",
+      "reallyNotFound": "Vraiment pas trouvé",
+      "back": "Accueil"
+    },
+    "project": {
+      "size": "Taille : {{size}}",
+      "accordion": {
+        "techs": "Techs",
+        "components": "Composants",
+        "designPattern": "Patrons de conception"
+      },
+      "notDeployed": "Ce projet n'est pas encore déployé !",
+      "noTechs": "Navré, ce projet ne dispose pas encore de la liste de ses technologies!",
+      "noComponents": "Navré, ce projet ne dispose pas encore de la liste de ses composants!",
+      "noDesignPattern": "Navré, ce projet ne dispose pas encore de la liste de ses patrons de conception!",
+      "story": {
+        "noStory": "Navré, ce projet ne possède pas encore de compte - rendu d'expérience, revenez plus tard !"
+      }
+    }
+  },
+  "hooks": {},
+  "common": {}
+}

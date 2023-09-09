@@ -13,7 +13,7 @@ module.exports = {
     // SCSS
     paths.src + '/styles/index.scss',
     // JS
-    paths.src + '/index.js',
+    paths.src + '/index.tsx',
   ],
   output: {
     path: paths.build,
@@ -21,6 +21,7 @@ module.exports = {
     filename: 'js/[name].[contenthash].js',
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       src: paths.src,
       app: paths.src,
@@ -62,6 +63,11 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       // Images
       {

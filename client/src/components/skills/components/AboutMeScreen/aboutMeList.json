@@ -1,0 +1,107 @@
+[
+  {
+    "title": "Mes compétences transverses",
+    "items": [
+      {
+        "name": "english",
+        "title": "Anglais",
+        "description": "I fell in love with the British culture as a teenager and kept using it on a daily basis since then (mostly with friends). Therefore, I read, write and speak English quite fluently and I handle IT's technical vocabulary perfectly. Translating both ways easily can be really convenient when I work on a project.",
+        "alt": "gif animé du Doctor de la série Doctor Who, legende : Quoi ?!"
+      },
+      {
+        "name": "graphism",
+        "title": "Graphisme",
+        "description": "L'étude du graphisme lors de mon bac professionnel m'a appris à analyser un cahier des charges, à concevoir une charte graphique et à assurer sa cohérence avec le besoin du client. Bien que la communication graphique ne fasse plus partie de mes objectifs professionnels, les notions de composition, de hiérarchie visuelle et de typographie me permettent aujourd'hui encore de mettre en valeur ce qui compte dans mes projets.",
+        "alt": "gif animé d'un graphiste travaillant sur une table lumineuse"
+      },
+      {
+        "name": "communication",
+        "title": "Communication non-violente",
+        "description": "Après plusieurs années d'experience de travail auprès de différents publics, j'ai développé une bonne compréhension des attentes, besoins et limites d'autui, et ce dans le but de créer et d'entretenir une relation de confiance basée sur le respect, la sincérité et la bienveillance.",
+        "alt": "gif animé d'un jeune homme souriant, legende : Discutons-en !"
+      },
+      {
+        "name": "projectmanagement",
+        "title": "Gestion de projet",
+        "description": "Au cours de ma première vie professionnelle en tant que musicien, la curiosité m'a poussé à bâtir de solides compétences dans tous les aspects entourant la production d'une oeuvre musicale. Ces connaissances m'ont permis une compréhension plus globale des enjeux de chacun des acteurs présents et ainsi de coordonner leur effort en vue des objectifs que nous avions à atteindre.",
+        "alt": "gif animé du personnage de Lester de Grand Theft Auto 5 devant un tableau chargé d'informations incompréhensibles, legende : Vous êtes avec moi ?"
+      },
+      {
+        "name": "adaptability",
+        "title": "Adaptabilité",
+        "description": "Ayant travaillé sur de nombreuses missions interim de courte durée, j'ai souvent été confronté à des environnements qui m'était étrangers et ai du apprendre à m'adapter rapidement afin de soutenir le rythme des équipes auxquelles j'étais incorporé.",
+        "alt": "gif animé de Bear Grills de Man VS Wild, legende : Improvise, Adapt, Overcome."
+      }
+    ]
+  },
+  {
+    "title": "Mes traits de personnalité",
+    "items": [
+      {
+        "name": "learning",
+        "title": "Curieux",
+        "description": "Voilà un \"vilain défaut\" que je suis fier de posséder. Parce que rien n'est jamais aussi évident que ce qu'il paraît, j'ai, depuis très jeune, un grand besoin de comprendre le monde qui m'entoure.",
+        "alt": "gif animé de Finn et Jake de la série Adventure Time, legende : c'est l'heure d'apprendre !"
+      },
+      {
+        "name": "creativity",
+        "title": "Créatif",
+        "description": "Nourrie par la curiosité, la créativité étends les limites de mon univers. En m'offrant de nouvelles perspectives, elle me permet de défier les apparences, et d'accèder à des idées uniques.",
+        "alt": "gif animé d'un croquis en noir et blanc de crane humain vu de profil, à l'intérieur du crane défilent rapidement plusieurs dessins en couleur représentants les idées qui nous traversent"
+      },
+      {
+        "name": "organized",
+        "title": "Organisé",
+        "description": "\"Une grande créativité implique une grande organisation\" - l'oncle de Peter Parker, certainement. Je pense en effet qu'un bon cadre permet à la créativité de canaliser son potentiel à l'endroit où elle est la plus essentielle.",
+        "alt": "gif animé d'un homme retournant son bureau qui effectue un 360 avant de retomber à l'endroit et parfaitement rangé"
+      },
+      {
+        "name": "social",
+        "title": "Sociable",
+        "description": "Avec l'autre, le temps passe plus vite et les obstacles semblent moins hauts, c'est pourquoi j'aime rencontrer de nouvelles personnes et apprendre à connaître ceux qui m'entourent.",
+        "alt": "gif animé de Jim Halpert et Darryl Philbin de la série The Office se faisant un check de façon complice"
+      },
+      {
+        "name": "calm",
+        "title": "Calme",
+        "description": "J'ai appris très jeune à dompter la pression. Depuis, je commence toujours par prendre du recul sur la situation afin de l'aborder avec sang-froid, de rester maître de mes capacités et de trouver une solution au problème qu'elle pose.",
+        "alt": "gif animé de Monty Python: La vie de Brian, Brian sur la croix chante, legende : Always look on the bright side of life"
+      }
+    ]
+  },
+  {
+    "title": "Mes centres d'intérêts",
+    "items": [
+      {
+        "name": "music",
+        "title": "Musique",
+        "description": "Pianiste depuis maintenant 13 ans, j'aime tout particulièrement la composition et l'improvisation. J'enseigne désormais par plaisir le piano à des élèves allant de 16 à 50 ans.",
+        "alt": "gif animé d'un chat noir en haut de forme jouant du piano"
+      },
+      {
+        "name": "art",
+        "title": "Arts",
+        "description": "Si vous me cherchez, vous me trouverez certainement dans un musée ! Ayant étudié l'histoire de l'art plusieurs années, j'ai appris à analyser une oeuvre, à observer pour mettre les mots justes sur ce qui, de prime abord, semble trop abstrait pour être décrit.",
+        "alt": "gif animé d'un costume de dinosaure courant à travers un musée"
+      },
+      {
+        "name": "philosophy",
+        "title": "Lecture et Philosophie",
+        "description": "Si vous avez un bon bouquin entre les mains, n'hésitez pas à m'en parler ! La philosophie, quand à elle, m'a beaucoup offert. L'épistémologie et ses inférences ont élargi ma perception du monde, la logique mathématique m'a permis d'acquérir une rigueur intellectuelle et l'histoire des sciences et des idées m'a apporté une méthode.",
+        "alt": "gif animé du Penseur de Rodin bougeant son doigt pour faire tourner la roue d'un écran de chargement"
+      },
+      {
+        "name": "helloThere",
+        "title": "Science-fiction",
+        "description": "J'ai dévoré les oeuvres d'Aldous Huxley, d'Isaac Asimov et de René Barjavel. Je préfère la science-fiction réaliste car, hormis son talent d'anticipation, sa liberté narrative offre un recul sur nos sociétés qui permet de mieux les observer et d'en comprendre les fondements.",
+        "alt": "gif animé d'Obi-Wan Kenobi de Star Wars : Un nouvel Espoir nous saluant, legende : Hello There !"
+      },
+      {
+        "name": "programmation",
+        "title": "Programmation",
+        "description": "Plongé dans l'informatique depuis très jeune, c'est en \"moddant\" mes jeux pour en modifier le fonctionnement que j'ai découvert la programmation. Depuis, l'organisation du code et l'algorithmie me passionnent et nourrissent ma soif d'apprentissage.",
+        "alt": "gif animé de Maurice Moss de la série The IT Crowd travaillant sur son ordinateur, remarquant un départ d'incendie et continuant son travail"
+      }
+    ]
+  }
+]

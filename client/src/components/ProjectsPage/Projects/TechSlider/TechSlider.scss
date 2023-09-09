@@ -1,0 +1,93 @@
+@use 'src/styles/vars';
+
+@function getDeepMapValue($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+.techSlider {
+  width: 100%;
+
+  .splide {
+    display: block;
+    width: 100%;
+    background-color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+    padding: 0.5rem 0;
+    box-shadow: 0px 0px 0.2rem black;
+
+    &__track {
+      height: 10vh;
+      filter: drop-shadow(0px 0px 0.1rem black);
+      box-shadow: inset 0px 0px 0.5rem black;
+      background-color: #f5f5f5;
+    }
+  }
+
+  .slide {
+    position: relative;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__hiveLogo {
+      position: relative;
+      width: 70%;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: initial;
+      filter: drop-shadow(0 0 0.5rem black);
+      cursor: pointer;
+
+      &--path {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        stroke: #f5f5f5;
+        filter: drop-shadow(0 0 0.5rem black);
+        stroke-width: 0.8rem;
+        fill: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+      }
+
+      .active {
+        fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+      }
+    }
+
+    &__techLogo {
+      position: absolute;
+      height: 35%;
+      margin: 0 auto;
+      border: 0;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+
+    &:hover {
+      .slide__hiveLogo--path {
+        fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .techSlider {
+    &__hiveLogo {
+      width: 70%;
+      height: 70%;
+    }
+  }
+
+  .slide {
+    &__techLogo {}
+  }
+}

@@ -1,0 +1,355 @@
+[
+  {
+    "date": "Février 2023",
+    "title": "The WatchDog - Développeur web fullstack",
+    "type": "xp",
+    "description": "Développement d'application de gestion énergétique pour",
+    "skills": [
+      {
+        "label": "gitlab",
+        "webProjectName": ""
+      },
+      {
+        "label": "Scrum",
+        "webProjectName": ""
+      },
+      {
+        "label": "Maintenabilité",
+        "webProjectName": ""
+      },
+      {
+        "label": "Docker",
+        "webProjectName": ""
+      },
+      {
+        "label": "MongoDB",
+        "webProjectName": ""
+      },
+      {
+        "label": "Internationalisation",
+        "webProjectName": ""
+      },
+      {
+        "label": "Analyse du besoin métier",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "Juin 2022",
+    "title": "KREM - Site Portfolio",
+    "type": "xp",
+    "description": "Conception et développement d'un site Portfolio",
+    "skills": [
+      {
+        "label": "API",
+        "webProjectName": ""
+      },
+      {
+        "label": "Déploiement",
+        "webProjectName": ""
+      },
+      {
+        "label": "Wireframes",
+        "webProjectName": ""
+      },
+      {
+        "label": "responsive",
+        "webProjectName": ""
+      },
+      {
+        "label": "Workflow design",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "Mai 2022",
+    "title": "oFood - Scrum Master et Project Manager",
+    "type": "formation",
+    "description": "Développement d'une application de rééquilibrage alimentaire",
+    "skills": [
+      {
+        "label": "Prise de décision",
+        "webProjectName": ""
+      },
+      {
+        "label": "Scrum",
+        "webProjectName": ""
+      },
+      {
+        "label": "Agile",
+        "webProjectName": ""
+      },
+      {
+        "label": "Création d'un cahier des charges",
+        "webProjectName": ""
+      },
+      {
+        "label": "Mise en place d'outil de suivi",
+        "webProjectName": ""
+      },
+      {
+        "label": "Mise en place de conventions de code",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "O'Clock (Promotion Atome) - cursus 'Fullstack JS', spécialisation React",
+    "type": "formation",
+    "description": "Titre Professionnel 'Développeur Web et Web Mobile' (RNCP III - Bac+2)",
+    "list": [
+      "5 mois – 700 heures intensives de formation",
+      "Socle (3 mois) : HTML5/CSS3/Javascript/nodeJS/postgreSQL",
+      "Spécialisation (1 mois) : React",
+      "Equipe de 5 développeurs",
+      {
+        "text": "Projet (1 mois) : ",
+        "link": {
+          "url": "https://youtu.be/4VXu_f9cHiI?t=2761",
+          "name": "Ofood"
+        }
+      }
+    ],
+    "skills": [
+      {
+        "label": "Maquettage d'une application",
+        "webProjectName": ""
+      },
+      {
+        "label": "Accessibilité web",
+        "webProjectName": ""
+      },
+      {
+        "label": "Conventions de code",
+        "webProjectName": ""
+      },
+      {
+        "label": "Pair-programming",
+        "webProjectName": ""
+      },
+      {
+        "label": "Scrum",
+        "webProjectName": ""
+      },
+      {
+        "label": "Culture Web",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "Chef de projet Musiques Actuelles",
+    "type": "xp",
+    "description": "Accompagnement bénévole de jeunes artistes et développement de projets musicaux - 6 mois",
+    "skills": [
+      {
+        "label": "Etablir des priorités",
+        "webProjectName": ""
+      },
+      {
+        "label": "Gestion de planning",
+        "webProjectName": ""
+      },
+      {
+        "label": "Structuration de tâches",
+        "webProjectName": ""
+      },
+      {
+        "label": "Coordination d'équipes",
+        "webProjectName": ""
+      },
+      {
+        "label": "Mise en relation",
+        "webProjectName": ""
+      },
+      {
+        "label": "Stratégie marketing",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2019-2020",
+    "title": "Pôle Emploi (Angers, Europe) - 1 an (CDD)",
+    "type": "xp",
+    "description": "Chargé d'accueil et d'orientation",
+    "skills": [
+      {
+        "label": "Transmission d'information",
+        "webProjectName": ""
+      },
+      {
+        "label": "Ecoute",
+        "webProjectName": ""
+      },
+      {
+        "label": "Communication non-violente",
+        "webProjectName": ""
+      },
+      {
+        "label": "Actualisation des connaissances",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2017-2019",
+    "title": "Atrihom Consulting",
+    "type": "xp",
+    "description": "Missions intérim régulières (principalement en accueil)",
+    "skills": [
+      {
+        "label": "Autonomie",
+        "webProjectName": ""
+      },
+      {
+        "label": "Fiabilité",
+        "webProjectName": ""
+      },
+      {
+        "label": "Adaptabilité",
+        "webProjectName": ""
+      },
+      {
+        "label": "Respect des procédures de sécurité",
+        "webProjectName": ""
+      },
+      {
+        "label": "Apprentissage rapide",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2017",
+    "title": "Restos du Coeur - Service Civique - 8 mois",
+    "type": "xp",
+    "description": "Accueil des bénéficiaires, distribution alimentaire, alphabétisation",
+    "skills": [
+      {
+        "label": "Respect des protocoles",
+        "webProjectName": ""
+      },
+      {
+        "label": "Bienveillance",
+        "webProjectName": ""
+      },
+      {
+        "label": "Sens des responsabilités",
+        "webProjectName": ""
+      },
+      {
+        "label": "Pédagogie",
+        "webProjectName": ""
+      },
+      {
+        "label": "Entretien des zones communes",
+        "webProjectName": ""
+      },
+      {
+        "label": "Esprit d'équipe",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2015-2017",
+    "title": "Licence Philosophie parcours Musique et Musicologie",
+    "type": "formation",
+    "description": "Université de Nantes / Université Paris Sorbonne",
+    "skills": [
+      {
+        "label": "Méthodologie",
+        "webProjectName": ""
+      },
+      {
+        "label": "Capacité d'analyse et de synthèse",
+        "webProjectName": ""
+      },
+      {
+        "label": "Argumentation",
+        "webProjectName": ""
+      },
+      {
+        "label": "Logique mathématique",
+        "webProjectName": ""
+      },
+      {
+        "label": "Culture Générale",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2015",
+    "title": "Baccalauréat Lettres et Arts (Mention AB)",
+    "type": "formation",
+    "description": "Lycée Champ Blanc - Le Longeron",
+    "skills": [
+      {
+        "label": "TOEIC (770/990)",
+        "webProjectName": ""
+      },
+      {
+        "label": "Prévention et Secours Civiques de niveau 1",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2012-2013",
+    "title": "Stages de communication graphique",
+    "type": "xp",
+    "description": "Médiapilote (Cholet) - 1 mois, Maire de Cholet (service communication) - 1 mois, Coup de pouce 49 (Angers) - 1 mois",
+    "skills": [
+      {
+        "label": "Analyse du besoin client",
+        "webProjectName": ""
+      },
+      {
+        "label": "Respect du cahier des charges",
+        "webProjectName": ""
+      },
+      {
+        "label": "Travail d'équipe",
+        "webProjectName": ""
+      },
+      {
+        "label": "Recherche d'identité graphique multi-support",
+        "webProjectName": ""
+      }
+    ]
+  },
+  {
+    "date": "2012-2013",
+    "title": "Baccalauréat Professionnel AMA Communication Visuelle et Plurimédia",
+    "type": "formation",
+    "description": "Lycée Saint Joseph - Bressuire",
+    "skills": [
+      {
+        "label": "Graphisme orienté client",
+        "webProjectName": ""
+      },
+      {
+        "label": "Analyse d'une charte graphique",
+        "webProjectName": ""
+      },
+      {
+        "label": "Illustration 2D/3D",
+        "webProjectName": ""
+      },
+      {
+        "label": "Suite Adobe",
+        "webProjectName": ""
+      },
+      {
+        "label": "Sens de la composition",
+        "webProjectName": ""
+      }
+    ]
+  }
+]
