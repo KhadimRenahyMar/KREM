@@ -8,8 +8,9 @@ import bgDesktop from "../../assets/bg/BG desktop.svg";
 import bgMobile from "../../assets/bg/bg mobile.svg";
 import { getUserDevice } from "./services/app.service";
 import { SessionProvider } from "./context/session";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "../../translations";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const Landing = loadable(() => import("../LandingPage"));
 const Projects = loadable(() => import("../ProjectsPage"));
@@ -34,31 +35,34 @@ function App() {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-        <div className="App">
-          <Header />
-          <main className="main">
-            <div
-              className={isMobile ? "mobile" : "desktop"}
-              style={isMobile ? { backgroundImage: `url(${bgMobile})` } : { backgroundImage: `url(${bgDesktop})` }}
-            />
-            <Routes>
-              <Route path="/" element={<Landing />} />
+    <>
+      <QueryClientProvider client={queryClient}>
+        {process.env.NODE_ENV === "development" ? <ReactQueryDevtools initialIsOpen={false} /> : null}
+        <SessionProvider>
+          <div className="App">
+            <Header />
+            <main className="main">
+              <div
+                className={isMobile ? "mobile" : "desktop"}
+                style={isMobile ? { backgroundImage: `url(${bgMobile})` } : { backgroundImage: `url(${bgDesktop})` }}
+              />
+              <Routes>
+                <Route path="/" element={<Landing />} />
 
-              <Route path="/projects" element={<Projects isMobile={isMobile} />} />
+                <Route path="/projects" element={<Projects isMobile={isMobile} />} />
 
-              <Route path="/projects/:slug" element={<Project />} />
+                <Route path="/projects/:slug" element={<Project />} />
 
-              <Route path="/skills" element={<Skills />} />
+                <Route path="/skills" element={<Skills />} />
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer isMobile={isMobile} />
-          </main>
-        </div>
-      </SessionProvider>
-    </QueryClientProvider>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <Footer isMobile={isMobile} />
+            </main>
+          </div>
+        </SessionProvider>
+      </QueryClientProvider>
+    </>
   );
 }
 

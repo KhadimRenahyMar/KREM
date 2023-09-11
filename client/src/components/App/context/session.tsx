@@ -1,13 +1,14 @@
 import { PropsWithChildren, createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import Api from "../../../api/api";
 import { Project } from "../../../interfaces/project";
 import { Tech } from "../../../interfaces/tech";
 import { differenceInCalendarDays } from "date-fns";
 import { Stat } from "../../../interfaces/stats";
 import { Resource } from "../../../interfaces/cloudinarySearch";
+
 interface SessionContextType {
   api: Api;
   store: {

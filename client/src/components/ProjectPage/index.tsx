@@ -37,7 +37,6 @@ export default function Project() {
     return <NotFound />;
   }
 
-  console.log("project", project);
   return (
     <div>
       <div className="page page__projectPage projectPage" ref={splide}>

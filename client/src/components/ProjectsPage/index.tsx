@@ -4,7 +4,6 @@ import { Projects } from "./Projects/Projects";
 import lozad from "lozad";
 import { Project } from "../../interfaces/project";
 import { useProject } from "../LandingPage/hooks";
-import { useTranslation } from "react-i18next";
 import { SplideOptions } from "../../interfaces/splide";
 import { Carroussel } from "../../ui/carroussel/carrousel";
 import { UpButton } from "../../ui/up-button";
@@ -12,7 +11,6 @@ import { UpButton } from "../../ui/up-button";
 export default function ProjectPage({ isMobile }) {
   const observer = lozad();
   observer.observe();
-  const { t } = useTranslation();
 
   const { getProjects } = useProject();
   const [width, setWidth] = useState(0);

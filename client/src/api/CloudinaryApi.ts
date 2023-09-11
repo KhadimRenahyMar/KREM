@@ -33,16 +33,8 @@ export default class CloudinaryApi {
     })
   }
 
-  public getLasts() {
-    // return this.client.get<[]>(`/projects/lasts`);
-  }
-
-  public getOne(projectId: string) {
-    // return this.client.get<>(`/projects/${projectId}`);
-  }
-
   public async getAllGifs() {
-    return this.client.get<Resource[]>(`/getGifs`);
+    return this.client.get<Resource[]>(`api/getGifs`);
   }
 
   public async formatAllGIfs(gifs: Resource[], width: number) {

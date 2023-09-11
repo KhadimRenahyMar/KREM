@@ -5,6 +5,6 @@ export default class StatsApi {
   public constructor(private readonly client: AxiosInstance) { }
 
   public getAll() {
-    return this.client.get<Stat>('/userInfos');
+    return this.client.get<Stat>('api/userInfos');
   }
 }

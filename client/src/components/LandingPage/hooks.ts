@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Project } from "../../interfaces/project";
 import { useSession } from "../App/context/session";
 import { Resource } from "../../interfaces/cloudinarySearch";
@@ -24,16 +24,15 @@ export function useProject() {
       queryKey: [ProjectQueryKeys.GET_ALL_PROJECTS],
       queryFn: async () => {
         const localProjects: Project[] = store.getAll("projects") as Project[];
-
         if (localProjects) {
           return localProjects;
         }
 
         const { data } = await api.project.getAll();
-
-        if (!data) {
+        if (!data || data.length === 0) {
           return [];
         }
+        console.log("data", data)
 
         const newData = await api.cdn.getAll(data, width);
 
@@ -41,8 +40,10 @@ export function useProject() {
           return data;
         }
 
-        store.set("projects", newData);
-        store.setLastUpdate();
+        if (data && data) {
+          store.set("projects", newData);
+          store.setLastUpdate();
+        }
         return newData;
       }
     })
@@ -68,8 +69,11 @@ export function useProject() {
 
           const screenshots: string[] = api.cdn.create(data.screenshots, width)
           const newData = { ...data, screenshots: screenshots }
-          store.set('projectsDetail', [...localProjects, newData]);
-          store.setLastUpdate();
+
+          if (data && data) {
+            store.set('projectsDetail', [...localProjects, newData]);
+            store.setLastUpdate();
+          }
           return newData as Project;
         }
 
@@ -78,8 +82,11 @@ export function useProject() {
           return undefined;
         }
         const newData = { ...data, screenshots: screenshots }
-        store.set('projectsDetail', [newData]);
-        store.setLastUpdate();
+
+        if (data && data) {
+          store.set('projectsDetail', [newData]);
+          store.setLastUpdate();
+        }
         return newData;
       }
     })
@@ -102,36 +109,14 @@ export function useProject() {
         }
         const formattedData = await api.cdn.formatAllGIfs(data, width);
 
-        store.set("gifs", formattedData);
-        store.setLastUpdate();
+        if (data && data) {
+          store.set("gifs", formattedData);
+          store.setLastUpdate();
+        }
         return formattedData;
       }
     })
 
-  // const formatGIfs = (width: number) =>
-  //   useQuery<Resource[]>({
-  //     enabled: width > 0,
-  //     cacheTime: 0,
-  //     queryKey: [ProjectQueryKeys.GET_ALL_GIFS],
-  //     queryFn: async () => {
-  //       const localGifs: Resource[] = store.getAll("gifs") as Resource[];
-
-  //       if (localGifs) {
-  //         return localGifs;
-  //       }
-  //       // width ? 
-  //       const { data } = await api.cdn.formatAllGIfs();
-  //       if (!data) {
-  //         return [];
-  //       }
-  //       const formattedGifs =
-  //         console.log("data in getGIfs", data)
-
-  //       store.set("gifs", data);
-  //       store.setLastUpdate();
-  //       return data;
-  //     }
-  //   })
   return {
     // Queries
     getProjects,

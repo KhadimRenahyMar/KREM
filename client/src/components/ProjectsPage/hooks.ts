@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "../App/context/session";
 import { Tech } from "../../interfaces/tech";
 import { Project } from "../../interfaces/project";
@@ -9,7 +9,6 @@ export enum TechQueryKeys {
 }
 
 export function useTech() {
-  // const {t} = useTranslation()
   const { store } = useSession();
   const { api } = useSession();
 
