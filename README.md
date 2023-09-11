@@ -1,17 +1,18 @@
 # KREM
 
-KREM is an API fed portfolio site made with React. 
+KREM is an API fed portfolio site made with React.
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [KREM](#krem)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Liens](#liens)
+  - [Mon process](#mon-process)
+    - [Technologie utilisées](#technologie-utilisées)
+  - [Auteur](#auteur)
 
 ## Overview
 
@@ -22,7 +23,7 @@ Users should be able to:
 - See a list of projects, sort them by technology and/or size
 - See the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
-- go through several, yet distinct, UI/UX patterns  
+- go through several, yet distinct, UI/UX patterns
 
 ### Screenshot
 
@@ -32,7 +33,7 @@ Users should be able to:
 
 ### Liens
 
-- Voir le site : [KREM](https://krem-portfolio.herokuapp.com/)
+- Voir le site : [KREM](https://www.krem.fr/)
 
 ## Mon process
 
@@ -48,8 +49,9 @@ Users should be able to:
 - Typescript
 - [Splide](https://splidejs.com) - Typescript library
 
-Pour le recap complet du procédé de réalisation de ce projet, c'est par [ici](https://krem-portfolio.herokuapp.com/projects/KREM) ! 
+Pour le recap complet du procédé de réalisation de ce projet, c'est par [ici](https://www.krem.fr/projects/KREM) !
 
 ## Auteur
-- Website : [Khadim Renahy-Mar](https://krem-portfolio.herokuapp.com/)
+
+- Website : [Khadim Renahy-Mar](https://www.krem.fr/)
 - Linkedin : [Khadim Renahy-Mar](https://www.linkedin.com/in/khadim-renahy-mar-9a3633217/)

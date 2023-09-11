@@ -12,7 +12,7 @@ export default class Api {
   public readonly cdn: CloudinaryApi;
   public readonly stats: StatsApi;
 
-  public baseURL = process.env.NODE_ENV === "production" ? "https://krem-portfolio.herokuapp.com" : "http://localhost:5050";
+  public baseURL = process.env.NODE_ENV === "production" ? "https://www.krem.fr" : "http://localhost:5050";
   public constructor() {
     this.client = axios.create({
       baseURL: this.baseURL,

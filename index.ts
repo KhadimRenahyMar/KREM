@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
     }
   }));
   server.use(cors({
-    origin: 'https://krem-portfolio.herokuapp.com',
+    origin: 'https://www.krem.fr',
     credentials: true,
   }));
 }

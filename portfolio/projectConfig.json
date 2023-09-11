@@ -1,30 +1,64 @@
 {
-    "url": "https://krem-portfolio.herokuapp.com/",
-    "coverURL": "https://raw.githubusercontent.com/KhadimRenahyMar/KREM/main/portfolio/screenshots/0cover.webp",
-    "size": "M",
-    "mainTechs": ["React", "nodeJS", "TS"],
-    "techs": [
-        {
-            "name": "Javascript",
-            "packages": ["webpack"]
-        },
-        {
-            "name": "SCSS",
-            "packages": []
-        },
-        {
-            "name": "React",
-            "packages": ["react-dom", "react-router-dom", "react-markdown", "remark-gfm", "rehype-slug", "axios", "webpack","babel", "splideJS", "semanticUI", "prop-types", "react-custom-scrollbars"]
-        },
-        {
-            "name": "nodeJS",
-            "packages": ["express", "dotenv", "cors", "compression"]
-        },
-        {
-            "name": "Typescript",
-            "packages": ["ts-node"]
-        }
-    ],
-    "designPatterns": ["variables SCSS", "fonctions SCSS", "BEM"],
-    "components": ["Carousel", "Navigation", "Modale"]
+  "url": "https://www.krem.fr",
+  "coverURL": "https://raw.githubusercontent.com/KhadimRenahyMar/KREM/main/portfolio/screenshots/0cover.webp",
+  "size": "M",
+  "mainTechs": [
+    "React",
+    "nodeJS",
+    "TS"
+  ],
+  "techs": [
+    {
+      "name": "Javascript",
+      "packages": [
+        "webpack"
+      ]
+    },
+    {
+      "name": "SCSS",
+      "packages": []
+    },
+    {
+      "name": "React",
+      "packages": [
+        "react-dom",
+        "react-router-dom",
+        "react-markdown",
+        "remark-gfm",
+        "rehype-slug",
+        "axios",
+        "webpack",
+        "babel",
+        "splideJS",
+        "semanticUI",
+        "prop-types",
+        "react-custom-scrollbars"
+      ]
+    },
+    {
+      "name": "nodeJS",
+      "packages": [
+        "express",
+        "dotenv",
+        "cors",
+        "compression"
+      ]
+    },
+    {
+      "name": "Typescript",
+      "packages": [
+        "ts-node"
+      ]
+    }
+  ],
+  "designPatterns": [
+    "variables SCSS",
+    "fonctions SCSS",
+    "BEM"
+  ],
+  "components": [
+    "Carousel",
+    "Navigation",
+    "Modale"
+  ]
 }
