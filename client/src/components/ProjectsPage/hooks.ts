@@ -10,9 +10,7 @@ export enum TechQueryKeys {
 
 export function useTech() {
   const { store } = useSession();
-  const { api } = useSession();
-
-  const queryClient = useQueryClient();
+  const { api } = store;
 
   const getTechs = (projects: Project[]) =>
     useQuery<Tech[]>({
@@ -31,9 +29,9 @@ export function useTech() {
           return [];
         }
 
-        store.set("techs", data);
-        const date = new Date().getTime();
-        store.set("lastUpdate", date.toString());
+        if (data && data) {
+          store.set("techs", data);
+        }
         return data;
       }
     })

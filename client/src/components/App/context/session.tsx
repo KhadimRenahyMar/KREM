@@ -1,17 +1,13 @@
 import { PropsWithChildren, createContext, useContext, useEffect, useMemo, useState } from "react";
-
-import { useLocation, useNavigate } from "react-router";
-import { useQueryClient } from "@tanstack/react-query";
 import Api from "../../../api/api";
 import { Project } from "../../../interfaces/project";
 import { Tech } from "../../../interfaces/tech";
 import { differenceInCalendarDays } from "date-fns";
 import { Stat } from "../../../interfaces/stats";
-import { Resource } from "../../../interfaces/cloudinarySearch";
 
 interface SessionContextType {
-  api: Api;
   store: {
+    api: Api;
     setLastUpdate: () => void;
     isUpToDate: () => boolean;
     getAll: (key: string) => Project[] | Tech[] | Stat | string[];
@@ -23,13 +19,9 @@ interface SessionContextType {
 const SessionContext = createContext<SessionContextType>({} as SessionContextType);
 
 export function SessionProvider({ children }: PropsWithChildren) {
-  // const {t} = useTranslation();
   const [api, setApi] = useState<Api>({} as Api);
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const queryClient = useQueryClient();
   const [storage, setStorage] = useState<Storage>();
 
   const initValues = () => {
@@ -75,25 +67,10 @@ export function SessionProvider({ children }: PropsWithChildren) {
       const item = JSON.stringify(value);
       localStorage.setItem(key, item);
     }
-    return { isUpToDate, setLastUpdate, getAll, getOne, set };
+    return { isUpToDate, setLastUpdate, getAll, getOne, set, api };
   }, [loading, storage, api]);
 
-  const memoedValue = useMemo(() => {
-    // function Test() {
-
-    // }
-    return {
-      loading,
-      api,
-      store,
-    };
-  }, [loading, api, store]);
-
-  return (
-    <SessionContext.Provider value={{ ...memoedValue, ...store }}>
-      {!initialLoading && children}
-    </SessionContext.Provider>
-  );
+  return <SessionContext.Provider value={{ store }}>{!initialLoading && children}</SessionContext.Provider>;
 }
 
 export function useSession() {

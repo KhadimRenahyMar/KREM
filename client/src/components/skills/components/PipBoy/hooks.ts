@@ -7,11 +7,8 @@ export enum StatsQueryKeys {
 }
 
 export function useStats() {
-  // const {t} = useTranslation()
   const { store } = useSession();
-  const { api } = useSession();
-
-  // const queryClient = useQueryClient();
+  const { api } = store;
 
   const getStats = () =>
     useQuery<Stat | undefined>({
@@ -30,7 +27,9 @@ export function useStats() {
           return undefined;
         }
 
-        store.set("stats", data);
+        if (data && data) {
+          store.set("stats", data);
+        }
         return data;
       }
     })

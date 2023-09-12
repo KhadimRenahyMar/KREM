@@ -11,15 +11,12 @@ export enum ProjectQueryKeys {
 }
 
 export function useProject() {
-  // const {t} = useTranslation()
   const { store } = useSession();
-  const { api } = useSession();
-
-  // const queryClient = useQueryClient();
+  const { api } = store;
 
   const getProjects = (width: number) =>
     useQuery<Project[]>({
-      enabled: width > 0,
+      enabled: width > 100,
       cacheTime: 0,
       queryKey: [ProjectQueryKeys.GET_ALL_PROJECTS],
       queryFn: async () => {
@@ -32,7 +29,6 @@ export function useProject() {
         if (!data || data.length === 0) {
           return [];
         }
-        console.log("data", data)
 
         const newData = await api.cdn.getAll(data, width);
 
@@ -51,7 +47,7 @@ export function useProject() {
 
   const getProject = (projectId: string, width: number) =>
     useQuery<Project | undefined>({
-      enabled: width > 0,
+      enabled: width > 100,
       queryKey: [ProjectQueryKeys.GET_ONE_PROJECT, projectId],
       queryFn: async () => {
         const localProjects: Project[] = store.getOne("projectsDetail") as Project[];
@@ -72,7 +68,6 @@ export function useProject() {
 
           if (data && data) {
             store.set('projectsDetail', [...localProjects, newData]);
-            store.setLastUpdate();
           }
           return newData as Project;
         }
@@ -85,7 +80,6 @@ export function useProject() {
 
         if (data && data) {
           store.set('projectsDetail', [newData]);
-          store.setLastUpdate();
         }
         return newData;
       }
@@ -93,7 +87,7 @@ export function useProject() {
 
   const getGifs = (width: number) =>
     useQuery<{ name: string, url: string }[]>({
-      enabled: width > 0,
+      enabled: width > 100,
       cacheTime: 0,
       queryKey: [ProjectQueryKeys.GET_ALL_GIFS],
       queryFn: async () => {
@@ -111,7 +105,6 @@ export function useProject() {
 
         if (data && data) {
           store.set("gifs", formattedData);
-          store.setLastUpdate();
         }
         return formattedData;
       }
@@ -122,7 +115,6 @@ export function useProject() {
     getProjects,
     getProject,
     getGifs,
-    // formatGIfs
     // Mutations
 
   }

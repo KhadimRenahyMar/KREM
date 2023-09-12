@@ -1,3 +1,4 @@
+import { Resource } from "../cloudinarySearch";
 import { ProjectTechs } from "../tech";
 
 interface Project {

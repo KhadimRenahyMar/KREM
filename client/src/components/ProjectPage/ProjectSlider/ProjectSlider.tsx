@@ -129,7 +129,7 @@ export function ProjectSlider({ project, className, isLoading }: ProjectSliderPr
                       <img
                         data-splide-lazy={project?.coverURL.path}
                         data-fetchpriority="high"
-                        src={project?.coverURL.path} // url ou path ??
+                        src={project?.coverURL.path}
                         className="slide__cover"
                         alt={`couverture du projet ${project?.name}`}
                       />

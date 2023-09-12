@@ -5,13 +5,14 @@ import "./styles/_reset.css";
 import "./styles/index.scss";
 
 import App from "./components/App/App";
+import React from "react";
 
 const rootReactElement = (
-  // <React.StrictMode>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 const target: HTMLElement = document.getElementById("root")!;
