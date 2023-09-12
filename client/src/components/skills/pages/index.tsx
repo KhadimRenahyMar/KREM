@@ -7,14 +7,19 @@ import { useProject } from "../../LandingPage/hooks";
 import { PipBoy } from "../components/PipBoy/PipBoy";
 import { StatBox } from "../components/StatBox/StatBox";
 
-export default function Skills() {
+interface SkillsProps {
+  isMobile: boolean;
+}
+
+export default function Skills({ isMobile }: SkillsProps) {
   const [age, setAge] = useState<number>();
   const { getStats } = useStats();
   const statsCall = getStats();
   const stats = statsCall.data;
 
   const { getProjects } = useProject();
-  const projectCall = getProjects(1);
+  const width = isMobile ? 390 : 952.5;
+  const projectCall = getProjects(width);
   const projects = projectCall.data;
 
   useEffect(() => {

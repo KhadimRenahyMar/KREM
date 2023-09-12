@@ -53,7 +53,7 @@ function App() {
 
                 <Route path="/projects/:slug" element={<Project />} />
 
-                <Route path="/skills" element={<Skills />} />
+                <Route path="/skills" element={<Skills isMobile={isMobile} />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>

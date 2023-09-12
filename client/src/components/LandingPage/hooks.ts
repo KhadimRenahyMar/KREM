@@ -16,7 +16,7 @@ export function useProject() {
 
   const getProjects = (width: number) =>
     useQuery<Project[]>({
-      enabled: width > 100,
+      enabled: width > 0,
       cacheTime: 0,
       queryKey: [ProjectQueryKeys.GET_ALL_PROJECTS],
       queryFn: async () => {
@@ -47,7 +47,7 @@ export function useProject() {
 
   const getProject = (projectId: string, width: number) =>
     useQuery<Project | undefined>({
-      enabled: width > 100,
+      enabled: width > 0,
       queryKey: [ProjectQueryKeys.GET_ONE_PROJECT, projectId],
       queryFn: async () => {
         const localProjects: Project[] = store.getOne("projectsDetail") as Project[];
@@ -87,7 +87,7 @@ export function useProject() {
 
   const getGifs = (width: number) =>
     useQuery<{ name: string, url: string }[]>({
-      enabled: width > 100,
+      enabled: width > 0,
       cacheTime: 0,
       queryKey: [ProjectQueryKeys.GET_ALL_GIFS],
       queryFn: async () => {
