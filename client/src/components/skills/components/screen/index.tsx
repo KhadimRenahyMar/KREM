@@ -31,7 +31,7 @@ export function Screen({ projects, techs, components, designPatterns, screen, wi
           renderThumbVertical={(props) => <div {...props} className="utils__scrollbar--thumb-vertical" />}
           renderView={(props) => <div {...props} className="utils__scrollbar--view" />}
         >
-          <SkillScreen projects={projects} techs={techs} components={components} designPatterns={designPatterns} />
+          <SkillScreen techs={techs} components={components} designPatterns={designPatterns} />
         </Scrollbars>
       </div>
 

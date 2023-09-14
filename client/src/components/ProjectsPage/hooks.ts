@@ -29,7 +29,7 @@ export function useTech() {
           return [];
         }
 
-        if (data && data) {
+        if (data && data.length > 0) {
           store.set("techs", data);
         }
         return data;

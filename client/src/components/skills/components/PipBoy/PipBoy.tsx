@@ -3,12 +3,14 @@ import { useState, useEffect, useRef } from "react";
 import { useTech } from "../../../ProjectsPage/hooks";
 import { Screen } from "../screen";
 import { Project } from "../../../../interfaces/project";
+import { useTranslation } from "react-i18next";
 
 interface PipBoyProps {
   projects: Project[];
 }
 
 export function PipBoy({ projects }: PipBoyProps) {
+  const { t } = useTranslation();
   const screen = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
 
@@ -83,10 +85,10 @@ export function PipBoy({ projects }: PipBoyProps) {
     <div className="pipboy__container">
       <div className="pipboy__btns pipboy__btns--up">
         <button className="pipboy__button active" id="skills" onClick={showScreen}>
-          Compétences
+          {t("components.pipBoy.screens.skills")}
         </button>
         <button className="pipboy__button" id="experience" onClick={showScreen}>
-          Parcours
+          {t("components.pipBoy.screens.career")}
         </button>
       </div>
       <div ref={screen}>
@@ -101,10 +103,10 @@ export function PipBoy({ projects }: PipBoyProps) {
       </div>
       <div className="pipboy__btns pipboy__btns--down">
         <button className="pipboy__button" id="reviews" onClick={showScreen}>
-          Reviews
+          {t("components.pipBoy.screens.reviews")}
         </button>
         <button className="pipboy__button" id="aboutMe" onClick={showScreen}>
-          Qui suis-je ?
+          {t("components.pipBoy.screens.whoAmI")}
         </button>
       </div>
     </div>

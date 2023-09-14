@@ -5,6 +5,7 @@ import noScreenshot from "../../../assets/bg/noScreenshots2.webp";
 import loadingImg from "../../../assets/bg/loading2.webp";
 import { Project } from "../../../interfaces/project";
 import { Dimmer, Loader } from "semantic-ui-react";
+import { useTranslation } from "react-i18next";
 
 interface ProjectSliderProps {
   project: Project | undefined;
@@ -14,6 +15,7 @@ interface ProjectSliderProps {
 
 export function ProjectSlider({ project, className, isLoading }: ProjectSliderProps) {
   const slider = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   return (
     <div className={className}>
@@ -100,12 +102,7 @@ export function ProjectSlider({ project, className, isLoading }: ProjectSliderPr
                   <Dimmer active>
                     <Loader size="massive" className="utils__loader--text"></Loader>
                   </Dimmer>
-                  <img
-                    src={loadingImg}
-                    className="slide__cover"
-                    alt="couverture en cours de chargement, merci de patienter"
-                    loading="lazy"
-                  />
+                  <img src={loadingImg} className="slide__cover" alt={t("common.images.loading")} loading="lazy" />
                 </div>
               </SplideSlide>
             </SplideTrack>
@@ -117,29 +114,29 @@ export function ProjectSlider({ project, className, isLoading }: ProjectSliderPr
                     <img
                       data-fetchpriority="high"
                       src={screenshot}
-                      alt={`aperçu des pages et fonctionnalités principales du projet ${project.name}`}
+                      alt={t("common.images.screenshots", { projectName: project.name })}
                       className="slide__cover"
                     />
                   </SplideSlide>
                 ))
               ) : (
-                <div>
-                  {project?.coverURL !== undefined ? (
+                <>
+                  {project?.coverURL ? (
                     <SplideSlide className="slide">
                       <img
                         data-splide-lazy={project?.coverURL.path}
                         data-fetchpriority="high"
                         src={project?.coverURL.path}
                         className="slide__cover"
-                        alt={`couverture du projet ${project?.name}`}
+                        alt={t("common.images.cover", { projectName: project?.name })}
                       />
                     </SplideSlide>
                   ) : (
                     <SplideSlide className="slide">
-                      <img src={noScreenshot} className="slide__cover" alt={`couverture du projet ${project?.name}`} />
+                      <img src={noScreenshot} className="slide__cover" alt={t("common.images.noImage")} />
                     </SplideSlide>
                   )}
-                </div>
+                </>
               )}
             </SplideTrack>
           )}

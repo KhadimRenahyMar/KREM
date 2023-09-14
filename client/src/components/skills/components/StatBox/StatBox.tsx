@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Stat } from "../../../../interfaces/stats";
 import "./StatBox.scss";
 
@@ -6,31 +7,33 @@ interface StatBoxProps {
 }
 
 export function StatBox({ stats }: StatBoxProps) {
+  const { t } = useTranslation();
+
   return (
     <ul className="stats__list">
       <li className="stats__card stats__card--one">
-        <h3 className="stats__titles">Projets publics</h3>
-        <strong className="stats__data">{stats ? stats?.public_repos : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.public")}</h3>
+        <strong className="stats__data">{stats ? stats.public_repos : t("common.loading")}</strong>
       </li>
       <li className="stats__card stats__card--one">
-        <h3 className="stats__titles">Projets privés</h3>
-        <strong className="stats__data">{stats ? stats?.reposCount : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.private")}</h3>
+        <strong className="stats__data">{stats ? stats.reposCount : t("common.loading")}</strong>
       </li>
       <li className="stats__card stats__card--four">
-        <h3 className="stats__titles">Contributions totales</h3>
-        <strong className="stats__data"> {stats ? stats?.commitCount : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.totalContributions")}</h3>
+        <strong className="stats__data"> {stats ? stats.commitCount : t("common.loading")}</strong>
       </li>
       <li className="stats__card stats__card--three">
-        <h3 className="stats__titles">Commit/semaine</h3>
-        <strong className="stats__data">{stats ? stats?.contribPerWeek : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.commitsPerWeek")}</h3>
+        <strong className="stats__data">{stats ? stats.contribPerWeek : t("common.loading")}</strong>
       </li>
       <li className="stats__card stats__card--two">
-        <h3 className="stats__titles">Dernier commit</h3>
-        <strong className="stats__data">{stats ? stats?.lastCommit : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.lastCommit")}</h3>
+        <strong className="stats__data">{stats ? stats.lastCommit : t("common.loading")}</strong>
       </li>
       <li className="stats__card stats__card--five">
-        <h3 className="stats__titles">Dernier Projet</h3>
-        <strong className="stats__data">{stats ? stats?.lastProject : "Loading..."}</strong>
+        <h3 className="stats__titles">{t("components.statBox.lastProject")}</h3>
+        <strong className="stats__data">{stats ? stats.lastProject : t("common.loading")}</strong>
       </li>
     </ul>
   );

@@ -27,7 +27,7 @@ export function useStats() {
           return undefined;
         }
 
-        if (data && data) {
+        if (data && Object.values(data).length > 0) {
           store.set("stats", data);
         }
         return data;

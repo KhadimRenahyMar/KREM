@@ -14,11 +14,11 @@ export default function Contact({ isMobile }) {
     <aside className="contact">
       <div className="contact__contactBx">
         <h2 className="contact__title">{t("components.contact.title")}</h2>
-        {width < 600 && (
+        {width < 600 ? (
           <div className="contact__textBx">
             <p className="contact__text">{t("components.contact.text")}</p>
           </div>
-        )}
+        ) : null}
         <ul className="contact__iconBx">
           <li className="contact__iconBx-item">
             <a

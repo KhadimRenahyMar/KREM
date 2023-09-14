@@ -1,18 +1,30 @@
 import "./SkillScreen.scss";
 
 import { Dimmer, Loader } from "semantic-ui-react";
-import { Project } from "../../../../interfaces/project";
 import { Tech } from "../../../../interfaces/tech";
 import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface SkillScreenProps {
-  projects: Project[];
   techs: Tech[];
   components: string[];
   designPatterns: string[];
 }
 
-export default function SkillScreen({ projects, techs, components, designPatterns }: SkillScreenProps) {
+export default function SkillScreen({ techs, components, designPatterns }: SkillScreenProps) {
+  const { t } = useTranslation();
+
+  const getPackageList = (t: Tech) => {
+    return t.packages.map((pkg) => ({ name: pkg }));
+  };
+
+  const makeData = () => {
+    return {
+      children: techs.map((t) => ({ ...t, children: getPackageList(t), level: t.count })),
+    };
+  };
+  const technos = makeData();
+
   const showMore = (e) => {
     const skillHeader = e.currentTarget;
     const content = skillHeader.parentNode.childNodes[1];
@@ -27,17 +39,6 @@ export default function SkillScreen({ projects, techs, components, designPattern
       layer.classList.remove("active");
     }
   };
-
-  const getPackageList = (t: Tech) => {
-    return t.packages.map((pkg) => ({ name: pkg }));
-  };
-
-  const makeData = () => {
-    return {
-      children: techs.map((t) => ({ ...t, children: getPackageList(t), level: t.count })),
-    };
-  };
-  const technos = makeData();
 
   return (
     <div className="skillScreen">
@@ -60,115 +61,115 @@ export default function SkillScreen({ projects, techs, components, designPattern
               </svg>
             </div>
             <div className="skillSCreen__skill-titleBx">
-              <h5 className="skillScreen__skill-title">Compétences techniques</h5>
+              <h5 className="skillScreen__skill-title">{t("components.screens.skills.technicalSkills.title")}</h5>
             </div>
           </div>
           <div className="skillScreen__skill-contentBx hidden">
-            <h6 className="table-subtitle">
-              Développer la partie front-end d’une application web ou web mobile en intégrant les recommandations de
-              sécurité
-            </h6>
+            <h6 className="table-subtitle">{t("components.screens.skills.technicalSkills.frontend")}</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
               <tbody className="table-body">
                 <tr className="table-row">
                   <td className="table-subhead" colSpan={2}>
-                    Maquetter une application
+                    {t("components.screens.skills.technicalSkills.designApp")}
                   </td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Wireframes</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Evaluation du besoin client</td>
+                  <td className="table-data"> {t("components.screens.skills.technicalSkills.evaluate")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">User-stories</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Etablir un produit minimum viable</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.mvp")}</td>
                 </tr>
 
                 <tr className="table-row">
                   <td className="table-subhead" colSpan={2}>
-                    Réaliser une interface utilisateur web statique et adaptable
+                    {t("components.screens.skills.technicalSkills.static")}
                   </td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Mise en place d'une architecture statique</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.staticArch")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Respect des conventions de code</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.conventions")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Prise en compte des questions d'accéssibilité web (W3C)</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.accessibility")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-subhead" colSpan={2}>
-                    Développer une interface utilisateur web dynamique
+                    {t("components.screens.skills.technicalSkills.dynamicUI")}
                   </td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">CSR</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Hydratation</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.hydration")}</td>
                 </tr>
               </tbody>
             </table>
 
-            <h6 className="table-subtitle">
-              Développer la partie back-end d’une application web ou web mobile en intégrant les recommandations de
-              sécurité
-            </h6>
+            <h6 className="table-subtitle">{t("components.screens.skills.technicalSkills.backend")}</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
 
               <tbody className="table-body">
                 <tr className="table-row">
-                  <td className="table-subhead">Créer une base de données</td>
+                  <td className="table-subhead">{t("components.screens.skills.technicalSkills.database")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Création de tables et rôles</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.create")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Seeding des tables</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.seeding")}</td>
                 </tr>
 
                 <tr className="table-row">
                   <td className="table-subhead" colSpan={2}>
-                    Développer les composants d’accès aux données
+                    {t("components.screens.skills.technicalSkills.accessData")}
                   </td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">MCD/MPD/MLD</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.dataModels")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">SSR</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Mise en place d'un Datamapper</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.dataMapper")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Mise en place d'un ORM</td>
+                  <td className="table-data">{t("components.screens.skills.technicalSkills.orm")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">CRUD</td>
                 </tr>
 
                 <tr className="table-row">
-                  <td className="table-subhead">Développer la partie back-end d’une application web ou web mobile</td>
+                  <td className="table-subhead">{t("components.screens.skills.technicalSkills.backendHead")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">MVC</td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-data">Router</td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-data">Middleware</td>
                 </tr>
               </tbody>
             </table>
@@ -196,15 +197,15 @@ export default function SkillScreen({ projects, techs, components, designPattern
               </svg>
             </div>
             <div className="skillScreen__titleBx">
-              <h5 className="skillScreen__skill-title">Outils</h5>
+              <h5 className="skillScreen__skill-title">{t("components.screens.skills.tools.title")}</h5>
             </div>
           </div>
           <div className="skillScreen__skill-contentBx hidden">
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Outil</th>
-                  <th className="table-legend table-legend--value">Service</th>
+                  <th className="table-legend">{t("components.screens.skills.tools.tool")}</th>
+                  <th className="table-legend table-legend--value">{t("components.screens.skills.tools.service")}</th>
                 </tr>
               </thead>
               <tbody className="table-body">
@@ -214,7 +215,7 @@ export default function SkillScreen({ projects, techs, components, designPattern
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Slack</td>
-                  <td className="table-data table-data--value">Communication</td>
+                  <td className="table-data table-data--value">{t("components.screens.skills.tools.communication")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Linux</td>
@@ -226,19 +227,19 @@ export default function SkillScreen({ projects, techs, components, designPattern
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">DrawIO</td>
-                  <td className="table-data table-data--value">MCD/MPD/MLD</td>
+                  <td className="table-data table-data--value">{t("components.screens.skills.tools.dataModels")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Git</td>
-                  <td className="table-data table-data--value">Versionnage</td>
+                  <td className="table-data table-data--value">{t("components.screens.skills.tools.versioning")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Insomnia</td>
-                  <td className="table-data table-data--value">Test de requêtes</td>
+                  <td className="table-data">Postman</td>
+                  <td className="table-data table-data--value">{t("components.screens.skills.tools.requests")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Kanban (Trello/Zenkit)</td>
-                  <td className="table-data table-data--value">Organisation</td>
+                  <td className="table-data table-data--value">{t("components.screens.skills.tools.organisation")}</td>
                 </tr>
               </tbody>
             </table>
@@ -267,7 +268,7 @@ export default function SkillScreen({ projects, techs, components, designPattern
               </div>
             </div>
             <div className="skillSCreen__skill-titleBx">
-              <h5 className="skillScreen__skill-title">Composants</h5>
+              <h5 className="skillScreen__skill-title">{t("components.screens.skills.components.title")}</h5>
             </div>
           </div>
 
@@ -276,10 +277,10 @@ export default function SkillScreen({ projects, techs, components, designPattern
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Composants</th>
+                  <th className="table-legend">{t("components.screens.skills.components.title")}</th>
                 </tr>
               </thead>
-              {components.length > 0 && (
+              {components.length > 0 ? (
                 <tbody className="table-body">
                   {components?.map((component) => (
                     <tr key={component} className="table-row">
@@ -287,14 +288,14 @@ export default function SkillScreen({ projects, techs, components, designPattern
                     </tr>
                   ))}
                 </tbody>
-              )}
+              ) : null}
             </table>
 
             <h6 className="table-subtitle">Backend</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
 
@@ -303,63 +304,60 @@ export default function SkillScreen({ projects, techs, components, designPattern
                   <td className="table-subhead">API</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Contacter une API dans le respect des règles de connexion</td>
+                  <td className="table-data">{t("components.screens.skills.components.callApi")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Séléctionner et exploiter les données d'une API</td>
+                  <td className="table-data">{t("components.screens.skills.components.selectAndUseData")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-subhead">API utilisées</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.usedApis")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Github API</td>
                 </tr>
+                <tr className="table-row">
+                  <td className="table-data">Leaflet API</td>
+                </tr>
               </tbody>
             </table>
 
-            <h6 className="table-subtitle">Concepts</h6>
+            <h6 className="table-subtitle">{t("components.screens.skills.components.concepts")}</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
 
               <tbody className="table-body">
                 <tr className="table-row">
-                  <td className="table-subhead">Programmation</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.programming")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion d'événements</td>
+                  <td className="table-data">{t("components.screens.skills.components.events")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion de l'asynchronicité</td>
+                  <td className="table-data">{t("components.screens.skills.components.async")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Programmation fonctionnelle</td>
+                  <td className="table-data">{t("components.screens.skills.components.functionalProg")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Reactive programming</td>
                 </tr>
 
                 <tr className="table-row">
-                  <td className="table-subhead">Outils de build</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.buildTools")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Minifiers (gatsby)</td>
-                </tr>
-                <tr className="table-row">
-                  <td className="table-data">Build (nestJS, electron)</td>
-                </tr>
-                <tr className="table-row">
-                  <td className="table-data">Bundler (webpack, babel)</td>
+                  <td className="table-data">Bundler (webpack, vite, babel)</td>
                 </tr>
 
                 <tr className="table-row">
-                  <td className="table-subhead">Gestion client/server</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.clientServer")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Historique</td>
+                  <td className="table-data">{t("components.screens.skills.components.history")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">localStorage</td>
@@ -368,54 +366,54 @@ export default function SkillScreen({ projects, techs, components, designPattern
                   <td className="table-data">Cookies</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">debugging</td>
+                  <td className="table-data">debugger</td>
                 </tr>
 
                 <tr className="table-row">
-                  <td className="table-subhead">Gestion des régionalités</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.regions")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Timezones</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Formatage de date</td>
+                  <td className="table-data">{t("components.screens.skills.components.dates")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion des monnaies</td>
+                  <td className="table-data">{t("components.screens.skills.components.currencies")}</td>
                 </tr>
 
                 <tr className="table-row">
-                  <td className="table-subhead">Sécurité</td>
+                  <td className="table-subhead">{t("components.screens.skills.components.security")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion de token</td>
+                  <td className="table-data">{t("components.screens.skills.components.tokens")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Hashage</td>
+                  <td className="table-data">{t("components.screens.skills.components.hash")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Prévenir les failles XSS</td>
+                  <td className="table-data">{t("components.screens.skills.components.xss")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion des origines multiples (cross-origin)</td>
+                  <td className="table-data">{t("components.screens.skills.components.crossOrigin")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Gestion de session</td>
+                  <td className="table-data">{t("components.screens.skills.components.sessions")}</td>
                 </tr>
                 <tr className="table-row">
-                  <td className="table-data">Authentification</td>
+                  <td className="table-data">{t("components.screens.skills.components.auth")}</td>
                 </tr>
               </tbody>
             </table>
 
-            <h6 className="table-subtitle">Patrons de conception</h6>
+            <h6 className="table-subtitle">{t("components.screens.skills.designPattern")}</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
-              {designPatterns.length > 0 && (
+              {designPatterns.length > 0 ? (
                 <tbody className="table-body">
                   {designPatterns?.map((designPattern) => (
                     <tr key={designPattern} className="table-row">
@@ -423,20 +421,20 @@ export default function SkillScreen({ projects, techs, components, designPattern
                     </tr>
                   ))}
                 </tbody>
-              )}
+              ) : null}
             </table>
 
             <h6 className="table-subtitle">Frameworks</h6>
             <table className="table">
               <thead className="table-head">
                 <tr className="table-row">
-                  <th className="table-legend">Compétence</th>
+                  <th className="table-legend">{t("components.screens.skills.title")}</th>
                 </tr>
               </thead>
 
               <tbody className="table-body">
                 <tr className="table-row">
-                  <td className="table-subhead">Gestionnaire de contenu</td>
+                  <td className="table-subhead">{t("components.screens.skills.frameworks.cms")}</td>
                 </tr>
                 <tr className="table-row">
                   <td className="table-data">Strapi</td>
@@ -490,8 +488,8 @@ export default function SkillScreen({ projects, techs, components, designPattern
                         <table className="table">
                           <thead className="table-head">
                             <tr key={tech.name} className="table-row">
-                              <th className="table-legend">Package</th>
-                              <th className="table-legend table-legend--value">{tech.children.length} packages</th>
+                              <th className="table-legend">Packages</th>
+                              <th className="table-legend table-legend--value">{tech.children.length} package(s)</th>
                             </tr>
                           </thead>
                           {tech.children.map((packg) => (
@@ -505,9 +503,7 @@ export default function SkillScreen({ projects, techs, components, designPattern
                           ))}
                         </table>
                       ) : (
-                        <p className="skillScreen__tech-message">
-                          Désolé, aucun package n'a été trouvé pour cette technologie. Essayez un autre onglet !
-                        </p>
+                        <p className="skillScreen__tech-message">{t("components.screens.skills.noPackage")}</p>
                       )}
                     </div>
                   </li>
@@ -517,7 +513,7 @@ export default function SkillScreen({ projects, techs, components, designPattern
               <div className="utils__loader">
                 <Dimmer active>
                   <Loader size="massive" className="utils__loader--text">
-                    Loading
+                    {t("common.loading")}
                   </Loader>
                 </Dimmer>
               </div>

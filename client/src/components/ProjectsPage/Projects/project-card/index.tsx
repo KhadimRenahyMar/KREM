@@ -1,6 +1,7 @@
 import { Project } from "../../../../interfaces/project";
 import loadingImg from "../../../../assets/bg/loading2.webp";
 import noScreenshot from "../../../../assets/bg/noScreenshots2.webp";
+import { useTranslation } from "react-i18next";
 
 interface ProjectCardProps {
   isLoading: boolean;
@@ -8,26 +9,23 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ isLoading, project }: ProjectCardProps) {
+  const { t } = useTranslation();
+
   return (
     <>
       {isLoading ? (
         <div className="projectList__project-imgBx">
-          <img
-            rel="preload"
-            src={loadingImg}
-            className="slide__cover"
-            alt={`couverture en cours de chargement, merci de patienter`}
-          />
+          <img rel="preload" src={loadingImg} className="slide__cover" alt={t("common.images.loading")} />
         </div>
       ) : (
         <div className="projectList__project-imgBx">
-          {project?.coverURL !== undefined ? (
+          {project?.coverURL ? (
             <img
               rel="preload"
               data-fetchpriority="high"
               src={project.coverURL.url}
               className="slide__cover lozad"
-              alt={`couverture du projet ${project.name}`}
+              alt={t("common.images.loading", { projectName: project.name })}
             />
           ) : (
             <img src={noScreenshot} className="slide__cover" alt={`le project ${project.name} n'a pas d'aperçu`} />
@@ -61,12 +59,13 @@ export function ProjectCard({ isLoading, project }: ProjectCardProps) {
       <div className="projectList__project-textBx">
         <h3 className="projectList__project-title">{project.name}</h3>
         <div className="projectList__project--techBx">
-          {project?.descTechs?.length > 0 &&
-            project?.descTechs.map((tech) => (
-              <span key={tech} className="projectList__project--tech">
-                {tech}
-              </span>
-            ))}
+          {project?.descTechs?.length > 0
+            ? project?.descTechs.map((tech) => (
+                <span key={tech} className="projectList__project--tech">
+                  {tech}
+                </span>
+              ))
+            : null}
         </div>
       </div>
     </>

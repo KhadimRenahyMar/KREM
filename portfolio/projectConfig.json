@@ -31,8 +31,7 @@
         "babel",
         "splideJS",
         "semanticUI",
-        "prop-types",
-        "react-custom-scrollbars"
+        "react-custom-scrollbars2"
       ]
     },
     {

@@ -1,81 +1,77 @@
+import { useTranslation } from "react-i18next";
 import "./ReviewScreen.scss";
 
 export default function Reviews() {
+  const { t } = useTranslation();
+
   return (
     <div className="reviewScreen">
       <ul className="reviewScreen__list">
         <li className="reviewScreen__review">
           <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--upperleft">"</span>
           <p className="reviewScreen__review-text">
-            C’est l’heure du bilan !
+            {t("components.screens.reviews.aleks.intro")}
             <br />
             <br />
-            <strong className="reviewScreen__review-subtitle">Evolution technique: </strong>
+            <strong className="reviewScreen__review-subtitle">
+              {t("components.screens.reviews.aleks.skillsSubtitle")}
+            </strong>
             <br />
             <br />
-            Les notions essentielles sont acquises tant au niveau du front que du back. C’est désormais la pratique et
-            la rencontre de défis algorithmiques qui te tireront vers le haut. "C’est en forgeant que l’on devient
-            forgeron". Multiplie les petits projets, ou poursuit tes apprentissages sur de plus gros, en parallèle de
-            tes recherches d’emploi. "Null" doute que tu continueras de progresser !
+            {t("components.screens.reviews.aleks.p.1")}
             <br />
             <br />
-            Par ailleurs, tu as été une personne pour laquelle j’ai eu en tant que référent de la promo, toute confiance
-            pour m’appuyer. J’avais une confiance absolue en toi pour faire vivre le groupe d’apothéose, être moteur et
-            fédérateur. Ta technicité d’une part, et ta bienveillance d’autre part, auront été tes meilleurs atouts
-            toute la formation durant, et en particulier à la fin.
+            {t("components.screens.reviews.aleks.p.2")}
             <br />
             <br />
           </p>
 
           <p className="reviewScreen__review-text">
-            <strong className="reviewScreen__review-subtitle">Participation :</strong>
+            <strong className="reviewScreen__review-subtitle">
+              {t("components.screens.reviews.aleks.activeLearnerSubtitle")}
+            </strong>
             <br />
             <br />
-            Depuis le départ, ta participation active a été constante et d’une très grande utilité pour tous tes
-            camarades de promotion. Tu étais clairement dans le peloton de tête lorsqu’il s’agissait d’aider les autres
-            moins en avance que toi.
+            {t("components.screens.reviews.aleks.p.3")}
             <br />
             <br />
-            De plus, tu as toujours alimenté le cockpit de tes questions ou remarques pertinentes. Tout cela, toujours
-            dans la bonne mesure de l’humilité et de la bienveillance.
+            {t("components.screens.reviews.aleks.p.4")}
             <br />
             <br />
-            Bref, merci car tu as été de ce point de vue un élément moteur.
+            {t("components.screens.reviews.aleks.p.5")}
             <br />
           </p>
 
           <p className="reviewScreen__review-text">
-            <strong className="reviewScreen__review-subtitle">Post-formation et conclusion :</strong>
+            <strong className="reviewScreen__review-subtitle">
+              {t("components.screens.reviews.aleks.conclusionSubtitle")}
+            </strong>
             <br />
             <br />
-            C’est grace à ton travail massif, autant qu’à ton humilité et ta bienveillance à l’égard de ceux qui
-            t’entourent, que tu pourras aller encore plus loin et avec succès. Merci de ce que tu as pu apporter à cette
-            promotion. Et bon vent !
+            {t("components.screens.reviews.aleks.conclusion")}
           </p>
           <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--downright">"</span>
           <em className="reviewScreen__review-author">
-            <span className="reviewScreen__review-author--name">- Alexis Hessler</span>, Développeur Web Fullstack et
-            Formateur, Bilan de fin de formation
+            <span className="reviewScreen__review-author--name">- Alexis Hessler</span>
+            {t("components.screens.reviews.aleks.credentials")}
           </em>
         </li>
 
         <li className="reviewScreen__review">
           <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--upperleft">"</span>
           <p className="reviewScreen__review-text">
-            "C’est avec beaucoup de professionnalisme et d’attention que Khadim a assumé ses fonctions et réalisé les
-            missions qui lui ont été confiées. Il a su s'adapter rapidement à son poste.
+            {t("components.screens.reviews.alysson.1")}
             <br />
             <br />
-            Mettant à jour ses connaissances dès qu'il le peut, il se montre efficace au sein d'une entreprise et lors
-            de la réalisation de projets.
+            {t("components.screens.reviews.alysson.2")}
             <br />
-            <br />A l'écoute, rigoureux et impliqué, Khadim est une personne avec qui travailler est un plaisir et que
-            je recommande vivement."
+            <br />
+            {t("components.screens.reviews.alysson.3")}
           </p>
           <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--downright">"</span>
           <em className="reviewScreen__review-author">
-            <span className="reviewScreen__review-author--name">- Alysson Moreau</span>, Conseillère pour l'emploi et
-            collègue
+            <span className="reviewScreen__review-author--name">- Alysson Moreau</span>
+            {t("components.screens.reviews.alysson.credentials")}
           </em>
         </li>
       </ul>

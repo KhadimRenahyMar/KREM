@@ -40,7 +40,7 @@ export default function AboutMeScreen({ width }: AboutMeScreenProps) {
   };
 
   return (
-    <div className="aboutMeScreen">
+    <ul className="aboutMeScreen">
       {aboutMeList.map((el) => {
         return (
           <li className="aboutMeScreen__contentBx" key={el.title}>
@@ -81,6 +81,6 @@ export default function AboutMeScreen({ width }: AboutMeScreenProps) {
           </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

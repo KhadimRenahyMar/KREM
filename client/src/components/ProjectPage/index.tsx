@@ -43,7 +43,7 @@ export default function Project() {
         <div className="projectPage__contentBx">
           <section className="project__intro">
             <div className="project__titleBx" ref={title}>
-              <h3 className="project__title">{project && project.name} </h3>
+              {project ? <h3 className="project__title">{project.name}</h3> : null}
               <Link to="/projects" className="project__githubLink">
                 <svg
                   className="utils__hive"

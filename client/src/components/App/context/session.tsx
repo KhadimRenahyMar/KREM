@@ -70,7 +70,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
     return { isUpToDate, setLastUpdate, getAll, getOne, set, api };
   }, [loading, storage, api]);
 
-  return <SessionContext.Provider value={{ store }}>{!initialLoading && children}</SessionContext.Provider>;
+  return <SessionContext.Provider value={{ store }}>{!initialLoading ? children : null}</SessionContext.Provider>;
 }
 
 export function useSession() {

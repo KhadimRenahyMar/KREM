@@ -1,5 +1,5 @@
 import { Experience } from "../../../../../interfaces/experience";
-import "..";
+
 interface ExperienceProps {
   exp: Experience;
 }

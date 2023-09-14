@@ -1,0 +1,198 @@
+{
+  "pages": {
+    "landing": {
+      "lastProjects": "My Latest Projects"
+    },
+    "projects": {
+      "lastProjects": "My Latest Projects"
+    }
+  },
+  "components": {
+    "contact": {
+      "title": "Contact",
+      "text": "Looking for a developer? Contact me!"
+    },
+    "footer": {
+      "credit": "This site was designed and developed by Khadim Renahy-Mar"
+    },
+    "nav": {
+      "landing": "Home",
+      "projects": "Projects",
+      "skills": "Skills"
+    },
+    "landing": {
+      "intro": "I'm a Fullstack Web Developer, I'm 27 years old",
+      "welcome": "Welcome to my portfolio!",
+      "options": {
+        "seeMore": "Take a look at my projects",
+        "knowMore": "Learn more about me"
+      }
+    },
+    "notFound": {
+      "notFound": "Not Found",
+      "reallyNotFound": "Really Not Found",
+      "back": "Home"
+    },
+    "projects": {
+      "allProjects": "All My Projects",
+      "projectSizes": {
+        "xs": "Component",
+        "s": "Feature",
+        "m": "Project (-2 sprint)",
+        "l": "Project (+2 sprint)",
+        "xl": "Project (+5 sprint)"
+      }
+    },
+    "techSlider": {
+      "logo": "logo - click to filter projects using {{techName}}"
+    },
+    "project": {
+      "size": "Size: {{size}}",
+      "accordion": {
+        "techs": "Techs",
+        "components": "Components",
+        "designPattern": "Design Patterns"
+      },
+      "notDeployed": "This project is not yet deployed!",
+      "noTechs": "Sorry, this project does not have a list of its technologies yet!",
+      "noComponents": "Sorry, this project does not have a list of its components yet!",
+      "noDesignPattern": "Sorry, this project does not have a list of its design patterns yet!",
+      "story": {
+        "noStory": "Sorry, this project does not have an experience report yet. Check back later!"
+      }
+    },
+    "skills": {
+      "intro": {
+        "title": "Khadim, {{age}} years old",
+        "desc": "Fullstack JS Developer"
+      }
+    },
+    "statBox": {
+      "public": "Public Projects",
+      "private": "Private Projects",
+      "totalContributions": "Total Contributions",
+      "commitsPerWeek": "Commits/Week",
+      "lastCommit": "Last Commit",
+      "lastProject": "Last Project"
+    },
+    "pipBoy": {
+      "screens": {
+        "skills": "Skills",
+        "career": "Career",
+        "reviews": "Reviews",
+        "whoAmI": "Who am I?"
+      }
+    },
+    "screens": {
+      "skills": {
+        "title": "Skills",
+        "technicalSkills": {
+          "title": "Technical Skills",
+          "frontend": "Developing the front-end of a web or web mobile application by integrating security recommendations",
+          "designApp": "Wireframing an application",
+          "evaluate": "Client requirement evaluation",
+          "mvp": "Establishing a Minimum Viable Product",
+          "static": "Creating a static and responsive web user interface",
+          "staticArch": "Implementing a static architecture",
+          "conventions": "Adhering to coding conventions",
+          "accessibility": "Addressing web accessibility concerns (W3C)",
+          "dynamicUI": "Developing a dynamic web user interface",
+          "hydration": "Hydration",
+          "backend": "Developing the back-end of a web or web mobile application by integrating security recommendations",
+          "database": "Creating a database",
+          "create": "Creating tables and roles",
+          "seeding": "Seeding tables",
+          "accessData": "Developing data access components",
+          "dataModels": "Entity-Relationship Diagrams/Physical Data Models/Logical Data Models",
+          "dataMapper": "Implementing a Data Mapper",
+          "orm": "Implementing an ORM",
+          "backendHead": "Developing the back-end of a web or web mobile application"
+        },
+        "tools": {
+          "title": "Tools",
+          "tool": "Tool",
+          "service": "Service",
+          "communication": "Communication",
+          "dataModels": "Entity-Relationship Diagrams/Physical Data Models/Logical Data Models",
+          "versioning": "Version Control",
+          "requests": "Testing API requests",
+          "organisation": "Project Organization"
+        },
+        "components": {
+          "title": "Components",
+          "callApi": "Making API requests following connection rules",
+          "selectAndUseData": "Selecting and utilizing data from an API",
+          "usedApis": "Used APIs",
+          "concepts": "Concepts",
+          "programming": "Event Handling",
+          "events": "Asynchronous Programming",
+          "functionalProg": "Functional Programming",
+          "buildTools": "Build Tools",
+          "clientServer": "Client/Server Management",
+          "history": "History",
+          "regions": "Managing Regionalities",
+          "dates": "Date Formatting (date-fns)",
+          "currencies": "Managing Currencies",
+          "security": "Security",
+          "tokens": "Token Management",
+          "hash": "Hashing",
+          "xss": "Preventing XSS Vulnerabilities",
+          "crossOrigin": "Managing Cross-Origin Requests",
+          "sessions": "Session Management",
+          "auth": "Authentication"
+        },
+        "designPattern": "Design Patterns",
+        "frameworks": {
+          "cms": "Content Management System"
+        },
+        "noPackage": "Sorry, no package found for this technology. Try another tab!"
+      },
+      "reviews": {
+        "aleks": {
+          "intro": "It's time for the assessment!",
+          "skillsSubtitle": "Technical Progress:",
+          "activeLearnerSubtitle": "Participation:",
+          "conclusionSubtitle": "Post-training and Conclusion:",
+          "p": {
+            "1": "Essential concepts have been mastered both on the front-end and back-end. It's now practice and tackling algorithmic challenges that will push you to excel. 'Practice makes perfect.' Whether it's taking on small projects or continuing your learning with larger ones, alongside your job search, there's no doubt that you will continue to progress!",
+            "2": "Furthermore, as someone who was the group leader during the final phase of the program, I had complete confidence in your ability to lead, motivate, and unify the group. Your technical skills and your kindness were your greatest assets throughout the program, especially towards the end.",
+            "3": "From the beginning, your active participation was consistent and immensely helpful to your fellow classmates. You were clearly at the forefront when it came to helping others who were less advanced.",
+            "4": "In addition, you consistently contributed with insightful questions and remarks. All of this was always done with a great deal of humility and kindness.",
+            "5": "In short, thank you for being a driving force in this regard."
+          },
+          "conclusion": "It's thanks to your massive effort, as well as your humility and kindness towards those around you, that you will be able to go even further and with great success. Thank you for what you have brought to this cohort. Best of luck!",
+          "credentials": ", Fullstack Web Developer and Trainer, End-of-Training Assessment"
+        },
+        "alysson": {
+          "1": "Khadim has handled his responsibilities and tasks with professionalism and care, quickly adapting to his role.",
+          "2": "He continuously updates his knowledge, making him efficient within a company and during project execution.",
+          "3": "Listening, diligent, and engaged, Khadim is a pleasure to work with, and I highly recommend him.",
+          "credentials": ", Employment Advisor and Colleague"
+        }
+      },
+      "exp": {
+        "legend": {
+          "education": "Education",
+          "exp": "Experience"
+        },
+        "experiences": {
+          "1": {
+            "date": "Since September 2023",
+            "title": "Web Development",
+            "desc": "Designing and developing web applications"
+          }
+        }
+      }
+    }
+  },
+  "hooks": {},
+  "common": {
+    "images": {
+      "loading": "Cover image loading, please wait",
+      "screenshots": "Preview of {{projectName}} project's main pages and features",
+      "cover": "{{projectName}} project cover",
+      "noImage": "No images available for this project!"
+    },
+    "loading": "Loading..."
+  }
+}

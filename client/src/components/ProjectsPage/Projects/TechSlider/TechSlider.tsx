@@ -3,6 +3,7 @@ import "./TechSlider.scss";
 import lozad from "lozad";
 import { useRef } from "react";
 import { Tech } from "../../../../interfaces/tech";
+import { useTranslation } from "react-i18next";
 
 interface TechSelectorProps {
   techs: Tech[];
@@ -14,6 +15,7 @@ interface TechSelectorProps {
 export default function TechSelector({ techs, isMobile, techSearch, onTechChange }: TechSelectorProps) {
   const observer = lozad();
   observer.observe();
+  const { t } = useTranslation();
 
   const imgBx = useRef<HTMLImageElement[]>([]);
 
@@ -69,7 +71,7 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
                 <img
                   rel="preload"
                   src={tech.logo.secure_url}
-                  alt={`logo - cliquez pour trier les projets utilisant ${tech.name}`}
+                  alt={t("components.techSlider.logo", { techName: tech.name })}
                   ref={makeRef}
                   className="slide__techLogo lozad"
                 />

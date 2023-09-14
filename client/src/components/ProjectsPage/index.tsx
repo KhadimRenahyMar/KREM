@@ -1,16 +1,18 @@
 import "./ProjectsPage.scss";
 import { useState, useEffect, useRef } from "react";
-import { Projects } from "./Projects/Projects";
+import { Projects } from "./Projects";
 import lozad from "lozad";
 import { Project } from "../../interfaces/project";
 import { useProject } from "../LandingPage/hooks";
 import { SplideOptions } from "../../interfaces/splide";
 import { Carroussel } from "../../ui/carroussel/carrousel";
 import { UpButton } from "../../ui/up-button";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectPage({ isMobile }) {
   const observer = lozad();
   observer.observe();
+  const { t } = useTranslation();
 
   const { getProjects } = useProject();
   const [width, setWidth] = useState(0);
@@ -88,7 +90,7 @@ export default function ProjectPage({ isMobile }) {
     <div className="page page__projectsPage projectsPage">
       <section className="projectsPage__slides" ref={splide}>
         <h2 className="projectsPage__slides__title" id="splide">
-          Mes derniers projets
+          {t("pages.projects.lastProjects")}
         </h2>
         <Carroussel
           projects={lastProjects}

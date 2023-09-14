@@ -2,6 +2,9 @@
   "pages": {
     "landing": {
       "lastProjects": "Mes derniers projets"
+    },
+    "projects": {
+      "lastProjects": "Mes derniers projets"
     }
   },
   "components": {
@@ -30,6 +33,19 @@
       "reallyNotFound": "Vraiment pas trouvé",
       "back": "Accueil"
     },
+    "projects": {
+      "allProjects": "Tous mes projets",
+      "projectSizes": {
+        "xs": "Composant",
+        "s": "Fonctionnalité",
+        "m": "Projet (-2 sprint)",
+        "l": "Projet (+2 sprint)",
+        "xl": "Projet (+5 sprint)"
+      }
+    },
+    "techSlider": {
+      "logo": "logo - cliquez pour trier les projets utilisant {{techName}}"
+    },
     "project": {
       "size": "Taille : {{size}}",
       "accordion": {
@@ -44,8 +60,140 @@
       "story": {
         "noStory": "Navré, ce projet ne possède pas encore de compte - rendu d'expérience, revenez plus tard !"
       }
+    },
+    "skills": {
+      "intro": {
+        "title": "Khadim, {{age}} ans",
+        "desc": "Développeur Fullstack JS"
+      }
+    },
+    "statBox": {
+      "public": "Projets publics",
+      "private": "Projets privés",
+      "totalContributions": "Contributions totales",
+      "commitsPerWeek": "Commit/semaine",
+      "lastCommit": "Dernier commit",
+      "lastProject": "Dernier Projet"
+    },
+    "pipBoy": {
+      "screens": {
+        "skills": "Compétences",
+        "career": "Parcours",
+        "reviews": "Reviews",
+        "whoAmI": "Qui suis-je ?"
+      }
+    },
+    "screens": {
+      "skills": {
+        "title": "Compétences",
+        "technicalSkills": {
+          "title": "Compétences techniques",
+          "frontend": "Développer la partie front-end d’une application web ou web mobile en intégrant les recommandations de sécurité",
+          "designApp": "Maquetter une application",
+          "evaluate": "Evaluation du besoin client",
+          "mvp": "Etablir un produit minimum viable",
+          "static": "Réaliser une interface utilisateur web statique et adaptable",
+          "staticArch": "Mise en place d'une architecture statique",
+          "conventions": "Respect des conventions de code",
+          "accessibility": "Prise en compte des questions d'accéssibilité web (W3C)",
+          "dynamicUI": "Développer une interface utilisateur web dynamique",
+          "hydration": "Hydratation",
+          "backend": "Développer la partie back-end d’une application web ou web mobile en intégrant les recommandations de sécurité",
+          "database": "Créer une base de données",
+          "create": "Création de tables et rôles",
+          "seeding": "Seeding des tables",
+          "accessData": "Développer les composants d’accès aux données",
+          "dataModels": "MCD/MPD/MLD",
+          "dataMapper": "Mise en place d'un Datamapper",
+          "orm": "Mise en place d'un ORM",
+          "backendHead": "Développer la partie back-end d’une application web ou web mobile"
+        },
+        "tools": {
+          "title": "Outils",
+          "tool": "Outil",
+          "service": "Service",
+          "communication": "Communication",
+          "dataModels": "MCD/MPD/MLD",
+          "versioning": "Versionnage",
+          "requests": "Test des requêtes",
+          "organisation": "Organisation"
+        },
+        "components": {
+          "title": "Composants",
+          "callApi": "Contacter une API dans le respect des règles de connexion",
+          "selectAndUseData": "Séléctionner et exploiter les données d'une API",
+          "usedApis": "API utilisées",
+          "concepts": "Concepts",
+          "programming": "Programmation",
+          "events": "Gestion d'événements",
+          "async": "Gestion de l'asynchronicité",
+          "functionalProg": "Programmation fonctionnelle",
+          "buildTools": "Outils de build",
+          "clientServer": "Gestion client/server",
+          "history": "Historique",
+          "regions": "Gestion des régionalités",
+          "dates": "Formatage de date (date-fns)",
+          "currencies": "Gestion des monnaies",
+          "security": "Sécurité",
+          "tokens": "Gestion de token",
+          "hash": "Hashage",
+          "xss": "Prévenir les failles XSS",
+          "crossOrigin": "Gestion des origines multiples (cross-origin)",
+          "sessions": "Gestion de session",
+          "auth": "Authentification"
+        },
+        "designPattern": "Patrons de conception",
+        "frameworks": {
+          "cms": "Gestionnaire de contenu"
+        },
+        "noPackage": "Désolé, aucun package n'a été trouvé pour cette technologie. Essayez un autre onglet !"
+      },
+      "reviews": {
+        "aleks": {
+          "intro": "C’est l’heure du bilan !",
+          "skillsSubtitle": "Evolution technique: ",
+          "activeLearnerSubtitle": "Participation :",
+          "conclusionSubtitle": "Post-formation et conclusion :",
+          "p": {
+            "1": "Les notions essentielles sont acquises tant au niveau du front que du back. C’est désormais la pratique et la rencontre de défis algorithmiques qui te tireront vers le haut. 'C’est en forgeant que l’on devient forgeron'. Multiplie les petits projets, ou poursuit tes apprentissages sur de plus gros, en parallèle de tes recherches d’emploi. 'Null' doute que tu continueras de progresser !",
+            "2": "Par ailleurs, tu as été une personne pour laquelle j’ai eu en tant que référent de la promo, toute confiance pour m’appuyer. J’avais une confiance absolue en toi pour faire vivre le groupe d’apothéose, être moteur et fédérateur. Ta technicité d’une part, et ta bienveillance d’autre part, auront été tes meilleurs atouts toute la formation durant, et en particulier à la fin.",
+            "3": "Depuis le départ, ta participation active a été constante et d’une très grande utilité pour tous tes camarades de promotion. Tu étais clairement dans le peloton de tête lorsqu’il s’agissait d’aider les autres moins en avance que toi.",
+            "4": "De plus, tu as toujours alimenté le cockpit de tes questions ou remarques pertinentes. Tout cela, toujours dans la bonne mesure de l’humilité et de la bienveillance.",
+            "5": "Bref, merci car tu as été de ce point de vue un élément moteur."
+          },
+          "conclusion": "C’est grace à ton travail massif, autant qu’à ton humilité et ta bienveillance à l’égard de ceux qui t’entourent, que tu pourras aller encore plus loin et avec succès. Merci de ce que tu as pu apporter à cette promotion. Et bon vent !",
+          "credentials": ", Développeur Web Fullstack et formateur, Bilan de fin de formation"
+        },
+        "alysson": {
+          "1": "C’est avec beaucoup de professionnalisme et d’attention que Khadim a assumé ses fonctions et réalisé les missions qui lui ont été confiées. Il a su s'adapter rapidement à son poste.",
+          "2": "Mettant à jour ses connaissances dès qu'il le peut, il se montre efficace au sein d'une entreprise et lors de la réalisation de projets.",
+          "3": "A l'écoute, rigoureux et impliqué, Khadim est une personne avec qui travailler est un plaisir et que je recommande vivement.",
+          "credentials": ", Conseillère pour l'emploi et collègue"
+        }
+      },
+      "exp": {
+        "legend": {
+          "education": "Formation",
+          "exp": "Expérience"
+        },
+        "experiences": {
+          "1": {
+            "date": "Depuis Septembre 2023",
+            "title": "Développement Web",
+            "desc": "Conception et développement d'applications web"
+          }
+        }
+      }
     }
   },
   "hooks": {},
-  "common": {}
+  "common": {
+    "images": {
+      "loading": "couverture en cours de chargement, merci de patienter",
+      "screenshots": "aperçu des pages et fonctionnalités principales du projet {{projectName}}",
+      "cover": "couverture du projet {{projectName}}",
+      "noImage": "Aucune image pour ce projet !"
+    },
+    "loading": "Chargement..."
+  }
 }

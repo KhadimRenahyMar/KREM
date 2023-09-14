@@ -36,7 +36,7 @@ export function useProject() {
           return data;
         }
 
-        if (data && data) {
+        if (data && data.length > 0) {
           store.set("projects", newData);
           store.setLastUpdate();
         }
@@ -66,7 +66,7 @@ export function useProject() {
           const screenshots: string[] = api.cdn.create(data.screenshots, width)
           const newData = { ...data, screenshots: screenshots }
 
-          if (data && data) {
+          if (data && data.length > 0) {
             store.set('projectsDetail', [...localProjects, newData]);
           }
           return newData as Project;
@@ -78,7 +78,7 @@ export function useProject() {
         }
         const newData = { ...data, screenshots: screenshots }
 
-        if (data && data) {
+        if (data && data.length > 0) {
           store.set('projectsDetail', [newData]);
         }
         return newData;
@@ -103,7 +103,7 @@ export function useProject() {
         }
         const formattedData = await api.cdn.formatAllGIfs(data, width);
 
-        if (data && data) {
+        if (data && data.length > 0) {
           store.set("gifs", formattedData);
         }
         return formattedData;

@@ -1,88 +1,91 @@
 @use 'src/styles/vars';
 
 @function getDeepMapValue($map, $keys...) {
-    @each $key in $keys {
-        $map: map-get($map, $key);
-    }
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
 
-    @return $map;
+  @return $map;
 }
 
 .reviewScreen {
+  width: 100%;
+  margin: 1rem 0;
+
+  &__list {
+    margin: auto;
     width: 100%;
-    margin: 1rem 0;
+  }
 
-    &__list {
-        margin: auto;
-        width: 100%;
-    }
+  &__review {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0 auto 2rem;
+    hyphens: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.8rem;
 
-    &__review {
+    &-quotationMark {
+      color: rgba(0, 0, 0, 0.5);
+      font-family: getDeepMapValue(vars.$var, fonts, title);
+      font-size: 7rem;
+      line-height: 2rem;
+
+      &--downright {
         display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        margin: 0 auto 2rem;
-        hyphens: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 0.8rem;
-
-        &-quotationMark {
-            color: rgba(0, 0, 0, 0.5);
-            font-family: getDeepMapValue(vars.$var, fonts, title);
-            font-size: 7rem;
-            line-height: 2rem;
-
-            &--downright {
-                display: flex;
-                justify-content: flex-end;
-            }
-        }
-
-        &:hover {
-            .reviewScreen__review-quotationMark {
-                color: getDeepMapValue(vars.$var, colors, tertiary, primary);
-                filter: drop-shadow(0 0 0.1rem black);
-            }
-        }
-
-        &-text {
-            font-family: getDeepMapValue(vars.$var, fonts, text);
-            font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
-            line-height: 1.2rem;
-            padding-bottom: 1rem;
-        }
-
-        &-subtitle {
-            text-transform: uppercase;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        &-author {
-            font-style: italic;
-
-            &--name {
-                font-family: getDeepMapValue(vars.$var, fonts, subtitle);
-                font-weight: bold;
-            }
-        }
+        justify-content: flex-end;
+      }
     }
+
+    &:hover {
+      .reviewScreen__review-quotationMark {
+        color: getDeepMapValue(vars.$var, colors, tertiary, primary);
+        filter: drop-shadow(0 0 0.1rem black);
+      }
+    }
+
+    &-text {
+      font-family: getDeepMapValue(vars.$var, fonts, text);
+      font-size: getDeepMapValue(vars.$var, font-sizes, title, h6);
+      line-height: 1.2rem;
+      padding-bottom: 1rem;
+    }
+
+    &-subtitle {
+      text-transform: uppercase;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    &-author {
+      font-style: italic;
+      text-align: right;
+      margin-right: 2rem;
+      margin-bottom: 1rem;
+
+      &--name {
+        font-family: getDeepMapValue(vars.$var, fonts, subtitle);
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 600px) {
-    .reviewScreen {
-        &__review {
-            &-text {
-                text-align: justify;
-                hyphens: auto;
-                max-width: 75%;
-                margin: 0 auto;
-                line-height: 1.2;
-            }
-            
-            &-quotationMark{
-                width: 80%;
-                margin: 0 auto;
-            }
-        }
+  .reviewScreen {
+    &__review {
+      &-text {
+        text-align: justify;
+        hyphens: auto;
+        max-width: 70%;
+        margin: 0 auto;
+        line-height: 1.2;
+      }
+
+      &-quotationMark {
+        width: 80%;
+        margin: 0 auto;
+      }
     }
+  }
 }
