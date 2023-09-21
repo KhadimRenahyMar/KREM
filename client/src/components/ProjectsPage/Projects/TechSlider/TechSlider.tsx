@@ -51,7 +51,7 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
         <SplideTrack className="splide__track">
           {techs.map((tech) => {
             const techIsInTechSearch = techSearch.includes(tech.name);
-
+            const pathClassName = !techIsInTechSearch ? "slide__hiveLogo--path" : "slide__hiveLogo--path active";
             return (
               <SplideSlide key={tech.name} className="slide" onClick={(e) => onTechChange(tech.name)}>
                 <svg
@@ -62,7 +62,7 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
                   viewBox="0 0 217.163 250.546"
                 >
                   <path
-                    className={!techIsInTechSearch ? "slide__hiveLogo--path" : "slide__hiveLogo--path active"}
+                    className={pathClassName}
                     id="Tracé_178"
                     data-name="Tracé 178"
                     d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z"
