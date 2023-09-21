@@ -52,6 +52,11 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
           {techs.map((tech) => {
             const techIsInTechSearch = techSearch.includes(tech.name);
             const pathClassName = !techIsInTechSearch ? "slide__hiveLogo--path" : "slide__hiveLogo--path active";
+
+            if (tech.name === "Typescript") {
+              console.log(techIsInTechSearch);
+              console.log(pathClassName);
+            }
             return (
               <SplideSlide key={tech.name} className="slide" onClick={(e) => onTechChange(tech.name)}>
                 <svg
