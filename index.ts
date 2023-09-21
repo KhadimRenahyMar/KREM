@@ -19,6 +19,13 @@ server.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV === "production") {
+  server.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    } else {
+      next();
+    }
+  });
   server.use(express.static(path.join(__dirname, 'client/dist'), {
     setHeaders: (res, path) => {
       res.setHeader('Cache-Control', 'max-age=31536000'),
