@@ -1,7 +1,7 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "./TechSlider.scss";
 import lozad from "lozad";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Tech } from "../../../../interfaces/tech";
 import { useTranslation } from "react-i18next";
 
@@ -28,6 +28,7 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
   };
 
   const itemNumber = isMobile ? 4 : 8;
+
   return (
     <div className="techSlider">
       <Splide
@@ -51,12 +52,8 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
         <SplideTrack className="splide__track">
           {techs.map((tech) => {
             const techIsInTechSearch = techSearch.includes(tech.name);
-            const pathClassName = !techIsInTechSearch ? "slide__hiveLogo--path" : "slide__hiveLogo--path active";
+            const pathClassName = !techIsInTechSearch ? "slide__hiveLogo--path" : "slide__hiveLogo--path";
 
-            if (tech.name === "Typescript") {
-              console.log(techIsInTechSearch);
-              console.log(pathClassName);
-            }
             return (
               <SplideSlide key={tech.name} className="slide" onClick={(e) => onTechChange(tech.name)}>
                 <svg
@@ -68,6 +65,7 @@ export default function TechSelector({ techs, isMobile, techSearch, onTechChange
                 >
                   <path
                     className={pathClassName}
+                    style={{ fill: !techIsInTechSearch ? "rgba(0, 0, 0, 0.5)" : "#FFAA00" }}
                     id="Tracé_178"
                     data-name="Tracé 178"
                     d="M212.986,62.2l.173,122.386-105.9,61.346L1.18,184.892,1,62.506,106.9,1.16Z"

@@ -33,6 +33,10 @@ export default function ProjectPage({ isMobile }) {
     setIsLoading(false);
   }, [projects]);
 
+  if (!projects || !lastProjects) {
+    return null;
+  }
+
   const [techSearch, setTechSearch] = useState<string[]>([]);
   const [sizeSearch, setSizeSearch] = useState<string[]>([]);
 
@@ -65,10 +69,6 @@ export default function ProjectPage({ isMobile }) {
     const updatedSizeSearch = sizeSearch.filter((size) => size !== sizeName);
     setSizeSearch(updatedSizeSearch);
   };
-
-  if (!projects || !lastProjects) {
-    return null;
-  }
 
   const splideOptions: SplideOptions = {
     hasTrack: false,

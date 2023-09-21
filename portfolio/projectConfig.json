@@ -9,8 +9,9 @@
   ],
   "techs": [
     {
-      "name": "Javascript",
+      "name": "Typescript",
       "packages": [
+        "ts-node",
         "webpack"
       ]
     },
@@ -42,18 +43,14 @@
         "cors",
         "compression"
       ]
-    },
-    {
-      "name": "Typescript",
-      "packages": [
-        "ts-node"
-      ]
     }
   ],
   "designPatterns": [
     "variables SCSS",
     "fonctions SCSS",
-    "BEM"
+    "BEM",
+    "API",
+    "CRUD"
   ],
   "components": [
     "Carousel",
