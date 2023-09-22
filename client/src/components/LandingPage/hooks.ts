@@ -58,6 +58,7 @@ export function useProject() {
           if (project) {
             return project
           }
+
           const { data } = await api.project.getOne(projectId);
           if (!data) {
             return undefined;
@@ -66,7 +67,7 @@ export function useProject() {
           const screenshots: string[] = api.cdn.create(data.screenshots, width)
           const newData = { ...data, screenshots: screenshots }
 
-          if (data && data.length > 0) {
+          if (newData) {
             store.set('projectsDetail', [...localProjects, newData]);
           }
           return newData as Project;
@@ -78,7 +79,7 @@ export function useProject() {
         }
         const newData = { ...data, screenshots: screenshots }
 
-        if (data && data.length > 0) {
+        if (newData) {
           store.set('projectsDetail', [newData]);
         }
         return newData;
