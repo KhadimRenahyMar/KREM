@@ -58,9 +58,6 @@
         cursor: pointer;
       }
 
-      .active {
-        fill: getDeepMapValue(vars.$var, colors, tertiary, primary);
-      }
     }
 
     &__techLogo {

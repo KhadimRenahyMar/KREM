@@ -65,34 +65,33 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
               />
             </svg>
           </a>
-          {project.url ? (
-            <Link to={project.url} className="project__playBx" target="_blank">
-              <svg
-                className="project__playBx--btn"
-                xmlns="http://www.w3.org/2000/svg"
-                width="44.056"
-                height="50.827"
-                viewBox="0 0 44.056 50.827"
-              >
-                <path
-                  className="project__playBx--path"
-                  d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z"
-                  fill="none"
-                  stroke="#fff"
-                  strokeMiterlimit="10"
-                  strokeWidth="2"
-                />
-              </svg>
+          <Link to={project.url} className="project__playBx" target="_blank">
+            <svg
+              className="project__playBx--btn"
+              xmlns="http://www.w3.org/2000/svg"
+              width="44.056"
+              height="50.827"
+              viewBox="0 0 44.056 50.827"
+            >
+              <path
+                style={project.url ? { fill: "black", cursor: "pointer" } : { fill: "#606060", cursor: "default" }}
+                className="project__playBx--path"
+                d="M43.019,13.259l.034,24.259L22.062,49.678,1.036,37.579,1,13.32,21.992,1.16Z"
+                fill="none"
+                stroke="#fff"
+                strokeMiterlimit="10"
+                strokeWidth="2"
+              />
+            </svg>
+            {project.url ? (
               <svg className="project__playBx--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                 <path
                   className="project__playBx--icon"
                   d="M361 215C375.3 223.8 384 239.3 384 256C384 272.7 375.3 288.2 361 296.1L73.03 472.1C58.21 482 39.66 482.4 24.52 473.9C9.377 465.4 0 449.4 0 432V80C0 62.64 9.377 46.63 24.52 38.13C39.66 29.64 58.21 29.99 73.03 39.04L361 215z"
                 />
               </svg>
-            </Link>
-          ) : (
-            <p className="project__playBx--message">{t("components.project.notDeployed")}</p>
-          )}
+            ) : null}
+          </Link>
         </div>
       </div>
       <div className="project__tagBx">

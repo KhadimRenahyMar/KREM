@@ -3,13 +3,11 @@ import dataMapper from "../dataMapper";
 import { Project } from "../../client/src/interfaces/project";
 import { ProjectConfig } from "../../client/src/interfaces/projectConfig";
 
-let fetchCount = 0;
-
 async function getAllProjects() {
   const fetchedProjects: Project[] = await dataMapper.getRepos();
   const formattedProjects: Project[] = [];
 
-  for (let project of fetchedProjects) {
+  for (const project of fetchedProjects) {
     const projectConfig: ProjectConfig = await dataMapper.getProjectConfig(project);
     const cover = await dataMapper.getCoverFromCDN(project.name, projectConfig.coverURL);
     const formattedProject = formatProject(project, projectConfig, cover);
@@ -40,16 +38,7 @@ function formatProject(fetchedProject: Project, projectConfig: ProjectConfig, co
 const projectController = {
   getAllProjects: async (req: Request, res: Response) => {
     console.log("START");
-    let projectList: Project[] = [];
-
-    if (fetchCount === 0) {
-      fetchCount += 1;
-      const projects: Project[] = await getAllProjects();
-
-      projectList = projects;
-      fetchCount = 0;
-    }
-
+    const projectList: Project[] = await getAllProjects();
     res.json(projectList);
   },
 
