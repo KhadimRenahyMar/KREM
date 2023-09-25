@@ -148,6 +148,10 @@
         "noPackage": "Sorry, no package found for this technology. Try another tab!"
       },
       "reviews": {
+        "baptiste": {
+          "1": "Khadim does good work every day! He goes after things and is a perfectionist. He understands customer needs and his achievements correspond to their expectations. I recommand highly him !",
+          "credentials": ", lead developer at The Watchdog"
+        },
         "aleks": {
           "intro": "It's time for the assessment!",
           "skillsSubtitle": "Technical Progress:",

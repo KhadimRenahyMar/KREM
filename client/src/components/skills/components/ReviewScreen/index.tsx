@@ -9,6 +9,15 @@ export default function Reviews() {
       <ul className="reviewScreen__list">
         <li className="reviewScreen__review">
           <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--upperleft">"</span>
+          <p className="reviewScreen__review-text">{t("components.screens.reviews.baptiste.1")}</p>
+          <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--downright">"</span>
+          <em className="reviewScreen__review-author">
+            <span className="reviewScreen__review-author--name">- Baptiste Le Moal</span>
+            {t("components.screens.reviews.baptiste.credentials")}
+          </em>
+        </li>
+        <li className="reviewScreen__review">
+          <span className="reviewScreen__review-quotationMark reviewScreen__review-quotationMark--upperleft">"</span>
           <p className="reviewScreen__review-text">
             {t("components.screens.reviews.aleks.intro")}
             <br />

@@ -149,6 +149,10 @@
         "noPackage": "Désolé, aucun package n'a été trouvé pour cette technologie. Essayez un autre onglet !"
       },
       "reviews": {
+        "baptiste": {
+          "1": "Khadim réalise du bon travail au quotidien ! Il va au bout des choses et est perfectionniste. Il comprends le besoin client et ses réalisations correspondent à leur attentes. Je le recommande !",
+          "credentials": ", lead developer chez The Watchdog"
+        },
         "aleks": {
           "intro": "C’est l’heure du bilan !",
           "skillsSubtitle": "Evolution technique: ",
