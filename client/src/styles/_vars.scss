@@ -1,13 +1,13 @@
 $oswald: 'Oswald', sans-serif;
 $inconsolata : 'Inconsolata', monospace;
 $roboto: 'Roboto Slab', serif;
-$mobile: url('/src/assets/bg/bg\ mobile.svg');
-$desktop: url('/src/assets/bg/BG\ desktop.svg');
+// $mobile: url('/src/assets/bg/bg\ mobile.svg');
+// $desktop: url('/src/assets/bg/BG\ desktop.svg');
 
 $var: (
     bg: (
-        mobile: $mobile,
-        desktop: $desktop, 
+        // mobile: $mobile,
+        // desktop: $desktop, 
     ),
     fonts : (
         title: $oswald,

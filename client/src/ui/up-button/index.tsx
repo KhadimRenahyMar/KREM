@@ -1,4 +1,4 @@
-import { scroll } from "../../components/App/services/app.service";
+import { scroll } from "../../business/App/services/app.service";
 
 interface UpButtonProps {
   splide: HTMLElement | null;

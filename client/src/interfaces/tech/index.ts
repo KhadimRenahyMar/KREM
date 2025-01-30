@@ -1,7 +1,6 @@
 interface Tech {
   name: string;
   packages: string[];
-  logo: any;
   count: number;
 }
 

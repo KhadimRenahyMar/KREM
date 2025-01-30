@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"]
+  },
+  // "files": [
+  //   "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
+  //   "../../node_modules/@nrwl/react/typings/image.d.ts"
+  // ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "utils/setup-tests-after-env.ts",
+    "utils/ui-test-utils.ts"
+  ],
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "postcss.config.cjs",
+    "postcss.config.cjs",
+    "postcss.config.cjs",
+    "postcss.config.cjs"
+  ]
+}

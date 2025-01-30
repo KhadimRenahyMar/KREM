@@ -21,7 +21,7 @@
       "skills": "Compétences"
     },
     "landing": {
-      "intro": "Je suis développeur Web Fullstack, j'ai 27 ans",
+      "intro": "Je suis développeur Web Fullstack, j'ai {{age}} ans",
       "welcome": "Bienvenue sur mon portfolio !",
       "options": {
         "seeMore": "Jeter un oeil à mes projets",
@@ -63,15 +63,16 @@
     },
     "skills": {
       "intro": {
-        "title": "Khadim, {{age}} ans",
+        "name": "Khadim Renahy-Mar",
+        "age": ", {{age}} ans",
         "desc": "Développeur Fullstack JS"
       }
     },
     "statBox": {
-      "public": "Projets publics",
-      "private": "Projets privés",
-      "totalContributions": "Contributions totales",
-      "commitsPerWeek": "Commit/semaine",
+      "public_repos": "Projets publics",
+      "reposCount": "Projets privés",
+      "commitCount": "Contributions totales",
+      "contribPerWeek": "Commit/semaine",
       "lastCommit": "Dernier commit",
       "lastProject": "Dernier Projet"
     },
